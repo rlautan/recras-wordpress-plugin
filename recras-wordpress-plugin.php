@@ -5,14 +5,14 @@ ini_set('display_errors', 'On');
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.0.2
+ * @version 0.1.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.0.2
+Version: 0.1.0
 Author URI: http://www.recras.nl/
 */
 
@@ -22,9 +22,12 @@ class RecrasPlugin
 
     public function __construct()
     {
-        /** Init Localisation */
+        // Init Localisation
         load_default_textdomain();
         load_plugin_textdomain($this::TEXT_DOMAIN, false, PLUGINDIR . '/' . dirname(plugin_basename(__FILE__)) . '/lang');
+
+        // Add admin menu pages
+        add_action('admin_menu', [&$this, 'addMenuItems']);
 
         $this->addShortcodes();
     }
@@ -41,9 +44,20 @@ class RecrasPlugin
         return 'ARRANGEMENT';
     }
 
+    public function addMenuItems()
+    {
+        //TODO: not sure about  manage_options  capability
+        add_menu_page(__('Recras settings', $this::TEXT_DOMAIN), __('Recras settings', $this::TEXT_DOMAIN), 'manage_options', 'recras-settings', [&$this, 'editSettings'], 'dashicons-admin-generic', '101.1');
+    }
+
     public function addShortcodes()
     {
         add_shortcode('arrangement', [$this, 'addArrangementShortcode']);
+    }
+
+    public function editSettings()
+    {
+        die('TODO');
     }
 }
 $recras = new RecrasPlugin;
