@@ -1,6 +1,6 @@
 <?php
 
-class PluginTest extends WP_UnitTestCase
+class RecrasPluginTest extends WP_UnitTestCase
 {
 	function testArrangementShortcode()
 	{
