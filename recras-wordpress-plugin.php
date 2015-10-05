@@ -29,8 +29,12 @@ class RecrasPlugin
         $this->addShortcodes();
     }
 
-    public function addArrangementShortcode()
+    public function addArrangementShortcode($attributes)
     {
+        if (!isset($attributes['id'])) {
+            return __('Error: no ID set', $this::TEXT_DOMAIN);
+        }
+
         return 'ARRANGEMENT';
     }
 
