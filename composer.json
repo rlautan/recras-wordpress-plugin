@@ -1,0 +1,13 @@
+{
+    "name": "Recras/recras-wordpress-plugin",
+    "require": {
+        "phpunit/phpunit": "^4.8",
+        "wp-cli/wp-cli": "^0.20.1"
+    },
+    "authors": [
+        {
+            "name": "Sander de Jong",
+            "email": "sander@recras.nl"
+        }
+    ]
+}
