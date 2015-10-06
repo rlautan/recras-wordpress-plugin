@@ -31,4 +31,26 @@ class PluginTest extends \WP_UnitTestCase
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('ARRANGEMENT' . "\n", $content, '...');
 	}
+
+
+    function testTooLongSubdomain()
+    {
+        $plugin = new Plugin;
+        $result = $plugin->sanitizeSubdomain('ThisSubdomainIsLongerThanAllowedButDoesNotContainAnyInvalidCharacters');
+        $this->assertFalse($result, 'Too long subdomain should be invalid');
+    }
+
+    function testInvalidSubdomain()
+    {
+        $plugin = new Plugin;
+        $result = $plugin->sanitizeSubdomain('foo@bar');
+        $this->assertFalse($result, 'Subdomain with invalid characters should be invalid');
+    }
+
+    function testValidSubdomain()
+    {
+        $plugin = new Plugin;
+        $result = $plugin->sanitizeSubdomain('demo');
+        $this->assertEquals('demo', $result, 'Valid subdomain should be valid');
+    }
 }

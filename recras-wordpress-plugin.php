@@ -1,6 +1,8 @@
 <?php
 namespace Recras;
 
+require_once('recrasSettings.php');
+
 // Debugging
 error_reporting(-1);
 ini_set('display_errors', 'On');
@@ -31,6 +33,8 @@ class Plugin
         // Add admin menu pages
         add_action('admin_menu', [&$this, 'addMenuItems']);
 
+        add_action('admin_init', ['Recras\Settings', 'registerSettings']);
+
         $this->addShortcodes();
     }
 
@@ -43,13 +47,28 @@ class Plugin
             return __('Error: ID is not a number', $this::TEXT_DOMAIN);
         }
 
+        $arrangementID = $attributes['id'];
+        $json = @file_get_contents('https://demo.recras.nl/api2.php/arrangementen/' . $arrangementID);
+        if ($json === false) {
+            die(__('Error: could not retrieve external data', $this::TEXT_DOMAIN));
+        }
+        $json = json_decode($json);
+        if (is_null($json)) {
+            die(__('Error: could not parse external data', $this::TEXT_DOMAIN));
+        }
+
         return 'ARRANGEMENT';
     }
 
     public function addMenuItems()
     {
-        //TODO: not sure about  manage_options  capability
-        add_menu_page(__('Recras settings', $this::TEXT_DOMAIN), __('Recras settings', $this::TEXT_DOMAIN), 'manage_options', 'recras-settings', [&$this, 'editSettings'], 'dashicons-admin-generic', '101.1');
+        add_options_page(
+            'Recras',
+            'Recras',
+            'manage_options',
+            'recras',
+            ['\Recras\Settings', 'editSettings']
+        );
     }
 
     public function addShortcodes()
@@ -57,9 +76,16 @@ class Plugin
         add_shortcode('arrangement', [$this, 'addArrangementShortcode']);
     }
 
-    public function editSettings()
+    public function sanitizeSubdomain($subdomain)
     {
-        die('TODO');
+        // RFC 1034 section 3.5 - http://tools.ietf.org/html/rfc1034#section-3.5
+        if (strlen($subdomain) > 63) {
+            return false;
+        }
+        if (! preg_match('/^[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$/', $subdomain)) {
+            return false;
+        }
+        return $subdomain;
     }
 }
 $recras = new Plugin;
