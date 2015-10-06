@@ -76,13 +76,13 @@ class Plugin
             case 'persons':
                 return '<span class="recras_persons">' . $json->aantal_personen . '</span>';
             case 'price_pp_excl_vat':
-                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_pp_exc . '</span>';
+                return $this->returnPrice($json->prijs_pp_exc);
             case 'price_pp_incl_vat':
-                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_pp_inc . '</span>';
+                return $this->returnPrice($json->prijs_pp_inc);
             case 'price_total_excl_vat':
-                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_totaal_exc . '</span>';
+                return $this->returnPrice($json->prijs_totaal_exc);
             case 'price_total_incl_vat':
-                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_totaal_inc . '</span>';
+                return $this->returnPrice($json->prijs_totaal_inc);
             case 'program':
             case 'programme':
                 $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
@@ -137,6 +137,12 @@ class Plugin
         $html .= '</table>';
 
         return $html;
+    }
+
+    public function returnPrice($price)
+    {
+        $currency = get_option('recras_currency');
+        return '<span class="recras_price">' . $currency . ' ' . $price . '</span>';
     }
 
     public function sanitizeSubdomain($subdomain)
