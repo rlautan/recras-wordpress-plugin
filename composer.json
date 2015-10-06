@@ -1,6 +1,6 @@
 {
     "name": "Recras/recras-wordpress-plugin",
-    "require": {
+    "require_dev": {
         "phpunit/phpunit": "^4.8",
         "wp-cli/wp-cli": "^0.20.1"
     },
