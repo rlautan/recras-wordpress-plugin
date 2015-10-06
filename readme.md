@@ -24,9 +24,11 @@ Installation
 ------------
 
 Easy installation (preferred):
+
 1. Install the plugin from the Plugins > Add New page in your WordPress installation.
 
 Self install:
+
 1. Upload the `recras-wordpress-plugin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
