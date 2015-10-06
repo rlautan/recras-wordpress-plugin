@@ -47,8 +47,13 @@ class Plugin
             return __('Error: ID is not a number', $this::TEXT_DOMAIN);
         }
 
+        $subdomain = get_option('recras_subdomain');
+        if (!$subdomain) {
+            return __('Error: you have not set your Recras subdomain yet', $this::TEXT_DOMAIN);
+        }
+
         $arrangementID = $attributes['id'];
-        $json = @file_get_contents('https://demo.recras.nl/api2.php/arrangementen/' . $arrangementID);
+        $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $arrangementID);
         if ($json === false) {
             die(__('Error: could not retrieve external data', $this::TEXT_DOMAIN));
         }
