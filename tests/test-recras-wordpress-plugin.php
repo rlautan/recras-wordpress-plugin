@@ -88,7 +88,13 @@ class PluginTest extends \WP_UnitTestCase
             'post_content' => '[arrangement id=8 show=price_pp_incl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('39.95' . "\n", $content, 'Should show price per person  incl. vat');
+        $this->assertEquals('39.95' . "\n", $content, 'Should show price per person incl. vat');
+
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=8 show=programme]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertNotFalse(strpos($content, '<table'), 'Should return an HTML table');
 	}
 
 

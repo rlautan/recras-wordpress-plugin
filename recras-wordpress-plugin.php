@@ -84,7 +84,8 @@ class Plugin
                 return $json->prijs_totaal_inc;
             case 'program':
             case 'programme':
-                return print_r($json->programma, true);
+                $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
+                return $this->generateProgramme($json->programma, $startTime);
             default:
                 return 'Error: unknown option';
         }
@@ -104,6 +105,37 @@ class Plugin
     public function addShortcodes()
     {
         add_shortcode('arrangement', [$this, 'addArrangementShortcode']);
+    }
+
+    public function generateProgramme($programme, $startTime = '00:00')
+    {
+        $html  = '';
+        $html .= '<table class="recras-programme">';
+        $html .= '<thead>';
+        $html .= '<tr><th>' . __('From', $this::TEXT_DOMAIN) . '<th>' . __('Until', $this::TEXT_DOMAIN) . '<th>' . __('Activity', $this::TEXT_DOMAIN);
+        $html .= '</thead>';
+        $html .= '<tbody>';
+        $lastTime = null;
+        foreach ($programme as $activity) {
+            if (!$activity->omschrijving) {
+                continue;
+            }
+            $startDate = new \DateTime($startTime);
+            $endDate = new \DateTime($startTime);
+            $timeBegin = new \DateInterval($activity->begin);
+            $timeEnd = new \DateInterval($activity->eind);
+            $startFormatted = $startDate->add($timeBegin)->format('H:i');
+            $class = (!is_null($lastTime) && $startFormatted < $lastTime) ? ' class="new-day"' : '';
+
+            $html .= '<tr' . $class . '><td>' . $startFormatted;
+            $html .= '<td>' . $endDate->add($timeEnd)->format('H:i');
+            $html .= '<td>' . $activity->omschrijving;
+            $lastTime = $startFormatted;
+        }
+        $html .= '</tbody>';
+        $html .= '</table>';
+
+        return $html;
     }
 
     public function sanitizeSubdomain($subdomain)
