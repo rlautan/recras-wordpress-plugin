@@ -1,6 +1,7 @@
 Recras WordPress plugin
 =======================
 
+[![Build Status](https://travis-ci.org/Recras/recras-wordpress-plugin.svg?branch=master)](https://travis-ci.org/Recras/recras-wordpress-plugin)
 Easily integrate your Recras data into your own website
 
 Usage
