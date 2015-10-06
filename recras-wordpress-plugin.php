@@ -23,6 +23,7 @@ Author URI: http://www.recras.nl/
 class Plugin
 {
     const TEXT_DOMAIN = 'recras-wp';
+    const VALID_OPTIONS = ['title', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme'];
 
     public function __construct()
     {
@@ -46,6 +47,12 @@ class Plugin
         if (!ctype_digit($attributes['id'])) {
             return __('Error: ID is not a number', $this::TEXT_DOMAIN);
         }
+        if (!isset($attributes['show'])) {
+            return __('Error: "show" option not set', $this::TEXT_DOMAIN);
+        }
+        if (!in_array($attributes['show'], $this::VALID_OPTIONS)) {
+            return __('Error: invalid "show" option', $this::TEXT_DOMAIN);
+        }
 
         $subdomain = get_option('recras_subdomain');
         if (!$subdomain) {
@@ -62,7 +69,25 @@ class Plugin
             die(__('Error: could not parse external data', $this::TEXT_DOMAIN));
         }
 
-        return 'ARRANGEMENT';
+        switch ($attributes['show']) {
+            case 'title':
+                return $json->arrangement;
+            case 'persons':
+                return $json->aantal_personen;
+            case 'price_pp_excl_vat':
+                return $json->prijs_pp_exc;
+            case 'price_pp_incl_vat':
+                return $json->prijs_pp_inc;
+            case 'price_total_excl_vat':
+                return $json->prijs_totaal_exc;
+            case 'price_total_incl_vat':
+                return $json->prijs_totaal_inc;
+            case 'program':
+            case 'programme':
+                return print_r($json->programma, true);
+            default:
+                return 'Error: unknown option';
+        }
     }
 
     public function addMenuItems()
