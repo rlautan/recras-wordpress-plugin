@@ -1,6 +1,7 @@
 <?php
+namespace Recras;
 
-class RecrasPluginTest extends WP_UnitTestCase
+class PluginTest extends \WP_UnitTestCase
 {
 	function testShortcodeWithoutID()
 	{

@@ -1,22 +1,24 @@
 <?php
+namespace Recras;
+
 // Debugging
 error_reporting(-1);
 ini_set('display_errors', 'On');
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.1.0
+ * @version 0.2.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.1.0
+Version: 0.2.0
 Author URI: http://www.recras.nl/
 */
 
-class RecrasPlugin
+class Plugin
 {
     const TEXT_DOMAIN = 'recras-wp';
 
@@ -60,4 +62,4 @@ class RecrasPlugin
         die('TODO');
     }
 }
-$recras = new RecrasPlugin;
+$recras = new Plugin;
