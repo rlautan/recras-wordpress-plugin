@@ -9,14 +9,14 @@ ini_set('display_errors', 'On');
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.2.0
+ * @version 0.2.1
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.2.0
+Version: 0.2.1
 Author URI: http://www.recras.nl/
 */
 
@@ -62,11 +62,11 @@ class Plugin
         $arrangementID = $attributes['id'];
         $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $arrangementID);
         if ($json === false) {
-            die(__('Error: could not retrieve external data', $this::TEXT_DOMAIN));
+            return __('Error: could not retrieve external data', $this::TEXT_DOMAIN);
         }
         $json = json_decode($json);
         if (is_null($json)) {
-            die(__('Error: could not parse external data', $this::TEXT_DOMAIN));
+            return __('Error: could not parse external data', $this::TEXT_DOMAIN);
         }
 
         switch ($attributes['show']) {
