@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.3.1
-Stable tag: 0.2.1
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,10 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 0.3.0 =
+* Add Dutch translation
+* Wrap output of the shortcode in `<span>`s with different classes, for styling purposes
 
 = 0.2.1 =
 Don't `die()` on errors, but return error message instead

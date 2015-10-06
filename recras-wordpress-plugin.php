@@ -9,14 +9,14 @@ ini_set('display_errors', 'On');
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.2.1
+ * @version 0.3.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.2.1
+Version: 0.3.0
 Author URI: http://www.recras.nl/
 */
 
@@ -71,17 +71,17 @@ class Plugin
 
         switch ($attributes['show']) {
             case 'title':
-                return $json->arrangement;
+                return '<span class="recras_title">' . $json->arrangement . '</span>';
             case 'persons':
-                return $json->aantal_personen;
+                return '<span class="recras_persons">' . $json->aantal_personen . '</span>';
             case 'price_pp_excl_vat':
-                return $json->prijs_pp_exc;
+                return '<span class="recras_price">' . $json->prijs_pp_exc . '</span>';
             case 'price_pp_incl_vat':
-                return $json->prijs_pp_inc;
+                return '<span class="recras_price">' . $json->prijs_pp_inc . '</span>';
             case 'price_total_excl_vat':
-                return $json->prijs_totaal_exc;
+                return '<span class="recras_price">' . $json->prijs_totaal_exc . '</span>';
             case 'price_total_incl_vat':
-                return $json->prijs_totaal_inc;
+                return '<span class="recras_price">' . $json->prijs_totaal_inc . '</span>';
             case 'program':
             case 'programme':
                 $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
