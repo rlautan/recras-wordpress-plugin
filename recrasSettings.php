@@ -3,10 +3,24 @@ namespace Recras;
 
 class Settings
 {
+    public static function addInputCurrency($args)
+    {
+        $field = $args['field'];
+        $value = get_option($field);
+        if (!$value) {
+            $value = '€';
+        }
+
+        printf('<input type="text" name="%s" id="%s" value="%s">', $field, $field, $value);
+    }
+
     public static function addInputSubdomain($args)
     {
         $field = $args['field'];
         $value = get_option($field);
+        if (!$value) {
+            $value = 'demo';
+        }
 
         printf('<input type="text" name="%s" id="%s" value="%s">', $field, $field, $value);
     }
@@ -30,9 +44,10 @@ class Settings
         );
 
         register_setting('recras', 'recras_subdomain', ['Recras\Plugin', 'sanitizeSubdomain']);
+        register_setting('recras', 'recras_currency', '');
 
-        add_settings_field('recras_subdomain', 'Subdomain', ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
-        //recras_subdomain
+        add_settings_field('recras_subdomain', __('Subdomain', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
+        add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
     }
 
     public static function settingsHelp()

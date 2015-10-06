@@ -9,14 +9,14 @@ ini_set('display_errors', 'On');
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.3.0
+ * @version 0.4.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.3.0
+Version: 0.4.0
 Author URI: http://www.recras.nl/
 */
 
@@ -58,6 +58,7 @@ class Plugin
         if (!$subdomain) {
             return __('Error: you have not set your Recras subdomain yet', $this::TEXT_DOMAIN);
         }
+        $currency = get_option('recras_currency');
 
         $arrangementID = $attributes['id'];
         $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $arrangementID);
@@ -75,13 +76,13 @@ class Plugin
             case 'persons':
                 return '<span class="recras_persons">' . $json->aantal_personen . '</span>';
             case 'price_pp_excl_vat':
-                return '<span class="recras_price">' . $json->prijs_pp_exc . '</span>';
+                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_pp_exc . '</span>';
             case 'price_pp_incl_vat':
-                return '<span class="recras_price">' . $json->prijs_pp_inc . '</span>';
+                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_pp_inc . '</span>';
             case 'price_total_excl_vat':
-                return '<span class="recras_price">' . $json->prijs_totaal_exc . '</span>';
+                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_totaal_exc . '</span>';
             case 'price_total_incl_vat':
-                return '<span class="recras_price">' . $json->prijs_totaal_inc . '</span>';
+                return '<span class="recras_price">' . $currency . ' ' . $json->prijs_totaal_inc . '</span>';
             case 'program':
             case 'programme':
                 $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
