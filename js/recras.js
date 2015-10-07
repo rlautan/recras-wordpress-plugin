@@ -1,12 +1,19 @@
 function submitRecrasForm(formID, subdomain, submitScript)
 {
+    var i;
+
+    var errors = document.querySelectorAll('.recras-error');
+    for (i = 0; i < errors.length; i++) {
+        errors[i].parentNode.removeChild(errors[i]);
+    }
+
     var formElements = document.getElementById('recras-form' + formID).querySelectorAll('input, textarea, select');
     var payload = {
         elements: {},
         formID: formID,
         subdomain: subdomain
     };
-    for (var i = 0; i < formElements.length; i++) {
+    for (i = 0; i < formElements.length; i++) {
         if (formElements[i].type !== 'submit') {
             if (formElements[i].value === '' && formElements[i].required === false) {
                 formElements[i].value = null;
@@ -14,6 +21,7 @@ function submitRecrasForm(formID, subdomain, submitScript)
             payload['elements'][formElements[i].name] = formElements[i].value;
         }
     }
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', submitScript);
     xhr.send(JSON.stringify(payload));
@@ -23,8 +31,13 @@ function submitRecrasForm(formID, subdomain, submitScript)
             if (response.success) {
                 alert(recras_l10n.sent_success);
             } else if (response.error) {
-                alert(recras.l10n.sent_error);
-                console.log(response.error.messages);
+                var errors = response.error.messages;
+                for (var key in errors) {
+                    if (errors.hasOwnProperty(key)) {
+                        document.querySelector('[name="' + key + '"]').parentNode.insertAdjacentHTML('beforeend', '<span class="recras-error">' + errors[key] + '</span>');
+                    }
+                }
+                alert(recras_l10n.sent_error);
             } else {
                 console.log('Unknown response: ', response);
             }
