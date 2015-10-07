@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.4.2
+ * @version 0.5.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.4.2
+Version: 0.5.0
 Author URI: http://www.recras.nl/
 */
 
@@ -167,6 +167,9 @@ class Plugin
         foreach ($formFields as $field) {
             if ($field->soort_invoer !== 'header') {
                 $html .= '<dt><label for="field' . $field->id . '">' . $field->naam . '</label>';
+                if ($field->verplicht) {
+                    $html .= '<span class="recras-required">*</span>';
+                }
             }
             switch ($field->soort_invoer) {
                 case 'boeking.datum':
