@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.4.1
+ * @version 0.4.2
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.4.1
+Version: 0.4.2
 Author URI: http://www.recras.nl/
 */
 
@@ -74,9 +74,9 @@ class Plugin
 
         switch ($attributes['show']) {
             case 'title':
-                return '<span class="recras_title">' . $json->arrangement . '</span>';
+                return '<span class="recras-title">' . $json->arrangement . '</span>';
             case 'persons':
-                return '<span class="recras_persons">' . $json->aantal_personen . '</span>';
+                return '<span class="recras-persons">' . $json->aantal_personen . '</span>';
             case 'price_pp_excl_vat':
                 return $this->returnPrice($json->prijs_pp_exc);
             case 'price_pp_incl_vat':
@@ -266,7 +266,7 @@ class Plugin
     public function returnPrice($price)
     {
         $currency = get_option('recras_currency');
-        return '<span class="recras_price">' . $currency . ' ' . $price . '</span>';
+        return '<span class="recras-price">' . $currency . ' ' . $price . '</span>';
     }
 
     public function sanitizeSubdomain($subdomain)

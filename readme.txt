@@ -46,6 +46,9 @@ None yet!
 
 == Changelog ==
 
+= 0.4.2 =
+Unified CSS class names
+
 = 0.4.1 =
 Proper handling of debug mode
 
