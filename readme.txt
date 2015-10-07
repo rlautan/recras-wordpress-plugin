@@ -46,6 +46,9 @@ None yet!
 
 == Changelog ==
 
+= 0.4.1 =
+Proper handling of debug mode
+
 = 0.4.0 =
 Add currency option, defaults to Euro (€)
 

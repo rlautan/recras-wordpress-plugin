@@ -4,19 +4,21 @@ namespace Recras;
 require_once('recrasSettings.php');
 
 // Debugging
-error_reporting(-1);
-ini_set('display_errors', 'On');
+if (WP_DEBUG) {
+    error_reporting(-1);
+    ini_set('display_errors', 'On');
+}
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.4.0
+ * @version 0.4.1
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.4.0
+Version: 0.4.1
 Author URI: http://www.recras.nl/
 */
 
