@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-10-07 10:14+0100\n"
-"PO-Revision-Date: 2015-10-07 10:14+0100\n"
+"POT-Creation-Date: 2015-10-07 12:10+0100\n"
+"PO-Revision-Date: 2015-10-07 12:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -71,17 +71,25 @@ msgstr "Onbekend"
 msgid "Send"
 msgstr "Versturen"
 
-#: recras-wordpress-plugin.php:227
+#: recras-wordpress-plugin.php:228
 msgid "From"
 msgstr "Van"
 
-#: recras-wordpress-plugin.php:227
+#: recras-wordpress-plugin.php:228
 msgid "Until"
 msgstr "Tot"
 
-#: recras-wordpress-plugin.php:227
+#: recras-wordpress-plugin.php:228
 msgid "Activity"
 msgstr "Activiteit"
+
+#: recras-wordpress-plugin.php:258
+msgid "Your message was sent succesfully"
+msgstr "Uw bericht is succesvol verzonden"
+
+#: recras-wordpress-plugin.php:259
+msgid "There was an error sending your message"
+msgstr "Er was een probleem met het verzenden van uw bericht"
 
 #: recrasSettings.php:32
 msgid "You do not have sufficient permissions to access this page."

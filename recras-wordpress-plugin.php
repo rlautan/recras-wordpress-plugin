@@ -36,6 +36,8 @@ class Plugin
 
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
 
+        add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
+
         $this->addShortcodes();
     }
 
@@ -131,7 +133,7 @@ class Plugin
             $formTitle = false;
         }
 
-        return $this->generateForm($attributes['id'], $formTitle, $formFields);
+        return $this->generateForm($attributes['id'], $formTitle, $formFields, $subdomain);
     }
 
     public function addMenuItems()
@@ -151,7 +153,7 @@ class Plugin
         add_shortcode('recras-contact', [$this, 'addContactShortcode']);
     }
 
-    public function generateForm($formID, $formTitle, $formFields)
+    public function generateForm($formID, $formTitle, $formFields, $subdomain)
     {
         $html  = '';
         if ($formTitle) {
@@ -207,10 +209,11 @@ class Plugin
         }
         $html .= '<input type="submit" value="' . __('Send', $this::TEXT_DOMAIN) . '">';
         $html .= '</dl>';
+        $html .= '</form>';
         $html .= '<script>jQuery(document).ready(function(){
-    jQuery("#recras-form' . $formID . '").on("submit", function(){
-        var payload = {};
-        //TODO
+    jQuery("#recras-form' . $formID . '").on("submit", function(e){
+        e.preventDefault();
+        return submitRecrasForm(' . $formID . ', "' . $subdomain . '", "' . plugins_url('/submit.php', __FILE__) . '");
     });
 });</script>';
 
@@ -246,6 +249,16 @@ class Plugin
         $html .= '</table>';
 
         return $html;
+    }
+
+    public function loadScripts()
+    {
+        wp_register_script('recras', plugins_url('/js/recras.js', __FILE__), ['jquery'], '0.5.0', true);
+        wp_localize_script('recras', 'recras_l10n', [
+            'sent_success' => __('Your message was sent succesfully', $this::TEXT_DOMAIN),
+            'sent_error' => __('There was an error sending your message', $this::TEXT_DOMAIN),
+        ]);
+        wp_enqueue_script('recras');
     }
 
     public function returnPrice($price)
