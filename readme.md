@@ -7,8 +7,11 @@ Easily integrate your Recras data into your own website
 
 Usage
 -----
+This plugin consists of two shortcodes. To use them, you first need to set your Recras subdomain on the Settings > Recras page.
 
-Add the [arrangement] shortcode anywhere on your site. The following parameters are supported:
+### Arrangements ###
+
+Add the `[arrangement]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
   * title - shows the title of an arrangement
@@ -19,6 +22,10 @@ Add the [arrangement] shortcode anywhere on your site. The following parameters 
   * price_total_incl_vat - same as above, but including VAT
   * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
 * starttime - only used for `programme`, determines the starting time of an arrangement. If not set, it will default to 12:00
+
+### Contact forms ###
+Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
+* showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
 Installation
 ------------
