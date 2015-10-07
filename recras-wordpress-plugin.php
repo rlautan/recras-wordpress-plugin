@@ -58,10 +58,8 @@ class Plugin
         if (!$subdomain) {
             return __('Error: you have not set your Recras subdomain yet', $this::TEXT_DOMAIN);
         }
-        $currency = get_option('recras_currency');
 
-        $arrangementID = $attributes['id'];
-        $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $arrangementID);
+        $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $attributes['id']);
         if ($json === false) {
             return __('Error: could not retrieve external data', $this::TEXT_DOMAIN);
         }
@@ -92,6 +90,50 @@ class Plugin
         }
     }
 
+    public function addContactShortcode($attributes)
+    {
+        if (!isset($attributes['id'])) {
+            return __('Error: no ID set', $this::TEXT_DOMAIN);
+        }
+        if (!ctype_digit($attributes['id'])) {
+            return __('Error: ID is not a number', $this::TEXT_DOMAIN);
+        }
+
+        $subdomain = get_option('recras_subdomain');
+        if (!$subdomain) {
+            return __('Error: you have not set your Recras subdomain yet', $this::TEXT_DOMAIN);
+        }
+
+
+        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren/' . $attributes['id'];
+        $json = @file_get_contents($baseUrl);
+        if ($json === false) {
+            return __('Error: could not retrieve external data', $this::TEXT_DOMAIN);
+        }
+        $json = json_decode($json);
+        if (is_null($json)) {
+            return __('Error: could not parse external data', $this::TEXT_DOMAIN);
+        }
+        $formTitle = $json->naam;
+
+        $json = @file_get_contents($baseUrl . '/velden');
+        if ($json === false) {
+            return __('Error: could not retrieve external data', $this::TEXT_DOMAIN);
+        }
+        $json = json_decode($json);
+        if (is_null($json)) {
+            return __('Error: could not parse external data', $this::TEXT_DOMAIN);
+        }
+        $formFields = $json;
+
+
+        if (isset($attributes['showtitle']) && ($attributes['showtitle'] == 'false' || $attributes['showtitle'] == 0 || $attributes['showtitle'] == 'no')) {
+            $formTitle = false;
+        }
+
+        return $this->generateForm($attributes['id'], $formTitle, $formFields);
+    }
+
     public function addMenuItems()
     {
         add_options_page(
@@ -106,6 +148,73 @@ class Plugin
     public function addShortcodes()
     {
         add_shortcode('arrangement', [$this, 'addArrangementShortcode']);
+        add_shortcode('recras-contact', [$this, 'addContactShortcode']);
+    }
+
+    public function generateForm($formID, $formTitle, $formFields)
+    {
+        $html  = '';
+        if ($formTitle) {
+            $html .= '<h2>' . $formTitle . '</h2>';
+        }
+
+        $html .= '<form class="recras-contact" id="recras-form' . $formID . '">';
+        $html .= '<dl>';
+        foreach ($formFields as $field) {
+            if ($field->soort_invoer !== 'header') {
+                $html .= '<dt><label for="field' . $field->id . '">' . $field->naam . '</label>';
+            }
+            switch ($field->soort_invoer) {
+                case 'boeking.datum':
+                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" placeholder="yyyy-mm-dd">';
+                    break;
+                case 'boeking.groepsgrootte':
+                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="number" min="1">';
+                    break;
+                case 'boeking.starttijd':
+                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="time" pattern="(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])" placeholder="hh:mm">';
+                    break;
+                case 'contactpersoon.geslacht':
+                    $html .= '<dd><select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+                    $html .= '<option value="man">' . __('Male', $this::TEXT_DOMAIN);
+                    $html .= '<option value="vrouw">' . __('Female', $this::TEXT_DOMAIN);;
+                    $html .= '<option value="onbekend">' . __('Unknown', $this::TEXT_DOMAIN);;
+                    $html .= '</select>';
+                    break;
+                case 'header':
+                    if (strpos($html, '<dt') !== false) {
+                        $html .= '</dl>';
+                    }
+                    $html .= '<h3>' . $field->naam . '</h3>';
+                    if (strpos($html, '<dt') !== false) {
+                        $html .= '<dl>';
+                    }
+                    break;
+                case 'keuze':
+                    $html .= '<dd><select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+                    foreach ($field->mogelijke_keuzes as $keuze) {
+                        $html .= '<option value="' . $keuze . '">' . $keuze;
+                    }
+                    $html .= '</select>';
+                    break;
+                case 'veel_tekst':
+                    $html .= '<dd><textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '></textarea>';
+                    break;
+                default:
+                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+            }
+            //$html .= print_r($field, true); //DEBUG
+        }
+        $html .= '<input type="submit" value="' . __('Send', $this::TEXT_DOMAIN) . '">';
+        $html .= '</dl>';
+        $html .= '<script>jQuery(document).ready(function(){
+    jQuery("#recras-form' . $formID . '").on("submit", function(){
+        var payload = {};
+        //TODO
+    });
+});</script>';
+
+        return $html;
     }
 
     public function generateProgramme($programme, $startTime = '00:00')

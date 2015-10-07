@@ -119,4 +119,13 @@ class PluginTest extends \WP_UnitTestCase
         $result = $plugin->sanitizeSubdomain('demo');
         $this->assertEquals('demo', $result, 'Valid subdomain should be valid');
     }
+
+    function testContactformNoTitle()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-contact id=3 showtitle=false]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertFalse(strpos($content, '<h3'), 'Setting showtitle to false should not generate a title');
+    }
 }

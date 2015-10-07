@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-10-06 15:42+0100\n"
-"PO-Revision-Date: 2015-10-06 15:48+0100\n"
+"POT-Creation-Date: 2015-10-07 10:14+0100\n"
+"PO-Revision-Date: 2015-10-07 10:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -25,50 +25,76 @@ msgstr "Recras-instellingen"
 msgid "Save"
 msgstr "Opslaan"
 
-#: recras-wordpress-plugin.php:45
+#: recras-wordpress-plugin.php:47 recras-wordpress-plugin.php:98
 msgid "Error: no ID set"
 msgstr "Fout: geen ID ingesteld"
 
-#: recras-wordpress-plugin.php:48
+#: recras-wordpress-plugin.php:50 recras-wordpress-plugin.php:101
 msgid "Error: ID is not a number"
 msgstr "Fout: ID is geen getal"
 
-#: recras-wordpress-plugin.php:51
+#: recras-wordpress-plugin.php:53
 msgid "Error: \"show\" option not set"
 msgstr "Fout: optie \"show\" niet ingesteld"
 
-#: recras-wordpress-plugin.php:54
+#: recras-wordpress-plugin.php:56
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: recras-wordpress-plugin.php:59
+#: recras-wordpress-plugin.php:61 recras-wordpress-plugin.php:106
 msgid "Error: you have not set your Recras subdomain yet"
 msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
 
-#: recras-wordpress-plugin.php:65
+#: recras-wordpress-plugin.php:66 recras-wordpress-plugin.php:113
+#: recras-wordpress-plugin.php:123
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
-#: recras-wordpress-plugin.php:69
+#: recras-wordpress-plugin.php:70 recras-wordpress-plugin.php:117
+#: recras-wordpress-plugin.php:127
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
 
-#: recras-wordpress-plugin.php:115
+#: recras-wordpress-plugin.php:181
+msgid "Male"
+msgstr "Man"
+
+#: recras-wordpress-plugin.php:182
+msgid "Female"
+msgstr "Vrouw"
+
+#: recras-wordpress-plugin.php:183
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: recras-wordpress-plugin.php:210
+msgid "Send"
+msgstr "Versturen"
+
+#: recras-wordpress-plugin.php:227
 msgid "From"
 msgstr "Van"
 
-#: recras-wordpress-plugin.php:115
+#: recras-wordpress-plugin.php:227
 msgid "Until"
 msgstr "Tot"
 
-#: recras-wordpress-plugin.php:115
+#: recras-wordpress-plugin.php:227
 msgid "Activity"
 msgstr "Activiteit"
 
-#: recrasSettings.php:18
+#: recrasSettings.php:32
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
 
-#: recrasSettings.php:40
+#: recrasSettings.php:49
+msgid "Subdomain"
+msgstr "Subdomein"
+
+#: recrasSettings.php:50
+msgid "Currency symbol"
+msgstr "Valutasymbool"
+
+#: recrasSettings.php:55
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
