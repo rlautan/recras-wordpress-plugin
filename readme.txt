@@ -30,6 +30,9 @@ Add the `[arrangement]` shortcode anywhere on your site. The following parameter
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
+=== Styling ===
+No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
+
 == Installation ==
 Easy installation (preferred):
 1. Install the plugin from the Plugins > Add New page in your WordPress installation.

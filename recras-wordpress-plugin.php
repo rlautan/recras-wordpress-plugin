@@ -240,7 +240,7 @@ class Plugin
             $timeBegin = new \DateInterval($activity->begin);
             $timeEnd = new \DateInterval($activity->eind);
             $startFormatted = $startDate->add($timeBegin)->format('H:i');
-            $class = (!is_null($lastTime) && $startFormatted < $lastTime) ? ' class="new-day"' : '';
+            $class = (!is_null($lastTime) && $startFormatted < $lastTime) ? ' class="recras-new-day"' : '';
 
             $html .= '<tr' . $class . '><td>' . $startFormatted;
             $html .= '<td>' . $endDate->add($timeEnd)->format('H:i');
