@@ -54,6 +54,12 @@ None yet!
 
 == Changelog ==
 
+= 0.5.1 =
+Show notice if cURL is not installed
+
+= 0.5.0 =
+Add shortcode for contact forms
+
 = 0.4.2 =
 Unified CSS class names
 

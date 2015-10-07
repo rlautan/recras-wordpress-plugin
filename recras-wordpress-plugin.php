@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.5.0
+ * @version 0.5.1
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.5.0
+Version: 0.5.1
 Author URI: http://www.recras.nl/
 */
 
@@ -37,6 +37,8 @@ class Plugin
         add_action('admin_menu', [&$this, 'addMenuItems']);
 
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
+
+        add_action('admin_notices', [&$this, 'showActivationNotice']);
 
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
@@ -282,6 +284,15 @@ class Plugin
             return false;
         }
         return $subdomain;
+    }
+
+    public function showActivationNotice()
+    {
+        global $pagenow;
+
+        if ($pagenow === 'plugins.php' && !extension_loaded('curl')) {
+            echo '<div class="update-nag notice is-dismissible">' . __('The cURL extension for PHP is not installed. Without this, submitting contact forms will not work.', $this::TEXT_DOMAIN) . '</div>';
+        }
     }
 }
 $recras = new Plugin;
