@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.6.0
+ * @version 0.6.1
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.6.0
+Version: 0.6.1
 Author URI: http://www.recras.nl/
 */
 
@@ -269,7 +269,7 @@ class Plugin
     {
         wp_register_script('recras', plugins_url('/js/recras.js', __FILE__), ['jquery'], '0.5.0', true);
         wp_localize_script('recras', 'recras_l10n', [
-            'sent_success' => __('Your message was sent succesfully', $this::TEXT_DOMAIN),
+            'sent_success' => __('Your message was sent successfully', $this::TEXT_DOMAIN),
             'sent_error' => __('There was an error sending your message', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras');

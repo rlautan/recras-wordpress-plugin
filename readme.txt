@@ -55,6 +55,9 @@ None yet!
 
 == Changelog ==
 
+= 0.6.1 =
+Fix a typo
+
 = 0.6.0 =
 Add option to disable the header of a programme
 

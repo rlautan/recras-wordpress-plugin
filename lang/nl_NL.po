@@ -84,7 +84,7 @@ msgid "Activity"
 msgstr "Activiteit"
 
 #: recras-wordpress-plugin.php:258
-msgid "Your message was sent succesfully"
+msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
 #: recras-wordpress-plugin.php:259
