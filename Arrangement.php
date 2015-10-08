@@ -107,11 +107,12 @@ class Arrangement
             return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
         }
 
-        $arrangements = [];
+        $arrangements = [
+            0 => '',
+        ];
         foreach ($json as $arrangement) {
             $arrangements[$arrangement->id] = $arrangement->arrangement;
         }
-        $arrangements[0] = '';
         return $arrangements;
     }
 

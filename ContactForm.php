@@ -18,6 +18,7 @@ class ContactForm
         }
 
 
+        // Get basic info for the form
         $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren/' . $attributes['id'];
         $json = @file_get_contents($baseUrl);
         if ($json === false) {
@@ -29,6 +30,12 @@ class ContactForm
         }
         $formTitle = $json->naam;
 
+        if (isset($attributes['showtitle']) && ($attributes['showtitle'] == 'false' || $attributes['showtitle'] == 0 || $attributes['showtitle'] == 'no')) {
+            $formTitle = false;
+        }
+
+
+        // Get fields for the form
         $json = @file_get_contents($baseUrl . '/velden');
         if ($json === false) {
             return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
@@ -40,14 +47,15 @@ class ContactForm
         $formFields = $json;
 
 
-        if (isset($attributes['showtitle']) && ($attributes['showtitle'] == 'false' || $attributes['showtitle'] == 0 || $attributes['showtitle'] == 'no')) {
-            $formTitle = false;
+        $arrangementID = null;
+        if (isset($attributes['arrangement'])) {
+            $arrangementID = (int) $attributes['arrangement'];
         }
 
-        return self::generateForm($attributes['id'], $formTitle, $formFields, $subdomain);
+        return self::generateForm($attributes['id'], $formTitle, $formFields, $subdomain, $arrangementID);
     }
 
-    public static function generateForm($formID, $formTitle, $formFields, $subdomain)
+    public static function generateForm($formID, $formTitle, $formFields, $subdomain, $arrangementID)
     {
         $arrangementen = [];
 
@@ -59,7 +67,7 @@ class ContactForm
         $html .= '<form class="recras-contact" id="recras-form' . $formID . '">';
         $html .= '<dl>';
         foreach ($formFields as $field) {
-            if ($field->soort_invoer !== 'header') {
+            if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($arrangementID))) {
                 $html .= '<dt><label for="field' . $field->id . '">' . $field->naam . '</label>';
                 if ($field->verplicht) {
                     $html .= '<span class="recras-required">*</span>';
@@ -67,11 +75,15 @@ class ContactForm
             }
             switch ($field->soort_invoer) {
                 case 'boeking.arrangement':
-                    if (empty($arrangementen)) {
-                        $classArrangement = new Arrangement;
-                        $arrangementen = $classArrangement->getArrangements($subdomain);
+                    if (is_null($arrangementID)) {
+                        if (empty($arrangementen)) {
+                            $classArrangement = new Arrangement;
+                            $arrangementen = $classArrangement->getArrangements($subdomain);
+                        }
+                        $html .= self::generateSelect($field, $arrangementen);
+                    } else {
+                        $html .= '<input type="hidden" name="' . $field->field_identifier . '" value="' . $arrangementID . '">';
                     }
-                    $html .= self::generateSelect($field, $arrangementen);
                     break;
                 case 'boeking.datum':
                     $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" placeholder="yyyy-mm-dd">';

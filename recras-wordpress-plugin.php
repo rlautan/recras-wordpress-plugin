@@ -13,14 +13,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.8.0
+ * @version 0.9.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.8.0
+Version: 0.9.0
 Author URI: http://www.recras.nl/
 */
 

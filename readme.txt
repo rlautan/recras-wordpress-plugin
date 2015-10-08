@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.3.1
-Stable tag: 0.8.0
+Stable tag: 0.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,7 @@ Example: `[arrangement id="1" show="title"]` (quotation marks around parameters 
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the contact form ID in Recras
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
+* arrangement - for forms where the user can select an arrangement, setting this parameter will select the arrangement automatically and hide the field for the user.
 
 Example: `[recras-contact id=42 showtitle=false]` will show the contact form with ID 42, without title.
 
@@ -54,6 +55,10 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 0.9.0 =
+* Setting the `arrangement` parameter on a contact form will select this arrangement automatically and hide the field to the user.
+* Fix empty option being the last option instead of the first option on arrangement dropdowns
 
 = 0.8.0 =
 If a contact form has an "arrangements" field, show all arrangements in a dropdown

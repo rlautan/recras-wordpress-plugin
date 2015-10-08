@@ -30,6 +30,7 @@ Example: `[arrangement id="1" show="title"]` (quotation marks around parameters 
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the contact form ID in Recras
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
+* arrangement - for forms where the user can select an arrangement, setting this parameter will select the arrangement automatically and hide the field for the user.
 
 Example: `[recras-contact id=42 showtitle=false]` will show the contact form with ID 42, without title.
 
