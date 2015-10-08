@@ -1,7 +1,8 @@
 <?php
 namespace Recras;
 
-require_once('recrasSettings.php');
+require_once('Settings.php');
+require_once('Arrangement.php');
 
 // Debugging
 if (WP_DEBUG) {
@@ -25,7 +26,7 @@ Author URI: http://www.recras.nl/
 class Plugin
 {
     const TEXT_DOMAIN = 'recras-wp';
-    const VALID_OPTIONS = ['title', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme'];
+
 
     public function __construct()
     {
@@ -45,60 +46,6 @@ class Plugin
         $this->addShortcodes();
     }
 
-    public function addArrangementShortcode($attributes)
-    {
-        if (!isset($attributes['id'])) {
-            return __('Error: no ID set', $this::TEXT_DOMAIN);
-        }
-        if (!ctype_digit($attributes['id'])) {
-            return __('Error: ID is not a number', $this::TEXT_DOMAIN);
-        }
-        if (!isset($attributes['show'])) {
-            return __('Error: "show" option not set', $this::TEXT_DOMAIN);
-        }
-        if (!in_array($attributes['show'], $this::VALID_OPTIONS)) {
-            return __('Error: invalid "show" option', $this::TEXT_DOMAIN);
-        }
-
-        $subdomain = get_option('recras_subdomain');
-        if (!$subdomain) {
-            return __('Error: you have not set your Recras subdomain yet', $this::TEXT_DOMAIN);
-        }
-
-        $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $attributes['id']);
-        if ($json === false) {
-            return __('Error: could not retrieve external data', $this::TEXT_DOMAIN);
-        }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', $this::TEXT_DOMAIN);
-        }
-
-        switch ($attributes['show']) {
-            case 'title':
-                return '<span class="recras-title">' . $json->arrangement . '</span>';
-            case 'persons':
-                return '<span class="recras-persons">' . $json->aantal_personen . '</span>';
-            case 'price_pp_excl_vat':
-                return $this->returnPrice($json->prijs_pp_exc);
-            case 'price_pp_incl_vat':
-                return $this->returnPrice($json->prijs_pp_inc);
-            case 'price_total_excl_vat':
-                return $this->returnPrice($json->prijs_totaal_exc);
-            case 'price_total_incl_vat':
-                return $this->returnPrice($json->prijs_totaal_inc);
-            case 'program':
-            case 'programme':
-                $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
-                $showHeader = true;
-                if (isset($attributes['showheader']) && ($attributes['showheader'] == 'false' || $attributes['showheader'] == 0 || $attributes['showheader'] == 'no')) {
-                    $showHeader = false;
-                }
-                return $this->generateProgramme($json->programma, $startTime, $showHeader);
-            default:
-                return 'Error: unknown option';
-        }
-    }
 
     public function addContactShortcode($attributes)
     {
@@ -157,7 +104,7 @@ class Plugin
 
     public function addShortcodes()
     {
-        add_shortcode('arrangement', [$this, 'addArrangementShortcode']);
+        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-contact', [$this, 'addContactShortcode']);
     }
 
@@ -231,40 +178,6 @@ class Plugin
         return $html;
     }
 
-    public function generateProgramme($programme, $startTime = '00:00', $showHeader = true)
-    {
-        $html = '<table class="recras-programme">';
-
-        if ($showHeader) {
-            $html .= '<thead>';
-            $html .= '<tr><th>' . __('From', $this::TEXT_DOMAIN) . '<th>' . __('Until', $this::TEXT_DOMAIN) . '<th>' . __('Activity', $this::TEXT_DOMAIN);
-            $html .= '</thead>';
-        }
-
-        $html .= '<tbody>';
-        $lastTime = null;
-        foreach ($programme as $activity) {
-            if (!$activity->omschrijving) {
-                continue;
-            }
-            $startDate = new \DateTime($startTime);
-            $endDate = new \DateTime($startTime);
-            $timeBegin = new \DateInterval($activity->begin);
-            $timeEnd = new \DateInterval($activity->eind);
-            $startFormatted = $startDate->add($timeBegin)->format('H:i');
-            $class = (!is_null($lastTime) && $startFormatted < $lastTime) ? ' class="recras-new-day"' : '';
-
-            $html .= '<tr' . $class . '><td>' . $startFormatted;
-            $html .= '<td>' . $endDate->add($timeEnd)->format('H:i');
-            $html .= '<td>' . $activity->omschrijving;
-            $lastTime = $startFormatted;
-        }
-        $html .= '</tbody>';
-        $html .= '</table>';
-
-        return $html;
-    }
-
     public function loadScripts()
     {
         wp_register_script('recras', plugins_url('/js/recras.js', __FILE__), ['jquery'], '0.7.0', true);
@@ -274,24 +187,6 @@ class Plugin
             'sent_error' => __('There was an error sending your message', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras');
-    }
-
-    public function returnPrice($price)
-    {
-        $currency = get_option('recras_currency');
-        return '<span class="recras-price">' . $currency . ' ' . $price . '</span>';
-    }
-
-    public function sanitizeSubdomain($subdomain)
-    {
-        // RFC 1034 section 3.5 - http://tools.ietf.org/html/rfc1034#section-3.5
-        if (strlen($subdomain) > 63) {
-            return false;
-        }
-        if (! preg_match('/^[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$/', $subdomain)) {
-            return false;
-        }
-        return $subdomain;
     }
 
     public function showActivationNotice()

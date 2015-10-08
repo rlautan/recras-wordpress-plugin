@@ -43,11 +43,23 @@ class Settings
             'recras'
         );
 
-        register_setting('recras', 'recras_subdomain', ['Recras\Plugin', 'sanitizeSubdomain']);
+        register_setting('recras', 'recras_subdomain', ['Recras\Settings', 'sanitizeSubdomain']);
         register_setting('recras', 'recras_currency', '');
 
         add_settings_field('recras_subdomain', __('Subdomain', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
         add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
+    }
+
+    public function sanitizeSubdomain($subdomain)
+    {
+        // RFC 1034 section 3.5 - http://tools.ietf.org/html/rfc1034#section-3.5
+        if (strlen($subdomain) > 63) {
+            return false;
+        }
+        if (! preg_match('/^[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$/', $subdomain)) {
+            return false;
+        }
+        return $subdomain;
     }
 
     public static function settingsHelp()

@@ -115,21 +115,21 @@ class PluginTest extends \WP_UnitTestCase
 
     function testTooLongSubdomain()
     {
-        $plugin = new Plugin;
+        $plugin = new Settings;
         $result = $plugin->sanitizeSubdomain('ThisSubdomainIsLongerThanAllowedButDoesNotContainAnyInvalidCharacters');
         $this->assertFalse($result, 'Too long subdomain should be invalid');
     }
 
     function testInvalidSubdomain()
     {
-        $plugin = new Plugin;
+        $plugin = new Settings;
         $result = $plugin->sanitizeSubdomain('foo@bar');
         $this->assertFalse($result, 'Subdomain with invalid characters should be invalid');
     }
 
     function testValidSubdomain()
     {
-        $plugin = new Plugin;
+        $plugin = new Settings;
         $result = $plugin->sanitizeSubdomain('demo');
         $this->assertEquals('demo', $result, 'Valid subdomain should be valid');
     }
