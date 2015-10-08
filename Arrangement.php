@@ -95,6 +95,26 @@ class Arrangement
         return $html;
     }
 
+    public function getArrangements($subdomain)
+    {
+        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/arrangementen';
+        $json = @file_get_contents($baseUrl);
+        if ($json === false) {
+            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+        }
+        $json = json_decode($json);
+        if (is_null($json)) {
+            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+        }
+
+        $arrangements = [];
+        foreach ($json as $arrangement) {
+            $arrangements[$arrangement->id] = $arrangement->arrangement;
+        }
+        $arrangements[0] = '';
+        return $arrangements;
+    }
+
     public static function returnPrice($price)
     {
         $currency = get_option('recras_currency');

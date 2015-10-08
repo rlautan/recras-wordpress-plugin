@@ -145,7 +145,7 @@ class PluginTest extends \WP_UnitTestCase
 
     function testGetArrangements()
     {
-        $plugin = new Plugin;
+        $plugin = new Arrangement;
         $arrangements = $plugin->getArrangements('demo');
         $this->assertGreaterThan(0, count($arrangements), 'getArrangements should return a non-empty array');
     }
