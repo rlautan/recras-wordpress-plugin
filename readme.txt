@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.3.1
-Stable tag: 0.6.0
+Stable tag: 0.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,11 @@ None yet!
 
 == Changelog ==
 
+= 0.7.0 =
+* Add loading indicator when sending a contact form
+* Replace contact form popups with inline text boxes
+* Fix placement of error messages on pages with multiple contact forms
+
 = 0.6.2 =
 Fix placement of submit button on contact forms
 
@@ -91,3 +96,5 @@ First version!
 
 == Support ==
 We would appreciate it if you use [our GitHub page](https://github.com/Recras/recras-wordpress-plugin/issues) for bug reports, pull requests and general questions. If you do not have a GitHub account, you can use the Support forum on wordpress.org.
+
+We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).

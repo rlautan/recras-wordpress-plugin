@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.6.2
+ * @version 0.7.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.6.2
+Version: 0.7.0
 Author URI: http://www.recras.nl/
 */
 
@@ -224,7 +224,7 @@ class Plugin
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $formID . '").on("submit", function(e){
         e.preventDefault();
-        return submitRecrasForm(' . $formID . ', "' . $subdomain . '", "' . plugins_url('/submit.php', __FILE__) . '");
+        return submitRecrasForm(' . $formID . ', "' . $subdomain . '", "' . plugins_url('/', __FILE__) . '");
     });
 });</script>';
 
@@ -267,8 +267,9 @@ class Plugin
 
     public function loadScripts()
     {
-        wp_register_script('recras', plugins_url('/js/recras.js', __FILE__), ['jquery'], '0.5.0', true);
+        wp_register_script('recras', plugins_url('/js/recras.js', __FILE__), ['jquery'], '0.7.0', true);
         wp_localize_script('recras', 'recras_l10n', [
+            'loading' => __('Loading...', $this::TEXT_DOMAIN),
             'sent_success' => __('Your message was sent successfully', $this::TEXT_DOMAIN),
             'sent_error' => __('There was an error sending your message', $this::TEXT_DOMAIN),
         ]);

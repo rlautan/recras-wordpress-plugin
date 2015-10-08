@@ -8,6 +8,9 @@
 /* Applied to error messages from an unsuccessful form submission */
 .recras-error {}
 
+/* Applied to loading animation image */
+.recras-loading {}
+
 /* Applied to the first <tr> in an arrangement programme that falls on a new day */
 .recras-new-day {}
 
@@ -22,6 +25,9 @@
 
 /* Added after the <label>s of required elements in a contact form */
 .recras-required {}
+
+/* Applied to the "success" message after a successful form submission */
+.recras-success {}
 
 /* Applied to the arrangement title */
 .recras-title {}
