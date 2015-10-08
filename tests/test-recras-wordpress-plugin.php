@@ -142,4 +142,11 @@ class PluginTest extends \WP_UnitTestCase
         $content = apply_filters('the_content', $post->post_content);
         $this->assertFalse(strpos($content, '<h3'), 'Setting showtitle to false should not generate a title');
     }
+
+    function testGetArrangements()
+    {
+        $plugin = new Plugin;
+        $arrangements = $plugin->getArrangements('demo');
+        $this->assertGreaterThan(0, count($arrangements), 'getArrangements should return a non-empty array');
+    }
 }

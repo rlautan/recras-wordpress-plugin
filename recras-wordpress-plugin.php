@@ -12,14 +12,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.7.1
+ * @version 0.8.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.7.1
+Version: 0.8.0
 Author URI: http://www.recras.nl/
 */
 
@@ -110,6 +110,8 @@ class Plugin
 
     public function generateForm($formID, $formTitle, $formFields, $subdomain)
     {
+        $arrangementen = [];
+
         $html  = '';
         if ($formTitle) {
             $html .= '<h2>' . $formTitle . '</h2>';
@@ -125,6 +127,12 @@ class Plugin
                 }
             }
             switch ($field->soort_invoer) {
+                case 'boeking.arrangement':
+                    if (empty($arrangementen)) {
+                        $arrangementen = $this->getArrangements($subdomain);
+                    }
+                    $html .= $this->generateSelect($field, $arrangementen);
+                    break;
                 case 'boeking.datum':
                     $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" placeholder="yyyy-mm-dd">';
                     break;
@@ -135,11 +143,11 @@ class Plugin
                     $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="time" pattern="(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])" placeholder="hh:mm">';
                     break;
                 case 'contactpersoon.geslacht':
-                    $html .= '<dd><select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
-                    $html .= '<option value="man">' . __('Male', $this::TEXT_DOMAIN);
-                    $html .= '<option value="vrouw">' . __('Female', $this::TEXT_DOMAIN);;
-                    $html .= '<option value="onbekend">' . __('Unknown', $this::TEXT_DOMAIN);;
-                    $html .= '</select>';
+                    $html .= $this->generateSelect($field, [
+                        'man' => __('Male', $this::TEXT_DOMAIN),
+                        'vrouw' => __('Female', $this::TEXT_DOMAIN),
+                        'onbekend' => __('Unknown', $this::TEXT_DOMAIN),
+                    ]);
                     break;
                 case 'header':
                     if (strpos($html, '<dt') !== false) {
@@ -176,6 +184,36 @@ class Plugin
 });</script>';
 
         return $html;
+    }
+
+    public function generateSelect($field, $options)
+    {
+        $html = '<dd><select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+        foreach ($options as $value => $name) {
+            $html .= '<option value="' . $value . '">' . $name;
+        }
+        $html .= '</select>';
+        return $html;
+    }
+
+    public function getArrangements($subdomain)
+    {
+        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/arrangementen';
+        $json = @file_get_contents($baseUrl);
+        if ($json === false) {
+            return __('Error: could not retrieve external data', $this::TEXT_DOMAIN);
+        }
+        $json = json_decode($json);
+        if (is_null($json)) {
+            return __('Error: could not parse external data', $this::TEXT_DOMAIN);
+        }
+
+        $arrangements = [];
+        foreach ($json as $arrangement) {
+            $arrangements[$arrangement->id] = $arrangement->arrangement;
+        }
+        $arrangements[0] = '';
+        return $arrangements;
     }
 
     public function loadScripts()
