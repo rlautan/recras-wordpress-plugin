@@ -55,6 +55,9 @@ None yet!
 
 == Changelog ==
 
+= 0.6.2 =
+Fix placement of submit button on contact forms
+
 = 0.6.1 =
 Fix a typo
 

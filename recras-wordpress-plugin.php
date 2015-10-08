@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.6.1
+ * @version 0.6.2
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.6.1
+Version: 0.6.2
 Author URI: http://www.recras.nl/
 */
 
@@ -218,8 +218,8 @@ class Plugin
             }
             //$html .= print_r($field, true); //DEBUG
         }
-        $html .= '<input type="submit" value="' . __('Send', $this::TEXT_DOMAIN) . '">';
         $html .= '</dl>';
+        $html .= '<input type="submit" value="' . __('Send', $this::TEXT_DOMAIN) . '">';
         $html .= '</form>';
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $formID . '").on("submit", function(e){
