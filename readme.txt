@@ -55,6 +55,9 @@ None yet!
 
 == Changelog ==
 
+= 0.7.1 =
+Fix translations
+
 = 0.7.0 =
 * Add loading indicator when sending a contact form
 * Replace contact form popups with inline text boxes

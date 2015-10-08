@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.7.0
+ * @version 0.7.1
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.7.0
+Version: 0.7.1
 Author URI: http://www.recras.nl/
 */
 
@@ -31,7 +31,7 @@ class Plugin
     {
         // Init Localisation
         load_default_textdomain();
-        load_plugin_textdomain($this::TEXT_DOMAIN, false, PLUGINDIR . '/' . dirname(plugin_basename(__FILE__)) . '/lang');
+        load_plugin_textdomain($this::TEXT_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/lang');
 
         // Add admin menu pages
         add_action('admin_menu', [&$this, 'addMenuItems']);
