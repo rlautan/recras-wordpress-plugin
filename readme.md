@@ -22,6 +22,7 @@ Add the `[arrangement]` shortcode anywhere on your site. The following parameter
   * price_total_incl_vat - same as above, but including VAT
   * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
 * starttime - only used for `programme`, determines the starting time of an arrangement. If not set, it will default to 12:00
+* showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
 Example: `[arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the arrangement with ID 1.
 
