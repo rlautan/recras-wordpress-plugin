@@ -11,14 +11,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.5.1
+ * @version 0.6.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.5.1
+Version: 0.6.0
 Author URI: http://www.recras.nl/
 */
 
@@ -90,7 +90,11 @@ class Plugin
             case 'program':
             case 'programme':
                 $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
-                return $this->generateProgramme($json->programma, $startTime);
+                $showHeader = true;
+                if (isset($attributes['showheader']) && ($attributes['showheader'] == 'false' || $attributes['showheader'] == 0 || $attributes['showheader'] == 'no')) {
+                    $showHeader = false;
+                }
+                return $this->generateProgramme($json->programma, $startTime, $showHeader);
             default:
                 return 'Error: unknown option';
         }
@@ -227,13 +231,16 @@ class Plugin
         return $html;
     }
 
-    public function generateProgramme($programme, $startTime = '00:00')
+    public function generateProgramme($programme, $startTime = '00:00', $showHeader = true)
     {
-        $html  = '';
-        $html .= '<table class="recras-programme">';
-        $html .= '<thead>';
-        $html .= '<tr><th>' . __('From', $this::TEXT_DOMAIN) . '<th>' . __('Until', $this::TEXT_DOMAIN) . '<th>' . __('Activity', $this::TEXT_DOMAIN);
-        $html .= '</thead>';
+        $html = '<table class="recras-programme">';
+
+        if ($showHeader) {
+            $html .= '<thead>';
+            $html .= '<tr><th>' . __('From', $this::TEXT_DOMAIN) . '<th>' . __('Until', $this::TEXT_DOMAIN) . '<th>' . __('Activity', $this::TEXT_DOMAIN);
+            $html .= '</thead>';
+        }
+
         $html .= '<tbody>';
         $lastTime = null;
         foreach ($programme as $activity) {

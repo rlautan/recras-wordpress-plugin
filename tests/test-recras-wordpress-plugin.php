@@ -90,13 +90,27 @@ class PluginTest extends \WP_UnitTestCase
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('<span class="recras-price">€ 39.95</span>' . "\n", $content, 'Should show price per person incl. vat');
+	}
 
+
+    function testShortcodeProgramme()
+    {
         $post = $this->factory->post->create_and_get([
             'post_content' => '[arrangement id=8 show=programme]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertNotFalse(strpos($content, '<table'), 'Should return an HTML table');
-	}
+        $this->assertNotFalse(strpos($content, '<thead'), 'Should contain a table header');
+    }
+    function testShortcodeProgrammeWithoutHeader()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=8 show=programme showheader=false]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertNotFalse(strpos($content, '<table'), 'Should return an HTML table');
+        $this->assertFalse(strpos($content, '<thead'), 'Should not contain a table header');
+    }
 
 
     function testTooLongSubdomain()
