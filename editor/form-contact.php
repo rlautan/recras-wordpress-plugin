@@ -11,7 +11,7 @@
     $forms = $model->getForms($subdomain);
 ?>
 <dl>
-    <dt><label for="contactform_id"><?php _e('Contact form ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="contactform_id"><?php _e('Contact form', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><?php if (is_string($forms)) { ?>
             <input type="number" id="contactform_id" min="0" required>
             <?= $forms; ?>

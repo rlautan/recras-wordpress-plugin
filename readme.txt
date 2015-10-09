@@ -56,6 +56,10 @@ None yet!
 
 == Changelog ==
 
+= 0.12.1 =
+* Minor language fix
+* Update Dutch translation
+
 = 0.12.0 =
 Selection of arrangement and contact form is now possible via a dropdown rather than manually entering the ID
 

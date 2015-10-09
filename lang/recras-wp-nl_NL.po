@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-10-09 13:59+0100\n"
-"PO-Revision-Date: 2015-10-09 14:01+0100\n"
+"POT-Creation-Date: 2015-10-09 16:51+0100\n"
+"PO-Revision-Date: 2015-10-09 16:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -38,12 +38,12 @@ msgid "Error: you have not set your Recras subdomain yet"
 msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
 
 #: Arrangement.php:31 Arrangement.php:103 ContactForm.php:25
-#: ContactForm.php:41
+#: ContactForm.php:41 ContactForm.php:156
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
 #: Arrangement.php:35 Arrangement.php:107 ContactForm.php:29
-#: ContactForm.php:45
+#: ContactForm.php:45 ContactForm.php:160
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
 
@@ -99,65 +99,77 @@ msgstr "Recras-instellingen"
 msgid "Save"
 msgstr "Opslaan"
 
-#: editor/form-arrangement.php:12
-msgid "Arrangement ID"
-msgstr "Arrangement-ID"
+#: editor/form-arrangement.php:13
+msgid "Arrangement"
+msgstr "Arrangement"
 
-#: editor/form-arrangement.php:14
+#: editor/form-arrangement.php:24
 msgid "Show what?"
 msgstr "Toon wat?"
 
-#: editor/form-arrangement.php:16
+#: editor/form-arrangement.php:26
 msgid "Title"
 msgstr "Titel"
 
-#: editor/form-arrangement.php:17
+#: editor/form-arrangement.php:27
 msgid "Minimum number of persons"
 msgstr "Minimum aantal personen"
 
-#: editor/form-arrangement.php:18
+#: editor/form-arrangement.php:28
 msgid "Price p.p. excl. VAT"
 msgstr "Prijs p.p. excl. btw"
 
-#: editor/form-arrangement.php:19
+#: editor/form-arrangement.php:29
 msgid "Price p.p. incl. VAT"
 msgstr "Prijs p.p. incl. btw"
 
-#: editor/form-arrangement.php:20
+#: editor/form-arrangement.php:30
 msgid "Total price excl. VAT"
 msgstr "Totaalprijs excl. btw"
 
-#: editor/form-arrangement.php:21
+#: editor/form-arrangement.php:31
 msgid "Total price incl. VAT"
 msgstr "Totaalprijs incl. btw"
 
-#: editor/form-arrangement.php:22
+#: editor/form-arrangement.php:32
 msgid "Programme"
 msgstr "Programma"
 
-#: editor/form-arrangement.php:24
+#: editor/form-arrangement.php:34
 msgid "Start time"
 msgstr "Starttijd"
 
-#: editor/form-arrangement.php:25
+#: editor/form-arrangement.php:35
 msgid "hh:mm"
 msgstr "uu:mm"
 
-#: editor/form-arrangement.php:26
+#: editor/form-arrangement.php:36
 msgid "Show header?"
 msgstr "Toon header?"
 
-#: editor/form-arrangement.php:28
+#: editor/form-arrangement.php:38 editor/form-contact.php:27
 msgid "Yes"
 msgstr "Ja"
 
-#: editor/form-arrangement.php:29
+#: editor/form-arrangement.php:39 editor/form-contact.php:28
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:31
+#: editor/form-arrangement.php:41 editor/form-contact.php:41
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
+
+#: editor/form-contact.php:14
+msgid "Contact form"
+msgstr "Contactformulier"
+
+#: editor/form-contact.php:25
+msgid "Show title?"
+msgstr "Toon titel?"
+
+#: editor/form-contact.php:29
+msgid "Arrangement ID"
+msgstr "Arrangement-ID"
 
 #: editor/translation.php:12
 msgid "What is the ID of the arrangement?"
@@ -171,19 +183,19 @@ msgstr "Wat is het ID van het contactformulier?"
 msgid "ID should be a positive integer"
 msgstr "ID moet een positief geheel getal zijn"
 
-#: recras-wordpress-plugin.php:96
+#: recras-wordpress-plugin.php:94
 msgid "Loading..."
 msgstr "Laden..."
 
-#: recras-wordpress-plugin.php:97
+#: recras-wordpress-plugin.php:95
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: recras-wordpress-plugin.php:98
+#: recras-wordpress-plugin.php:96
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: recras-wordpress-plugin.php:114
+#: recras-wordpress-plugin.php:112
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
