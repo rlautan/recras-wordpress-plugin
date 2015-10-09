@@ -1,6 +1,9 @@
 <?php
     //require_once('../../../../wp-load.php');
     require_once('/var/www/html/wordpress/wp-load.php');
+
+    $model = new \Recras\Arrangement;
+    $arrangements = $model->getArrangements(get_option('recras_subdomain'));
 ?>
 <style id="arrangement_style">
     .programme-only { display: none; }
@@ -8,7 +11,16 @@
 
 <dl>
     <dt><label for="arrangement_id"><?php _e('Arrangement', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="number" id="arrangement_id" min="0" required> <!--TODO: dropdown-->
+        <dd><?php if (is_string($arrangements)) { ?>
+            <input type="number" id="arrangement_id" min="0" required>
+            <?= $arrangements; ?>
+        <?php } elseif(is_array($arrangements)) { ?>
+            <select id="arrangement_id" required>
+            <?php foreach ($arrangements as $ID => $arrangement) { ?>
+                <option value="<?= $ID; ?>"><?= $arrangement; ?>
+            <?php } ?>
+            </select>
+        <?php } ?>
     <dt><label for="show_what"><?php _e('Show what?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="show_what" required>
             <option value="title"><?php _e('Title', \Recras\Plugin::TEXT_DOMAIN); ?>
@@ -48,22 +60,4 @@
         tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
         tb_remove();
     });
-
-    <?php
-        $model = new \Recras\Arrangement;
-        $arrangements = $model->getArrangements(get_option('recras_subdomain'));
-        if (is_string($arrangements)) {
-            echo $arrangements;
-        } elseif(is_array($arrangements)) {
-    ?>
-    var arrangements = <?php echo json_encode($arrangements); ?>;
-    var html = '<select id="arrangement_id" required>';
-    Object.keys(arrangements).forEach(function(key){
-        html += '<option value="' + key + '">' + arrangements[key];
-    });
-    html += '</select>';
-    document.getElementById('arrangement_id').parentNode.innerHTML = html;
-    <?php
-        }
-    ?>
 </script>
