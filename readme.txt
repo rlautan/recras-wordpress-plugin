@@ -109,3 +109,7 @@ First version!
 We would appreciate it if you use [our GitHub page](https://github.com/Recras/recras-wordpress-plugin/issues) for bug reports, pull requests and general questions. If you do not have a GitHub account, you can use the Support forum on wordpress.org.
 
 We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
+
+== Credits ==
+* Arrangement icon by [Mark Shorter](https://thenounproject.com/markshorter/), under a [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/) licence.
+* Contact icon by [Jon Testa](https://thenounproject.com/jontesta/), also under a CC licence.

@@ -42,9 +42,23 @@ class Plugin
 
         add_action('admin_notices', [&$this, 'showActivationNotice']);
 
+        add_action('init', [&$this, 'addEditorButtons']);
+
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
         $this->addShortcodes();
+    }
+
+    public function addEditorButtons()
+    {
+        add_filter('mce_external_plugins', [&$this, 'addEditorScripts']);
+        add_filter('mce_buttons', [&$this, 'registerEditorButtons']);
+    }
+
+    public function addEditorScripts($plugins)
+    {
+        $plugins['recras'] = plugins_url('/js/editor.js', __FILE__);
+        return $plugins;
     }
 
     public function addMenuItems()
@@ -73,6 +87,12 @@ class Plugin
             'sent_error' => __('There was an error sending your message', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras');
+    }
+
+    public function registerEditorButtons($buttons)
+    {
+        array_push($buttons, 'arrangement', 'recras-contact');
+        return $buttons;
     }
 
     public function showActivationNotice()
