@@ -1,13 +1,13 @@
 <?php
-    require_once('../../../../wp-load.php');
-    //require_once('/var/www/html/wordpress/wp-load.php');
+    //require_once('../../../../wp-load.php');
+    require_once('/var/www/html/wordpress/wp-load.php');
 ?>
 <style id="arrangement_style">
     .programme-only { display: none; }
 </style>
 
 <dl>
-    <dt><label for="arrangement_id"><?php _e('Arrangement ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="arrangement_id"><?php _e('Arrangement', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="number" id="arrangement_id" min="0" required> <!--TODO: dropdown-->
     <dt><label for="show_what"><?php _e('Show what?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="show_what" required>
@@ -32,6 +32,7 @@
     document.getElementById('show_what').addEventListener('change', function(){
         document.getElementById('arrangement_style').innerHTML = (document.getElementById('show_what').value === 'programme' ? '' : '.programme-only { display: none; }');
     });
+
     document.getElementById('arrangement_submit').addEventListener('click', function(){
         var shortcode = '[arrangement id="' + document.getElementById('arrangement_id').value + '" show="' + document.getElementById('show_what').value + '"';
         if (document.getElementById('show_what').value == 'programme') {
@@ -47,4 +48,22 @@
         tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
         tb_remove();
     });
+
+    <?php
+        $model = new \Recras\Arrangement;
+        $arrangements = $model->getArrangements(get_option('recras_subdomain'));
+        if (is_string($arrangements)) {
+            echo $arrangements;
+        } elseif(is_array($arrangements)) {
+    ?>
+    var arrangements = <?php echo json_encode($arrangements); ?>;
+    var html = '<select id="arrangement_id" required>';
+    Object.keys(arrangements).forEach(function(key){
+        html += '<option value="' + key + '">' + arrangements[key];
+    });
+    html += '</select>';
+    document.getElementById('arrangement_id').parentNode.innerHTML = html;
+    <?php
+        }
+    ?>
 </script>
