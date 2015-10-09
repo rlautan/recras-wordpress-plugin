@@ -147,4 +147,23 @@ class ContactForm
         $html .= '</select>';
         return $html;
     }
+
+    public function getForms($subdomain)
+    {
+        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren';
+        $json = @file_get_contents($baseUrl);
+        if ($json === false) {
+            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+        }
+        $json = json_decode($json);
+        if (is_null($json)) {
+            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+        }
+
+        $forms = [];
+        foreach ($json as $form) {
+            $forms[$form->id] = $form->naam;
+        }
+        return $forms;
+    }
 }

@@ -2,12 +2,26 @@
     //require_once('../../../../wp-load.php');
     require_once('/var/www/html/wordpress/wp-load.php');
 
+    $subdomain = get_option('recras_subdomain');
+
     $model = new \Recras\Arrangement;
-    $arrangements = $model->getArrangements(get_option('recras_subdomain'));
+    $arrangements = $model->getArrangements($subdomain);
+
+    $model = new \Recras\ContactForm;
+    $forms = $model->getForms($subdomain);
 ?>
 <dl>
     <dt><label for="contactform_id"><?php _e('Contact form ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="number" id="contactform_id" min="0" required> <!--TODO: dropdown-->
+        <dd><?php if (is_string($forms)) { ?>
+            <input type="number" id="contactform_id" min="0" required>
+            <?= $forms; ?>
+        <?php } elseif(is_array($forms)) { ?>
+            <select id="contactform_id" required>
+                <?php foreach ($forms as $ID => $formName) { ?>
+                <option value="<?= $ID; ?>"><?= $formName; ?>
+                <?php } ?>
+            </select>
+        <?php } ?>
     <dt><?php _e('Show title?', \Recras\Plugin::TEXT_DOMAIN); ?>
         <dd>
             <input type="radio" name="header" value="yes" id="title_yes" checked><label for="title_yes"><?php _e('Yes', \Recras\Plugin::TEXT_DOMAIN); ?></label><br>
@@ -20,7 +34,7 @@
             <select id="arrangement_id" required>
                 <?php foreach ($arrangements as $ID => $arrangement) { ?>
                 <option value="<?= $ID; ?>"><?= $arrangement; ?>
-                    <?php } ?>
+                <?php } ?>
             </select>
         <?php } ?>
 </dl>

@@ -149,4 +149,25 @@ class PluginTest extends \WP_UnitTestCase
         $arrangements = $plugin->getArrangements('demo');
         $this->assertGreaterThan(0, count($arrangements), 'getArrangements should return a non-empty array');
     }
+
+    function testGetArrangementsInvalidDomain()
+    {
+        $plugin = new Arrangement;
+        $arrangements = $plugin->getArrangements('ObviouslyFakeSubdomainThatDoesNotExist');
+        $this->assertTrue(is_string($arrangements), 'getArrangements on a non-existing subdomain should return an error message');
+    }
+
+    function testGetForms()
+    {
+        $plugin = new ContactForm;
+        $forms = $plugin->getForms('demo');
+        $this->assertGreaterThan(0, count($forms), 'getForms should return a non-empty array');
+    }
+
+    function testGetFormsInvalidDomain()
+    {
+        $plugin = new ContactForm;
+        $forms = $plugin->getForms('ObviouslyFakeSubdomainThatDoesNotExist');
+        $this->assertTrue(is_string($forms), 'getForms on a non-existing subdomain should return an error message');
+    }
 }
