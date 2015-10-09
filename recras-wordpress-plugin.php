@@ -44,6 +44,8 @@ class Plugin
 
         add_action('init', [&$this, 'addEditorButtons']);
 
+        add_filter('mce_external_languages', [&$this, 'loadEditorLanguage']);
+
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
         $this->addShortcodes();
@@ -76,6 +78,12 @@ class Plugin
     {
         add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
+    }
+
+    public function loadEditorLanguage($locales)
+    {
+        $locales['recras'] = plugin_dir_path(__FILE__) . '/lang/editor.php';
+        return $locales;
     }
 
     public function loadScripts()

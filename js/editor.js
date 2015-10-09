@@ -14,8 +14,34 @@
 
             ed.addButton('recras-contact', {
                 title : 'Contact Form',
-                cmd : 'recras-contact',
+                cmd : 'contact',
                 image : url + '/../assets/contact.svg'
+            });
+
+            ed.addCommand('arrangement', function() {
+                var number = prompt(ed.getLang('recras.get_arrangement_id'));
+                if (number) {
+                    number = parseInt(number, 10);
+                    if (number > 0) {
+                        var shortcode = '[arrangement id="' + number + '" show="title"]';
+                        ed.execCommand('mceInsertContent', 0, shortcode);
+                    } else {
+                        alert(ed.getLang('recras.id_positive'));
+                    }
+                }
+            });
+
+            ed.addCommand('contact', function() {
+                var number = prompt(ed.getLang('recras.get_contact_id'));
+                if (number) {
+                    number = parseInt(number, 10);
+                    if (number > 0) {
+                        var shortcode = '[recras-contact id="' + number + '"]';
+                        ed.execCommand('mceInsertContent', 0, shortcode);
+                    } else {
+                        alert(ed.getLang('recras.id_positive'));
+                    }
+                }
             });
         },
 
