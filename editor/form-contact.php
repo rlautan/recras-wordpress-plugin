@@ -1,6 +1,9 @@
 <?php
-    require_once('../../../../wp-load.php');
-    //require_once('/var/www/html/wordpress/wp-load.php');
+    //require_once('../../../../wp-load.php');
+    require_once('/var/www/html/wordpress/wp-load.php');
+
+    $model = new \Recras\Arrangement;
+    $arrangements = $model->getArrangements(get_option('recras_subdomain'));
 ?>
 <dl>
     <dt><label for="contactform_id"><?php _e('Contact form ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
@@ -10,7 +13,16 @@
             <input type="radio" name="header" value="yes" id="title_yes" checked><label for="title_yes"><?php _e('Yes', \Recras\Plugin::TEXT_DOMAIN); ?></label><br>
             <input type="radio" name="header" value="no" id="title_no"><label for="title_no"><?php _e('No', \Recras\Plugin::TEXT_DOMAIN); ?></label>
     <dt><label for="arrangement_id"><?php _e('Arrangement ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="number" id="arrangement_id" min="0"> <!--TODO: dropdown-->
+        <dd><?php if (is_string($arrangements)) { ?>
+            <input type="number" id="arrangement_id" min="0" required>
+            <?= $arrangements; ?>
+        <?php } elseif(is_array($arrangements)) { ?>
+            <select id="arrangement_id" required>
+                <?php foreach ($arrangements as $ID => $arrangement) { ?>
+                <option value="<?= $ID; ?>"><?= $arrangement; ?>
+                    <?php } ?>
+            </select>
+        <?php } ?>
 </dl>
 <button class="button button-primary" id="contact_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
@@ -20,7 +32,7 @@
         if (document.getElementById('title_no').checked) {
             shortcode += ' showtitle="no"';
         }
-        if (document.getElementById('arrangement_id').value) {
+        if (document.getElementById('arrangement_id').value > 0) {
             shortcode += ' arrangement="' + document.getElementById('arrangement_id').value + '"';
         }
         shortcode += ']';
