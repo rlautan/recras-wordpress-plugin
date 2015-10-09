@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-10-09 11:04+0100\n"
-"PO-Revision-Date: 2015-10-09 11:06+0100\n"
+"POT-Creation-Date: 2015-10-09 13:59+0100\n"
+"PO-Revision-Date: 2015-10-09 14:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -99,37 +99,97 @@ msgstr "Recras-instellingen"
 msgid "Save"
 msgstr "Opslaan"
 
-#: lang/editor.php:12
+#: editor/form-arrangement.php:12
+msgid "Arrangement ID"
+msgstr "Arrangement-ID"
+
+#: editor/form-arrangement.php:14
+msgid "Show what?"
+msgstr "Toon wat?"
+
+#: editor/form-arrangement.php:16
+msgid "Title"
+msgstr "Titel"
+
+#: editor/form-arrangement.php:17
+msgid "Minimum number of persons"
+msgstr "Minimum aantal personen"
+
+#: editor/form-arrangement.php:18
+msgid "Price p.p. excl. VAT"
+msgstr "Prijs p.p. excl. btw"
+
+#: editor/form-arrangement.php:19
+msgid "Price p.p. incl. VAT"
+msgstr "Prijs p.p. incl. btw"
+
+#: editor/form-arrangement.php:20
+msgid "Total price excl. VAT"
+msgstr "Totaalprijs excl. btw"
+
+#: editor/form-arrangement.php:21
+msgid "Total price incl. VAT"
+msgstr "Totaalprijs incl. btw"
+
+#: editor/form-arrangement.php:22
+msgid "Programme"
+msgstr "Programma"
+
+#: editor/form-arrangement.php:24
+msgid "Start time"
+msgstr "Starttijd"
+
+#: editor/form-arrangement.php:25
+msgid "hh:mm"
+msgstr "uu:mm"
+
+#: editor/form-arrangement.php:26
+msgid "Show header?"
+msgstr "Toon header?"
+
+#: editor/form-arrangement.php:28
+msgid "Yes"
+msgstr "Ja"
+
+#: editor/form-arrangement.php:29
+msgid "No"
+msgstr "Nee"
+
+#: editor/form-arrangement.php:31
+msgid "Insert shortcode"
+msgstr "Voeg shortcode in"
+
+#: editor/translation.php:12
 msgid "What is the ID of the arrangement?"
 msgstr "Wat is het ID van het arrangement?"
 
-#: lang/editor.php:13
+#: editor/translation.php:13
 msgid "What is the ID of the contact form?"
 msgstr "Wat is het ID van het contactformulier?"
 
-#: lang/editor.php:14
+#: editor/translation.php:14
 msgid "ID should be a positive integer"
 msgstr "ID moet een positief geheel getal zijn"
 
-#: recras-wordpress-plugin.php:93
+#: recras-wordpress-plugin.php:96
 msgid "Loading..."
 msgstr "Laden..."
 
-#: recras-wordpress-plugin.php:94
+#: recras-wordpress-plugin.php:97
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: recras-wordpress-plugin.php:95
+#: recras-wordpress-plugin.php:98
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: recras-wordpress-plugin.php:111
+#: recras-wordpress-plugin.php:114
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
 msgstr ""
-"De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie "
-"werkt het versturen van contactformulieren niet."
+"De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie werkt "
+"het versturen van contactformulieren niet."
 
 #~ msgid "ID should be a positive number"
 #~ msgstr "ID moet een positief getal zijn"

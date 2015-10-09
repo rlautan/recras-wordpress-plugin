@@ -13,14 +13,14 @@ if (WP_DEBUG) {
 
 /**
  * @package Recras WordPress Plugin
- * @version 0.9.0
+ * @version 0.10.0
  */
 /*
 Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 0.9.0
+Version: 0.10.0
 Author URI: http://www.recras.nl/
 */
 
@@ -55,11 +55,12 @@ class Plugin
     {
         add_filter('mce_external_plugins', [&$this, 'addEditorScripts']);
         add_filter('mce_buttons', [&$this, 'registerEditorButtons']);
+        add_thickbox();
     }
 
     public function addEditorScripts($plugins)
     {
-        $plugins['recras'] = plugins_url('/js/editor.js', __FILE__);
+        $plugins['recras'] = plugins_url('/editor/plugin.js', __FILE__);
         return $plugins;
     }
 
@@ -82,7 +83,7 @@ class Plugin
 
     public function loadEditorLanguage($locales)
     {
-        $locales['recras'] = plugin_dir_path(__FILE__) . '/lang/editor.php';
+        $locales['recras'] = plugin_dir_path(__FILE__) . '/editor/translation.php';
         return $locales;
     }
 
