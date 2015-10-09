@@ -1,7 +1,4 @@
 <?php
-    error_reporting(-1);
-    ini_set('display_errors', 'On');
-
     require_once('../../../../wp-load.php');
     //require_once('/var/www/html/wordpress/wp-load.php');
 ?>

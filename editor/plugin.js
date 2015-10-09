@@ -16,20 +16,9 @@
 
             ed.addButton('recras-contact', {
                 title : 'Contact Form',
-                cmd : 'contact',
-                image : url + '/../assets/contact.svg'
-            });
-
-            ed.addCommand('contact', function() {
-                var number = prompt(ed.getLang('recras.get_contact_id'));
-                if (number) {
-                    number = parseInt(number, 10);
-                    if (number > 0) {
-                        var shortcode = '[recras-contact id="' + number + '"]';
-                        ed.execCommand('mceInsertContent', 0, shortcode);
-                    } else {
-                        alert(ed.getLang('recras.id_positive'));
-                    }
+                image : url + '/../assets/contact.svg',
+                onclick : function(){
+                    tb_show('Foo', url + '/form-contact.php?height=300');
                 }
             });
         },
@@ -40,7 +29,7 @@
                 author : 'Recras',
                 authorurl : 'https://www.recras.nl/',
                 infourl : 'https://www.recras.nl/',
-                version : "0.10.0"
+                version : "0.11.0"
             };
         }
     });
