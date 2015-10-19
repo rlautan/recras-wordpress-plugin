@@ -24,6 +24,10 @@
         <?php } ?>
     <dt><label for="showtitle"><?php _e('Show title?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="showtitle" checked>
+    <dt><label for="showlabels"><?php _e('Show labels?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><input type="checkbox" id="showlabels" checked>
+    <dt><label for="showplaceholders"><?php _e('Show placeholders?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><input type="checkbox" id="showplaceholders" checked>
     <dt><label for="arrangement_id"><?php _e('Arrangement ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><?php if (is_string($arrangements)) { ?>
             <input type="number" id="arrangement_id" min="0" required>
@@ -41,9 +45,14 @@
 <script>
     document.getElementById('contact_submit').addEventListener('click', function(){
         var shortcode = '[recras-contact id="' + document.getElementById('contactform_id').value + '"';
-        if (!document.getElementById('showtitle').checked) {
-            shortcode += ' showtitle="no"';
+
+        var options = ['showtitle', 'showlabels', 'showplaceholders'];
+        for (var i = 0; i < options.length; i++) {
+            if (!document.getElementById(options[i]).checked) {
+                shortcode += ' ' + options[i] + '="no"';
+            }
         }
+
         if (document.getElementById('arrangement_id').value > 0) {
             shortcode += ' arrangement="' + document.getElementById('arrangement_id').value + '"';
         }
