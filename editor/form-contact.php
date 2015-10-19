@@ -22,10 +22,8 @@
                 <?php } ?>
             </select>
         <?php } ?>
-    <dt><?php _e('Show title?', \Recras\Plugin::TEXT_DOMAIN); ?>
-        <dd>
-            <input type="radio" name="header" value="yes" id="title_yes" checked><label for="title_yes"><?php _e('Yes', \Recras\Plugin::TEXT_DOMAIN); ?></label><br>
-            <input type="radio" name="header" value="no" id="title_no"><label for="title_no"><?php _e('No', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="showtitle"><?php _e('Show title?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><input type="checkbox" id="showtitle" checked>
     <dt><label for="arrangement_id"><?php _e('Arrangement ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><?php if (is_string($arrangements)) { ?>
             <input type="number" id="arrangement_id" min="0" required>
@@ -43,7 +41,7 @@
 <script>
     document.getElementById('contact_submit').addEventListener('click', function(){
         var shortcode = '[recras-contact id="' + document.getElementById('contactform_id').value + '"';
-        if (document.getElementById('title_no').checked) {
+        if (!document.getElementById('showtitle').checked) {
             shortcode += ' showtitle="no"';
         }
         if (document.getElementById('arrangement_id').value > 0) {
