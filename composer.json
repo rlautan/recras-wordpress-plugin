@@ -1,5 +1,8 @@
 {
     "name": "Recras/recras-wordpress-plugin",
+    "require": {
+        "php": ">=5.4"
+    },
     "require_dev": {
         "phpunit/phpunit": "^4.8",
         "wp-cli/wp-cli": "^0.20.1"
@@ -9,5 +12,10 @@
             "name": "Sander de Jong",
             "email": "sander@recras.nl"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Recras\\": "src"
+        }
+    }
 }
