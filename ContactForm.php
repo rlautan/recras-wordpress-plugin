@@ -3,6 +3,8 @@ namespace Recras;
 
 class ContactForm
 {
+    const ELEMENTS = ['dl', 'table', 'ol'];
+
     public static function addContactShortcode($attributes)
     {
         if (!isset($attributes['id'])) {
@@ -33,6 +35,21 @@ class ContactForm
         if (isset($attributes['showtitle']) && ($attributes['showtitle'] == 'false' || $attributes['showtitle'] == 0 || $attributes['showtitle'] == 'no')) {
             $formTitle = false;
         }
+        
+        $showLabel = true;
+        if (isset($attributes['showlabels']) && ($attributes['showlabels'] == 'false' || $attributes['showlabels'] == 0 || $attributes['showlabels'] == 'no')) {
+            $showLabel = false;
+        }
+        
+        $showPlaceholder = true;
+        if (isset($attributes['showplaceholders']) && ($attributes['showplaceholders'] == 'false' || $attributes['showplaceholders'] == 0 || $attributes['showplaceholders'] == 'no')) {
+            $showPlaceholder = false;
+        }
+
+        $element = 'dl';
+        if (isset($attributes['element']) && in_array($attributes['element'], self::ELEMENTS)) {
+            $element = $attributes['element'];
+        }
 
 
         // Get fields for the form
@@ -52,10 +69,15 @@ class ContactForm
             $arrangementID = (int) $attributes['arrangement'];
         }
 
-        return self::generateForm($attributes['id'], $formTitle, $formFields, $subdomain, $arrangementID);
+        return self::generateForm($attributes['id'], $formTitle, $formFields, $element, $subdomain, $arrangementID, $showLabel, $showPlaceholder);
     }
 
-    public static function generateForm($formID, $formTitle, $formFields, $subdomain, $arrangementID)
+    private static function generateEndTag($element)
+    {
+        return '</' . $element . '>';
+    }
+
+    public static function generateForm($formID, $formTitle, $formFields, $containerElement, $subdomain, $arrangementID, $showLabel, $showPlaceholder)
     {
         $arrangementen = [];
 
@@ -65,10 +87,10 @@ class ContactForm
         }
 
         $html .= '<form class="recras-contact" id="recras-form' . $formID . '">';
-        $html .= '<dl>';
+        $html .= self::generateStartTag($containerElement);
         foreach ($formFields as $field) {
             if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($arrangementID))) {
-                $html .= '<dt><label for="field' . $field->id . '">' . $field->naam . '</label>';
+                $html .= self::generateLabel($containerElement, $field, $showLabel);
                 if ($field->verplicht) {
                     $html .= '<span class="recras-required">*</span>';
                 }
@@ -80,52 +102,72 @@ class ContactForm
                             $classArrangement = new Arrangement;
                             $arrangementen = $classArrangement->getArrangements($subdomain);
                         }
-                        $html .= self::generateSelect($field, $arrangementen);
+                        $html .= self::generateSubTag($containerElement) . self::generateSelect($field, $arrangementen);
                     } else {
-                        $html .= '<input type="hidden" name="' . $field->field_identifier . '" value="' . $arrangementID . '">';
+                        $html .= self::generateInput($field, [
+                            'placeholder' => $showPlaceholder,
+                            'type' => 'hidden',
+                            'value' => $arrangementID,
+                        ]);
                     }
                     break;
                 case 'boeking.datum':
-                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" placeholder="yyyy-mm-dd">';
+                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
+                            'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])',
+                            'placeholder' => 'yyyy-mm-dd',
+                            'type' => 'date',
+                        ]);
                     break;
                 case 'boeking.groepsgrootte':
-                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="number" min="1">';
+                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
+                            'placeholder' => $showPlaceholder,
+                            'raw' => [
+                                'min' => 1,
+                            ],
+                            'type' => 'number',
+                        ]);
                     break;
                 case 'boeking.starttijd':
-                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . ' type="time" pattern="(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])" placeholder="hh:mm">';
+                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
+                            'pattern' => '(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])',
+                            'placeholder' => 'hh:mm',
+                            'type' => 'time',
+                        ]);
                     break;
                 case 'contactpersoon.geslacht':
-                    $html .= self::generateSelect($field, [
+                    $html .= self::generateSubTag($containerElement) . self::generateSelect($field, [
                         'man' => __('Male', Plugin::TEXT_DOMAIN),
                         'vrouw' => __('Female', Plugin::TEXT_DOMAIN),
                         'onbekend' => __('Unknown', Plugin::TEXT_DOMAIN),
                     ]);
                     break;
                 case 'header':
-                    if (strpos($html, '<dt') !== false) {
-                        $html .= '</dl>';
+                    if (strpos($html, '<dt') !== false) { //FIXME
+                        $html .= self::generateEndTag($containerElement);
                     }
                     $html .= '<h3>' . $field->naam . '</h3>';
-                    if (strpos($html, '<dt') !== false) {
-                        $html .= '<dl>';
+                    if (strpos($html, '<dt') !== false) { //FIXME
+                        $html .= self::generateStartTag($containerElement);
                     }
                     break;
                 case 'keuze':
-                    $html .= '<dd><select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+                    $keuzes = [];
                     foreach ($field->mogelijke_keuzes as $keuze) {
-                        $html .= '<option value="' . $keuze . '">' . $keuze;
+                        $keuzes[$keuze] = $keuze;
                     }
-                    $html .= '</select>';
+                    $html .= self::generateSubTag($containerElement) . self::generateSelect($field, $keuzes);
                     break;
                 case 'veel_tekst':
-                    $html .= '<dd><textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '></textarea>';
+                    $html .= self::generateSubTag($containerElement) . '<textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '></textarea>';
                     break;
                 default:
-                    $html .= '<dd><input id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
+                            'placeholder' => $showPlaceholder,
+                        ]);
             }
             //$html .= print_r($field, true); //DEBUG
         }
-        $html .= '</dl>';
+        $html .= self::generateEndTag($containerElement);
         $html .= '<input type="submit" value="' . __('Send', Plugin::TEXT_DOMAIN) . '">';
         $html .= '</form>';
         $html .= '<script>jQuery(document).ready(function(){
@@ -138,13 +180,86 @@ class ContactForm
         return $html;
     }
 
+    private static function generateInput($field, $options = [])
+    {
+        $options = array_merge([
+            'pattern' => null,
+            'placeholder' => false,
+            'raw' => [],
+            'required' => false,
+            'type' => 'text',
+            'value' => '',
+        ], $options);
+
+        $pattern = ($options['pattern'] ? ' pattern="' . $options['pattern'] . '"' : '');
+        if (is_string($options['placeholder'])) {
+            $placeholder = ' placeholder="' . $options['placeholder'] . '"';
+        } elseif ($options['placeholder']) {
+            $placeholder = ' placeholder="' . htmlentities($field->naam, ENT_COMPAT | ENT_HTML5) . '"';
+        } else {
+            $placeholder = '';
+        }
+        $required = ($field->verplicht ? ' required' : '');
+
+        $raw = '';
+        foreach ($options['raw'] as $rawKey => $rawValue) {
+            $raw .= ' ' . $rawKey . '="' . $rawValue . '"';
+        }
+
+        return '<input id="field' . $field->id . '" type="' . $options['type'] . '" name="' . $field->field_identifier . '" value="' . $options['value'] . '"' . $required . $placeholder . $pattern . $raw . '>';
+    }
+
+
+    private static function generateLabel($mainElement, $field, $showLabel)
+    {
+        $html = '';
+        switch ($mainElement) {
+            case 'dl':
+                $html .= '<dt>';
+                break;
+            case 'ol':
+                $html .= '<li>';
+                break;
+            case 'table':
+                $html .= '<tr><td>';
+                break;
+        }
+        if ($showLabel) {
+            $html .= '<label for="field' . $field->id . '">' . $field->naam . '</label>';
+        }
+        return $html;
+    }
+
     public static function generateSelect($field, $options)
     {
-        $html = '<dd><select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+        $html = '<select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
         foreach ($options as $value => $name) {
             $html .= '<option value="' . $value . '">' . $name;
         }
         $html .= '</select>';
+        return $html;
+    }
+
+    private static function generateStartTag($element)
+    {
+        return '<' . $element . '>';
+    }
+
+    private static function generateSubTag($mainElement)
+    {
+
+        $html = '';
+        switch ($mainElement) {
+            case 'dl':
+                $html .= '<dd>';
+                break;
+            case 'ol':
+                break;
+            case 'table':
+                $html .= '<td>';
+                break;
+        }
+
         return $html;
     }
 

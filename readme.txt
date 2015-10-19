@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.3.1
-Stable tag: 0.12.1
+Stable tag: 0.13.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,8 +34,11 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 * id (required) - corresponds to the contact form ID in Recras
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
 * arrangement - for forms where the user can select an arrangement, setting this parameter will select the arrangement automatically and hide the field for the user.
+* element - show the contact form as definition list (dl - default), ordered list (ol), or table (table).
+* showlabels - show the label for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
+* showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value. Placeholders are [not supported](http://caniuse.com/#search=placeholder) in Internet Explorer versions 9 and lower.
 
-Example: `[recras-contact id=42 showtitle=false]` will show the contact form with ID 42, without title.
+Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
 === Styling ===
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
@@ -55,6 +58,11 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 0.13.0 =
+* Add option to show contact forms as lists or tables
+* Add option to hide labels on contact forms
+* Placeholders added on contact forms, added option to hide them
 
 = 0.12.1 =
 * Minor language fix

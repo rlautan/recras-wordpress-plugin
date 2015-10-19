@@ -31,8 +31,12 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 * id (required) - corresponds to the contact form ID in Recras
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
 * arrangement - for forms where the user can select an arrangement, setting this parameter will select the arrangement automatically and hide the field for the user.
+* element - show the contact form as definition list (dl - default), ordered list (ol), or table (table).
+* showlabels - show the label for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
+* showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value. Placeholders are [not supported](http://caniuse.com/#search=placeholder) in Internet Explorer versions 9 and lower.
 
-Example: `[recras-contact id=42 showtitle=false]` will show the contact form with ID 42, without title.
+Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
+
 
 Installation
 ------------
