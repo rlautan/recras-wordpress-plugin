@@ -10,7 +10,7 @@
                 title : 'Arrangement',
                 image : url + '/../assets/arrangement.svg',
                 onclick : function(){
-                    tb_show('Foo', url + '/form-arrangement.php?height=300');
+                    tb_show('Foo', url + '/form-arrangement.php');
                 }
             });
 
@@ -18,7 +18,7 @@
                 title : 'Contact Form',
                 image : url + '/../assets/contact.svg',
                 onclick : function(){
-                    tb_show('Foo', url + '/form-contact.php?height=300');
+                    tb_show('Foo', url + '/form-contact.php');
                 }
             });
         },

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-10-09 16:51+0100\n"
-"PO-Revision-Date: 2015-10-09 16:51+0100\n"
+"POT-Creation-Date: 2015-10-19 14:12+0100\n"
+"PO-Revision-Date: 2015-10-19 14:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -16,88 +16,6 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
-
-#: Arrangement.php:12 ContactForm.php:9
-msgid "Error: no ID set"
-msgstr "Fout: geen ID ingesteld"
-
-#: Arrangement.php:15 ContactForm.php:12
-msgid "Error: ID is not a number"
-msgstr "Fout: ID is geen getal"
-
-#: Arrangement.php:18
-msgid "Error: \"show\" option not set"
-msgstr "Fout: optie \"show\" niet ingesteld"
-
-#: Arrangement.php:21
-msgid "Error: invalid \"show\" option"
-msgstr "Fout: ongeldige \"show\"-optie"
-
-#: Arrangement.php:26 ContactForm.php:17
-msgid "Error: you have not set your Recras subdomain yet"
-msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
-
-#: Arrangement.php:31 Arrangement.php:103 ContactForm.php:25
-#: ContactForm.php:41 ContactForm.php:156
-msgid "Error: could not retrieve external data"
-msgstr "Fout: kon externe data niet ophalen"
-
-#: Arrangement.php:35 Arrangement.php:107 ContactForm.php:29
-#: ContactForm.php:45 ContactForm.php:160
-msgid "Error: could not parse external data"
-msgstr "Fout: kon externe data niet parsen"
-
-#: Arrangement.php:70
-msgid "From"
-msgstr "Van"
-
-#: Arrangement.php:70
-msgid "Until"
-msgstr "Tot"
-
-#: Arrangement.php:70
-msgid "Activity"
-msgstr "Activiteit"
-
-#: ContactForm.php:99
-msgid "Male"
-msgstr "Man"
-
-#: ContactForm.php:100
-msgid "Female"
-msgstr "Vrouw"
-
-#: ContactForm.php:101
-msgid "Unknown"
-msgstr "Onbekend"
-
-#: ContactForm.php:129
-msgid "Send"
-msgstr "Versturen"
-
-#: Settings.php:32
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
-
-#: Settings.php:49
-msgid "Subdomain"
-msgstr "Subdomein"
-
-#: Settings.php:50
-msgid "Currency symbol"
-msgstr "Valutasymbool"
-
-#: Settings.php:67
-msgid "Enter your Recras details here"
-msgstr "Voer je Recras-gegevens hier in"
-
-#: admin/settings.php:1
-msgid "Recras settings"
-msgstr "Recras-instellingen"
-
-#: admin/settings.php:7
-msgid "Save"
-msgstr "Opslaan"
 
 #: editor/form-arrangement.php:13
 msgid "Arrangement"
@@ -147,15 +65,15 @@ msgstr "uu:mm"
 msgid "Show header?"
 msgstr "Toon header?"
 
-#: editor/form-arrangement.php:38 editor/form-contact.php:27
+#: editor/form-arrangement.php:38
 msgid "Yes"
 msgstr "Ja"
 
-#: editor/form-arrangement.php:39 editor/form-contact.php:28
+#: editor/form-arrangement.php:39
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:41 editor/form-contact.php:41
+#: editor/form-arrangement.php:41 editor/form-contact.php:43
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
@@ -167,7 +85,16 @@ msgstr "Contactformulier"
 msgid "Show title?"
 msgstr "Toon titel?"
 
+#: editor/form-contact.php:27
+msgid "Show labels?"
+msgstr "Toon labels?"
+
 #: editor/form-contact.php:29
+#, fuzzy
+msgid "Show placeholders?"
+msgstr "Toon placeholders?"
+
+#: editor/form-contact.php:31
 msgid "Arrangement ID"
 msgstr "Arrangement-ID"
 
@@ -183,25 +110,107 @@ msgstr "Wat is het ID van het contactformulier?"
 msgid "ID should be a positive integer"
 msgstr "ID moet een positief geheel getal zijn"
 
-#: recras-wordpress-plugin.php:94
+#: src/Arrangement.php:12 src/ContactForm.php:11
+msgid "Error: no ID set"
+msgstr "Fout: geen ID ingesteld"
+
+#: src/Arrangement.php:15 src/ContactForm.php:14
+msgid "Error: ID is not a number"
+msgstr "Fout: ID is geen getal"
+
+#: src/Arrangement.php:18
+msgid "Error: \"show\" option not set"
+msgstr "Fout: optie \"show\" niet ingesteld"
+
+#: src/Arrangement.php:21
+msgid "Error: invalid \"show\" option"
+msgstr "Fout: ongeldige \"show\"-optie"
+
+#: src/Arrangement.php:26 src/ContactForm.php:19
+msgid "Error: you have not set your Recras subdomain yet"
+msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
+
+#: src/Arrangement.php:31 src/Arrangement.php:103 src/ContactForm.php:27
+#: src/ContactForm.php:58 src/ContactForm.php:271
+msgid "Error: could not retrieve external data"
+msgstr "Fout: kon externe data niet ophalen"
+
+#: src/Arrangement.php:35 src/Arrangement.php:107 src/ContactForm.php:31
+#: src/ContactForm.php:62 src/ContactForm.php:275
+msgid "Error: could not parse external data"
+msgstr "Fout: kon externe data niet parsen"
+
+#: src/Arrangement.php:70
+msgid "From"
+msgstr "Van"
+
+#: src/Arrangement.php:70
+msgid "Until"
+msgstr "Tot"
+
+#: src/Arrangement.php:70
+msgid "Activity"
+msgstr "Activiteit"
+
+#: src/ContactForm.php:139
+msgid "Male"
+msgstr "Man"
+
+#: src/ContactForm.php:140
+msgid "Female"
+msgstr "Vrouw"
+
+#: src/ContactForm.php:141
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: src/ContactForm.php:171
+msgid "Send"
+msgstr "Versturen"
+
+#: src/Plugin.php:71
 msgid "Loading..."
 msgstr "Laden..."
 
-#: recras-wordpress-plugin.php:95
+#: src/Plugin.php:72
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: recras-wordpress-plugin.php:96
+#: src/Plugin.php:73
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: recras-wordpress-plugin.php:112
+#: src/Plugin.php:89
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
 msgstr ""
 "De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie werkt "
 "het versturen van contactformulieren niet."
+
+#: src/Settings.php:32
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
+
+#: src/Settings.php:49
+msgid "Subdomain"
+msgstr "Subdomein"
+
+#: src/Settings.php:50
+msgid "Currency symbol"
+msgstr "Valutasymbool"
+
+#: src/Settings.php:67
+msgid "Enter your Recras details here"
+msgstr "Voer je Recras-gegevens hier in"
+
+#: src/admin/settings.php:1
+msgid "Recras settings"
+msgstr "Recras-instellingen"
+
+#: src/admin/settings.php:7
+msgid "Save"
+msgstr "Opslaan"
 
 #~ msgid "ID should be a positive number"
 #~ msgstr "ID moet een positief getal zijn"

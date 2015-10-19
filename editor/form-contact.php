@@ -39,6 +39,12 @@
                 <?php } ?>
             </select>
         <?php } ?>
+    <dt><label for="container_elemento"><?php _e('HTML element', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><select id="container_element">
+                <option value="dl" selected>Definition list
+                <option value="ol">Ordered list
+                <option value="table">Table
+            </select>
 </dl>
 <button class="button button-primary" id="contact_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
@@ -56,6 +62,10 @@
         if (document.getElementById('arrangement_id').value > 0) {
             shortcode += ' arrangement="' + document.getElementById('arrangement_id').value + '"';
         }
+        if (document.getElementById('container_element').value !== 'dl') {
+            shortcode += ' element="' + document.getElementById('container_element').value + '"';
+        }
+
         shortcode += ']';
 
         tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
