@@ -36,8 +36,6 @@ class Arrangement
         }
 
         switch ($attributes['show']) {
-            case 'title':
-                return '<span class="recras-title">' . $json->arrangement . '</span>';
             case 'persons':
                 return '<span class="recras-persons">' . $json->aantal_personen . '</span>';
             case 'price_pp_excl_vat':
@@ -56,6 +54,8 @@ class Arrangement
                     $showHeader = false;
                 }
                 return self::generateProgramme($json->programma, $startTime, $showHeader);
+            case 'title':
+                return '<span class="recras-title">' . $json->arrangement . '</span>';
             default:
                 return 'Error: unknown option';
         }
