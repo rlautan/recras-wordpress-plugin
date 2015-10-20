@@ -14,13 +14,15 @@ This plugin consists of two shortcodes. To use them, you first need to set your 
 Add the `[arrangement]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
-  * title - shows the title of an arrangement
+  * duration - shows the duration of this arrangement (i.e. time between start of first activity and end of last activity)
+  * location - shows the starting location of this arrangement
   * persons - shows the minimum number of persons needed for this arrangement
   * price_pp_excl_vat - shows the price per person, excluding VAT
   * price_pp_incl_vat - same as above, but including VAT
   * price_total_excl_vat - shows the total price, excluding VAT
   * price_total_incl_vat - same as above, but including VAT
   * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
+  * title - shows the title of an arrangement
 * starttime - only used for `programme`, determines the starting time of an arrangement. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 

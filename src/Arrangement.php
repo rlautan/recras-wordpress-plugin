@@ -4,7 +4,7 @@ namespace Recras;
 
 class Arrangement
 {
-    const VALID_OPTIONS = ['title', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme'];
+    const VALID_OPTIONS = ['duration', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
 
     public static function addArrangementShortcode($attributes)
     {
@@ -36,6 +36,10 @@ class Arrangement
         }
 
         switch ($attributes['show']) {
+            case 'duration':
+                return self::getDuration($json);
+            case 'location':
+                return self::getLocation($json);
             case 'persons':
                 return '<span class="recras-persons">' . $json->aantal_personen . '</span>';
             case 'price_pp_excl_vat':
@@ -114,6 +118,47 @@ class Arrangement
             $arrangements[$arrangement->id] = $arrangement->arrangement;
         }
         return $arrangements;
+    }
+
+    private static function getDuration($json)
+    {
+        $startTime = new \DateTime('00:00');
+        $startTime->add(new \DateInterval($json->programma[0]->begin));
+
+        $endTime = new \DateTime('00:00');
+        $endTime->add(new \DateInterval($json->programma[0]->begin));
+        $endTime->add(new \DateInterval($json->programma[count($json->programma) - 1]->eind));
+        $duration = $startTime->diff($endTime);
+
+        $html  = '<span class="recras-duration">';
+        $durations = [];
+        if ($duration->d) {
+            $durations[] = sprintf(__('%dd', Plugin::TEXT_DOMAIN), $duration->d);
+        }
+        if ($duration->h) {
+            $durations[] = sprintf(__('%dh', Plugin::TEXT_DOMAIN), $duration->h);
+        }
+        if ($duration->i) {
+            $durations[] = sprintf(__('%dm', Plugin::TEXT_DOMAIN), $duration->i);
+        }
+        if (empty($durations)) {
+            $html .= __('No duration specified', Plugin::TEXT_DOMAIN);
+        } else {
+            $html .= implode(' ', $durations);
+        }
+        $html .= '</span>';
+
+        return $html;
+    }
+
+    private static function getLocation($json)
+    {
+        if ($json->ontvangstlocatie) {
+            $location = $json->ontvangstlocatie;
+        } else {
+            $location = __('No location specified', Plugin::TEXT_DOMAIN);
+        }
+        return '<span class="recras-location">' . $location . '</span>';
     }
 
     public static function returnPrice($price)

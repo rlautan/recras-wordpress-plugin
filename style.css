@@ -5,11 +5,17 @@
 /* Applied to contact forms */
 .recras-contact {}
 
+/* Applied to the duration of an arrangement */
+.recras-duration {}
+
 /* Applied to error messages from an unsuccessful form submission */
 .recras-error {}
 
 /* Applied to loading animation image */
 .recras-loading {}
+
+/* Applied to the location of an arrangement */
+.recras-location {}
 
 /* Applied to the first <tr> in an arrangement programme that falls on a new day */
 .recras-new-day {}
