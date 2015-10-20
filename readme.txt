@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.3.1
-Stable tag: 0.13.2
+Stable tag: 0.13.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 0.13.3 =
+Fix translation not being loaded
 
 = 0.13.2 =
 Add options added in 0.13.0 to the editor shortcode generator button
