@@ -41,9 +41,9 @@
         <?php } ?>
     <dt><label for="container_elemento"><?php _e('HTML element', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="container_element">
-                <option value="dl" selected>Definition list
-                <option value="ol">Ordered list
-                <option value="table">Table
+                <option value="dl" selected><?php _e('Definition list', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;dl&gt;)
+                <option value="ol"><?php _e('Ordered list', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;ol&gt;)
+                <option value="table"><?php _e('Table', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;table&gt;)
             </select>
 </dl>
 <button class="button button-primary" id="contact_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>

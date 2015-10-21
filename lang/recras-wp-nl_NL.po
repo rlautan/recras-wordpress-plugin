@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-10-20 13:53+0100\n"
-"PO-Revision-Date: 2015-10-20 13:53+0100\n"
+"POT-Creation-Date: 2015-10-21 12:01+0100\n"
+"PO-Revision-Date: 2015-10-21 12:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -17,90 +17,102 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:13
+#: editor/form-arrangement.php:14 src/Plugin.php:54
 msgid "Arrangement"
 msgstr "Arrangement"
 
-#: editor/form-arrangement.php:24
+#: editor/form-arrangement.php:25
 msgid "Show what?"
 msgstr "Toon wat?"
 
-#: editor/form-arrangement.php:26
+#: editor/form-arrangement.php:27
 msgid "Title"
 msgstr "Titel"
 
-#: editor/form-arrangement.php:27
+#: editor/form-arrangement.php:28
 msgid "Minimum number of persons"
 msgstr "Minimum aantal personen"
 
-#: editor/form-arrangement.php:28
+#: editor/form-arrangement.php:29
 msgid "Price p.p. excl. VAT"
 msgstr "Prijs p.p. excl. btw"
 
-#: editor/form-arrangement.php:29
+#: editor/form-arrangement.php:30
 msgid "Price p.p. incl. VAT"
 msgstr "Prijs p.p. incl. btw"
 
-#: editor/form-arrangement.php:30
+#: editor/form-arrangement.php:31
 msgid "Total price excl. VAT"
 msgstr "Totaalprijs excl. btw"
 
-#: editor/form-arrangement.php:31
+#: editor/form-arrangement.php:32
 msgid "Total price incl. VAT"
 msgstr "Totaalprijs incl. btw"
 
-#: editor/form-arrangement.php:32
+#: editor/form-arrangement.php:33
 msgid "Programme"
 msgstr "Programma"
 
-#: editor/form-arrangement.php:34
+#: editor/form-arrangement.php:35
 msgid "Start time"
 msgstr "Starttijd"
 
-#: editor/form-arrangement.php:35
+#: editor/form-arrangement.php:36
 msgid "hh:mm"
 msgstr "uu:mm"
 
-#: editor/form-arrangement.php:36
+#: editor/form-arrangement.php:37
 msgid "Show header?"
 msgstr "Toon header?"
 
-#: editor/form-arrangement.php:38
+#: editor/form-arrangement.php:39
 msgid "Yes"
 msgstr "Ja"
 
-#: editor/form-arrangement.php:39
+#: editor/form-arrangement.php:40
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:41 editor/form-contact.php:49
+#: editor/form-arrangement.php:42 editor/form-contact.php:50
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
-#: editor/form-contact.php:14
+#: editor/form-contact.php:15 src/Plugin.php:55
 msgid "Contact form"
 msgstr "Contactformulier"
 
-#: editor/form-contact.php:25
+#: editor/form-contact.php:26
 msgid "Show title?"
 msgstr "Toon titel?"
 
-#: editor/form-contact.php:27
+#: editor/form-contact.php:28
 msgid "Show labels?"
 msgstr "Toon labels?"
 
-#: editor/form-contact.php:29
+#: editor/form-contact.php:30
 #, fuzzy
 msgid "Show placeholders?"
 msgstr "Toon placeholders?"
 
-#: editor/form-contact.php:31
+#: editor/form-contact.php:32
 msgid "Arrangement ID"
 msgstr "Arrangement-ID"
 
-#: editor/form-contact.php:42
+#: editor/form-contact.php:43
 msgid "HTML element"
 msgstr "HTML-element"
+
+#: editor/form-contact.php:45
+msgid "Definition list"
+msgstr "Definitielijst"
+
+#: editor/form-contact.php:46
+msgid "Ordered list"
+msgstr "Geordende lijst"
+
+#: editor/form-contact.php:47
+msgid "Table"
+msgstr "Tabel"
 
 #: editor/translation.php:12
 msgid "What is the ID of the arrangement?"
@@ -195,19 +207,19 @@ msgstr "Onbekend"
 msgid "Send"
 msgstr "Versturen"
 
-#: src/Plugin.php:71
+#: src/Plugin.php:74
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:72
+#: src/Plugin.php:75
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:73
+#: src/Plugin.php:76
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:89
+#: src/Plugin.php:92
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
