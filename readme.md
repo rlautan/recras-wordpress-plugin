@@ -1,15 +1,17 @@
-Recras WordPress plugin
-=======================
+# Recras WordPress plugin
 
 [![Build Status](https://travis-ci.org/Recras/recras-wordpress-plugin.svg?branch=master)](https://travis-ci.org/Recras/recras-wordpress-plugin)
 
-Easily integrate your Recras data into your own website
+Easily integrate data from your Recras instance, such as arrangements and contact forms, into your own website.
 
-Usage
------
+## Usage
+With this plugin, you can easily integrate data from your [Recras](https://recras.nl/) instance, such as arrangements and contact forms, into your own website.
+
+To get started, go to the Settings -> Recras page and enter your Recras subdomain. For example, if you log in to Recras at `https://mysite.recras.nl/` then your subdomain is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
+
 This plugin consists of two shortcodes. To use them, you first need to set your Recras subdomain on the Settings > Recras page.
 
-### Arrangements ###
+### Arrangements
 
 Add the `[arrangement]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the arrangement ID in Recras
@@ -28,7 +30,7 @@ Add the `[arrangement]` shortcode anywhere on your site. The following parameter
 
 Example: `[arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the arrangement with ID 1.
 
-### Contact forms ###
+### Contact forms
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the contact form ID in Recras
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
@@ -39,9 +41,10 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
+=== Styling ===
+No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
 
-Installation
-------------
+## Installation
 
 Easy installation (preferred):
 
@@ -52,7 +55,11 @@ Self install:
 1. Upload the `recras-wordpress-plugin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
-Support
--------
+## Support
 
 We would appreciate it if you use [our GitHub page](https://github.com/Recras/recras-wordpress-plugin/issues) for bug reports, pull requests and general questions. If you do not have a GitHub account, you can use the Support forum on wordpress.org.
+
+We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
+
+== Credits ==
+* Icons from [Genericons](https://github.com/Automattic/Genericons/) by Automattic, released under the GPL.

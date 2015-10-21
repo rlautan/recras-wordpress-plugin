@@ -3,13 +3,16 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.3.1
-Stable tag: 0.14.0
+Stable tag: 0.14.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily integrate your Recras data into your own website
+Easily integrate data from your Recras instance, such as arrangements and contact forms, into your own website.
 
 == Description ==
+With this plugin, you can easily integrate data from your [Recras](https://recras.nl/) instance, such as arrangements and contact forms, into your own website.
+
+To get started, go to the Settings -> Recras page and enter your Recras subdomain. For example, if you log in to Recras at `https://mysite.recras.nl/` then your subdomain is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
 
 This plugin consists of two shortcodes. To use them, you first need to set your Recras subdomain on the Settings > Recras page.
 
@@ -46,10 +49,13 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
 
 == Installation ==
-Easy installation (preferred):
+
+**Easy installation (preferred)**
+
 1. Install the plugin from the Plugins > Add New page in your WordPress installation.
 
-Self install:
+**Self install**
+
 1. Upload the `recras-wordpress-plugin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
@@ -60,6 +66,12 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 0.14.1 =
+* Replaced icons with GPL-compatible ones
+* Update readme with more information
+* Hack around not being allowed to load wp-load.php
+* Translation update
 
 = 0.14.0 =
 Add `location` and `duration` options to arrangement shortcode
@@ -140,11 +152,13 @@ Don't `die()` on errors, but return error message instead
 = 0.2.0 =
 First version!
 
+== Upgrade Notice ==
+Nothing to report.
+
 == Support ==
 We would appreciate it if you use [our GitHub page](https://github.com/Recras/recras-wordpress-plugin/issues) for bug reports, pull requests and general questions. If you do not have a GitHub account, you can use the Support forum on wordpress.org.
 
 We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
 
 == Credits ==
-* Arrangement icon by [Mark Shorter](https://thenounproject.com/markshorter/), under a [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/) licence.
-* Contact icon by [Jon Testa](https://thenounproject.com/jontesta/), also under a CC licence.
+* Icons from [Genericons](https://github.com/Automattic/Genericons/) by Automattic, released under the GPL.
