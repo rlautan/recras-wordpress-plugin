@@ -10,7 +10,7 @@
                 title : 'Arrangement',
                 image : url + '/../assets/arrangement.svg',
                 onclick : function(){
-                    tb_show('Foo', url + '/form-arrangement.php');
+                    tb_show('Arrangement', 'admin.php?page=form-arrangement');
                 }
             });
 
@@ -18,7 +18,7 @@
                 title : 'Contact Form',
                 image : url + '/../assets/contact.svg',
                 onclick : function(){
-                    tb_show('Foo', url + '/form-contact.php');
+                    tb_show('Contact', 'admin.php?page=form-contact');
                 }
             });
         },
@@ -29,7 +29,7 @@
                 author : 'Recras',
                 authorurl : 'https://www.recras.nl/',
                 infourl : 'https://www.recras.nl/',
-                version : "0.11.0"
+                version : "0.14.1"
             };
         }
     });

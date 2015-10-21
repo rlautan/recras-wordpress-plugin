@@ -281,4 +281,9 @@ class ContactForm
         }
         return $forms;
     }
+
+    public static function showForm()
+    {
+        require_once(dirname(__FILE__) . '/../editor/form-contact.php');
+    }
 }

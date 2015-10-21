@@ -166,4 +166,9 @@ class Arrangement
         $currency = get_option('recras_currency');
         return '<span class="recras-price">' . $currency . ' ' . $price . '</span>';
     }
+
+    public static function showForm()
+    {
+        require_once(dirname(__FILE__) . '/../editor/form-arrangement.php');
+    }
 }

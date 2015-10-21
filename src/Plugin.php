@@ -50,6 +50,9 @@ class Plugin
             'recras',
             ['\Recras\Settings', 'editSettings']
         );
+
+        add_submenu_page(null, __('Arrangement', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-arrangement', ['Recras\Arrangement', 'showForm']);
+        add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
     }
 
     public function addShortcodes()

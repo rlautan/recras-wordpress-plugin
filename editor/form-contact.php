@@ -1,7 +1,8 @@
+<style>
+    #TB_window #adminmenumain { display: none; }
+    #wpcontent { margin-left: 0; }
+</style>
 <?php
-    require_once('../../../../wp-load.php');
-    //require_once('/var/www/html/wordpress/wp-load.php');
-
     $subdomain = get_option('recras_subdomain');
 
     $model = new \Recras\Arrangement;
