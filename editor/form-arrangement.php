@@ -25,6 +25,8 @@
     <dt><label for="show_what"><?php _e('Show what?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="show_what" required>
             <option value="title"><?php _e('Title', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="duration"><?php _e('Duration', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="location"><?php _e('Starting location', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="persons"><?php _e('Minimum number of persons', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="price_pp_excl_vat"><?php _e('Price p.p. excl. VAT', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="price_pp_incl_vat"><?php _e('Price p.p. incl. VAT', \Recras\Plugin::TEXT_DOMAIN); ?>
