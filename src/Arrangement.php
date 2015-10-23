@@ -133,18 +133,18 @@ class Arrangement
         $html  = '<span class="recras-duration">';
         $durations = [];
         if ($duration->d) {
-            $durations[] = sprintf(__('%dd', Plugin::TEXT_DOMAIN), $duration->d);
+            $durations[] = $duration->d;
         }
         if ($duration->h) {
-            $durations[] = sprintf(__('%dh', Plugin::TEXT_DOMAIN), $duration->h);
+            $durations[] = $duration->h;
         }
         if ($duration->i) {
-            $durations[] = sprintf(__('%dm', Plugin::TEXT_DOMAIN), $duration->i);
+            $durations[] = $duration->i;
         }
         if (empty($durations)) {
             $html .= __('No duration specified', Plugin::TEXT_DOMAIN);
         } else {
-            $html .= implode(' ', $durations);
+            $html .= implode(':', $durations);
         }
         $html .= '</span>';
 
