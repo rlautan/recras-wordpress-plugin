@@ -26,7 +26,7 @@ function submitRecrasForm(formID, subdomain, basePath)
         }
     }
 
-    formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<img src="' + basePath + 'assets/loading.gif" alt="' + recras_l10n.loading + '" class="recras-loading">');
+    formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<img src="' + basePath + 'editor/loading.gif" alt="' + recras_l10n.loading + '" class="recras-loading">');
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', basePath + 'submit.php');

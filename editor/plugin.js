@@ -8,7 +8,7 @@
         init : function(ed, url) {
             ed.addButton('arrangement', {
                 title : 'Arrangement',
-                image : url + '/../assets/arrangement.svg',
+                image : url + '/arrangement.svg',
                 onclick : function(){
                     tb_show('Arrangement', 'admin.php?page=form-arrangement');
                 }
@@ -16,7 +16,7 @@
 
             ed.addButton('recras-contact', {
                 title : 'Contact Form',
-                image : url + '/../assets/contact.svg',
+                image : url + '/contact.svg',
                 onclick : function(){
                     tb_show('Contact', 'admin.php?page=form-contact');
                 }
@@ -29,7 +29,7 @@
                 author : 'Recras',
                 authorurl : 'https://www.recras.nl/',
                 infourl : 'https://www.recras.nl/',
-                version : "0.14.1"
+                version : "0.15.1"
             };
         }
     });

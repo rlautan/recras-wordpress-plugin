@@ -171,7 +171,7 @@ class ContactForm
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $formID . '").on("submit", function(e){
         e.preventDefault();
-        return submitRecrasForm(' . $formID . ', "' . $subdomain . '", "' . plugins_url('/', __FILE__) . '");
+        return submitRecrasForm(' . $formID . ', "' . $subdomain . '", "' . plugins_url('/', dirname(__FILE__)) . '");
     });
 });</script>';
 
