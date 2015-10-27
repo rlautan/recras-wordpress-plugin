@@ -71,19 +71,19 @@ class PluginTest extends \WP_UnitTestCase
             'post_content' => '[arrangement id=8 show=price_total_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 376.886792453</span>' . "\n", $content, 'Should show total price excl. vat');
+        $this->assertEquals('<span class="recras-price">€ 376.89</span>' . "\n", $content, 'Should show total price excl. vat');
 
         $post = $this->factory->post->create_and_get([
             'post_content' => '[arrangement id=8 show=price_total_incl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 399.5</span>' . "\n", $content, 'Should show total price incl. vat');
+        $this->assertEquals('<span class="recras-price">€ 399.50</span>' . "\n", $content, 'Should show total price incl. vat');
 
         $post = $this->factory->post->create_and_get([
             'post_content' => '[arrangement id=8 show=price_pp_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 37.6886792453</span>' . "\n", $content, 'Should show price per person excl. vat');
+        $this->assertEquals('<span class="recras-price">€ 37.69</span>' . "\n", $content, 'Should show price per person excl. vat');
 
         $post = $this->factory->post->create_and_get([
             'post_content' => '[arrangement id=8 show=price_pp_incl_vat]'
