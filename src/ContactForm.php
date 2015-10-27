@@ -89,7 +89,7 @@ class ContactForm
         foreach ($formFields as $field) {
             if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($arrangementID))) {
                 $html .= self::generateLabel($containerElement, $field, $showLabel);
-                if ($field->verplicht) {
+                if ($field->verplicht && $showLabel) {
                     $html .= '<span class="recras-required">*</span>';
                 }
             }
@@ -192,8 +192,14 @@ class ContactForm
         $pattern = ($options['pattern'] ? ' pattern="' . $options['pattern'] . '"' : '');
         if (is_string($options['placeholder'])) {
             $placeholder = ' placeholder="' . $options['placeholder'] . '"';
+            if ($field->verplicht) {
+                $placeholder .= '*';
+            }
         } elseif ($options['placeholder']) {
             $placeholder = ' placeholder="' . htmlentities($field->naam, ENT_COMPAT | ENT_HTML5) . '"';
+            if ($field->verplicht) {
+                $placeholder .= '*';
+            }
         } else {
             $placeholder = '';
         }
