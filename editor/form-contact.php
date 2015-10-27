@@ -40,12 +40,14 @@
                 <?php } ?>
             </select>
         <?php } ?>
-    <dt><label for="container_elemento"><?php _e('HTML element', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="container_element"><?php _e('HTML element', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="container_element">
                 <option value="dl" selected><?php _e('Definition list', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;dl&gt;)
                 <option value="ol"><?php _e('Ordered list', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;ol&gt;)
                 <option value="table"><?php _e('Table', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;table&gt;)
             </select>
+    <dt><label for="submit_text"><?php _e('Submit button text', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><input type="text" id="submit_text" value="<?php _e('Send', \Recras\Plugin::TEXT_DOMAIN); ?>">
 </dl>
 <button class="button button-primary" id="contact_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
@@ -65,6 +67,9 @@
         }
         if (document.getElementById('container_element').value !== 'dl') {
             shortcode += ' element="' + document.getElementById('container_element').value + '"';
+        }
+        if (document.getElementById('submit_text').value !== '<?php _e('Send', \Recras\Plugin::TEXT_DOMAIN); ?>') {
+            shortcode += ' submittext="' + document.getElementById('submit_text').value + '"';
         }
 
         shortcode += ']';
