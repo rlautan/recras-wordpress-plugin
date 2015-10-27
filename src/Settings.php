@@ -14,6 +14,17 @@ class Settings
         printf('<input type="text" name="%s" id="%s" value="%s">', $field, $field, $value);
     }
 
+    public static function addInputDecimal($args)
+    {
+        $field = $args['field'];
+        $value = get_option($field);
+        if (!$value) {
+            $value = '.';
+        }
+
+        printf('<input type="text" name="%s" id="%s" value="%s" size="2" maxlength="1">', $field, $field, $value);
+    }
+
     public static function addInputSubdomain($args)
     {
         $field = $args['field'];
@@ -45,9 +56,11 @@ class Settings
 
         register_setting('recras', 'recras_subdomain', ['Recras\Settings', 'sanitizeSubdomain']);
         register_setting('recras', 'recras_currency', '');
+        register_setting('recras', 'recras_decimal', '');
 
         add_settings_field('recras_subdomain', __('Subdomain', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
         add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
+        add_settings_field('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal'], 'recras', 'recras', ['field' => 'recras_decimal']);
     }
 
     public function sanitizeSubdomain($subdomain)

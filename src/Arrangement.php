@@ -167,7 +167,11 @@ class Arrangement
     public static function returnPrice($price)
     {
         $currency = get_option('recras_currency');
-        return '<span class="recras-price">' . $currency . ' ' . $price . '</span>';
+        $decimalSeparator = get_option('recras_decimal');
+        if ($decimalSeparator === false) {
+            $decimalSeparator = '.';
+        }
+        return '<span class="recras-price">' . $currency . ' ' . number_format($price, 2, $decimalSeparator, '') . '</span>';
     }
 
     public static function showForm()
