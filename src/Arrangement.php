@@ -4,8 +4,6 @@ namespace Recras;
 
 class Arrangement
 {
-    const VALID_OPTIONS = ['duration', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
-
     public static function addArrangementShortcode($attributes)
     {
         if (!isset($attributes['id'])) {
@@ -17,7 +15,7 @@ class Arrangement
         if (!isset($attributes['show'])) {
             return __('Error: "show" option not set', Plugin::TEXT_DOMAIN);
         }
-        if (!in_array($attributes['show'], self::VALID_OPTIONS)) {
+        if (!in_array($attributes['show'], self::getValidOptions())) {
             return __('Error: invalid "show" option', Plugin::TEXT_DOMAIN);
         }
 
@@ -159,6 +157,11 @@ class Arrangement
             $location = __('No location specified', Plugin::TEXT_DOMAIN);
         }
         return '<span class="recras-location">' . $location . '</span>';
+    }
+
+    public static function getValidOptions()
+    {
+        return ['duration', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
     }
 
     public static function returnPrice($price)

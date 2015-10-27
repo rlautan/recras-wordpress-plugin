@@ -3,8 +3,6 @@ namespace Recras;
 
 class ContactForm
 {
-    const ELEMENTS = ['dl', 'table', 'ol'];
-
     public static function addContactShortcode($attributes)
     {
         if (!isset($attributes['id'])) {
@@ -47,7 +45,7 @@ class ContactForm
         }
 
         $element = 'dl';
-        if (isset($attributes['element']) && in_array($attributes['element'], self::ELEMENTS)) {
+        if (isset($attributes['element']) && in_array($attributes['element'], self::getValidElements())) {
             $element = $attributes['element'];
         }
 
@@ -280,6 +278,11 @@ class ContactForm
             $forms[$form->id] = $form->naam;
         }
         return $forms;
+    }
+
+    public static function getValidElements()
+    {
+        return ['dl', 'table', 'ol'];
     }
 
     public static function showForm()
