@@ -34,14 +34,14 @@ class ContactForm
             $formTitle = false;
         }
         
-        $showLabel = true;
+        $showLabels = true;
         if (isset($attributes['showlabels']) && ($attributes['showlabels'] == 'false' || $attributes['showlabels'] == 0 || $attributes['showlabels'] == 'no')) {
-            $showLabel = false;
+            $showLabels = false;
         }
         
-        $showPlaceholder = true;
+        $showPlaceholders = true;
         if (isset($attributes['showplaceholders']) && ($attributes['showplaceholders'] == 'false' || $attributes['showplaceholders'] == 0 || $attributes['showplaceholders'] == 'no')) {
-            $showPlaceholder = false;
+            $showPlaceholders = false;
         }
 
         $element = 'dl';
@@ -67,7 +67,16 @@ class ContactForm
             $arrangementID = (int) $attributes['arrangement'];
         }
 
-        return self::generateForm($attributes['id'], $formTitle, $formFields, $element, $subdomain, $arrangementID, $showLabel, $showPlaceholder);
+        $options = [
+            'arrangement' => $arrangementID,
+            'element' => $element,
+            'formTitle' => $formTitle,
+            'placeholders' => $showPlaceholders,
+            'showLabels' => $showLabels,
+            'subdomain' => $subdomain,
+        ];
+
+        return self::generateForm($attributes['id'], $formFields, $options);
     }
 
     private static function generateEndTag($element)
@@ -75,50 +84,50 @@ class ContactForm
         return '</' . $element . '>';
     }
 
-    public static function generateForm($formID, $formTitle, $formFields, $containerElement, $subdomain, $arrangementID, $showLabel, $showPlaceholder)
+    public static function generateForm($formID, $formFields, $options)
     {
         $arrangementen = [];
 
         $html  = '';
-        if ($formTitle) {
-            $html .= '<h2>' . $formTitle . '</h2>';
+        if ($options['formTitle']) {
+            $html .= '<h2>' . $options['formTitle'] . '</h2>';
         }
 
         $html .= '<form class="recras-contact" id="recras-form' . $formID . '">';
-        $html .= self::generateStartTag($containerElement);
+        $html .= self::generateStartTag($options['element']);
         foreach ($formFields as $field) {
-            if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($arrangementID))) {
-                $html .= self::generateLabel($containerElement, $field, $showLabel);
-                if ($field->verplicht && $showLabel) {
+            if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($options['arrangement']))) {
+                $html .= self::generateLabel($options['element'], $field, $options['showLabels']);
+                if ($field->verplicht && $options['showLabels']) {
                     $html .= '<span class="recras-required">*</span>';
                 }
             }
             switch ($field->soort_invoer) {
                 case 'boeking.arrangement':
-                    if (is_null($arrangementID)) {
+                    if (is_null($options['arrangement'])) {
                         if (empty($arrangementen)) {
                             $classArrangement = new Arrangement;
-                            $arrangementen = $classArrangement->getArrangements($subdomain);
+                            $arrangementen = $classArrangement->getArrangements($options['subdomain']);
                         }
-                        $html .= self::generateSubTag($containerElement) . self::generateSelect($field, $arrangementen);
+                        $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $arrangementen);
                     } else {
                         $html .= self::generateInput($field, [
-                            'placeholder' => $showPlaceholder,
+                            'placeholder' => $options['placeholders'],
                             'type' => 'hidden',
-                            'value' => $arrangementID,
+                            'value' => $options['arrangement'],
                         ]);
                     }
                     break;
                 case 'boeking.datum':
-                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
+                    $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
                             'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])',
                             'placeholder' => 'yyyy-mm-dd',
                             'type' => 'date',
                         ]);
                     break;
                 case 'boeking.groepsgrootte':
-                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
-                            'placeholder' => $showPlaceholder,
+                    $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
+                            'placeholder' => $options['placeholders'],
                             'raw' => [
                                 'min' => 1,
                             ],
@@ -126,14 +135,14 @@ class ContactForm
                         ]);
                     break;
                 case 'boeking.starttijd':
-                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
+                    $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
                             'pattern' => '(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])',
                             'placeholder' => 'hh:mm',
                             'type' => 'time',
                         ]);
                     break;
                 case 'contactpersoon.geslacht':
-                    $html .= self::generateSubTag($containerElement) . self::generateSelect($field, [
+                    $html .= self::generateSubTag($options['element']) . self::generateSelect($field, [
                         'man' => __('Male', Plugin::TEXT_DOMAIN),
                         'vrouw' => __('Female', Plugin::TEXT_DOMAIN),
                         'onbekend' => __('Unknown', Plugin::TEXT_DOMAIN),
@@ -141,11 +150,11 @@ class ContactForm
                     break;
                 case 'header':
                     if (strpos($html, '<dt') !== false || strpos($html, '<li') !== false || strpos($html, '<tr') !== false) {
-                        $html .= self::generateEndTag($containerElement);
+                        $html .= self::generateEndTag($options['element']);
                     }
                     $html .= '<h3>' . $field->naam . '</h3>';
                     if (strpos($html, '<dt') !== false || strpos($html, '<li') !== false || strpos($html, '<tr') !== false) {
-                        $html .= self::generateStartTag($containerElement);
+                        $html .= self::generateStartTag($options['element']);
                     }
                     break;
                 case 'keuze':
@@ -153,19 +162,19 @@ class ContactForm
                     foreach ($field->mogelijke_keuzes as $keuze) {
                         $keuzes[$keuze] = $keuze;
                     }
-                    $html .= self::generateSubTag($containerElement) . self::generateSelect($field, $keuzes);
+                    $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $keuzes);
                     break;
                 case 'veel_tekst':
-                    $html .= self::generateSubTag($containerElement) . '<textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '></textarea>';
+                    $html .= self::generateSubTag($options['element']) . '<textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '></textarea>';
                     break;
                 default:
-                    $html .= self::generateSubTag($containerElement) . self::generateInput($field, [
-                            'placeholder' => $showPlaceholder,
-                        ]);
+                    $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
+                        'placeholder' => $options['placeholders'],
+                    ]);
             }
             //$html .= print_r($field, true); //DEBUG
         }
-        $html .= self::generateEndTag($containerElement);
+        $html .= self::generateEndTag($options['element']);
 
         $sendButtonText = __('Send', Plugin::TEXT_DOMAIN); //TODO
 
@@ -174,7 +183,7 @@ class ContactForm
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $formID . '").on("submit", function(e){
         e.preventDefault();
-        return submitRecrasForm(' . $formID . ', "' . $subdomain . '", "' . plugins_url('/', dirname(__FILE__)) . '");
+        return submitRecrasForm(' . $formID . ', "' . $options['subdomain'] . '", "' . plugins_url('/', dirname(__FILE__)) . '");
     });
 });</script>';
 
