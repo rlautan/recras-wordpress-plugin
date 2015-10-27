@@ -42,6 +42,7 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 * element - show the contact form as definition list (dl - default), ordered list (ol), or table (table).
 * showlabels - show the label for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
 * showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value. Placeholders are [not supported](http://caniuse.com/#search=placeholder) in Internet Explorer versions 9 and lower.
+* submittext - the text for the form submission button. Defaults to "Send"
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
