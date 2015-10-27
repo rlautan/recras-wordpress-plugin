@@ -1,7 +1,7 @@
 <?php
 namespace Recras;
 
-class PluginTest extends \WP_UnitTestCase
+class ArrangementTest extends \WP_UnitTestCase
 {
     function __construct()
     {
@@ -92,7 +92,6 @@ class PluginTest extends \WP_UnitTestCase
         $this->assertEquals('<span class="recras-price">€ 39.95</span>' . "\n", $content, 'Should show price per person incl. vat');
 	}
 
-
     function testShortcodeProgramme()
     {
         $post = $this->factory->post->create_and_get([
@@ -112,37 +111,6 @@ class PluginTest extends \WP_UnitTestCase
         $this->assertFalse(strpos($content, '<thead'), 'Should not contain a table header');
     }
 
-
-    function testTooLongSubdomain()
-    {
-        $plugin = new Settings;
-        $result = $plugin->sanitizeSubdomain('ThisSubdomainIsLongerThanAllowedButDoesNotContainAnyInvalidCharacters');
-        $this->assertFalse($result, 'Too long subdomain should be invalid');
-    }
-
-    function testInvalidSubdomain()
-    {
-        $plugin = new Settings;
-        $result = $plugin->sanitizeSubdomain('foo@bar');
-        $this->assertFalse($result, 'Subdomain with invalid characters should be invalid');
-    }
-
-    function testValidSubdomain()
-    {
-        $plugin = new Settings;
-        $result = $plugin->sanitizeSubdomain('demo');
-        $this->assertEquals('demo', $result, 'Valid subdomain should be valid');
-    }
-
-    function testContactformNoTitle()
-    {
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-contact id=3 showtitle=false]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
-        $this->assertFalse(strpos($content, '<h3'), 'Setting showtitle to false should not generate a title');
-    }
-
     function testGetArrangements()
     {
         $plugin = new Arrangement;
@@ -157,17 +125,4 @@ class PluginTest extends \WP_UnitTestCase
         $this->assertTrue(is_string($arrangements), 'getArrangements on a non-existing subdomain should return an error message');
     }
 
-    function testGetForms()
-    {
-        $plugin = new ContactForm;
-        $forms = $plugin->getForms('demo');
-        $this->assertGreaterThan(0, count($forms), 'getForms should return a non-empty array');
-    }
-
-    function testGetFormsInvalidDomain()
-    {
-        $plugin = new ContactForm;
-        $forms = $plugin->getForms('ObviouslyFakeSubdomainThatDoesNotExist');
-        $this->assertTrue(is_string($forms), 'getForms on a non-existing subdomain should return an error message');
-    }
 }

@@ -18,6 +18,7 @@ This plugin consists of two shortcodes. To use them, you first need to set your 
 
 = Arrangements =
 Add the `[arrangement]` shortcode anywhere on your site. The following parameters are supported:
+
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
   * duration - shows the duration of this arrangement (i.e. time between start of first activity and end of last activity)
@@ -36,6 +37,7 @@ Example: `[arrangement id="1" show="title"]` (quotation marks around parameters 
 
 = Contact forms =
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
+
 * id (required) - corresponds to the contact form ID in Recras
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
 * arrangement - for forms where the user can select an arrangement, setting this parameter will select the arrangement automatically and hide the field for the user.
