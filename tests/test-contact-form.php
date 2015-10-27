@@ -3,12 +3,6 @@ namespace Recras;
 
 class ContactFormTest extends \WP_UnitTestCase
 {
-    function __construct()
-    {
-        update_option('recras_currency', '€');
-        update_option('recras_subdomain', 'demo');
-    }
-
 	function testShortcodeWithoutID()
 	{
 		$post = $this->factory->post->create_and_get([

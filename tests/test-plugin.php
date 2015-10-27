@@ -7,6 +7,7 @@ class PluginTest extends \WP_UnitTestCase
     {
         update_option('recras_currency', '€');
         update_option('recras_subdomain', 'demo');
+        update_option('recras_decimal', '.');
     }
 
     function testTooLongSubdomain()

@@ -3,12 +3,6 @@ namespace Recras;
 
 class ArrangementTest extends \WP_UnitTestCase
 {
-    function __construct()
-    {
-        update_option('recras_currency', '€');
-        update_option('recras_subdomain', 'demo');
-    }
-
 	function testShortcodeWithoutID()
 	{
 		$post = $this->factory->post->create_and_get([
@@ -125,4 +119,25 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertTrue(is_string($arrangements), 'getArrangements on a non-existing subdomain should return an error message');
     }
 
+    function testChangeDecimal()
+    {
+        update_option('recras_decimal', ',');
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=8 show=price_total_excl_vat]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<span class="recras-price">€ 376,89</span>' . "\n", $content, 'Should respect decimal setting');
+        update_option('recras_decimal', '.');
+    }
+
+    function testChangeCurrency()
+    {
+        update_option('recras_currency', '¥');
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=8 show=price_total_excl_vat]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<span class="recras-price">¥ 376.89</span>' . "\n", $content, 'Should respect currency setting');
+        update_option('recras_currency', '€');
+    }
 }
