@@ -50,6 +50,24 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertEquals('<span class="recras-title">2 daags vergader arrangement</span>' . "\n", $content, 'Should show title');
 	}
 
+	function testShortcodeDuration()
+	{
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=8 show=duration]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<span class="recras-duration">1:7:30</span>' . "\n", $content, 'Should show duration');
+	}
+
+	function testShortcodeLocation()
+	{
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=8 show=location]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<span class="recras-location">No location specified</span>' . "\n", $content, 'Should show location');
+	}
+
 	function testShortcodeShowPersons()
 	{
         $post = $this->factory->post->create_and_get([
