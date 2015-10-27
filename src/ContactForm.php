@@ -67,6 +67,11 @@ class ContactForm
             $arrangementID = (int) $attributes['arrangement'];
         }
 
+        $submitText = __('Send', Plugin::TEXT_DOMAIN);
+        if (isset($attributes['submittext'])) {
+            $submitText = $attributes['submittext'];
+        }
+
         $options = [
             'arrangement' => $arrangementID,
             'element' => $element,
@@ -74,6 +79,7 @@ class ContactForm
             'placeholders' => $showPlaceholders,
             'showLabels' => $showLabels,
             'subdomain' => $subdomain,
+            'submitText' => $submitText,
         ];
 
         return self::generateForm($attributes['id'], $formFields, $options);
@@ -176,9 +182,7 @@ class ContactForm
         }
         $html .= self::generateEndTag($options['element']);
 
-        $sendButtonText = __('Send', Plugin::TEXT_DOMAIN); //TODO
-
-        $html .= '<input type="submit" value="' . $sendButtonText . '">';
+        $html .= '<input type="submit" value="' . $options['submitText'] . '">';
         $html .= '</form>';
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $formID . '").on("submit", function(e){
@@ -264,7 +268,6 @@ class ContactForm
 
     private static function generateSubTag($mainElement)
     {
-
         $html = '';
         switch ($mainElement) {
             case 'dl':
