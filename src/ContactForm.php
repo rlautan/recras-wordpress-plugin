@@ -140,11 +140,11 @@ class ContactForm
                     ]);
                     break;
                 case 'header':
-                    if (strpos($html, '<dt') !== false) { //FIXME
+                    if (strpos($html, '<dt') !== false || strpos($html, '<li') !== false || strpos($html, '<tr') !== false) {
                         $html .= self::generateEndTag($containerElement);
                     }
                     $html .= '<h3>' . $field->naam . '</h3>';
-                    if (strpos($html, '<dt') !== false) { //FIXME
+                    if (strpos($html, '<dt') !== false || strpos($html, '<li') !== false || strpos($html, '<tr') !== false) {
                         $html .= self::generateStartTag($containerElement);
                     }
                     break;
@@ -166,7 +166,10 @@ class ContactForm
             //$html .= print_r($field, true); //DEBUG
         }
         $html .= self::generateEndTag($containerElement);
-        $html .= '<input type="submit" value="' . __('Send', Plugin::TEXT_DOMAIN) . '">';
+
+        $sendButtonText = __('Send', Plugin::TEXT_DOMAIN); //TODO
+
+        $html .= '<input type="submit" value="' . $sendButtonText . '">';
         $html .= '</form>';
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $formID . '").on("submit", function(e){
