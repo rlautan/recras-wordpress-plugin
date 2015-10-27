@@ -231,13 +231,14 @@ class ContactForm
         $html = '';
         switch ($mainElement) {
             case 'dl':
-                $html .= '<dt>';
+                $html .= ($showLabel ? '<dt>' : '');
                 break;
             case 'ol':
-                $html .= '<li>';
+                $html .= ($showLabel ? '<li>' : '');
                 break;
             case 'table':
-                $html .= '<tr><td>';
+                $html .= '<tr>';
+                $html .= ($showLabel ? '<td>' : '');
                 break;
         }
         if ($showLabel) {
