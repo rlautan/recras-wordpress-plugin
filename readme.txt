@@ -16,7 +16,7 @@ To get started, go to the Settings -> Recras page and enter your Recras subdomai
 
 This plugin consists of two shortcodes. To use them, you first need to set your Recras subdomain on the Settings > Recras page.
 
-=== Arrangements ===
+= Arrangements =
 Add the `[arrangement]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
@@ -34,7 +34,7 @@ Add the `[arrangement]` shortcode anywhere on your site. The following parameter
 
 Example: `[arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the arrangement with ID 1.
 
-=== Contact forms ===
+= Contact forms =
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the contact form ID in Recras
 * showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
@@ -45,7 +45,7 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
-=== Styling ===
+= Styling =
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
 
 == Installation ==
