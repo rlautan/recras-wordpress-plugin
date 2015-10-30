@@ -58,10 +58,7 @@ class Arrangement
             case 'program':
             case 'programme':
                 $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
-                $showHeader = true;
-                if (isset($attributes['showheader']) && ($attributes['showheader'] == 'false' || $attributes['showheader'] == 0 || $attributes['showheader'] == 'no')) {
-                    $showHeader = false;
-                }
+                $showHeader = !isset($attributes['showheader']) || Settings::parseBoolean($attributes['showheader']);
                 return self::generateProgramme($json->programma, $startTime, $showHeader);
             case 'title':
                 return '<span class="recras-title">' . $json->arrangement . '</span>';

@@ -37,19 +37,12 @@ class ContactForm
         }
         $formTitle = $json->naam;
 
-        if (isset($attributes['showtitle']) && ($attributes['showtitle'] == 'false' || $attributes['showtitle'] == 0 || $attributes['showtitle'] == 'no')) {
+        if (isset($attributes['showtitle']) && !Settings::parseBoolean($attributes['showtitle'])) {
             $formTitle = false;
         }
         
-        $showLabels = true;
-        if (isset($attributes['showlabels']) && ($attributes['showlabels'] == 'false' || $attributes['showlabels'] == 0 || $attributes['showlabels'] == 'no')) {
-            $showLabels = false;
-        }
-        
-        $showPlaceholders = true;
-        if (isset($attributes['showplaceholders']) && ($attributes['showplaceholders'] == 'false' || $attributes['showplaceholders'] == 0 || $attributes['showplaceholders'] == 'no')) {
-            $showPlaceholders = false;
-        }
+        $showLabels = !isset($attributes['showlabels']) || Settings::parseBoolean($attributes['showlabels']);
+        $showPlaceholders = !isset($attributes['showplaceholders']) || Settings::parseBoolean($attributes['showplaceholders']);
 
         $element = 'dl';
         if (isset($attributes['element']) && in_array($attributes['element'], self::getValidElements())) {
