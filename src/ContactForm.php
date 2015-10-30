@@ -3,6 +3,13 @@ namespace Recras;
 
 class ContactForm
 {
+    /**
+     * Add the [recras-contact] shortcode
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
     public static function addContactShortcode($attributes)
     {
         if (!isset($attributes['id'])) {
@@ -85,11 +92,29 @@ class ContactForm
         return self::generateForm($attributes['id'], $formFields, $options);
     }
 
+
+    /**
+     * Generate an HTML end tag
+     *
+     * @param string $element
+     *
+     * @return string
+     */
     private static function generateEndTag($element)
     {
         return '</' . $element . '>';
     }
 
+
+    /**
+     * Generate a contact form
+     *
+     * @param int $formID
+     * @param array $formFields
+     * @param array $options
+     *
+     * @return string
+     */
     public static function generateForm($formID, $formFields, $options)
     {
         $arrangementen = [];
@@ -194,6 +219,15 @@ class ContactForm
         return $html;
     }
 
+
+    /**
+     * Generate an input field
+     *
+     * @param object $field
+     * @param array $options
+     *
+     * @return string
+     */
     private static function generateInput($field, $options = [])
     {
         $options = array_merge([
@@ -230,6 +264,15 @@ class ContactForm
     }
 
 
+    /**
+     * Generate a label element
+     *
+     * @param string $mainElement
+     * @param object $field
+     * @param bool $showLabel
+     *
+     * @return string
+     */
     private static function generateLabel($mainElement, $field, $showLabel)
     {
         $html = '';
@@ -251,6 +294,15 @@ class ContactForm
         return $html;
     }
 
+
+    /**
+     * Generate a dropdown field
+     *
+     * @param object $field
+     * @param array $options
+     *
+     * @return string
+     */
     public static function generateSelect($field, $options)
     {
         $html = '<select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
@@ -261,11 +313,27 @@ class ContactForm
         return $html;
     }
 
+
+    /**
+     * Generate an HTML start tag
+     *
+     * @param string $element
+     *
+     * @return string
+     */
     private static function generateStartTag($element)
     {
         return '<' . $element . '>';
     }
 
+
+    /**
+     * Generate the element between label and input
+     *
+     * @param string $mainElement
+     *
+     * @return string
+     */
     private static function generateSubTag($mainElement)
     {
         $html = '';
@@ -283,6 +351,14 @@ class ContactForm
         return $html;
     }
 
+
+    /**
+     * Get forms for a Recras instance
+     *
+     * @param string $subdomain
+     *
+     * @return array|string
+     */
     public function getForms($subdomain)
     {
         $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren';
@@ -302,11 +378,21 @@ class ContactForm
         return $forms;
     }
 
+
+    /**
+     * Get a list of all valid container elements
+     *
+     * @return array
+     */
     public static function getValidElements()
     {
         return ['dl', 'table', 'ol'];
     }
 
+
+    /**
+     * Show the TinyMCE shortcode generator contact form
+     */
     public static function showForm()
     {
         require_once(dirname(__FILE__) . '/../editor/form-contact.php');

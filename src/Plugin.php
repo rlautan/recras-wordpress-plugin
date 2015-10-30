@@ -6,6 +6,9 @@ class Plugin
     const TEXT_DOMAIN = 'recras-wp';
 
 
+    /**
+     * Init all the things!
+     */
     public function __construct()
     {
         // Init Localisation
@@ -28,6 +31,10 @@ class Plugin
         $this->addShortcodes();
     }
 
+
+    /**
+     * Add the shortcode generator buttons to TinyMCE
+     */
     public function addEditorButtons()
     {
         add_filter('mce_external_plugins', [&$this, 'addEditorScripts']);
@@ -35,12 +42,24 @@ class Plugin
         add_thickbox();
     }
 
+
+    /**
+     * Load the script needed for TinyMCE
+     *
+     * @param array $plugins
+     *
+     * @return array
+     */
     public function addEditorScripts($plugins)
     {
         $plugins['recras'] = plugins_url('/editor/plugin.js', dirname(__FILE__));
         return $plugins;
     }
 
+
+    /**
+     * Add the menu items for our plugin
+     */
     public function addMenuItems()
     {
         add_options_page(
@@ -55,18 +74,34 @@ class Plugin
         add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
     }
 
+
+    /**
+     * Register our shortcodes
+     */
     public function addShortcodes()
     {
         add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
     }
 
+
+    /**
+     * Load the TinyMCE translation
+     *
+     * @param array $locales
+     *
+     * @return array
+     */
     public function loadEditorLanguage($locales)
     {
         $locales['recras'] = plugin_dir_path(__FILE__) . '/editor/translation.php';
         return $locales;
     }
 
+
+    /**
+     * Load the general script and localisation
+     */
     public function loadScripts()
     {
         wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '0.15.1', true);
@@ -78,12 +113,24 @@ class Plugin
         wp_enqueue_script('recras');
     }
 
+
+    /**
+     * Register TinyMCE buttons
+     *
+     * @param array $buttons
+     *
+     * @return array
+     */
     public function registerEditorButtons($buttons)
     {
         array_push($buttons, 'arrangement', 'recras-contact');
         return $buttons;
     }
 
+
+    /**
+     * Show a notice if the server doesn't meet our requirements
+     */
     public function showActivationNotice()
     {
         global $pagenow;

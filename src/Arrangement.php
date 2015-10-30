@@ -4,6 +4,13 @@ namespace Recras;
 
 class Arrangement
 {
+    /**
+     * Add the [arrangement] shortcode
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
     public static function addArrangementShortcode($attributes)
     {
         if (!isset($attributes['id'])) {
@@ -63,6 +70,16 @@ class Arrangement
         }
     }
 
+
+    /**
+     * Generate the programme for an arrangement
+     *
+     * @param array $programme
+     * @param string $startTime
+     * @param bool $showHeader
+     *
+     * @return string
+     */
     public static function generateProgramme($programme, $startTime = '00:00', $showHeader = true)
     {
         $html = '<table class="recras-programme">';
@@ -97,6 +114,13 @@ class Arrangement
         return $html;
     }
 
+
+    /**
+     * Get arrangements from the Recras API
+     *
+     * @param string $subdomain
+     * @return array|string
+     */
     public function getArrangements($subdomain)
     {
         $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/arrangementen';
@@ -118,6 +142,14 @@ class Arrangement
         return $arrangements;
     }
 
+
+    /**
+     * Get duration of an arrangement
+     *
+     * @param object $json
+     *
+     * @return string
+     */
     private static function getDuration($json)
     {
         $startTime = new \DateTime('00:00');
@@ -149,6 +181,14 @@ class Arrangement
         return $html;
     }
 
+
+    /**
+     * Get the starting location of an arrangement
+     *
+     * @param object $json
+     *
+     * @return string
+     */
     private static function getLocation($json)
     {
         if ($json->ontvangstlocatie) {
@@ -159,11 +199,25 @@ class Arrangement
         return '<span class="recras-location">' . $location . '</span>';
     }
 
+
+    /**
+     * Get all valid options for the "show" argument
+     *
+     * @return array
+     */
     public static function getValidOptions()
     {
         return ['duration', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
     }
 
+
+    /**
+     * Format a price
+     *
+     * @param float $price
+     *
+     * @return string
+     */
     public static function returnPrice($price)
     {
         $currency = get_option('recras_currency');
@@ -174,6 +228,10 @@ class Arrangement
         return '<span class="recras-price">' . $currency . ' ' . number_format($price, 2, $decimalSeparator, '') . '</span>';
     }
 
+
+    /**
+     * Show the TinyMCE shortcode generator arrangement form
+     */
     public static function showForm()
     {
         require_once(dirname(__FILE__) . '/../editor/form-arrangement.php');

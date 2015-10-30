@@ -3,6 +3,11 @@ namespace Recras;
 
 class Settings
 {
+    /**
+     * Add a currency input field
+     *
+     * @param array $args
+     */
     public static function addInputCurrency($args)
     {
         $field = $args['field'];
@@ -14,6 +19,12 @@ class Settings
         printf('<input type="text" name="%s" id="%s" value="%s">', $field, $field, $value);
     }
 
+
+    /**
+     * Add a decimal separator input field
+     *
+     * @param array $args
+     */
     public static function addInputDecimal($args)
     {
         $field = $args['field'];
@@ -25,6 +36,12 @@ class Settings
         printf('<input type="text" name="%s" id="%s" value="%s" size="2" maxlength="1">', $field, $field, $value);
     }
 
+
+    /**
+     * Add a subdomain input field
+     *
+     * @param array $args
+     */
     public static function addInputSubdomain($args)
     {
         $field = $args['field'];
@@ -36,6 +53,10 @@ class Settings
         printf('<input type="text" name="%s" id="%s" value="%s">', $field, $field, $value);
     }
 
+
+    /**
+     * Load the admin options page
+     */
     public static function editSettings()
     {
         if (!current_user_can('manage_options'))
@@ -45,6 +66,27 @@ class Settings
         require_once('admin/settings.php');
     }
 
+
+    /**
+     * Parse a boolean value
+     *
+     * @param string $value
+     *
+     * @return bool
+     */
+    public static function parseBoolean($value)
+    {
+        $bool = true;
+        if (isset($value) && ($value == 'false' || $value == 0 || $value == 'no')) {
+            $bool = false;
+        }
+        return $bool;
+    }
+
+
+    /**
+     * Register plugin settings
+     */
     public static function registerSettings()
     {
         add_settings_section(
@@ -63,6 +105,14 @@ class Settings
         add_settings_field('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal'], 'recras', 'recras', ['field' => 'recras_decimal']);
     }
 
+
+    /**
+     * Sanitize user inputted subdomain
+     *
+     * @param string $subdomain
+     *
+     * @return bool|string
+     */
     public function sanitizeSubdomain($subdomain)
     {
         // RFC 1034 section 3.5 - http://tools.ietf.org/html/rfc1034#section-3.5
@@ -75,6 +125,10 @@ class Settings
         return $subdomain;
     }
 
+
+    /**
+     * Echo settings helper text
+     */
     public static function settingsHelp()
     {
         _e('Enter your Recras details here', Plugin::TEXT_DOMAIN);
