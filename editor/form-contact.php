@@ -29,7 +29,7 @@
         <dd><input type="checkbox" id="showlabels" checked>
     <dt><label for="showplaceholders"><?php _e('Show placeholders?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="showplaceholders" checked>
-    <dt><label for="arrangement_id"><?php _e('Arrangement ID', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="arrangement_id"><?php _e('Arrangement', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><?php if (is_string($arrangements)) { ?>
             <input type="number" id="arrangement_id" min="0" required>
             <?= $arrangements; ?>
