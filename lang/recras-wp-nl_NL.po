@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-10-27 12:40+0100\n"
-"PO-Revision-Date: 2015-10-27 12:40+0100\n"
+"POT-Creation-Date: 2015-11-03 09:45+0100\n"
+"PO-Revision-Date: 2015-11-03 09:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 src/Plugin.php:54
+#: editor/form-arrangement.php:14 src/Plugin.php:73
 msgid "Arrangement"
 msgstr "Arrangement"
 
@@ -81,11 +81,11 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:44 editor/form-contact.php:50
+#: editor/form-arrangement.php:44 editor/form-contact.php:52
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
-#: editor/form-contact.php:15 src/Plugin.php:55
+#: editor/form-contact.php:15 src/Plugin.php:74
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -122,6 +122,15 @@ msgstr "Geordende lijst"
 msgid "Table"
 msgstr "Tabel"
 
+#: editor/form-contact.php:49
+msgid "Submit button text"
+msgstr "Tekst op knop Versturen"
+
+#: editor/form-contact.php:50 editor/form-contact.php:71
+#: src/ContactForm.php:70
+msgid "Send"
+msgstr "Versturen"
+
 #: editor/translation.php:12
 msgid "What is the ID of the arrangement?"
 msgstr "Wat is het ID van het arrangement?"
@@ -134,85 +143,81 @@ msgstr "Wat is het ID van het contactformulier?"
 msgid "ID should be a positive integer"
 msgstr "ID moet een positief geheel getal zijn"
 
-#: src/Arrangement.php:10 src/ContactForm.php:9
+#: src/Arrangement.php:17 src/ContactForm.php:16
 msgid "Error: no ID set"
 msgstr "Fout: geen ID ingesteld"
 
-#: src/Arrangement.php:13 src/ContactForm.php:12
+#: src/Arrangement.php:20 src/ContactForm.php:19
 msgid "Error: ID is not a number"
 msgstr "Fout: ID is geen getal"
 
-#: src/Arrangement.php:16
+#: src/Arrangement.php:23
 msgid "Error: \"show\" option not set"
 msgstr "Fout: optie \"show\" niet ingesteld"
 
-#: src/Arrangement.php:19
+#: src/Arrangement.php:26
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: src/Arrangement.php:24 src/ContactForm.php:17
+#: src/Arrangement.php:31 src/ContactForm.php:24
 msgid "Error: you have not set your Recras subdomain yet"
 msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
 
-#: src/Arrangement.php:29 src/Arrangement.php:105 src/ContactForm.php:25
-#: src/ContactForm.php:56 src/ContactForm.php:291
+#: src/Arrangement.php:36 src/Arrangement.php:126 src/ContactForm.php:32
+#: src/ContactForm.php:56 src/ContactForm.php:360
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
-#: src/Arrangement.php:33 src/Arrangement.php:109 src/ContactForm.php:29
-#: src/ContactForm.php:60 src/ContactForm.php:295
+#: src/Arrangement.php:40 src/Arrangement.php:130 src/ContactForm.php:36
+#: src/ContactForm.php:60 src/ContactForm.php:364
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
 
-#: src/Arrangement.php:72
+#: src/Arrangement.php:86
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:72
+#: src/Arrangement.php:86
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:72
+#: src/Arrangement.php:86
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:143
+#: src/Arrangement.php:172
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:157
+#: src/Arrangement.php:194
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
-#: src/ContactForm.php:70
-msgid "Send"
-msgstr "Versturen"
-
-#: src/ContactForm.php:152
+#: src/ContactForm.php:170
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:153
+#: src/ContactForm.php:171
 msgid "Female"
 msgstr "Vrouw"
 
-#: src/ContactForm.php:154
+#: src/ContactForm.php:172
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/Plugin.php:74
+#: src/Plugin.php:109
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:75
+#: src/Plugin.php:110
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:76
+#: src/Plugin.php:111
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:92
+#: src/Plugin.php:139
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
@@ -220,23 +225,23 @@ msgstr ""
 "De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie werkt "
 "het versturen van contactformulieren niet."
 
-#: src/Settings.php:43
+#: src/Settings.php:64
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
 
-#: src/Settings.php:61
-msgid "Subdomain"
-msgstr "Subdomein"
+#: src/Settings.php:103
+msgid "Recras name"
+msgstr "Recrasnaam"
 
-#: src/Settings.php:62
+#: src/Settings.php:104
 msgid "Currency symbol"
 msgstr "Valutasymbool"
 
-#: src/Settings.php:63
+#: src/Settings.php:105
 msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
-#: src/Settings.php:80
+#: src/Settings.php:134
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 
@@ -247,6 +252,9 @@ msgstr "Recras-instellingen"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Subdomain"
+#~ msgstr "Subdomein"
 
 #~ msgid "%dd"
 #~ msgstr "%dd"

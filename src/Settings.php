@@ -50,7 +50,7 @@ class Settings
             $value = 'demo';
         }
 
-        printf('<input type="text" name="%s" id="%s" value="%s">', $field, $field, $value);
+        printf('<input type="text" name="%s" id="%s" value="%s">.recras.nl', $field, $field, $value);
     }
 
 
@@ -100,7 +100,7 @@ class Settings
         register_setting('recras', 'recras_currency', '');
         register_setting('recras', 'recras_decimal', '');
 
-        add_settings_field('recras_subdomain', __('Subdomain', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
+        add_settings_field('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
         add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
         add_settings_field('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal'], 'recras', 'recras', ['field' => 'recras_decimal']);
     }
