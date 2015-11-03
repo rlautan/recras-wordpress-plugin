@@ -26,10 +26,12 @@ class Arrangement
             return __('Error: invalid "show" option', Plugin::TEXT_DOMAIN);
         }
 
-        $subdomain = get_option('recras_subdomain');
+
+        $subdomain = Settings::getSubdomain($attributes);
         if (!$subdomain) {
-            return __('Error: you have not set your Recras subdomain yet', Plugin::TEXT_DOMAIN);
+            return __('Error: you have not set your Recras name yet', Plugin::TEXT_DOMAIN);
         }
+
 
         $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $attributes['id']);
         if ($json === false) {

@@ -19,9 +19,9 @@ class ContactForm
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
 
-        $subdomain = get_option('recras_subdomain');
+        $subdomain = Settings::getSubdomain($attributes);
         if (!$subdomain) {
-            return __('Error: you have not set your Recras subdomain yet', Plugin::TEXT_DOMAIN);
+            return __('Error: you have not set your Recras name yet', Plugin::TEXT_DOMAIN);
         }
 
 

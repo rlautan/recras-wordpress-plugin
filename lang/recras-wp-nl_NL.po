@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-11-03 09:45+0100\n"
-"PO-Revision-Date: 2015-11-03 09:46+0100\n"
+"POT-Creation-Date: 2015-11-03 15:57+0100\n"
+"PO-Revision-Date: 2015-11-03 15:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 src/Plugin.php:73
+#: editor/form-arrangement.php:14 editor/form-contact.php:32
+#: src/Plugin.php:73
 msgid "Arrangement"
 msgstr "Arrangement"
 
@@ -98,13 +99,8 @@ msgid "Show labels?"
 msgstr "Toon labels?"
 
 #: editor/form-contact.php:30
-#, fuzzy
 msgid "Show placeholders?"
 msgstr "Toon placeholders?"
-
-#: editor/form-contact.php:32
-msgid "Arrangement ID"
-msgstr "Arrangement-ID"
 
 #: editor/form-contact.php:43
 msgid "HTML element"
@@ -159,37 +155,37 @@ msgstr "Fout: optie \"show\" niet ingesteld"
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: src/Arrangement.php:31 src/ContactForm.php:24
-msgid "Error: you have not set your Recras subdomain yet"
-msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
+#: src/Arrangement.php:32 src/ContactForm.php:24
+msgid "Error: you have not set your Recras name yet"
+msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Arrangement.php:36 src/Arrangement.php:126 src/ContactForm.php:32
+#: src/Arrangement.php:38 src/Arrangement.php:128 src/ContactForm.php:32
 #: src/ContactForm.php:56 src/ContactForm.php:360
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
-#: src/Arrangement.php:40 src/Arrangement.php:130 src/ContactForm.php:36
+#: src/Arrangement.php:42 src/Arrangement.php:132 src/ContactForm.php:36
 #: src/ContactForm.php:60 src/ContactForm.php:364
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
 
-#: src/Arrangement.php:86
+#: src/Arrangement.php:88
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:86
+#: src/Arrangement.php:88
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:86
+#: src/Arrangement.php:88
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:172
+#: src/Arrangement.php:174
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:194
+#: src/Arrangement.php:196
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
@@ -229,19 +225,19 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
 
-#: src/Settings.php:103
+#: src/Settings.php:120
 msgid "Recras name"
 msgstr "Recrasnaam"
 
-#: src/Settings.php:104
+#: src/Settings.php:121
 msgid "Currency symbol"
 msgstr "Valutasymbool"
 
-#: src/Settings.php:105
+#: src/Settings.php:122
 msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
-#: src/Settings.php:134
+#: src/Settings.php:151
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 
@@ -252,6 +248,12 @@ msgstr "Recras-instellingen"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Error: you have not set your Recras subdomain yet"
+#~ msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
+
+#~ msgid "Arrangement ID"
+#~ msgstr "Arrangement-ID"
 
 #~ msgid "Subdomain"
 #~ msgstr "Subdomein"

@@ -68,6 +68,23 @@ class Settings
 
 
     /**
+     * Get the Recras subdomain, which can be set in the shortcode attributes or as global setting
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public static function getSubdomain($attributes)
+    {
+        if (isset($attributes['recrasname'])) {
+            return $attributes['recrasname'];
+        } else {
+            return get_option('recras_subdomain');
+        }
+    }
+
+
+    /**
      * Parse a boolean value
      *
      * @param string $value
