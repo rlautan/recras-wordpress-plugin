@@ -7,9 +7,9 @@ Easily integrate data from your Recras instance, such as arrangements and contac
 ## Usage
 With this plugin, you can easily integrate data from your [Recras](https://recras.nl/) instance, such as arrangements and contact forms, into your own website.
 
-To get started, go to the Settings -> Recras page and enter your Recras subdomain. For example, if you log in to Recras at `https://mysite.recras.nl/` then your subdomain is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
+To get started, go to the Settings -> Recras page and enter your Recras name. For example, if you log in to Recras at `https://mysite.recras.nl/` then your Recras name is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
 
-This plugin consists of two shortcodes. To use them, you first need to set your Recras subdomain on the Settings > Recras page.
+This plugin consists of two shortcodes. To use them, you first need to set your Recras name on the Settings > Recras page.
 
 ### Arrangements
 
