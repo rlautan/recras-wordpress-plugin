@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-11-05 14:39+0100\n"
-"PO-Revision-Date: 2015-11-05 14:40+0100\n"
+"POT-Creation-Date: 2015-11-05 16:25+0100\n"
+"PO-Revision-Date: 2015-11-05 16:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -17,8 +17,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 editor/form-contact.php:32
-#: src/Plugin.php:73
+#: editor/form-arrangement.php:14 editor/form-contact.php:32 src/Plugin.php:74
 msgid "Arrangement"
 msgstr "Arrangement"
 
@@ -83,11 +82,11 @@ msgid "No"
 msgstr "Nee"
 
 #: editor/form-arrangement.php:44 editor/form-booking.php:24
-#: editor/form-contact.php:52
+#: editor/form-contact.php:53
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
-#: editor/form-booking.php:12 editor/form-contact.php:15 src/Plugin.php:74
+#: editor/form-booking.php:12 editor/form-contact.php:15 src/Plugin.php:75
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -104,26 +103,35 @@ msgid "Show placeholders?"
 msgstr "Toon placeholders?"
 
 #: editor/form-contact.php:43
+msgid ""
+"Some arrangements may not be available for all contact forms. You can change "
+"this by editing your contact forms in Recras."
+msgstr ""
+"Sommige arrangementen zijn mogelijk niet beschikbaar voor alle "
+"contactformulieren. Je kunt dit wijzigen door je contactformulieren in "
+"Recras te bewerken."
+
+#: editor/form-contact.php:44
 msgid "HTML element"
 msgstr "HTML-element"
 
-#: editor/form-contact.php:45
+#: editor/form-contact.php:46
 msgid "Definition list"
 msgstr "Definitielijst"
 
-#: editor/form-contact.php:46
+#: editor/form-contact.php:47
 msgid "Ordered list"
 msgstr "Geordende lijst"
 
-#: editor/form-contact.php:47
+#: editor/form-contact.php:48
 msgid "Table"
 msgstr "Tabel"
 
-#: editor/form-contact.php:49
+#: editor/form-contact.php:50
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:50 editor/form-contact.php:71
+#: editor/form-contact.php:51 editor/form-contact.php:75
 #: src/ContactForm.php:70
 msgid "Send"
 msgstr "Versturen"
@@ -160,12 +168,12 @@ msgstr "Fout: ongeldige \"show\"-optie"
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Arrangement.php:38 src/Arrangement.php:133 src/ContactForm.php:32
+#: src/Arrangement.php:38 src/Arrangement.php:140 src/ContactForm.php:32
 #: src/ContactForm.php:56 src/ContactForm.php:360
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
-#: src/Arrangement.php:42 src/Arrangement.php:137 src/ContactForm.php:36
+#: src/Arrangement.php:42 src/Arrangement.php:144 src/ContactForm.php:36
 #: src/ContactForm.php:60 src/ContactForm.php:364
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
@@ -182,16 +190,16 @@ msgstr "Tot"
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:106
+#: src/Arrangement.php:114
 #, php-format
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:179
+#: src/Arrangement.php:186
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:201
+#: src/Arrangement.php:208
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
@@ -207,23 +215,23 @@ msgstr "Vrouw"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/Plugin.php:75
+#: src/Plugin.php:76
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:111
+#: src/Plugin.php:118
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:112
+#: src/Plugin.php:119
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:113
+#: src/Plugin.php:120
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:141
+#: src/Plugin.php:148
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."

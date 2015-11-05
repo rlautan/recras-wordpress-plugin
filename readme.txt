@@ -76,7 +76,9 @@ None yet!
 == Changelog ==
 
 = 1.0.0 =
-Add shortcode for online bookings
+* Add shortcode for online bookings
+* Change the way arrangement programmes spanning multiple days are shown
+* Not all arrangements are available for all contact forms - the plugin now checks if the combination is valid
 
 = 0.17.1 =
 Rename Subdomain to Recras name

@@ -40,6 +40,7 @@
                 <?php } ?>
             </select>
         <?php } ?>
+        <p><?php _e('Some arrangements may not be available for all contact forms. You can change this by editing your contact forms in Recras.', \Recras\Plugin::TEXT_DOMAIN); ?></p>
     <dt><label for="container_element"><?php _e('HTML element', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="container_element">
                 <option value="dl" selected><?php _e('Definition list', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;dl&gt;)
@@ -52,6 +53,12 @@
 <button class="button button-primary" id="contact_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
 <script>
+    // Check which arrangements are available
+    getContactFormArrangements(document.getElementById('contactform_id').value, '<?php echo $subdomain; ?>');
+    document.getElementById('contactform_id').addEventListener('change', function(){
+        getContactFormArrangements(document.getElementById('contactform_id').value, '<?php echo $subdomain; ?>');
+    });
+
     document.getElementById('contact_submit').addEventListener('click', function(){
         var shortcode = '[recras-contact id="' + document.getElementById('contactform_id').value + '"';
 

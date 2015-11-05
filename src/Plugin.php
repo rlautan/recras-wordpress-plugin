@@ -26,6 +26,7 @@ class Plugin
 
         add_filter('mce_external_languages', [&$this, 'loadEditorLanguage']);
 
+        add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
         $this->addShortcodes();
@@ -84,6 +85,12 @@ class Plugin
         add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-booking', ['Recras\OnlineBooking', 'addBookingShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
+    }
+
+
+    public function loadAdminScripts()
+    {
+        wp_enqueue_script('recras-admin', plugins_url('/js/admin.js', dirname(__FILE__)), [], '1.0.0', true);
     }
 
 
