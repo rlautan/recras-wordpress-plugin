@@ -42,7 +42,12 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
-=== Styling ===
+### Online booking
+Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
+
+* id (required) - corresponds to the contact form ID in Recras
+
+### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
 
 ## Installation
