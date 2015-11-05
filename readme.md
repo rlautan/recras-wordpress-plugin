@@ -47,6 +47,9 @@ Add the `[recras-booking]` shortcode anywhere on your site. The following parame
 
 * id (required) - corresponds to the contact form ID in Recras
 
+## Products
+TODO: documentation
+
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
 
@@ -67,5 +70,5 @@ We would appreciate it if you use [our GitHub page](https://github.com/Recras/re
 
 We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
 
-== Credits ==
+## Credits
 * Icons from [Genericons](https://github.com/Automattic/Genericons/) by Automattic, released under the GPL.

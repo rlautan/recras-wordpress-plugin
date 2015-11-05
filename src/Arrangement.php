@@ -130,6 +130,7 @@ class Arrangement
      * Get arrangements from the Recras API
      *
      * @param string $subdomain
+     *
      * @return array|string
      */
     public function getArrangements($subdomain)
