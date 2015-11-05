@@ -104,15 +104,36 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertEquals('<span class="recras-price">€ 39.95</span>' . "\n", $content, 'Should show price per person incl. vat');
 	}
 
-    function testShortcodeProgramme()
+    function testSingleDayProgramme()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=5 show=programme]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertNotFalse(strpos($content, '<table'), 'Should return an HTML table');
+        $this->assertNotFalse(strpos($content, '<thead'), 'Should contain a table header');
+        $this->assertEquals(0, substr_count($content, '<tr class="recras-new-day'), 'Should stay on one day');
+    }
+
+    function testProgrammeWithTimeOffset()
+    {
+        $this->markTestSkipped('TODO: implement proper time offset');
+        /*$post = $this->factory->post->create_and_get([
+            'post_content' => '[arrangement id=5 starttime="16:00" show=programme]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals(2, substr_count($content, '<tr class="recras-new-day'), 'Should span two days');*/
+    }
+
+    function testMultiDayProgramme()
     {
         $post = $this->factory->post->create_and_get([
             'post_content' => '[arrangement id=8 show=programme]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertNotFalse(strpos($content, '<table'), 'Should return an HTML table');
-        $this->assertNotFalse(strpos($content, '<thead'), 'Should contain a table header');
+        $this->assertEquals(2, substr_count($content, '<tr class="recras-new-day'), 'Should span two days');
     }
+
     function testShortcodeProgrammeWithoutHeader()
     {
         $post = $this->factory->post->create_and_get([
