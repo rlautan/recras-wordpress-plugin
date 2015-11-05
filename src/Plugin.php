@@ -72,6 +72,7 @@ class Plugin
 
         add_submenu_page(null, __('Arrangement', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-arrangement', ['Recras\Arrangement', 'showForm']);
         add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
+        add_submenu_page(null, __('Online booking', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-booking', ['Recras\OnlineBooking', 'showForm']);
     }
 
 
@@ -81,6 +82,7 @@ class Plugin
     public function addShortcodes()
     {
         add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
+        add_shortcode('recras-booking', ['Recras\OnlineBooking', 'addBookingShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
     }
 
@@ -123,7 +125,7 @@ class Plugin
      */
     public function registerEditorButtons($buttons)
     {
-        array_push($buttons, 'arrangement', 'recras-contact');
+        array_push($buttons, 'arrangement', 'recras-booking', 'recras-contact');
         return $buttons;
     }
 

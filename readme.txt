@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.3.1
-Stable tag: 0.17.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,11 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
+== Online booking ==
+Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
+
+* id (required) - corresponds to the contact form ID in Recras
+
 = Styling =
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
 
@@ -69,6 +74,9 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.0.0 =
+Add shortcode for online bookings
 
 = 0.17.1 =
 Rename Subdomain to Recras name

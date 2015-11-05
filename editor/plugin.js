@@ -21,6 +21,14 @@
                     tb_show('Contact', 'admin.php?page=form-contact');
                 }
             });
+
+            ed.addButton('recras-booking', {
+                title : 'Online booking',
+                image : url + '/calendar.svg',
+                onclick : function(){
+                    tb_show('Online booking', 'admin.php?page=form-booking');
+                }
+            });
         },
 
         getInfo : function() {
@@ -29,7 +37,7 @@
                 author : 'Recras',
                 authorurl : 'https://www.recras.nl/',
                 infourl : 'https://www.recras.nl/',
-                version : "0.15.1"
+                version : "1.0.0"
             };
         }
     });
