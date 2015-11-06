@@ -17,7 +17,7 @@ To get started, go to the Settings -> Recras page and enter your Recras name. Fo
 This plugin consists of two shortcodes. To use them, you first need to set your Recras name on the Settings > Recras page.
 
 = Arrangements =
-Add the `[arrangement]` shortcode anywhere on your site. The following parameters are supported:
+Add the `[recras-arrangement]` shortcode anywhere on your site. The following parameters are supported:
 
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
@@ -33,7 +33,7 @@ Add the `[arrangement]` shortcode anywhere on your site. The following parameter
 * starttime - only used for `programme`, determines the starting time of an arrangement. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
-Example: `[arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the arrangement with ID 1.
+Example: `[recras-arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the arrangement with ID 1.
 
 = Contact forms =
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
@@ -80,6 +80,7 @@ None yet!
 * Add shortcode for products
 * Change the way arrangement programmes spanning multiple days are shown
 * Not all arrangements are available for all contact forms - the plugin now checks if the combination is valid
+* Deprecated [arrangement] shortcode in favour of [recras-arrangement]
 
 = 0.17.1 =
 Rename Subdomain to Recras name

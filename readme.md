@@ -13,7 +13,7 @@ This plugin consists of two shortcodes. To use them, you first need to set your 
 
 ### Arrangements
 
-Add the `[arrangement]` shortcode anywhere on your site. The following parameters are supported:
+Add the `[recras-arrangement]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
   * duration - shows the duration of this arrangement (i.e. time between start of first activity and end of last activity)
@@ -28,7 +28,7 @@ Add the `[arrangement]` shortcode anywhere on your site. The following parameter
 * starttime - only used for `programme`, determines the starting time of an arrangement. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
-Example: `[arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the arrangement with ID 1.
+Example: `[recras-arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the arrangement with ID 1.
 
 ### Contact forms
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:

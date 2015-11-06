@@ -6,7 +6,7 @@
          * of the editor instance to intercept that event.
          */
         init : function(ed, url) {
-            ed.addButton('arrangement', {
+            ed.addButton('recras-arrangement', {
                 title : 'Arrangement',
                 image : url + '/arrangement.svg',
                 onclick : function(){

@@ -5,7 +5,7 @@ namespace Recras;
 class Arrangement
 {
     /**
-     * Add the [arrangement] shortcode
+     * Add the [recras-arrangement] shortcode
      *
      * @param array $attributes
      *
@@ -50,13 +50,13 @@ class Arrangement
             case 'persons':
                 return '<span class="recras-persons">' . $json->aantal_personen . '</span>';
             case 'price_pp_excl_vat':
-                return self::returnPrice($json->prijs_pp_exc);
+                return Price::format($json->prijs_pp_exc);
             case 'price_pp_incl_vat':
-                return self::returnPrice($json->prijs_pp_inc);
+                return Price::format($json->prijs_pp_inc);
             case 'price_total_excl_vat':
-                return self::returnPrice($json->prijs_totaal_exc);
+                return Price::format($json->prijs_totaal_exc);
             case 'price_total_incl_vat':
-                return self::returnPrice($json->prijs_totaal_inc);
+                return Price::format($json->prijs_totaal_inc);
             case 'program':
             case 'programme':
                 $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
@@ -65,8 +65,15 @@ class Arrangement
             case 'title':
                 return '<span class="recras-title">' . $json->arrangement . '</span>';
             default:
-                return 'Error: unknown option';
+                return __('Error: unknown option', Plugin::TEXT_DOMAIN);
         }
+    }
+
+
+    public static function addArrangementShortcodeOld($attributes)
+    {
+        error_log('Notice: [arrangement] is deprecated, please use [recras-arrangement] instead!');
+        return self::addArrangementShortcode($attributes);
     }
 
 
@@ -220,24 +227,6 @@ class Arrangement
     public static function getValidOptions()
     {
         return ['duration', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
-    }
-
-
-    /**
-     * Format a price
-     *
-     * @param float $price
-     *
-     * @return string
-     */
-    public static function returnPrice($price)
-    {
-        $currency = get_option('recras_currency');
-        $decimalSeparator = get_option('recras_decimal');
-        if ($decimalSeparator === false) {
-            $decimalSeparator = '.';
-        }
-        return '<span class="recras-price">' . $currency . ' ' . number_format($price, 2, $decimalSeparator, '') . '</span>';
     }
 
 

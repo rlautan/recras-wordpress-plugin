@@ -82,7 +82,8 @@ class Plugin
      */
     public function addShortcodes()
     {
-        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
+        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED
+        add_shortcode('recras-arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-booking', ['Recras\OnlineBooking', 'addBookingShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
     }
@@ -132,7 +133,7 @@ class Plugin
      */
     public function registerEditorButtons($buttons)
     {
-        array_push($buttons, 'arrangement', 'recras-booking', 'recras-contact');
+        array_push($buttons, 'recras-arrangement', 'recras-booking', 'recras-contact');
         return $buttons;
     }
 
