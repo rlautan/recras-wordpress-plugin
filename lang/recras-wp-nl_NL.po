@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-11-05 16:25+0100\n"
-"PO-Revision-Date: 2015-11-05 16:25+0100\n"
+"POT-Creation-Date: 2015-11-06 10:39+0100\n"
+"PO-Revision-Date: 2015-11-06 10:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Arrangement"
 msgstr "Arrangement"
 
-#: editor/form-arrangement.php:25
+#: editor/form-arrangement.php:25 editor/form-product.php:22
 msgid "Show what?"
 msgstr "Toon wat?"
 
-#: editor/form-arrangement.php:27
+#: editor/form-arrangement.php:27 editor/form-product.php:24
 msgid "Title"
 msgstr "Titel"
 
@@ -82,7 +82,7 @@ msgid "No"
 msgstr "Nee"
 
 #: editor/form-arrangement.php:44 editor/form-booking.php:24
-#: editor/form-contact.php:53
+#: editor/form-contact.php:53 editor/form-product.php:30
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
@@ -131,10 +131,26 @@ msgstr "Tabel"
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:51 editor/form-contact.php:75
+#: editor/form-contact.php:51 editor/form-contact.php:78
 #: src/ContactForm.php:70
 msgid "Send"
 msgstr "Versturen"
+
+#: editor/form-product.php:11 src/Plugin.php:77
+msgid "Product"
+msgstr "Product"
+
+#: editor/form-product.php:25
+msgid "Description"
+msgstr "Beschrijving"
+
+#: editor/form-product.php:26
+msgid "Price excl. VAT"
+msgstr "Prijs excl. btw"
+
+#: editor/form-product.php:27
+msgid "Price incl. VAT"
+msgstr "Prijs incl. btw"
 
 #: editor/translation.php:12
 msgid "What is the ID of the arrangement?"
@@ -149,57 +165,64 @@ msgid "ID should be a positive integer"
 msgstr "ID moet een positief geheel getal zijn"
 
 #: src/Arrangement.php:17 src/ContactForm.php:16 src/OnlineBooking.php:16
+#: src/Products.php:16
 msgid "Error: no ID set"
 msgstr "Fout: geen ID ingesteld"
 
 #: src/Arrangement.php:20 src/ContactForm.php:19 src/OnlineBooking.php:19
+#: src/Products.php:19
 msgid "Error: ID is not a number"
 msgstr "Fout: ID is geen getal"
 
-#: src/Arrangement.php:23
+#: src/Arrangement.php:23 src/Products.php:22
 msgid "Error: \"show\" option not set"
 msgstr "Fout: optie \"show\" niet ingesteld"
 
-#: src/Arrangement.php:26
+#: src/Arrangement.php:26 src/Products.php:25
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
 #: src/Arrangement.php:32 src/ContactForm.php:24 src/OnlineBooking.php:24
+#: src/Products.php:30
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Arrangement.php:38 src/Arrangement.php:140 src/ContactForm.php:32
-#: src/ContactForm.php:56 src/ContactForm.php:360
+#: src/Arrangement.php:38 src/Arrangement.php:148 src/ContactForm.php:32
+#: src/ContactForm.php:56 src/ContactForm.php:360 src/Products.php:66
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
-#: src/Arrangement.php:42 src/Arrangement.php:144 src/ContactForm.php:36
-#: src/ContactForm.php:60 src/ContactForm.php:364
+#: src/Arrangement.php:42 src/Arrangement.php:152 src/ContactForm.php:36
+#: src/ContactForm.php:60 src/ContactForm.php:364 src/Products.php:70
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
 
-#: src/Arrangement.php:88
+#: src/Arrangement.php:68 src/Products.php:49
+msgid "Error: unknown option"
+msgstr "Fout: onbekende optie"
+
+#: src/Arrangement.php:95
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:88
+#: src/Arrangement.php:95
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:88
+#: src/Arrangement.php:95
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:114
+#: src/Arrangement.php:121
 #, php-format
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:186
+#: src/Arrangement.php:194
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:208
+#: src/Arrangement.php:216
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
@@ -219,25 +242,33 @@ msgstr "Onbekend"
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:118
+#: src/Plugin.php:121
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:119
+#: src/Plugin.php:122
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:120
+#: src/Plugin.php:123
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:148
+#: src/Plugin.php:151
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
 msgstr ""
 "De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie werkt "
 "het versturen van contactformulieren niet."
+
+#: src/Products.php:35
+msgid "Error: product does not exist"
+msgstr "Fout: product bestaat niet"
+
+#: src/Products.php:73
+msgid "Error: external data does not contain any results"
+msgstr "Fout: externe data bevat geen resultaten"
 
 #: src/Settings.php:64
 msgid "You do not have sufficient permissions to access this page."
