@@ -5,6 +5,9 @@
 /* Applied to contact forms */
 .recras-contact {}
 
+/* Applied to the product description */
+.recras-description {}
+
 /* Applied to the duration of an arrangement */
 .recras-duration {}
 
@@ -35,5 +38,5 @@
 /* Applied to the "success" message after a successful form submission */
 .recras-success {}
 
-/* Applied to the arrangement title */
+/* Applied to the arrangement/product title */
 .recras-title {}
