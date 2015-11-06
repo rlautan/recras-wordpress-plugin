@@ -14,6 +14,14 @@
                 }
             });
 
+            ed.addButton('recras-booking', {
+                title : 'Online booking',
+                image : url + '/calendar.svg',
+                onclick : function(){
+                    tb_show('Online booking', 'admin.php?page=form-booking');
+                }
+            });
+
             ed.addButton('recras-contact', {
                 title : 'Contact Form',
                 image : url + '/contact.svg',
@@ -22,11 +30,11 @@
                 }
             });
 
-            ed.addButton('recras-booking', {
-                title : 'Online booking',
-                image : url + '/calendar.svg',
+            ed.addButton('recras-product', {
+                title : 'Product',
+                image : url + '/product.svg',
                 onclick : function(){
-                    tb_show('Online booking', 'admin.php?page=form-booking');
+                    tb_show('Contact', 'admin.php?page=form-product');
                 }
             });
         },
