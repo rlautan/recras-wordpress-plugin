@@ -24,7 +24,7 @@ Add the `[recras-arrangement]` shortcode anywhere on your site. The following pa
   * price_total_excl_vat - shows the total price, excluding VAT
   * price_total_incl_vat - same as above, but including VAT
   * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
-  * title - shows the title of an arrangement
+  * title - shows the title of the arrangement
 * starttime - only used for `programme`, determines the starting time of an arrangement. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
@@ -44,11 +44,16 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 
 ### Online booking
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
-
 * id (required) - corresponds to the contact form ID in Recras
 
 ## Products
-TODO: documentation
+Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
+* id (required) - corresponds to the product ID in Recras
+* show (required) - can be any of the following: `title`, `description`, `price_excl_vat`, `price_incl_vat`.
+  * title - shows the title of the product
+  * price_excl_vat - shows the price of the product, excluding VAT
+  * price_incl_vat - same as above, but including VAT
+  * description - shows the description of the product
 
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
