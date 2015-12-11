@@ -1,6 +1,8 @@
 function getContactFormArrangements(formID, subdomain)
 {
-    subdomain = 'demo'; //DEBUG
+    if (!formID) {
+        return false;
+    }
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://' + subdomain + '.recras.nl/api2.php/contactformulieren/' + formID + '/arrangementen');
@@ -11,23 +13,11 @@ function getContactFormArrangements(formID, subdomain)
             if (!xhr.response) {
                 alert('Could not connect to your Recras'); //TODO
             } else {
-                var response = JSON.parse(xhr.response);
-                if (response.success) {
-                    //TODO
-                    var contactFormArrangements = [];
-                    xhr.responseText.forEach(function(item){
-                        contactFormArrangements.push(item.arrangement_id);
-                    });
-                    disableUnsetArrangements(contactFormArrangements);
-                } else if (response.error) {
-                    alert('Error');
-                    //TODO
-                    console.log(response);
-                } else {
-                    alert('Error');
-                    //TODO
-                    console.log(response);
-                }
+                var contactFormArrangements = [];
+                xhr.response.forEach(function(item){
+                    contactFormArrangements.push(item.arrangement_id);
+                });
+                disableUnsetArrangements(contactFormArrangements);
             }
         }
     };
