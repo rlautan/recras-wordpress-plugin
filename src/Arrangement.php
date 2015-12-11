@@ -163,6 +163,36 @@ class Arrangement
 
 
     /**
+     * Get arrangements for a certain contact form from the Recras API
+     *
+     * @param string $subdomain
+     * @param int $contactformID
+     *
+     * @return array|string
+     */
+    public function getArrangementsForContactForm($subdomain, $contactformID)
+    {
+        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren/' . $contactformID . '/arrangementen';
+        $json = @file_get_contents($baseUrl);
+        if ($json === false) {
+            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+        }
+        $json = json_decode($json);
+        if (is_null($json)) {
+            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+        }
+
+        $arrangements = [
+            0 => '',
+        ];
+        foreach ($json as $arrangement) {
+            $arrangements[$arrangement->arrangement_id] = $arrangement->arrangement;
+        }
+        return $arrangements;
+    }
+
+
+    /**
      * Get duration of an arrangement
      *
      * @param object $json

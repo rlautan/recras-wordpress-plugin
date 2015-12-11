@@ -158,6 +158,20 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertTrue(is_string($arrangements), 'getArrangements on a non-existing subdomain should return an error message');
     }
 
+    function testGetFormArrangementsInvalidForm()
+    {
+        $plugin = new Arrangement;
+        $arrangements = $plugin->getArrangementsForContactForm('demo', 1337);
+        $this->assertEquals(0, count($arrangements), 'Non-existing contact form should return an empty array');
+    }
+
+    function testGetFormArrangements()
+    {
+        $plugin = new Arrangement;
+        $arrangements = $plugin->getArrangementsForContactForm('demo', 1);
+        $this->assertEquals(6, count($arrangements), 'Existing contact form should return a non-empty array');
+    }
+
     function testChangeDecimal()
     {
         update_option('recras_decimal', ',');
