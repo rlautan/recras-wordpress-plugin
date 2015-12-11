@@ -186,7 +186,7 @@ class Arrangement
             0 => '',
         ];
         foreach ($json as $arrangement) {
-            $arrangements[$arrangement->arrangement_id] = $arrangement->arrangement;
+            $arrangements[$arrangement->arrangement_id] = $arrangement->Arrangement->arrangement;
         }
         return $arrangements;
     }
