@@ -61,7 +61,7 @@ class ProductsTest extends \WP_UnitTestCase
             'post_content' => '[recras-product id=8 show=title]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">ATB clinic</span>' . "\n", $content, 'Should show title');
+        $this->assertEquals('<span class="recras-title">ATB-clinic</span>' . "\n", $content, 'Should show title');
     }
 
     function testShortcodeShowPrices()

@@ -47,7 +47,7 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-arrangement id=8 show=title]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">2 daags vergader arrangement</span>' . "\n", $content, 'Should show title');
+        $this->assertEquals('<span class="recras-title">2-daags vergaderarrangement</span>' . "\n", $content, 'Should show title');
 	}
 
 	function testShortcodeDuration()
@@ -83,13 +83,13 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-arrangement id=8 show=price_total_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 376.89</span>' . "\n", $content, 'Should show total price excl. vat');
+        $this->assertEquals('<span class="recras-price">€ 409.91</span>' . "\n", $content, 'Should show total price excl. vat');
 
         $post = $this->factory->post->create_and_get([
             'post_content' => '[recras-arrangement id=8 show=price_total_incl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 399.50</span>' . "\n", $content, 'Should show total price incl. vat');
+        $this->assertEquals('<span class="recras-price">€ 434.50</span>' . "\n", $content, 'Should show total price incl. vat');
 
         $post = $this->factory->post->create_and_get([
             'post_content' => '[recras-arrangement id=8 show=price_pp_excl_vat]'
@@ -169,7 +169,7 @@ class ArrangementTest extends \WP_UnitTestCase
     {
         $plugin = new Arrangement;
         $arrangements = $plugin->getArrangementsForContactForm('demo', 1);
-        $this->assertEquals(6, count($arrangements), 'Existing contact form should return a non-empty array');
+        $this->assertGreaterThan(0, count($arrangements), 'Existing contact form should return a non-empty array');
     }
 
     function testChangeDecimal()
@@ -179,7 +179,7 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-arrangement id=8 show=price_total_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 376,89</span>' . "\n", $content, 'Should respect decimal setting');
+        $this->assertEquals('<span class="recras-price">€ 409,91</span>' . "\n", $content, 'Should respect decimal setting');
         update_option('recras_decimal', '.');
     }
 
@@ -190,7 +190,7 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-arrangement id=8 show=price_total_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">¥ 376.89</span>' . "\n", $content, 'Should respect currency setting');
+        $this->assertEquals('<span class="recras-price">¥ 409.91</span>' . "\n", $content, 'Should respect currency setting');
         update_option('recras_currency', '€');
     }
 }
