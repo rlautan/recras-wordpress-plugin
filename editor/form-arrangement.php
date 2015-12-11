@@ -1,6 +1,6 @@
 <style>
     #TB_window #adminmenumain { display: none; }
-    #wpcontent { margin-left: 0; }
+    #TB_window #wpcontent { margin-left: 0; }
 </style>
 <?php
     $model = new \Recras\Arrangement;
