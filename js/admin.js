@@ -11,7 +11,7 @@ function getContactFormArrangements(formID, subdomain)
     xhr.onreadystatechange = function(){
         if (xhr.readyState === 4) {
             if (!xhr.response) {
-                alert('Could not connect to your Recras'); //TODO
+                alert(recras_l10n.no_connection);
             } else {
                 var contactFormArrangements = [];
                 xhr.response.forEach(function(item){
