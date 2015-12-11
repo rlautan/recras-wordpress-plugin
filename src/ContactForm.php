@@ -65,6 +65,17 @@ class ContactForm
         $arrangementID = null;
         if (isset($attributes['arrangement'])) {
             $arrangementID = (int) $attributes['arrangement'];
+
+            // Check if the contact form supports setting an arrangement
+            $fieldFound = false;
+            foreach ($formFields as $field) {
+                if ($field->soort_invoer === 'boeking.arrangement') {
+                    $fieldFound = true;
+                }
+            }
+            if (!$fieldFound) {
+                return __('Error: arrangement is set, but contact form does not support arrangements', Plugin::TEXT_DOMAIN);
+            }
         }
 
         $submitText = __('Send', Plugin::TEXT_DOMAIN);
@@ -120,7 +131,7 @@ class ContactForm
         $html .= '<form class="recras-contact" id="recras-form' . $formID . '">';
         $html .= self::generateStartTag($options['element']);
         foreach ($formFields as $field) {
-            if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($options['arrangement']))) {
+            if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($options['arrangement']))) { //TODO: this fails when arrangement is set but invalid
                 $html .= self::generateLabel($options['element'], $field, $options['showLabels']);
                 if ($field->verplicht && $options['showLabels']) {
                     $html .= '<span class="recras-required">*</span>';
@@ -128,11 +139,14 @@ class ContactForm
             }
             switch ($field->soort_invoer) {
                 case 'boeking.arrangement':
-                    if (is_null($options['arrangement'])) {
-                        if (empty($arrangementen)) {
-                            $classArrangement = new Arrangement;
-                            $arrangementen = $classArrangement->getArrangements($options['subdomain']);
-                        }
+                    // It is possible that an arrangement was valid for this contact form in the past, not not in the present.
+                    // So we show only arrangements that are valid for this form.
+                    if (empty($arrangementen)) {
+                        $classArrangement = new Arrangement;
+                        $arrangementen = $classArrangement->getArrangementsForContactForm($options['subdomain'], $formID);
+                    }
+                    // The  isset()  is in case an arrangement is set, but it is not valid
+                    if (is_null($options['arrangement']) || !isset($arrangementen[$options['arrangement']])) {
                         $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $arrangementen);
                     } else {
                         $html .= self::generateInput($field, [
