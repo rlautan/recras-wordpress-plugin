@@ -95,13 +95,13 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-arrangement id=8 show=price_pp_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 37.69</span>' . "\n", $content, 'Should show price per person excl. vat');
+        $this->assertEquals('<span class="recras-price">€ 40.99</span>' . "\n", $content, 'Should show price per person excl. vat');
 
         $post = $this->factory->post->create_and_get([
             'post_content' => '[recras-arrangement id=8 show=price_pp_incl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 39.95</span>' . "\n", $content, 'Should show price per person incl. vat');
+        $this->assertEquals('<span class="recras-price">€ 43.45</span>' . "\n", $content, 'Should show price per person incl. vat');
 	}
 
     function testSingleDayProgramme()

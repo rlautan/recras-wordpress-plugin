@@ -181,6 +181,9 @@ class Arrangement
         if (is_null($json)) {
             return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
         }
+        if ($json === []) {
+            return [];
+        }
 
         $arrangements = [
             0 => '',
