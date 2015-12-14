@@ -7,7 +7,7 @@ function getContactFormArrangements(formID, subdomain)
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://' + subdomain + '.recras.nl/api2.php/contactformulieren/' + formID + '/arrangementen');
     xhr.responseType = 'json';
-    xhr.send(null);
+    xhr.send();
     xhr.onreadystatechange = function(){
         if (xhr.readyState === 4) {
             if (!xhr.response) {

@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,12 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.1.0 =
+* Only show arrangements in contact form shortcode editor that belong to that contact form
+* Fix some styling issues (WP 4.4 only?)
+* Show error message if a contact form does not have a field for arrangements, but one is set anyway (Fixes #3)
+* If an invalid arrangement is set for a contact form, show dropdown of arrangements instead of generating an invalid form
 
 = 1.0.0 =
 * Add shortcode for online bookings
