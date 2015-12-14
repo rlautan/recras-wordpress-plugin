@@ -1,5 +1,5 @@
 <style>
-    #TB_window #adminmenumain { display: none; }
+    #TB_window #adminmenumain, #TB_window #wpfooter { display: none; }
     #TB_window #wpcontent { margin-left: 0; }
 </style>
 <?php
