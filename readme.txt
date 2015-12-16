@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,10 +58,14 @@ Example: `[recras-booking id=17]` will show the booking form with ID 17.
 Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the product ID in Recras
 * show (required) - can be any of the following: `title`, `description`, `price_excl_vat`, `price_incl_vat`.
+  * duration - shows duration of this product, if product has a duration
+  * image_url - gives the product image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
+  * minimum_amount - shows the minimum amount of this product
   * title - shows the title of the product
   * price_excl_vat - shows the price of the product, excluding VAT
   * price_incl_vat - same as above, but including VAT
-  * description - shows the description of the product
+  * description - shows the short description of the product
+  * description_long - shows the long description of the product, if present.
 
 Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
 
@@ -86,6 +90,9 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.2.0 =
+* Add the following possible properties to products: `description_long`, `duration`, `image_url`, and `minimum_amount`.
 
 = 1.1.0 =
 * Only show arrangements in contact form shortcode editor that belong to that contact form

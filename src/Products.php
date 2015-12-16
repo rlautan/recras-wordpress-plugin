@@ -39,6 +39,22 @@ class Products
         switch ($attributes['show']) {
             case 'description':
                 return '<span class="recras-description">' . $product->beschrijving . '</span>';
+            case 'description_long':
+                if ($product->uitgebreide_omschrijving) {
+                    return '<span class="recras-description">' . $product->uitgebreide_omschrijving . '</span>';
+                } else {
+                    return '';
+                }
+            case 'duration':
+                if ($product->duur) {
+                    return '<span class="recras-duration">' . $product->duur . '</span>';
+                } else {
+                    return '';
+                }
+            case 'image_url':
+                return $product->image_url;
+            case 'minimum_amount':
+                return '<span class="recras-amount">' . $product->minimum_aantal . '</span>';
             case 'price_excl_vat':
                 return Price::format($product->prijs_exc);
             case 'price_incl_vat':
@@ -88,7 +104,7 @@ class Products
      */
     public static function getValidOptions()
     {
-        return ['description', 'price_excl_vat', 'price_incl_vat', 'title'];
+        return ['description', 'description_long', 'duration', 'image_url', 'minimum_amount', 'price_excl_vat', 'price_incl_vat', 'title'];
     }
 
 

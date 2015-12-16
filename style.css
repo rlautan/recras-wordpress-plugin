@@ -2,13 +2,16 @@
  * This is an overview of all the classes you can use with this plugin, listed alphabetically
  */
 
+/* Applied to minimum amount of a product */
+.recras-amount {}
+
 /* Applied to contact forms */
 .recras-contact {}
 
 /* Applied to the product description */
 .recras-description {}
 
-/* Applied to the duration of an arrangement */
+/* Applied to the duration of an arrangement or product */
 .recras-duration {}
 
 /* Applied to error messages from an unsuccessful form submission */

@@ -22,7 +22,11 @@
     <dt><label for="show_what"><?php _e('Show what?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
     <dd><select id="show_what" required>
             <option value="title"><?php _e('Title', \Recras\Plugin::TEXT_DOMAIN); ?>
-            <option value="description"><?php _e('Description', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="description"><?php _e('Description (short)', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="description_long"><?php _e('Description (long)', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="duration"><?php _e('Duration', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="image_url"><?php _e('Image URL', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="minimum_amount"><?php _e('Minimum amount', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="price_excl_vat"><?php _e('Price excl. VAT', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="price_incl_vat"><?php _e('Price incl. VAT', \Recras\Plugin::TEXT_DOMAIN); ?>
         </select>

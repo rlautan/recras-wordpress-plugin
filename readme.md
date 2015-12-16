@@ -46,14 +46,22 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the contact form ID in Recras
 
+Example: `[recras-booking id=17]` will show the booking form with ID 17.
+
 ## Products
 Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the product ID in Recras
 * show (required) - can be any of the following: `title`, `description`, `price_excl_vat`, `price_incl_vat`.
+  * duration - shows duration of this product, if product has a duration
+  * image_url - gives the product image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
+  * minimum_amount - shows the minimum amount of this product
   * title - shows the title of the product
   * price_excl_vat - shows the price of the product, excluding VAT
   * price_incl_vat - same as above, but including VAT
-  * description - shows the description of the product
+  * description - shows the short description of the product
+  * description_long - shows the long description of the product, if present.
+
+Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
 
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!

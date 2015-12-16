@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-12-11 15:54+0100\n"
-"PO-Revision-Date: 2015-12-11 15:55+0100\n"
+"POT-Creation-Date: 2015-12-16 10:27+0100\n"
+"PO-Revision-Date: 2015-12-16 10:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -29,7 +29,7 @@ msgstr "Toon wat?"
 msgid "Title"
 msgstr "Titel"
 
-#: editor/form-arrangement.php:28
+#: editor/form-arrangement.php:28 editor/form-product.php:27
 msgid "Duration"
 msgstr "Duur"
 
@@ -82,7 +82,7 @@ msgid "No"
 msgstr "Nee"
 
 #: editor/form-arrangement.php:44 editor/form-booking.php:24
-#: editor/form-contact.php:53 editor/form-product.php:30
+#: editor/form-contact.php:53 editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
@@ -131,7 +131,8 @@ msgstr "Tabel"
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:51 editor/form-contact.php:78 src/ContactForm.php:81
+#: editor/form-contact.php:51 editor/form-contact.php:78
+#: src/ContactForm.php:81
 msgid "Send"
 msgstr "Versturen"
 
@@ -140,14 +141,26 @@ msgid "Product"
 msgstr "Product"
 
 #: editor/form-product.php:25
-msgid "Description"
-msgstr "Beschrijving"
+msgid "Description (short)"
+msgstr "Beschrijving (kort)"
 
 #: editor/form-product.php:26
+msgid "Description (long)"
+msgstr "Beschrijving (lang)"
+
+#: editor/form-product.php:28
+msgid "Image URL"
+msgstr "Afbeelding-URL"
+
+#: editor/form-product.php:29
+msgid "Minimum amount"
+msgstr "Minimumaantal"
+
+#: editor/form-product.php:30
 msgid "Price excl. VAT"
 msgstr "Prijs excl. btw"
 
-#: editor/form-product.php:27
+#: editor/form-product.php:31
 msgid "Price incl. VAT"
 msgstr "Prijs incl. btw"
 
@@ -188,17 +201,17 @@ msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
 #: src/Arrangement.php:38 src/Arrangement.php:148 src/Arrangement.php:178
 #: src/ContactForm.php:32 src/ContactForm.php:56 src/ContactForm.php:374
-#: src/Products.php:66
+#: src/Products.php:82
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
 #: src/Arrangement.php:42 src/Arrangement.php:152 src/Arrangement.php:182
 #: src/ContactForm.php:36 src/ContactForm.php:60 src/ContactForm.php:378
-#: src/Products.php:70
+#: src/Products.php:86
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
 
-#: src/Arrangement.php:68 src/Products.php:49
+#: src/Arrangement.php:68 src/Products.php:65
 msgid "Error: unknown option"
 msgstr "Fout: onbekende optie"
 
@@ -219,11 +232,11 @@ msgstr "Activiteit"
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:224
+#: src/Arrangement.php:227
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:246
+#: src/Arrangement.php:249
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
@@ -278,7 +291,7 @@ msgstr ""
 msgid "Error: product does not exist"
 msgstr "Fout: product bestaat niet"
 
-#: src/Products.php:73
+#: src/Products.php:89
 msgid "Error: external data does not contain any results"
 msgstr "Fout: externe data bevat geen resultaten"
 
@@ -309,6 +322,9 @@ msgstr "Recras-instellingen"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Description"
+#~ msgstr "Beschrijving"
 
 #~ msgid "Error: you have not set your Recras subdomain yet"
 #~ msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"

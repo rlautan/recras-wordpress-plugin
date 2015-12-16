@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-11-05 16:25+0100\n"
-"PO-Revision-Date: 2015-11-05 16:25+0100\n"
+"POT-Creation-Date: 2015-12-16 10:28+0100\n"
+"PO-Revision-Date: 2015-12-16 10:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "Arrangement"
 msgstr ""
 
-#: editor/form-arrangement.php:25
+#: editor/form-arrangement.php:25 editor/form-product.php:22
 msgid "Show what?"
 msgstr ""
 
-#: editor/form-arrangement.php:27
+#: editor/form-arrangement.php:27 editor/form-product.php:24
 msgid "Title"
 msgstr ""
 
-#: editor/form-arrangement.php:28
+#: editor/form-arrangement.php:28 editor/form-product.php:27
 msgid "Duration"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgid "No"
 msgstr ""
 
 #: editor/form-arrangement.php:44 editor/form-booking.php:24
-#: editor/form-contact.php:53
+#: editor/form-contact.php:53 editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr ""
 
@@ -128,9 +128,37 @@ msgstr ""
 msgid "Submit button text"
 msgstr ""
 
-#: editor/form-contact.php:51 editor/form-contact.php:75
-#: src/ContactForm.php:70
+#: editor/form-contact.php:51 editor/form-contact.php:78
+#: src/ContactForm.php:81
 msgid "Send"
+msgstr ""
+
+#: editor/form-product.php:11 src/Plugin.php:77
+msgid "Product"
+msgstr ""
+
+#: editor/form-product.php:25
+msgid "Description (short)"
+msgstr ""
+
+#: editor/form-product.php:26
+msgid "Description (long)"
+msgstr ""
+
+#: editor/form-product.php:28
+msgid "Image URL"
+msgstr ""
+
+#: editor/form-product.php:29
+msgid "Minimum amount"
+msgstr ""
+
+#: editor/form-product.php:30
+msgid "Price excl. VAT"
+msgstr ""
+
+#: editor/form-product.php:31
+msgid "Price incl. VAT"
 msgstr ""
 
 #: editor/translation.php:12
@@ -146,69 +174,83 @@ msgid "ID should be a positive integer"
 msgstr ""
 
 #: src/Arrangement.php:17 src/ContactForm.php:16 src/OnlineBooking.php:16
+#: src/Products.php:16
 msgid "Error: no ID set"
 msgstr ""
 
 #: src/Arrangement.php:20 src/ContactForm.php:19 src/OnlineBooking.php:19
+#: src/Products.php:19
 msgid "Error: ID is not a number"
 msgstr ""
 
-#: src/Arrangement.php:23
+#: src/Arrangement.php:23 src/Products.php:22
 msgid "Error: \"show\" option not set"
 msgstr ""
 
-#: src/Arrangement.php:26
+#: src/Arrangement.php:26 src/Products.php:25
 msgid "Error: invalid \"show\" option"
 msgstr ""
 
 #: src/Arrangement.php:32 src/ContactForm.php:24 src/OnlineBooking.php:24
+#: src/Products.php:30
 msgid "Error: you have not set your Recras name yet"
 msgstr ""
 
-#: src/Arrangement.php:38 src/Arrangement.php:140 src/ContactForm.php:32
-#: src/ContactForm.php:56 src/ContactForm.php:360
+#: src/Arrangement.php:38 src/Arrangement.php:148 src/Arrangement.php:178
+#: src/ContactForm.php:32 src/ContactForm.php:56 src/ContactForm.php:374
+#: src/Products.php:82
 msgid "Error: could not retrieve external data"
 msgstr ""
 
-#: src/Arrangement.php:42 src/Arrangement.php:144 src/ContactForm.php:36
-#: src/ContactForm.php:60 src/ContactForm.php:364
+#: src/Arrangement.php:42 src/Arrangement.php:152 src/Arrangement.php:182
+#: src/ContactForm.php:36 src/ContactForm.php:60 src/ContactForm.php:378
+#: src/Products.php:86
 msgid "Error: could not parse external data"
 msgstr ""
 
-#: src/Arrangement.php:88
+#: src/Arrangement.php:68 src/Products.php:65
+msgid "Error: unknown option"
+msgstr ""
+
+#: src/Arrangement.php:95
 msgid "From"
 msgstr ""
 
-#: src/Arrangement.php:88
+#: src/Arrangement.php:95
 msgid "Until"
 msgstr ""
 
-#: src/Arrangement.php:88
+#: src/Arrangement.php:95
 msgid "Activity"
 msgstr ""
 
-#: src/Arrangement.php:114
+#: src/Arrangement.php:121
 #, php-format
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:186
+#: src/Arrangement.php:227
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:208
+#: src/Arrangement.php:249
 msgid "No location specified"
 msgstr ""
 
-#: src/ContactForm.php:170
+#: src/ContactForm.php:77
+msgid ""
+"Error: arrangement is set, but contact form does not support arrangements"
+msgstr ""
+
+#: src/ContactForm.php:184
 msgid "Male"
 msgstr ""
 
-#: src/ContactForm.php:171
+#: src/ContactForm.php:185
 msgid "Female"
 msgstr ""
 
-#: src/ContactForm.php:172
+#: src/ContactForm.php:186
 msgid "Unknown"
 msgstr ""
 
@@ -216,22 +258,34 @@ msgstr ""
 msgid "Online booking"
 msgstr ""
 
-#: src/Plugin.php:118
+#: src/Plugin.php:98
+msgid "Could not connect to your Recras"
+msgstr ""
+
+#: src/Plugin.php:125
 msgid "Loading..."
 msgstr ""
 
-#: src/Plugin.php:119
+#: src/Plugin.php:126
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:120
+#: src/Plugin.php:127
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:148
+#: src/Plugin.php:155
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
+msgstr ""
+
+#: src/Products.php:35
+msgid "Error: product does not exist"
+msgstr ""
+
+#: src/Products.php:89
+msgid "Error: external data does not contain any results"
 msgstr ""
 
 #: src/Settings.php:64

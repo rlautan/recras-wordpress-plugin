@@ -87,4 +87,49 @@ class ProductsTest extends \WP_UnitTestCase
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('<span class="recras-description">Bowlen op onze met led lampen verlichte bowlingbaan</span>' . "\n", $content, 'Should show description');
     }
+
+    function testShortcodeShowLongDescription()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-product id=1 show=description_long]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<p>Op onze klimbaan met de langste zipine van Nederland kan iedereen zich helemaal uitleven.&nbsp;</p> <p>Na uitgebreide instructie op ons instructie parcours wordt het parcours uitgelegd en kun je het 2 uur durende avontuur aangaan.</p> <p>Kinderen in de leeftijd van 08 t/m 12 jaar moeten worden begeleidt door een mee klimmende volwassene.</p> <p>Wij gaan proefdraaien met het volgende. Kinderen t/m 10 jaar moeten zonder uitzondering worden begeleidt door een mee klimmende&nbsp;</p> <p>volwassene.Kinderen van 11 en 12 jaar mogen, na goedkeuring van onze instructeurs, zelfstandig klimmen. Ouders / begeleiders zijn&nbsp;</p> <p>verplicht aanwezig! Onze instructeurs hebben het recht (en de plicht) om in te grijpen en het klimmen te stoppen als het toch niet&nbsp;</p> <p>zelfstandig veilig lukt</p>' . "\n", $content, 'Should show long description');
+    }
+
+    function testShortcodeShowEmptyLongDescription()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-product id=48 show=description_long]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('' . "\n", $content, 'Should not show empty description');
+    }
+
+    function testShortcodeShowDuration()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-product id=48 show=duration]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<span class="recras-duration">01:00:00</span>' . "\n", $content, 'Should show duration');
+    }
+
+    function testShortcodeShowEmptyDuration()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-product id=73 show=duration]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('' . "\n", $content, 'Should not show duration');
+    }
+
+    function testShortcodeShowMinimumAmount()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-product id=80 show=minimum_amount]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<span class="recras-amount">1</span>' . "\n", $content, 'Should show minimum amount');
+    }
 }
