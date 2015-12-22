@@ -83,6 +83,28 @@ class Arrangement
 
 
     /**
+     * Clear arrangement cache (transients)
+     */
+    public static function clearCache()
+    {
+        $arrangementID = $_REQUEST['arrangement'];
+        $subdomain = get_option('recras_subdomain');
+
+        if ($arrangementID == 0) {
+            $arrangements = array_keys(self::getArrangements($subdomain));
+            foreach ($arrangements as $id) {
+                delete_transient('recras_' . $subdomain . '_arrangement_' . $id);
+            }
+            delete_transient('recras_' . $subdomain . '_arrangements');
+        } else {
+            delete_transient('recras_' . $subdomain . '_arrangement_' . $arrangementID);
+        }
+        header('Location: ' . admin_url('options-general.php?page=recras-clear-cache'));
+        exit;
+    }
+
+
+    /**
      * Generate the programme for an arrangement
      *
      * @param array $programme
@@ -145,7 +167,7 @@ class Arrangement
      *
      * @return array|string
      */
-    public function getArrangements($subdomain)
+    public static function getArrangements($subdomain)
     {
         $json = get_transient('recras_' . $subdomain . '_arrangements');
         if ($json === false) {

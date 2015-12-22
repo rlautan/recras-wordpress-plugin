@@ -29,6 +29,9 @@ class Plugin
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
+        // Clear caches
+        add_action('admin_post_clear_arrangement_cache', ['Recras\Arrangement', 'clearCache']);
+
         $this->addShortcodes();
     }
 
@@ -69,6 +72,13 @@ class Plugin
             'manage_options',
             'recras',
             ['\Recras\Settings', 'editSettings']
+        );
+        add_options_page(
+            __('Clear Recras cache', $this::TEXT_DOMAIN),
+            __('Clear Recras cache', $this::TEXT_DOMAIN),
+            'manage_options',
+            'recras-clear-cache',
+            ['\Recras\Settings', 'clearCache']
         );
 
         add_submenu_page(null, __('Arrangement', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-arrangement', ['Recras\Arrangement', 'showForm']);

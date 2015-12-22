@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-12-16 10:28+0100\n"
-"PO-Revision-Date: 2015-12-16 10:28+0100\n"
+"POT-Creation-Date: 2015-12-22 12:16+0100\n"
+"PO-Revision-Date: 2015-12-22 12:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 editor/form-contact.php:32 src/Plugin.php:74
+#: editor/form-arrangement.php:14 editor/form-contact.php:32 src/Plugin.php:84
 msgid "Arrangement"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 msgid "Insert shortcode"
 msgstr ""
 
-#: editor/form-booking.php:12 editor/form-contact.php:15 src/Plugin.php:75
+#: editor/form-booking.php:12 editor/form-contact.php:15 src/Plugin.php:85
 msgid "Contact form"
 msgstr ""
 
@@ -129,11 +129,11 @@ msgid "Submit button text"
 msgstr ""
 
 #: editor/form-contact.php:51 editor/form-contact.php:78
-#: src/ContactForm.php:81
+#: src/ContactForm.php:90
 msgid "Send"
 msgstr ""
 
-#: editor/form-product.php:11 src/Plugin.php:77
+#: editor/form-product.php:11 src/Plugin.php:87
 msgid "Product"
 msgstr ""
 
@@ -196,85 +196,89 @@ msgstr ""
 msgid "Error: you have not set your Recras name yet"
 msgstr ""
 
-#: src/Arrangement.php:38 src/Arrangement.php:148 src/Arrangement.php:178
-#: src/ContactForm.php:32 src/ContactForm.php:56 src/ContactForm.php:374
-#: src/Products.php:82
+#: src/Arrangement.php:40 src/Arrangement.php:174 src/Arrangement.php:208
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:403
+#: src/Products.php:84
 msgid "Error: could not retrieve external data"
 msgstr ""
 
-#: src/Arrangement.php:42 src/Arrangement.php:152 src/Arrangement.php:182
-#: src/ContactForm.php:36 src/ContactForm.php:60 src/ContactForm.php:378
-#: src/Products.php:86
+#: src/Arrangement.php:44 src/Arrangement.php:178 src/Arrangement.php:212
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:407
+#: src/Products.php:88
 msgid "Error: could not parse external data"
 msgstr ""
 
-#: src/Arrangement.php:68 src/Products.php:65
+#: src/Arrangement.php:73 src/Products.php:65
 msgid "Error: unknown option"
 msgstr ""
 
-#: src/Arrangement.php:95
+#: src/Arrangement.php:119
 msgid "From"
 msgstr ""
 
-#: src/Arrangement.php:95
+#: src/Arrangement.php:119
 msgid "Until"
 msgstr ""
 
-#: src/Arrangement.php:95
+#: src/Arrangement.php:119
 msgid "Activity"
 msgstr ""
 
-#: src/Arrangement.php:121
+#: src/Arrangement.php:145
 #, php-format
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:227
+#: src/Arrangement.php:259
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:249
+#: src/Arrangement.php:281
 msgid "No location specified"
 msgstr ""
 
-#: src/ContactForm.php:77
+#: src/ContactForm.php:86
 msgid ""
 "Error: arrangement is set, but contact form does not support arrangements"
 msgstr ""
 
-#: src/ContactForm.php:184
+#: src/ContactForm.php:211
 msgid "Male"
 msgstr ""
 
-#: src/ContactForm.php:185
+#: src/ContactForm.php:212
 msgid "Female"
 msgstr ""
 
-#: src/ContactForm.php:186
+#: src/ContactForm.php:213
 msgid "Unknown"
 msgstr ""
 
-#: src/Plugin.php:76
+#: src/Plugin.php:77 src/Plugin.php:78 src/admin/cache.php:1
+msgid "Clear Recras cache"
+msgstr ""
+
+#: src/Plugin.php:86
 msgid "Online booking"
 msgstr ""
 
-#: src/Plugin.php:98
+#: src/Plugin.php:108
 msgid "Could not connect to your Recras"
 msgstr ""
 
-#: src/Plugin.php:125
+#: src/Plugin.php:135
 msgid "Loading..."
 msgstr ""
 
-#: src/Plugin.php:126
+#: src/Plugin.php:136
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:127
+#: src/Plugin.php:137
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:155
+#: src/Plugin.php:165
 msgid ""
 "The cURL extension for PHP is not installed. Without this, submitting "
 "contact forms will not work."
@@ -284,28 +288,59 @@ msgstr ""
 msgid "Error: product does not exist"
 msgstr ""
 
-#: src/Products.php:89
+#: src/Products.php:93
 msgid "Error: external data does not contain any results"
 msgstr ""
 
-#: src/Settings.php:64
+#: src/Settings.php:61 src/Settings.php:74
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: src/Settings.php:120
+#: src/Settings.php:130
 msgid "Recras name"
 msgstr ""
 
-#: src/Settings.php:121
+#: src/Settings.php:131
 msgid "Currency symbol"
 msgstr ""
 
-#: src/Settings.php:122
+#: src/Settings.php:132
 msgid "Decimal separator"
 msgstr ""
 
-#: src/Settings.php:151
+#: src/Settings.php:161
 msgid "Enter your Recras details here"
+msgstr ""
+
+#: src/admin/cache.php:6
+msgid ""
+"Data coming from your Recras (contact forms, arrangements, products) are "
+"cached for up to 24 hours. If you make important changes (i.e. a price "
+"increase) it is recommended you clear the corresponding cache."
+msgstr ""
+
+#: src/admin/cache.php:8
+msgid "Arrangements"
+msgstr ""
+
+#: src/admin/cache.php:14 src/admin/cache.php:32
+msgid "All"
+msgstr ""
+
+#: src/admin/cache.php:23 src/admin/cache.php:41
+msgid "Clear"
+msgstr ""
+
+#: src/admin/cache.php:26
+msgid "Contact forms"
+msgstr ""
+
+#: src/admin/cache.php:44
+msgid "Products"
+msgstr ""
+
+#: src/admin/cache.php:47
+msgid "Clear all"
 msgstr ""
 
 #: src/admin/settings.php:1

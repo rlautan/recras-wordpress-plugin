@@ -54,6 +54,16 @@ class Settings
     }
 
 
+    public static function clearCache()
+    {
+        if (!current_user_can('manage_options'))
+        {
+            wp_die(__('You do not have sufficient permissions to access this page.'));
+        }
+        require_once('admin/cache.php');
+    }
+
+
     /**
      * Load the admin options page
      */
