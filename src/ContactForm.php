@@ -98,6 +98,24 @@ class ContactForm
 
 
     /**
+     * Generate a group of checkboxes
+     *
+     * @param object $field
+     * @param array $options
+     *
+     * @return string
+     */
+    public static function generateChoices($field, $options)
+    {
+        $html = '';
+        foreach ($options as $value => $name) {
+            $html .= '<label><input type="checkbox" name="' . $field->field_identifier . '" value="' . $value . '">' . $name . '</label>';
+        }
+        return $html;
+    }
+
+
+    /**
      * Generate an HTML end tag
      *
      * @param string $element
@@ -200,7 +218,7 @@ class ContactForm
                     foreach ($field->mogelijke_keuzes as $keuze) {
                         $keuzes[$keuze] = $keuze;
                     }
-                    $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $keuzes);
+                    $html .= self::generateSubTag($options['element']) . self::generateChoices($field, $keuzes);
                     break;
                 case 'veel_tekst':
                     $html .= self::generateSubTag($options['element']) . '<textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '></textarea>';

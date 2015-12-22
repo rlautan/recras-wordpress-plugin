@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3.1
 Tested up to: 4.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,10 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.2.1 =
+* Change "keuze" on a contact form from a dropdown to checkboxes (Fixes #5)
+* Bypass our own serverside submit script, use XHR instead
 
 = 1.2.0 =
 * Add the following possible properties to products: `description_long`, `duration`, `image_url`, and `minimum_amount`.

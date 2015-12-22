@@ -12,32 +12,35 @@ function submitRecrasForm(formID, subdomain, basePath)
 
     var formEl = document.getElementById('recras-form' + formID);
     var formElements = formEl.querySelectorAll('input, textarea, select');
-    var payload = {
-        elements: {},
-        formID: formID,
-        subdomain: subdomain
-    };
+    var elements = {};
     for (var i = 0; i < formElements.length; i++) {
         if (formElements[i].type !== 'submit') {
             if (formElements[i].value === '' && formElements[i].required === false) {
                 formElements[i].value = null;
             }
-            payload['elements'][formElements[i].name] = formElements[i].value;
+            if (formElements[i].type === 'checkbox') {
+                elements[formElements[i].name] = [];
+                var checked = document.querySelectorAll('input[name="' + formElements[i].name + '"]:checked');
+                for (var j = 0; j < checked.length; j++) {
+                    elements[formElements[i].name].push(checked[j].value);
+                }
+            } else {
+                elements[formElements[i].name] = formElements[i].value;
+            }
         }
     }
 
     formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<img src="' + basePath + 'editor/loading.gif" alt="' + recras_l10n.loading + '" class="recras-loading">');
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', basePath + 'submit.php');
-    xhr.send(JSON.stringify(payload));
+    xhr.open('POST', 'https://' + subdomain + '.recras.nl/api2.php/contactformulieren/' + formID + '/opslaan');
+    xhr.send(JSON.stringify(elements));
     xhr.onreadystatechange = function(){
         if (xhr.readyState === 4) {
             removeElsWithClass('recras-loading');
             var response = JSON.parse(xhr.response);
             if (response.success) {
                 formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<p class="recras-success">' + recras_l10n.sent_success + '</p>');
-                //alert(recras_l10n.sent_success);
             } else if (response.error) {
                 var errors = response.error.messages;
                 for (var key in errors) {
@@ -46,7 +49,6 @@ function submitRecrasForm(formID, subdomain, basePath)
                     }
                 }
                 formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<p class="recras-error">' + recras_l10n.sent_error + '</p>');
-                //alert(recras_l10n.sent_error);
             } else {
                 console.log('Unknown response: ', response);
             }
