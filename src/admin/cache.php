@@ -12,6 +12,7 @@
     $arrangementModel = new \Recras\Arrangement;
     $arrangements = $arrangementModel->getArrangements($subdomain);
     $arrangements[0] = __('All', \Recras\Plugin::TEXT_DOMAIN);
+    ksort($arrangements);
 
     foreach ($arrangements as $id => $arrangement) {
 ?>
@@ -30,6 +31,7 @@
     $formModel = new \Recras\ContactForm;
     $forms = $formModel->getForms($subdomain);
     $forms[0] = __('All', \Recras\Plugin::TEXT_DOMAIN);
+    ksort($forms);
 
     foreach ($forms as $id => $form) {
 ?>
