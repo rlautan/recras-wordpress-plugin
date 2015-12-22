@@ -130,7 +130,7 @@ class Plugin
      */
     public function loadScripts()
     {
-        wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '1.2.1', true);
+        wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '1.3.0', true);
         wp_localize_script('recras', 'recras_l10n', [
             'loading' => __('Loading...', $this::TEXT_DOMAIN),
             'sent_success' => __('Your message was sent successfully', $this::TEXT_DOMAIN),

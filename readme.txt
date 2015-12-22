@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,7 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 * showlabels - show the label for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
 * showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value. Placeholders are [not supported](http://caniuse.com/#search=placeholder) in Internet Explorer versions 9 and lower.
 * submittext - the text for the form submission button. Defaults to "Send"
+* redirect - a URL that the user is redirected to, after submitting the form successfully.
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
@@ -90,6 +91,11 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.3.0 =
+* Add caching of all external data
+* Add option to use a redirect after submitting a contact form
+* Remove cURL requirement (unneeded as of 1.2.1)
 
 = 1.2.1 =
 * Change "keuze" on a contact form from a dropdown to checkboxes (Fixes #5)
