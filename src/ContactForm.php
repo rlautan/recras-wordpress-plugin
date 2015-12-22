@@ -107,6 +107,30 @@ class ContactForm
 
 
     /**
+     * Clear contact form cache (transients)
+     */
+    public static function clearCache()
+    {
+        $formID = $_REQUEST['contactform'];
+        $subdomain = get_option('recras_subdomain');
+
+        if ($formID == 0) {
+            $forms = array_keys(self::getForms($subdomain));
+            foreach ($forms as $id) {
+                delete_transient('recras_' . $subdomain . '_contactform_' . $id);
+                delete_transient('recras_' . $subdomain . '_contactform_' . $id . '_fields');
+                delete_transient('recras_' . $subdomain . '_contactform_' . $id . '_arrangements');
+            }
+            delete_transient('recras_' . $subdomain . '_contactforms');
+        } else {
+            delete_transient('recras_' . $subdomain . '_contactform_' . $formID);
+        }
+        header('Location: ' . admin_url('options-general.php?page=recras-clear-cache'));
+        exit;
+    }
+
+
+    /**
      * Generate a group of checkboxes
      *
      * @param object $field
@@ -393,7 +417,7 @@ class ContactForm
      *
      * @return array|string
      */
-    public function getForms($subdomain)
+    public static function getForms($subdomain)
     {
         $json = get_transient('recras_' . $subdomain . '_contactforms');
         if ($json === false) {
