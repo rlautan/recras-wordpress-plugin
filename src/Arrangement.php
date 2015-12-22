@@ -33,14 +33,19 @@ class Arrangement
         }
 
 
-        $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $attributes['id']);
+        $json = get_transient('recras_' . $subdomain . '_arrangement_' . $attributes['id']);
         if ($json === false) {
-            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            $json = @file_get_contents('https://' . $subdomain . '.recras.nl/api2.php/arrangementen/' . $attributes['id']);
+            if ($json === false) {
+                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            }
+            $json = json_decode($json);
+            if (is_null($json)) {
+                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            }
+            set_transient('recras_' . $subdomain . '_arrangement_' . $attributes['id'], $json, 86400);
         }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
-        }
+
 
         switch ($attributes['show']) {
             case 'duration':
@@ -142,14 +147,18 @@ class Arrangement
      */
     public function getArrangements($subdomain)
     {
-        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/arrangementen';
-        $json = @file_get_contents($baseUrl);
+        $json = get_transient('recras_' . $subdomain . '_arrangements');
         if ($json === false) {
-            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
-        }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/arrangementen';
+            $json = @file_get_contents($baseUrl);
+            if ($json === false) {
+                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            }
+            $json = json_decode($json);
+            if (is_null($json)) {
+                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            }
+            set_transient('recras_' . $subdomain . '_arrangements', $json, 86400);
         }
 
         $arrangements = [
@@ -172,14 +181,18 @@ class Arrangement
      */
     public function getArrangementsForContactForm($subdomain, $contactformID)
     {
-        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren/' . $contactformID . '/arrangementen';
-        $json = @file_get_contents($baseUrl);
+        $json = get_transient('recras_' . $subdomain . 'contactform_' . $contactformID . '_arrangements');
         if ($json === false) {
-            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
-        }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren/' . $contactformID . '/arrangementen';
+            $json = @file_get_contents($baseUrl);
+            if ($json === false) {
+                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            }
+            $json = json_decode($json);
+            if (is_null($json)) {
+                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            }
+            set_transient('recras_' . $subdomain . 'contactform_' . $contactformID . '_arrangements', $json, 86400);
         }
         if ($json === []) {
             return [];

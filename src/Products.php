@@ -76,14 +76,18 @@ class Products
      */
     public static function getProducts($subdomain)
     {
-        $baseUrl = 'https://' . $subdomain . '.recras.nl/api/json/producten';
-        $json = @file_get_contents($baseUrl);
+        $json = get_transient('recras_' . $subdomain . '_products');
         if ($json === false) {
-            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
-        }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            $baseUrl = 'https://' . $subdomain . '.recras.nl/api/json/producten';
+            $json = @file_get_contents($baseUrl);
+            if ($json === false) {
+                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            }
+            $json = json_decode($json);
+            if (is_null($json)) {
+                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            }
+            set_transient('recras_' . $subdomain . '_products', $json, 86400);
         }
         if (!isset($json->results)) {
             return __('Error: external data does not contain any results', Plugin::TEXT_DOMAIN);

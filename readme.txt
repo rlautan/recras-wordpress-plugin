@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: zanderz
 Tags: recras, recreation, reservation
-Requires at least: 4.3.1
+Requires at least: 4.4
 Tested up to: 4.4
 Stable tag: 1.2.1
 License: GPLv2 or later

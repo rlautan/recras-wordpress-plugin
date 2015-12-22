@@ -27,14 +27,19 @@ class ContactForm
 
         // Get basic info for the form
         $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren/' . $attributes['id'];
-        $json = @file_get_contents($baseUrl);
+        $json = get_transient('recras_' . $subdomain . '_contactform_' . $attributes['id']);
         if ($json === false) {
-            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            $json = @file_get_contents($baseUrl);
+            if ($json === false) {
+                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            }
+            $json = json_decode($json);
+            if (is_null($json)) {
+                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            }
+            set_transient('recras_' . $subdomain . '_contactform_' . $attributes['id'], $json, 86400);
         }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
-        }
+
         $formTitle = $json->naam;
 
         if (isset($attributes['showtitle']) && !Settings::parseBoolean($attributes['showtitle'])) {
@@ -51,13 +56,17 @@ class ContactForm
 
 
         // Get fields for the form
-        $json = @file_get_contents($baseUrl . '/velden');
+        $json = get_transient('recras_' . $subdomain . '_contactform_' . $attributes['id'] . '_fields');
         if ($json === false) {
-            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
-        }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            $json = @file_get_contents($baseUrl . '/velden');
+            if ($json === false) {
+                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            }
+            $json = json_decode($json);
+            if (is_null($json)) {
+                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            }
+            set_transient('recras_' . $subdomain . '_contactform_' . $attributes['id'] . '_fields', $json, 86400);
         }
         $formFields = $json;
 
@@ -386,14 +395,18 @@ class ContactForm
      */
     public function getForms($subdomain)
     {
-        $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren';
-        $json = @file_get_contents($baseUrl);
+        $json = get_transient('recras_' . $subdomain . '_contactforms');
         if ($json === false) {
-            return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
-        }
-        $json = json_decode($json);
-        if (is_null($json)) {
-            return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren';
+            $json = @file_get_contents($baseUrl);
+            if ($json === false) {
+                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            }
+            $json = json_decode($json);
+            if (is_null($json)) {
+                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
+            }
+            set_transient('recras_' . $subdomain . '_contactforms', $json, 86400);
         }
 
         $forms = [];
