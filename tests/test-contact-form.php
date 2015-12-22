@@ -90,10 +90,10 @@ class ContactFormTest extends \WP_UnitTestCase
     function testSubmitDifferentText()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-contact id=3 submittext="Ni!"]'
+            'post_content' => '[recras-contact id=3 submittext="Ni"]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertNotFalse(strpos($content, '<input type="submit" value="Ni!">'), 'Changing submit button text should work');
+        $this->assertNotFalse(strpos($content, '<input type="submit" value="Ni">'), 'Changing submit button text should work');
     }
 
     function testGetForms()
