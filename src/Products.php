@@ -68,6 +68,19 @@ class Products
 
 
     /**
+     * Clear product cache (transients)
+     */
+    public static function clearCache()
+    {
+        $subdomain = get_option('recras_subdomain');
+        delete_transient('recras_' . $subdomain . '_products');
+
+        header('Location: ' . admin_url('options-general.php?page=recras-clear-cache'));
+        exit;
+    }
+
+
+    /**
      * Get productsfrom the Recras API
      *
      * @param string $subdomain
