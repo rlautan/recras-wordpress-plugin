@@ -6,7 +6,7 @@ function removeElsWithClass(className)
     }
 }
 
-function submitRecrasForm(formID, subdomain, basePath)
+function submitRecrasForm(formID, subdomain, basePath, redirect)
 {
     removeElsWithClass('recras-error');
 
@@ -40,7 +40,11 @@ function submitRecrasForm(formID, subdomain, basePath)
             removeElsWithClass('recras-loading');
             var response = JSON.parse(xhr.response);
             if (response.success) {
-                formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<p class="recras-success">' + recras_l10n.sent_success + '</p>');
+                if (redirect) {
+                    window.location = redirect;
+                } else {
+                    formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<p class="recras-success">' + recras_l10n.sent_success + '</p>');
+                }
             } else if (response.error) {
                 var errors = response.error.messages;
                 for (var key in errors) {

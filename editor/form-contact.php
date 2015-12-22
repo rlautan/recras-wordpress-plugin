@@ -49,6 +49,20 @@
             </select>
     <dt><label for="submit_text"><?php _e('Submit button text', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="text" id="submit_text" value="<?php _e('Send', \Recras\Plugin::TEXT_DOMAIN); ?>">
+    <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><select id="redirect_page">
+                <option value=""><?php _e("Don't redirect", \Recras\Plugin::TEXT_DOMAIN); ?>
+                <optgroup label="<?php _e('Pages', \Recras\Plugin::TEXT_DOMAIN); ?>">
+                    <?php foreach (get_pages() as $page) { ?>
+                    <option value="<?= get_permalink($page->ID); ?>"><?= htmlspecialchars($page->post_title); ?>
+                    <?php } ?>
+                </optgroup>
+                <optgroup label="<?php _e('Posts', \Recras\Plugin::TEXT_DOMAIN); ?>">
+                    <?php foreach (get_posts() as $post) { ?>
+                    <option value="<?= get_permalink($post->ID); ?>"><?= htmlspecialchars($post->post_title); ?>
+                    <?php } ?>
+                </optgroup>
+            </select>
 </dl>
 <button class="button button-primary" id="contact_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
@@ -77,6 +91,9 @@
         }
         if (document.getElementById('submit_text').value !== '<?php _e('Send', \Recras\Plugin::TEXT_DOMAIN); ?>') {
             shortcode += ' submittext="' + document.getElementById('submit_text').value + '"';
+        }
+        if (document.getElementById('redirect_page').value !== '') {
+            shortcode += ' redirect="' + document.getElementById('redirect_page').value + '"';
         }
 
         shortcode += ']';

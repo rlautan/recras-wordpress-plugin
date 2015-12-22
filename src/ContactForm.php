@@ -92,11 +92,14 @@ class ContactForm
             $submitText = $attributes['submittext'];
         }
 
+        $redirect = isset($attributes['redirect']) ? $attributes['redirect'] : false;
+
         $options = [
             'arrangement' => $arrangementID,
             'element' => $element,
             'formTitle' => $formTitle,
             'placeholders' => $showPlaceholders,
+            'redirect' => $redirect,
             'showLabels' => $showLabels,
             'subdomain' => $subdomain,
             'submitText' => $submitText,
@@ -270,7 +273,7 @@ class ContactForm
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $formID . '").on("submit", function(e){
         e.preventDefault();
-        return submitRecrasForm(' . $formID . ', "' . $options['subdomain'] . '", "' . plugins_url('/', dirname(__FILE__)) . '");
+        return submitRecrasForm(' . $formID . ', "' . $options['subdomain'] . '", "' . plugins_url('/', dirname(__FILE__)) . '", "' . $options['redirect']. '");
     });
 });</script>';
 

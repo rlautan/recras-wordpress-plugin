@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
 "POT-Creation-Date: 2015-12-22 12:16+0100\n"
-"PO-Revision-Date: 2015-12-22 12:16+0100\n"
+"PO-Revision-Date: 2015-12-22 15:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
-"Language: en\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: editor/form-arrangement.php:35
 msgid "Programme"
-msgstr ""
+msgstr "Program"
 
 #: editor/form-arrangement.php:37
 msgid "Start time"
