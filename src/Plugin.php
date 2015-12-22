@@ -20,8 +20,6 @@ class Plugin
 
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
 
-        add_action('admin_notices', [&$this, 'showActivationNotice']);
-
         add_action('init', [&$this, 'addEditorButtons']);
 
         add_filter('mce_external_languages', [&$this, 'loadEditorLanguage']);
@@ -153,18 +151,5 @@ class Plugin
     {
         array_push($buttons, 'recras-arrangement', 'recras-booking', 'recras-contact', 'recras-product');
         return $buttons;
-    }
-
-
-    /**
-     * Show a notice if the server doesn't meet our requirements
-     */
-    public function showActivationNotice()
-    {
-        global $pagenow;
-
-        if ($pagenow === 'plugins.php' && !extension_loaded('curl')) {
-            echo '<div class="update-nag notice is-dismissible">' . __('The cURL extension for PHP is not installed. Without this, submitting contact forms will not work.', $this::TEXT_DOMAIN) . '</div>';
-        }
     }
 }
