@@ -18,7 +18,7 @@
         <?php } elseif(is_array($arrangements)) { ?>
             <select id="arrangement_id" required>
             <?php foreach ($arrangements as $ID => $arrangement) { ?>
-                <option value="<?= $ID; ?>"><?= $arrangement; ?>
+                <option value="<?= $ID; ?>"><?= $arrangement->arrangement; ?>
             <?php } ?>
             </select>
         <?php } ?>

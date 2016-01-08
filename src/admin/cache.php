@@ -11,12 +11,12 @@
 <?php
     $arrangementModel = new \Recras\Arrangement;
     $arrangements = $arrangementModel->getArrangements($subdomain);
-    $arrangements[0] = __('All', \Recras\Plugin::TEXT_DOMAIN);
+    $arrangements[0] = (object) ['arrangement' => __('All', \Recras\Plugin::TEXT_DOMAIN)];
     ksort($arrangements);
 
     foreach ($arrangements as $id => $arrangement) {
 ?>
-        <option value="<?= $id; ?>"><?= $arrangement; ?>
+        <option value="<?= $id; ?>"><?= $arrangement->arrangement; ?>
 <?php
     }
 ?>

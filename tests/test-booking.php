@@ -11,7 +11,7 @@ class OnlineBookingTest extends \WP_UnitTestCase
         $this->assertTrue(is_object($post), 'Creating a post should not fail');
 
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('Error: no ID set' . "\n", $content, 'Not setting ID should fail');
+        $this->assertNotFalse(strpos($content, '<iframe'), 'Booking without ID should work');
 	}
 
 	function testInvalidIDinShortcode()
@@ -29,6 +29,6 @@ class OnlineBookingTest extends \WP_UnitTestCase
             'post_content' => '[recras-booking id=3]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertNotFalse(strpos($content, '<iframe'), 'Regular contact form should include an iframe');
+        $this->assertNotFalse(strpos($content, '<iframe'), 'Regular booking should include an iframe');
     }
 }

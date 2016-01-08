@@ -12,10 +12,7 @@ class OnlineBooking
      */
     public static function addBookingShortcode($attributes)
     {
-        if (!isset($attributes['id'])) {
-            return __('Error: no ID set', Plugin::TEXT_DOMAIN);
-        }
-        if (!ctype_digit($attributes['id'])) {
+        if (isset($attributes['id']) && !ctype_digit($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
 
@@ -24,14 +21,21 @@ class OnlineBooking
             return __('Error: you have not set your Recras name yet', Plugin::TEXT_DOMAIN);
         }
 
-        return self::generateIframe($subdomain, $attributes['id']);
+        $arrangementID = isset($attributes['id']) ? $attributes['id'] : null;
+
+        return self::generateIframe($subdomain, $arrangementID);
     }
 
 
-    private static function generateIframe($subdomain, $formID)
+    private static function generateIframe($subdomain, $arrangementID)
     {
+        $url = 'https://' . $subdomain . '.recras.nl/onlineboeking';
+        if ($arrangementID) {
+            $url .= '/step1/arrangement/' . $arrangementID;
+        }
+
         $html  = '<script>function resizeBookingIframe(obj){ obj.style.height=obj.contentWindow.document.body.scrollHeight+"px" }</script>';
-        $html .= '<iframe src="https://' . $subdomain . '.recras.nl/contactformulier/index/id/' . $formID . '" style="width:100%;height:400px" frameborder=0 scrolling="auto" seamless onload="resizeBookingIframe(this)"></iframe>';
+        $html .= '<iframe src="' . $url . '" style="width:100%;height:400px" frameborder=0 scrolling="auto" seamless onload="resizeBookingIframe(this)"></iframe>';
         return $html;
     }
 

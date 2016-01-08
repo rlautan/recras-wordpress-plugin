@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-12-22 12:16+0100\n"
-"PO-Revision-Date: 2015-12-22 15:33+0100\n"
+"POT-Creation-Date: 2016-01-08 10:00+0100\n"
+"PO-Revision-Date: 2016-01-08 10:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 editor/form-contact.php:32 src/Plugin.php:84
+#: editor/form-arrangement.php:14 editor/form-booking.php:13
+#: editor/form-contact.php:32 src/Plugin.php:84
 msgid "Arrangement"
 msgstr ""
 
@@ -81,12 +82,16 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: editor/form-arrangement.php:44 editor/form-booking.php:24
-#: editor/form-contact.php:53 editor/form-product.php:34
+#: editor/form-arrangement.php:44 editor/form-booking.php:26
+#: editor/form-contact.php:67 editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr ""
 
-#: editor/form-booking.php:12 editor/form-contact.php:15 src/Plugin.php:85
+#: editor/form-booking.php:19
+msgid "No pre-filled arrangement"
+msgstr ""
+
+#: editor/form-contact.php:15 src/Plugin.php:85
 msgid "Contact form"
 msgstr ""
 
@@ -128,9 +133,25 @@ msgstr ""
 msgid "Submit button text"
 msgstr ""
 
-#: editor/form-contact.php:51 editor/form-contact.php:78
+#: editor/form-contact.php:51 editor/form-contact.php:92
 #: src/ContactForm.php:90
 msgid "Send"
+msgstr ""
+
+#: editor/form-contact.php:52
+msgid "Redirect after submission"
+msgstr ""
+
+#: editor/form-contact.php:54
+msgid "Don't redirect"
+msgstr ""
+
+#: editor/form-contact.php:55
+msgid "Pages"
+msgstr ""
+
+#: editor/form-contact.php:60
+msgid "Posts"
 msgstr ""
 
 #: editor/form-product.php:11 src/Plugin.php:87
@@ -196,15 +217,15 @@ msgstr ""
 msgid "Error: you have not set your Recras name yet"
 msgstr ""
 
-#: src/Arrangement.php:40 src/Arrangement.php:174 src/Arrangement.php:208
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:403
-#: src/Products.php:84
+#: src/Arrangement.php:40 src/Arrangement.php:177 src/Arrangement.php:211
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:430
+#: src/Products.php:97
 msgid "Error: could not retrieve external data"
 msgstr ""
 
-#: src/Arrangement.php:44 src/Arrangement.php:178 src/Arrangement.php:212
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:407
-#: src/Products.php:88
+#: src/Arrangement.php:44 src/Arrangement.php:181 src/Arrangement.php:215
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:434
+#: src/Products.php:101
 msgid "Error: could not parse external data"
 msgstr ""
 
@@ -212,28 +233,28 @@ msgstr ""
 msgid "Error: unknown option"
 msgstr ""
 
-#: src/Arrangement.php:119
+#: src/Arrangement.php:122
 msgid "From"
 msgstr ""
 
-#: src/Arrangement.php:119
+#: src/Arrangement.php:122
 msgid "Until"
 msgstr ""
 
-#: src/Arrangement.php:119
+#: src/Arrangement.php:122
 msgid "Activity"
 msgstr ""
 
-#: src/Arrangement.php:145
+#: src/Arrangement.php:148
 #, php-format
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:259
+#: src/Arrangement.php:262
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:281
+#: src/Arrangement.php:284
 msgid "No location specified"
 msgstr ""
 
@@ -242,15 +263,15 @@ msgid ""
 "Error: arrangement is set, but contact form does not support arrangements"
 msgstr ""
 
-#: src/ContactForm.php:211
+#: src/ContactForm.php:238
 msgid "Male"
 msgstr ""
 
-#: src/ContactForm.php:212
+#: src/ContactForm.php:239
 msgid "Female"
 msgstr ""
 
-#: src/ContactForm.php:213
+#: src/ContactForm.php:240
 msgid "Unknown"
 msgstr ""
 
@@ -278,17 +299,11 @@ msgstr ""
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:165
-msgid ""
-"The cURL extension for PHP is not installed. Without this, submitting "
-"contact forms will not work."
-msgstr ""
-
 #: src/Products.php:35
 msgid "Error: product does not exist"
 msgstr ""
 
-#: src/Products.php:93
+#: src/Products.php:106
 msgid "Error: external data does not contain any results"
 msgstr ""
 
@@ -323,23 +338,23 @@ msgstr ""
 msgid "Arrangements"
 msgstr ""
 
-#: src/admin/cache.php:14 src/admin/cache.php:32
+#: src/admin/cache.php:14 src/admin/cache.php:33
 msgid "All"
 msgstr ""
 
-#: src/admin/cache.php:23 src/admin/cache.php:41
+#: src/admin/cache.php:24 src/admin/cache.php:43
 msgid "Clear"
 msgstr ""
 
-#: src/admin/cache.php:26
+#: src/admin/cache.php:27
 msgid "Contact forms"
 msgstr ""
 
-#: src/admin/cache.php:44
+#: src/admin/cache.php:46
 msgid "Products"
 msgstr ""
 
-#: src/admin/cache.php:47
+#: src/admin/cache.php:49
 msgid "Clear all"
 msgstr ""
 

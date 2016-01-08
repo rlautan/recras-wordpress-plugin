@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2015-12-22 14:57+0100\n"
-"PO-Revision-Date: 2015-12-22 15:09+0100\n"
+"POT-Creation-Date: 2016-01-08 09:59+0100\n"
+"PO-Revision-Date: 2016-01-08 09:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 editor/form-contact.php:32 src/Plugin.php:86
+#: editor/form-arrangement.php:14 editor/form-booking.php:13
+#: editor/form-contact.php:32 src/Plugin.php:84
 msgid "Arrangement"
 msgstr "Arrangement"
 
@@ -81,12 +82,16 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:44 editor/form-booking.php:24
+#: editor/form-arrangement.php:44 editor/form-booking.php:26
 #: editor/form-contact.php:67 editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
-#: editor/form-booking.php:12 editor/form-contact.php:15 src/Plugin.php:87
+#: editor/form-booking.php:19
+msgid "No pre-filled arrangement"
+msgstr "Geen vooraf ingevuld arrangement"
+
+#: editor/form-contact.php:15 src/Plugin.php:85
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -152,7 +157,7 @@ msgstr "Pagina's"
 msgid "Posts"
 msgstr "Berichten"
 
-#: editor/form-product.php:11 src/Plugin.php:89
+#: editor/form-product.php:11 src/Plugin.php:87
 msgid "Product"
 msgstr "Product"
 
@@ -275,37 +280,29 @@ msgstr "Vrouw"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/Plugin.php:79 src/Plugin.php:80 src/admin/cache.php:1
+#: src/Plugin.php:77 src/Plugin.php:78 src/admin/cache.php:1
 msgid "Clear Recras cache"
 msgstr "Leeg Recras-cache"
 
-#: src/Plugin.php:88
+#: src/Plugin.php:86
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:110
+#: src/Plugin.php:108
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:137
+#: src/Plugin.php:135
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:138
+#: src/Plugin.php:136
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:139
+#: src/Plugin.php:137
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
-
-#: src/Plugin.php:167
-msgid ""
-"The cURL extension for PHP is not installed. Without this, submitting "
-"contact forms will not work."
-msgstr ""
-"De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie werkt "
-"het versturen van contactformulieren niet."
 
 #: src/Products.php:35
 msgid "Error: product does not exist"
@@ -376,6 +373,13 @@ msgstr "Recras-instellingen"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid ""
+#~ "The cURL extension for PHP is not installed. Without this, submitting "
+#~ "contact forms will not work."
+#~ msgstr ""
+#~ "De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie "
+#~ "werkt het versturen van contactformulieren niet."
 
 #~ msgid "Description"
 #~ msgstr "Beschrijving"
