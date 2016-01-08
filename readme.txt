@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: zanderz
 Tags: recras, recreation, reservation
-Requires at least: 4.4.1
+Requires at least: 4.3
 Tested up to: 4.4.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,10 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.3.2 =
+* Lowered minimum required WP version
+* Applied new classes to date/time inputs
 
 = 1.3.1 =
 Fixed online booking shortcode loading a contact form instead of the booking form

@@ -17,6 +17,10 @@
 /* Applied to error messages from an unsuccessful form submission */
 .recras-error {}
 
+/* Applied to date/time inputs on a contact form - useful for hooking date/time pickers */
+.recras-input-date {}
+.recras-input-time {}
+
 /* Applied to loading animation image */
 .recras-loading {}
 

@@ -212,6 +212,7 @@ class ContactForm
                     break;
                 case 'boeking.datum':
                     $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
+                            'class' => 'recras-input-date',
                             'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])',
                             'placeholder' => 'yyyy-mm-dd',
                             'type' => 'date',
@@ -228,6 +229,7 @@ class ContactForm
                     break;
                 case 'boeking.starttijd':
                     $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
+                            'class' => 'recras-input-time',
                             'pattern' => '(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])',
                             'placeholder' => 'hh:mm',
                             'type' => 'time',
@@ -292,6 +294,7 @@ class ContactForm
     private static function generateInput($field, $options = [])
     {
         $options = array_merge([
+            'class' => false,
             'pattern' => null,
             'placeholder' => false,
             'raw' => [],
@@ -315,13 +318,14 @@ class ContactForm
             $placeholder = '';
         }
         $required = ($field->verplicht ? ' required' : '');
+        $class = ($options['class'] ? ' class="' . $options['class'] . '"' : '');
 
         $raw = '';
         foreach ($options['raw'] as $rawKey => $rawValue) {
             $raw .= ' ' . $rawKey . '="' . $rawValue . '"';
         }
 
-        return '<input id="field' . $field->id . '" type="' . $options['type'] . '" name="' . $field->field_identifier . '" value="' . $options['value'] . '"' . $required . $placeholder . $pattern . $raw . '>';
+        return '<input id="field' . $field->id . '" type="' . $options['type'] . '" name="' . $field->field_identifier . '" value="' . $options['value'] . '"' . $required . $class . $placeholder . $pattern . $raw . '>';
     }
 
 
