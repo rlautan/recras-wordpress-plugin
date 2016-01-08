@@ -26,7 +26,7 @@
 <button class="button button-primary" id="booking_submit"><?php /*_e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); */?></button>
 -->
 <script>
-    document.getElementById('booking_submit').addEventListener('click', function(){
+    //document.getElementById('booking_submit').addEventListener('click', function(){
         //var arrangementID = document.getElementById('arrangement_id').value;
         var arrangementID = '0';
         var shortcode  = '[recras-booking';
@@ -37,5 +37,5 @@
 
         tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
         tb_remove();
-    });
+    //});
 </script>
