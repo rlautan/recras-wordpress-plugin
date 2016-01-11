@@ -184,7 +184,7 @@ class Arrangement
         }
 
         $arrangements = [
-            0 => '',
+            0 => (object) ['arrangement' => ''],
         ];
         foreach ($json as $arrangement) {
             $arrangements[$arrangement->id] = $arrangement;
