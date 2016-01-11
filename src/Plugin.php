@@ -66,17 +66,21 @@ class Plugin
      */
     public function addMenuItems()
     {
-        add_options_page(
-            'Recras',
-            'Recras',
+        add_menu_page('Recras', 'Recras', 'edit_pages', 'recras', '', plugin_dir_url(dirname(__FILE__)) . 'logo.svg', 58);
+
+        add_submenu_page(
+            'recras',
+            __('Settings', $this::TEXT_DOMAIN),
+            __('Settings', $this::TEXT_DOMAIN),
             'manage_options',
             'recras',
             ['\Recras\Settings', 'editSettings']
         );
-        add_options_page(
-            __('Clear Recras cache', $this::TEXT_DOMAIN),
-            __('Clear Recras cache', $this::TEXT_DOMAIN),
-            'manage_options',
+        add_submenu_page(
+            'recras',
+            __('Cache', $this::TEXT_DOMAIN),
+            __('Cache', $this::TEXT_DOMAIN),
+            'edit_pages',
             'recras-clear-cache',
             ['\Recras\Settings', 'clearCache']
         );
