@@ -118,7 +118,7 @@ class Settings
     {
         add_settings_section(
             'recras',
-            'Recras Settings',
+            __('Recras settings', Plugin::TEXT_DOMAIN),
             ['Recras\Settings', 'settingsHelp'],
             'recras'
         );
