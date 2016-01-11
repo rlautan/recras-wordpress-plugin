@@ -110,6 +110,10 @@ class Products
         foreach ($json->results as $product) {
             $products[$product->id] = $product;
         }
+        // Sort alphabetically
+        uksort($products, function($a, $b) use ($products) {
+            return strcmp($products[$a]->weergavenaam, $products[$b]->weergavenaam);
+        });
         return $products;
     }
 
