@@ -35,7 +35,7 @@ class OnlineBooking
         }
 
         $html  = '<script>function resizeBookingIframe(obj){ obj.style.height=obj.contentWindow.document.body.scrollHeight+"px" }</script>';
-        $html .= '<iframe src="' . $url . '" style="width:100%;height:400px" frameborder=0 scrolling="auto" seamless onload="resizeBookingIframe(this)"></iframe>';
+        $html .= '<iframe src="' . $url . '" style="width:100%;height:450px" frameborder=0 scrolling="auto" seamless onload="resizeBookingIframe(this)"></iframe>';
         return $html;
     }
 
