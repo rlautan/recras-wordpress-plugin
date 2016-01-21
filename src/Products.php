@@ -75,7 +75,7 @@ class Products
         $subdomain = get_option('recras_subdomain');
         delete_transient('recras_' . $subdomain . '_products');
 
-        header('Location: ' . admin_url('options-general.php?page=recras-clear-cache'));
+        header('Location: ' . admin_url('admin.php?page=recras-clear-cache'));
         exit;
     }
 

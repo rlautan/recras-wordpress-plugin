@@ -99,7 +99,7 @@ class Arrangement
         } else {
             delete_transient('recras_' . $subdomain . '_arrangement_' . $arrangementID);
         }
-        header('Location: ' . admin_url('options-general.php?page=recras-clear-cache'));
+        header('Location: ' . admin_url('admin.php?page=recras-clear-cache'));
         exit;
     }
 
