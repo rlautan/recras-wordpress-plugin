@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2016-01-11 13:38+0100\n"
-"PO-Revision-Date: 2016-01-11 13:38+0100\n"
+"POT-Creation-Date: 2016-01-21 11:11+0100\n"
+"PO-Revision-Date: 2016-01-21 11:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -212,13 +212,13 @@ msgid "Error: you have not set your Recras name yet"
 msgstr ""
 
 #: src/Arrangement.php:40 src/Arrangement.php:177 src/Arrangement.php:211
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:434
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:439
 #: src/Products.php:97
 msgid "Error: could not retrieve external data"
 msgstr ""
 
 #: src/Arrangement.php:44 src/Arrangement.php:181 src/Arrangement.php:215
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:438
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:443
 #: src/Products.php:101
 msgid "Error: could not parse external data"
 msgstr ""
@@ -258,15 +258,15 @@ msgid ""
 msgstr ""
 
 #: src/ContactForm.php:240
-msgid "Male"
+msgid "Unknown"
 msgstr ""
 
 #: src/ContactForm.php:241
-msgid "Female"
+msgid "Male"
 msgstr ""
 
 #: src/ContactForm.php:242
-msgid "Unknown"
+msgid "Female"
 msgstr ""
 
 #: src/Plugin.php:73 src/Plugin.php:74
@@ -285,16 +285,24 @@ msgstr ""
 msgid "Could not connect to your Recras"
 msgstr ""
 
-#: src/Plugin.php:139
+#: src/Plugin.php:138
 msgid "Loading..."
 msgstr ""
 
-#: src/Plugin.php:140
+#: src/Plugin.php:139
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:141
+#: src/Plugin.php:140
 msgid "There was an error sending your message"
+msgstr ""
+
+#: src/Plugin.php:151
+msgid "Cancel"
+msgstr ""
+
+#: src/Plugin.php:152
+msgid "OK"
 msgstr ""
 
 #: src/Products.php:35
@@ -305,23 +313,31 @@ msgstr ""
 msgid "Error: external data does not contain any results"
 msgstr ""
 
-#: src/Settings.php:61 src/Settings.php:74
+#: src/Settings.php:75 src/Settings.php:88
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: src/Settings.php:130
+#: src/Settings.php:135 src/admin/settings.php:1
+msgid "Recras settings"
+msgstr ""
+
+#: src/Settings.php:145
 msgid "Recras name"
 msgstr ""
 
-#: src/Settings.php:131
+#: src/Settings.php:146
 msgid "Currency symbol"
 msgstr ""
 
-#: src/Settings.php:132
+#: src/Settings.php:147
 msgid "Decimal separator"
 msgstr ""
 
-#: src/Settings.php:161
+#: src/Settings.php:148
+msgid "Use date/time picker script"
+msgstr ""
+
+#: src/Settings.php:183
 msgid "Enter your Recras details here"
 msgstr ""
 
@@ -358,10 +374,6 @@ msgstr ""
 
 #: src/admin/cache.php:49
 msgid "Clear all"
-msgstr ""
-
-#: src/admin/settings.php:1
-msgid "Recras settings"
 msgstr ""
 
 #: src/admin/settings.php:7

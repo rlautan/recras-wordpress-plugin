@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2016-01-11 13:38+0100\n"
-"PO-Revision-Date: 2016-01-11 13:38+0100\n"
+"POT-Creation-Date: 2016-01-21 11:12+0100\n"
+"PO-Revision-Date: 2016-01-21 11:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -215,13 +215,13 @@ msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
 #: src/Arrangement.php:40 src/Arrangement.php:177 src/Arrangement.php:211
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:434
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:439
 #: src/Products.php:97
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
 #: src/Arrangement.php:44 src/Arrangement.php:181 src/Arrangement.php:215
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:438
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:443
 #: src/Products.php:101
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
@@ -263,16 +263,16 @@ msgstr ""
 "arrangementen"
 
 #: src/ContactForm.php:240
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: src/ContactForm.php:241
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:241
+#: src/ContactForm.php:242
 msgid "Female"
 msgstr "Vrouw"
-
-#: src/ContactForm.php:242
-msgid "Unknown"
-msgstr "Onbekend"
 
 #: src/Plugin.php:73 src/Plugin.php:74
 msgid "Settings"
@@ -290,17 +290,25 @@ msgstr "Online boeking"
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:139
+#: src/Plugin.php:138
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:140
+#: src/Plugin.php:139
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:141
+#: src/Plugin.php:140
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
+
+#: src/Plugin.php:151
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/Plugin.php:152
+msgid "OK"
+msgstr "OK"
 
 #: src/Products.php:35
 msgid "Error: product does not exist"
@@ -310,23 +318,31 @@ msgstr "Fout: product bestaat niet"
 msgid "Error: external data does not contain any results"
 msgstr "Fout: externe data bevat geen resultaten"
 
-#: src/Settings.php:61 src/Settings.php:74
+#: src/Settings.php:75 src/Settings.php:88
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
 
-#: src/Settings.php:130
+#: src/Settings.php:135 src/admin/settings.php:1
+msgid "Recras settings"
+msgstr "Recras-instellingen"
+
+#: src/Settings.php:145
 msgid "Recras name"
 msgstr "Recrasnaam"
 
-#: src/Settings.php:131
+#: src/Settings.php:146
 msgid "Currency symbol"
 msgstr "Valutasymbool"
 
-#: src/Settings.php:132
+#: src/Settings.php:147
 msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
-#: src/Settings.php:161
+#: src/Settings.php:148
+msgid "Use date/time picker script"
+msgstr "Gebruik datum-/tijdselectiescript"
+
+#: src/Settings.php:183
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 
@@ -367,10 +383,6 @@ msgstr "Producten"
 #: src/admin/cache.php:49
 msgid "Clear all"
 msgstr "Leeg alles"
-
-#: src/admin/settings.php:1
-msgid "Recras settings"
-msgstr "Recras-instellingen"
 
 #: src/admin/settings.php:7
 msgid "Save"

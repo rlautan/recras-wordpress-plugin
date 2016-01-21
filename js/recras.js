@@ -60,3 +60,22 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
     };
     return false;
 }
+
+jQuery(document).ready(function(){
+    if (typeof jQuery.fn.bootstrapMaterialDatePicker === 'function') {
+        jQuery('.recras-input-date').attr('type', 'text').bootstrapMaterialDatePicker({
+            cancelText: recras_l10n.button_cancel,
+            format: 'YYYY-MM-DD',
+            lang: recras_l10n.language,
+            okText: recras_l10n.button_ok,
+            time: false,
+            weekStart: 1, // Monday
+        });
+        jQuery('.recras-input-time').attr('type', 'text').bootstrapMaterialDatePicker({
+            cancelText: recras_l10n.button_cancel,
+            date: false,
+            format: 'HH:mm',
+            okText: recras_l10n.button_ok,
+        });
+    }
+});

@@ -134,13 +134,28 @@ class Plugin
      */
     public function loadScripts()
     {
-        wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '1.3.0', true);
-        wp_localize_script('recras', 'recras_l10n', [
+        $localisation = [
             'loading' => __('Loading...', $this::TEXT_DOMAIN),
             'sent_success' => __('Your message was sent successfully', $this::TEXT_DOMAIN),
             'sent_error' => __('There was an error sending your message', $this::TEXT_DOMAIN),
-        ]);
+        ];
+
+        if ($value = get_option('recras_datetimepicker')) {
+            wp_enqueue_script('momentjs', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js', [], false, true); // ver=false because it's already in the URL
+            wp_enqueue_script('momentjs-nl', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/locale/nl.js', ['momentjs'], false, true);
+            wp_enqueue_script('datetimepicker', plugins_url('/datetimepicker/bootstrap-material-datetimepicker.js', dirname(__FILE__)), ['momentjs'], '20151019', true);
+            wp_enqueue_style('datetimepicker', plugins_url('/datetimepicker/bootstrap-material-datetimepicker.css', dirname(__FILE__)), [], '20151019');
+            wp_enqueue_style('material-font', 'https://fonts.googleapis.com/icon?family=Material+Icons');
+
+            $localisation['language'] = get_locale();
+            $localisation['button_cancel'] = __('Cancel', $this::TEXT_DOMAIN);
+            $localisation['button_ok'] = __('OK', $this::TEXT_DOMAIN);
+        }
+
+        wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '1.4.0', true);
+        wp_localize_script('recras', 'recras_l10n', $localisation);
         wp_enqueue_script('recras');
+
     }
 
 

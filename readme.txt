@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
 Tested up to: 4.4.1
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,9 +12,16 @@ Easily integrate data from your Recras instance, such as arrangements and contac
 == Description ==
 With this plugin, you can easily integrate data from your [Recras](https://recras.nl/) instance, such as arrangements and contact forms, into your own website.
 
-To get started, go to the Settings -> Recras page and enter your Recras name. For example, if you log in to Recras at `https://mysite.recras.nl/` then your Recras name is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
+To get started, go to the Recras -> Settings page and enter your Recras name. For example, if you log in to Recras at `https://mysite.recras.nl/` then your Recras name is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
 
-This plugin consists of two shortcodes. To use them, you first need to set your Recras name on the Settings > Recras page.
+This plugin consists of four shortcodes. To use them, you first need to set your Recras name on the Recras -> Settings page.
+
+= Settings =
+Setting your Recras name is the most important step here. Other settings are:
+
+* Currency symbol - set to € (Euro) by default.
+* Decimal separator - set to , (comma) by default. Used in prices such as 100,00.
+* Use date/time picker script - please see the Date/Time picker section for details.
 
 = Arrangements =
 Add the `[recras-arrangement]` shortcode anywhere on your site. The following parameters are supported:
@@ -49,14 +56,16 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
-== Online booking ==
+= Online booking =
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
-* id (required) - corresponds to the contact form ID in Recras
+
+* id - corresponds to the contact form ID in Recras
 
 Example: `[recras-booking id=17]` will show the booking form with ID 17.
 
-== Products ==
+= Products =
 Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
+
 * id (required) - corresponds to the product ID in Recras
 * show (required) - can be any of the following: `title`, `description`, `price_excl_vat`, `price_incl_vat`.
   * duration - shows duration of this product, if product has a duration
@@ -70,8 +79,15 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
 
 Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
 
+= Date/Time picker =
+By default, date and time pickers use whatever the browser has available. At the time of writing (January 2016) Internet Explorer (all versions), Firefox (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras -> Settings page.
+
 = Styling =
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
+Styling for the date/time picker can be based off of `datetimepicker/bootstrap-material-datetimepicker.css`. Be sure to make any changes in your own theme, as this file may be overwritten when a new version of the plugin is released.
+
+= Cache =
+All data from your Recras is cached for up to 24 hours. If you make important changes like, for example, increasing the price of a product, you can clear the cache to reflect those changes on your site immediately.
 
 == Installation ==
 
@@ -91,6 +107,12 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.4.0 =
+* Fixed redirect URL after clearing cache
+* Add placeholders to textareas
+* Make "Unknown" the default gender, rather than "Male"
+* Add optional date/time pickers
 
 = 1.3.3 =
 * Sort products alphabetically
@@ -257,3 +279,4 @@ We only support the plugin on the latest version of WordPress (which you should 
 
 == Credits ==
 * Icons from [Genericons](https://github.com/Automattic/Genericons/) by Automattic, released under the GPL.
+* Date/Time picker by [T00rk](https://github.com/T00rk/bootstrap-material-datetimepicker), released under the MIT licence.
