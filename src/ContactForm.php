@@ -237,9 +237,9 @@ class ContactForm
                     break;
                 case 'contactpersoon.geslacht':
                     $html .= self::generateSubTag($options['element']) . self::generateSelect($field, [
+                        'onbekend' => __('Unknown', Plugin::TEXT_DOMAIN),
                         'man' => __('Male', Plugin::TEXT_DOMAIN),
                         'vrouw' => __('Female', Plugin::TEXT_DOMAIN),
-                        'onbekend' => __('Unknown', Plugin::TEXT_DOMAIN),
                     ]);
                     break;
                 case 'header':
