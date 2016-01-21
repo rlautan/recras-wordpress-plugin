@@ -259,7 +259,9 @@ class ContactForm
                     $html .= self::generateSubTag($options['element']) . self::generateChoices($field, $keuzes);
                     break;
                 case 'veel_tekst':
-                    $html .= self::generateSubTag($options['element']) . '<textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '></textarea>';
+                    $html .= self::generateSubTag($options['element']) . self::generateTextarea($field, [
+                        'placeholder' => $options['placeholders'],
+                    ]);
                     break;
                 default:
                     $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
@@ -304,19 +306,7 @@ class ContactForm
         ], $options);
 
         $pattern = ($options['pattern'] ? ' pattern="' . $options['pattern'] . '"' : '');
-        if (is_string($options['placeholder'])) {
-            $placeholder = ' placeholder="' . $options['placeholder'] . '"';
-            if ($field->verplicht) {
-                $placeholder .= '*';
-            }
-        } elseif ($options['placeholder']) {
-            $placeholder = ' placeholder="' . htmlentities($field->naam, ENT_COMPAT | ENT_HTML5) . '"';
-            if ($field->verplicht) {
-                $placeholder .= '*';
-            }
-        } else {
-            $placeholder = '';
-        }
+        $placeholder = self::getPlaceholder($field, $options);
         $required = ($field->verplicht ? ' required' : '');
         $class = ($options['class'] ? ' class="' . $options['class'] . '"' : '');
 
@@ -418,6 +408,21 @@ class ContactForm
 
 
     /**
+     * Generate a textarea
+     *
+     * @param object $field
+     * @param array $options
+     *
+     * @return string
+     */
+    private static function generateTextarea($field, $options)
+    {
+        $placeholder = self::getPlaceholder($field, $options);
+        return '<textarea id="field' . $field->id . '" name="' . $field->field_identifier . '"' . $placeholder . ($field->verplicht ? ' required' : '') . '></textarea>';
+    }
+
+
+    /**
      * Get forms for a Recras instance
      *
      * @param string $subdomain
@@ -445,6 +450,32 @@ class ContactForm
             $forms[$form->id] = $form->naam;
         }
         return $forms;
+    }
+
+
+    /**
+     * Get the placeholder for a field
+     *
+     * @param object $field
+     * @param array $options
+     *
+     * @return string
+     */
+    private static function getPlaceholder($field, $options)
+    {
+        $placeholder = '';
+        if (is_string($options['placeholder'])) {
+            $placeholder = ' placeholder="' . $options['placeholder'] . '"';
+            if ($field->verplicht) {
+                $placeholder .= '*';
+            }
+        } elseif ($options['placeholder']) {
+            $placeholder = ' placeholder="' . htmlentities($field->naam, ENT_COMPAT | ENT_HTML5) . '"';
+            if ($field->verplicht) {
+                $placeholder .= '*';
+            }
+        }
+        return $placeholder;
     }
 
 
