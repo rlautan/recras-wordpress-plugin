@@ -18,7 +18,8 @@
                 title : 'Online booking',
                 image : url + '/calendar.svg',
                 onclick : function(){
-                    tb_show('Online booking', 'admin.php?page=form-booking');
+                    //tb_show('Online booking', 'admin.php?page=form-booking');
+                    tinyMCE.activeEditor.execCommand('mceInsertContent', 0, '[recras-booking]');
                 }
             });
 
