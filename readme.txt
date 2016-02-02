@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
 Tested up to: 4.4.1
-Stable tag: 1.4.0
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
