@@ -30,14 +30,18 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
         }
     }
 
-    formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<img src="' + basePath + 'editor/loading.gif" alt="' + recras_l10n.loading + '" class="recras-loading">');
+    var submitEl = formEl.querySelector('[type="submit"]');
+    submitEl.parentNode.insertAdjacentHTML('beforeend', '<img src="' + basePath + 'editor/loading.gif" alt="' + recras_l10n.loading + '" class="recras-loading">');
+    submitEl.disabled = true;
 
+    var realFormID = formEl.getAttribute('data-formid'); // IE < 11 compatibility
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://' + subdomain + '.recras.nl/api2.php/contactformulieren/' + formID + '/opslaan');
+    xhr.open('POST', 'https://' + subdomain + '.recras.nl/api2.php/contactformulieren/' + realFormID + '/opslaan');
     xhr.send(JSON.stringify(elements));
     xhr.onreadystatechange = function(){
         if (xhr.readyState === 4) {
             removeElsWithClass('recras-loading');
+            submitEl.disabled = false;
             var response = JSON.parse(xhr.response);
             if (response.success) {
                 if (redirect) {

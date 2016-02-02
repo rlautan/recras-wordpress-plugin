@@ -182,7 +182,10 @@ class ContactForm
             $html .= '<h2>' . $options['formTitle'] . '</h2>';
         }
 
-        $html .= '<form class="recras-contact" id="recras-form' . $formID . '">';
+        // Contact forms need a unique ID, otherwise problems occur when you have multiple of the same forms on one page
+        $generatedFormID = uniqid('F' . $formID);
+
+        $html .= '<form class="recras-contact" id="recras-form' . $generatedFormID . '" data-formid="' . $formID . '">';
         $html .= self::generateStartTag($options['element']);
         foreach ($formFields as $field) {
             if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($options['arrangement']))) { //TODO: this fails when arrangement is set but invalid
@@ -275,9 +278,9 @@ class ContactForm
         $html .= '<input type="submit" value="' . $options['submitText'] . '">';
         $html .= '</form>';
         $html .= '<script>jQuery(document).ready(function(){
-    jQuery("#recras-form' . $formID . '").on("submit", function(e){
+    jQuery("#recras-form' . $generatedFormID . '").on("submit", function(e){
         e.preventDefault();
-        return submitRecrasForm(' . $formID . ', "' . $options['subdomain'] . '", "' . plugins_url('/', dirname(__FILE__)) . '", "' . $options['redirect']. '");
+        return submitRecrasForm("' . $generatedFormID . '", "' . $options['subdomain'] . '", "' . plugins_url('/', dirname(__FILE__)) . '", "' . $options['redirect']. '");
     });
 });</script>';
 
