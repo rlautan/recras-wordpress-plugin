@@ -145,7 +145,7 @@ class Settings
         add_settings_field('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
         add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
         add_settings_field('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal'], 'recras', 'recras', ['field' => 'recras_decimal']);
-        add_settings_field('recras_datetimepicker', __('Use date/time picker script', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDateTimePicker'], 'recras', 'recras', ['field' => 'recras_datetimepicker']);
+        //add_settings_field('recras_datetimepicker', __('Use date/time picker script', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDateTimePicker'], 'recras', 'recras', ['field' => 'recras_datetimepicker']);
     }
 
 
