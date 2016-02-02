@@ -108,11 +108,11 @@ None yet!
 
 == Changelog ==
 
-= 1.4.0 =
+= 1.3.4 =
 * Fixed redirect URL after clearing cache
 * Add placeholders to textareas
 * Make "Unknown" the default gender, rather than "Male"
-* Add optional date/time pickers
+* Fix submitting a contact form on a page that has that same form multiple times
 
 = 1.3.3 =
 * Sort products alphabetically

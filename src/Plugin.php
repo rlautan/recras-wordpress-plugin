@@ -152,7 +152,7 @@ class Plugin
             $localisation['button_ok'] = __('OK', $this::TEXT_DOMAIN);
         }
 
-        wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '1.4.0', true);
+        wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '1.3.4', true);
         wp_localize_script('recras', 'recras_l10n', $localisation);
         wp_enqueue_script('recras');
 

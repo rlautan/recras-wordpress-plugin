@@ -4,7 +4,7 @@ Plugin Name: Recras WordPress Plugin
 Plugin URI: http://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
-Version: 1.4.0
+Version: 1.3.4
 
 Author URI: http://www.recras.nl/
 */
