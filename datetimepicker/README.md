@@ -7,7 +7,12 @@ Originaly designed for Bootstrap Material, the V2.0 is now completely standalone
 
 | Date				| Author			| Description											 |
 | ----------------- | ----------------- | ------------------------------------------------------ |
-| 2015-10-19		| benletchford		| Fixed not being able to tab into input				 |
+| 2016-02-04		| T00rk				| Added a "Now" button (#38)	 					 	 |
+| 2016-01-30		| T00rk				| Switch view on click (#39, #47)	 					 |
+| 2016-01-29		| T00rk				| Added "clear button" (#48)		 					 |
+| 2016-01-29		| T00rk				| Replace rem by em (#26)			 					 |
+| 2016-01-29		| T00rk				| Display 24H clock (#54)			 					 |
+| 2016-01-29		| T00rk				| Close on "ESC" (#52)			 					 	 |
 | 2015-10-19		| drblue 			| Fixed erroneous package.json-file 					 |
 | 2015-10-19		| Perdona			| Fix auto resize when month has 6 weeks				 |
 | 2015-07-01		| T00rk 			| Redesigned element without using modal				 |
@@ -37,7 +42,7 @@ Google Material Icon Font `<link href="https://fonts.googleapis.com/icon?family=
 
 ### Live Example
 
-Click [here](http://t00rk.github.io/bootstrap-material-datetimepicker/) to see
+[Live example](http://t00rk.github.io/bootstrap-material-datetimepicker/)
 
 ### Usage
 
@@ -58,8 +63,13 @@ Click [here](http://t00rk.github.io/bootstrap-material-datetimepicker/) to see
 | **currentDate**	| (String\|Date\|Moment)		| Initial Date									|
 | **date**			| Boolean						| true => Has Datepicker						|
 | **time**			| Boolean						| true => Has Timepicker						|
+| **clearButton**	| Boolean						| true => Show Clear Button						|
+| **nowButton**		| Boolean						| true => Show Now Button						|
+| **switchOnClick**	| Boolean						| true => Switch view on click (default: false) |
 | **cancelText**	| String						| Text for the cancel button (default: Cancel)	|
 | **okText**		| String						| Text for the OK button (default: OK)			|
+| **clearText**		| String						| Text for the Clear button (default: Clear)	|
+| **nowText**		| String						| Text for the Now button (default: Now)		|
 
 
 ### Events

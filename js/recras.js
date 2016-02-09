@@ -80,6 +80,7 @@ jQuery(document).ready(function(){
             date: false,
             format: 'HH:mm',
             okText: recras_l10n.button_ok,
+            shortTime: false,
         });
     }
 });

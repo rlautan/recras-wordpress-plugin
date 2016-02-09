@@ -17,11 +17,13 @@
 		this.element = element;
 		this.$element = $(element);
 
-		this.params = { date : true, time : true, format : 'YYYY-MM-DD', minDate : null, maxDate : null, currentDate : null, lang : 'en', weekStart : 0, shortTime : false, 'cancelText' : 'Cancel', 'okText' : 'OK' };
+		this.params = { date : true, time : true, format : 'YYYY-MM-DD', minDate : null, maxDate : null, currentDate : null, lang : 'en', weekStart : 0, shortTime : false, clearButton : false, nowButton : false, cancelText : 'Cancel', okText : 'OK', clearText : 'Clear', nowText : 'Now', switchOnClick : false };
 		this.params = $.fn.extend(this.params, options);
 
 		this.name = "dtp_" + this.setName();
 		this.$element.attr("data-dtp", this.name);
+
+		moment.locale(this.params.lang);
 
 		this.init();
 	}
@@ -257,6 +259,8 @@
 										'</div>' +
 									'</div>' +
 									'<div class="dtp-buttons">' +
+										'<button class="dtp-btn-now btn btn-flat hidden">' + this.params.nowText + '</button>' +
+										'<button class="dtp-btn-clear btn btn-flat hidden">' + this.params.clearText + '</button>' +
 										'<button class="dtp-btn-cancel btn btn-flat">' + this.params.cancelText + '</button>' +
 										'<button class="dtp-btn-ok btn btn-flat">' + this.params.okText + '</button>' +
 										'<div class="clearfix"></div>' +
@@ -280,6 +284,27 @@
 			this._attachEvent(this.$dtpElement.find('a.dtp-select-month-after'), 'click', this._onMonthAfterClick.bind(this));
 			this._attachEvent(this.$dtpElement.find('a.dtp-select-year-before'), 'click', this._onYearBeforeClick.bind(this));
 			this._attachEvent(this.$dtpElement.find('a.dtp-select-year-after'), 'click', this._onYearAfterClick.bind(this));
+
+			if(this.params.clearButton === true)
+			{
+				this._attachEvent(this.$dtpElement.find('.dtp-btn-clear'), 'click', this._onClearClick.bind(this));
+				this.$dtpElement.find('.dtp-btn-clear').removeClass('hidden');
+			}
+
+			if(this.params.nowButton === true)
+			{
+				this._attachEvent(this.$dtpElement.find('.dtp-btn-now'), 'click', this._onNowClick.bind(this));
+				this.$dtpElement.find('.dtp-btn-now').removeClass('hidden');
+			}
+
+			if ((this.params.nowButton === true) && (this.params.clearButton === true)) 
+			{
+				this.$dtpElement.find('.dtp-btn-clear, .dtp-btn-now, .dtp-btn-cancel, .dtp-btn-ok').addClass('btn-xs');
+			} 
+			else if ((this.params.nowButton === true) || (this.params.clearButton === true))
+			{
+				this.$dtpElement.find('.dtp-btn-clear, .dtp-btn-now, .dtp-btn-cancel, .dtp-btn-ok').addClass('btn-sm');
+			}
 		},
 		initMeridienButtons: function()
 		{
@@ -343,6 +368,9 @@
 				this.$dtpElement.find('a.dtp-meridien-pm').click();
 			}
 
+			var cW = this.$dtpElement.find('.dtp-picker-clock').width();
+			var oT = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingTop').replace('px', '');
+			var oL = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingLeft').replace('px', '');
 			var pL = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingLeft').replace('px', '');
 			var pT = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingTop').replace('px', '');
 			var mL = this.$dtpElement.find('.dtp-picker-clock').css('marginLeft').replace('px', '');
@@ -350,28 +378,79 @@
 
 			var r = (this.$dtpElement.find('.dtp-picker-clock').innerWidth() / 2);
 			var j = r / 1.2;
+			var jj = r / 2.25;
 
 			var hours = [];
 
-			for(var h = 0; h < 12; ++h)
-			{
-				var x = j * Math.sin(Math.PI * 2 * (h / 12));
-				var y = j * Math.cos(Math.PI * 2 * (h / 12));
-				
-				var hour = $('<div>', { class : 'dtp-picker-time' })
-					.css
-					({
-						marginLeft: (r + x + parseInt(pL) / 2) - (parseInt(pL) + parseInt(mL)) + 'px',
-        				marginTop: (r - y - parseInt(mT) / 2) - (parseInt(pT) + parseInt(mT)) + 'px'
-					});
-				var cH = ((this.currentDate.format('h') == 12) ? 0 : this.currentDate.format('h'));
-				var hourLink = $('<a>', { href : 'javascript:void(0);', class : 'dtp-select-hour' }).data('hour', h).text((h == 0 ? 12 : h));
-					if(h == parseInt(cH))
-						hourLink.addClass('selected');
+			var cHFormat = ((this.params.shortTime === false) ? 'H' : 'h');
 
-				hour.append(hourLink);
-      			hours.push(hour);
-    		}
+    		if(this.params.shortTime === false)
+    		{
+    			for(var h = 0; h < 12; ++h)
+				{
+					var x = (jj + (cW) / 2) * Math.sin(Math.PI * 2 * (h / 12));
+					var y = (jj + (cW) / 2) * Math.cos(Math.PI * 2 * (h / 12));
+					
+					var hour = $('<div>', { class : 'dtp-picker-time' })
+						.css
+						({
+							marginLeft: ((r + x) / 2) + (parseInt(pL) + parseInt(mL)),
+    						marginTop: ((r - y) / 2) + (parseInt(pT) + parseInt(mT))
+						});
+					var cH = ((this.currentDate.format(cHFormat) == 12) ? 0 : this.currentDate.format(cHFormat));
+					var hourLink = $('<a>', { href : 'javascript:void(0);', class : 'dtp-select-hour' }).data('hour', (h == 0 ? 12 : h)).text((h == 0 ? 12 : h));
+						if(h == parseInt(cH))
+							hourLink.addClass('selected');
+
+					hour.append(hourLink);
+	      			hours.push(hour);
+	    		}
+
+	    		for(var h = 0; h < 12; ++h)
+				{
+					var x = (j + (cW) / 2) * Math.sin(Math.PI * 2 * (h / 12));
+					var y = (j + (cW) / 2) * Math.cos(Math.PI * 2 * (h / 12));
+					
+					var hour = $('<div>', { class : 'dtp-picker-time' })
+						.css
+						({
+							marginLeft: ((r + x) / 2) + (parseInt(pL) + parseInt(mL)),
+    						marginTop: ((r - y) / 2) + (parseInt(pT) + parseInt(mT))
+						});
+					var cH = ((this.currentDate.format(cHFormat) == 24) ? 0 : this.currentDate.format(cHFormat));
+					var hourLink = $('<a>', { href : 'javascript:void(0);', class : 'dtp-select-hour sub-hour' }).data('hour', (h == 0 ? 0 : h + 12)).text((h == 0 ? 0 : h + 12));
+						if(h + 12 == parseInt(cH))
+							hourLink.addClass('selected');
+
+					hour.append(hourLink);
+	      			hours.push(hour);
+	    		}
+
+	    		this.$dtpElement.find('a.dtp-meridien-am').addClass('hidden');
+	    		this.$dtpElement.find('a.dtp-meridien-pm').addClass('hidden');
+	    	}
+	    	else
+	    	{
+	    		for(var h = 0; h < 12; ++h)
+				{
+					var x = (j + (cW) / 2) * Math.sin(Math.PI * 2 * (h / 12));
+					var y = (j + (cW) / 2) * Math.cos(Math.PI * 2 * (h / 12));
+					
+					var hour = $('<div>', { class : 'dtp-picker-time' })
+						.css
+						({
+							marginLeft: ((r + x) / 2) + (parseInt(pL) + parseInt(mL)),
+    						marginTop: ((r - y) / 2) + (parseInt(pT) + parseInt(mT))
+						});
+					var cH = ((this.currentDate.format(cHFormat) == 24) ? 0 : this.currentDate.format(cHFormat));
+					var hourLink = $('<a>', { href : 'javascript:void(0);', class : 'dtp-select-hour' }).data('hour', (h == 0 ? 0 : h)).text((h == 0 ? 0 : h));
+						if(h == parseInt(cH))
+							hourLink.addClass('selected');
+
+					hour.append(hourLink);
+	      			hours.push(hour);
+	    		}
+	    	}
 
     		this.$dtpElement.find('a.dtp-select-hour').off('click');
 
@@ -402,34 +481,48 @@
 			this.$dtpElement.find('.dtp-picker-calendar').addClass('hidden');
 			this.$dtpElement.find('.dtp-picker-datetime').removeClass('hidden');
 
+			var cW = this.$dtpElement.find('.dtp-picker-clock').width();
+			var oT = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingTop').replace('px', '');
+			var oL = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingLeft').replace('px', '');
 			var pL = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingLeft').replace('px', '');
 			var pT = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingTop').replace('px', '');
 			var mL = this.$dtpElement.find('.dtp-picker-clock').css('marginLeft').replace('px', '');
 			var mT = this.$dtpElement.find('.dtp-picker-clock').css('marginTop').replace('px', '');
 
 			var r = (this.$dtpElement.find('.dtp-picker-clock').innerWidth() / 2);
-			var j = r / 1.2;
+			var j = r / 1.1;
 
 			var minutes = [];
 
 			for(var m = 0; m < 60; m += 5)
 			{
-				var x = j * Math.sin(Math.PI * 2 * (m / 60));
-				var y = j * Math.cos(Math.PI * 2 * (m / 60));
-				
-				var minute = $('<div>', { class : 'dtp-picker-time' })
-					.css
-					({
-						marginLeft: (r + x + parseInt(pL) / 2) - (parseInt(pL) + parseInt(mL)) + 'px',
-        				marginTop: (r - y - parseInt(mT) / 2) - (parseInt(pT) + parseInt(mT)) + 'px'
-					});
+				var x = (j + (cW - pL * 2) / 2) * Math.sin(Math.PI * 2 * (m / 60));
+				var y = (j + (cW - pT * 2) / 2) * Math.cos(Math.PI * 2 * (m / 60));
 
-				var minuteLink = $('<a>', { href : 'javascript:void(0);', class : 'dtp-select-minute' }).data('minute', m).text(((m.toString().length == 2) ? m : '0' + m));
-					if(m == 5 * Math.round(this.currentDate.minute() / 5))
-					{
-						minuteLink.addClass('selected');
-						this.currentDate.minute(m);
-					}
+				var minute = $('<div>', { class : 'dtp-picker-time' }).css
+				({
+					marginLeft: ((r + x) / 2) + (parseInt(pL) + parseInt(mL)),
+    				marginTop: ((r - y) / 2) + (parseInt(pT) + parseInt(mT))
+				});					
+
+				if(m % 5 === 0)
+				{
+					var minuteLink = $('<a>', { href : 'javascript:void(0);', class : 'dtp-select-minute' }).data('minute', m).text(((m.toString().length == 2) ? m : '0' + m));
+						if(m == 5 * Math.round(this.currentDate.minute() / 5))
+						{
+							minuteLink.addClass('selected');
+							this.currentDate.minute(m);
+						}
+				}
+				else
+				{
+					// var minuteLink = $('<a>', { href : 'javascript:void(0);', class : 'dtp-select-minute sub-minute' }).data('minute', m).text(".");
+					// 	if(m == 5 * Math.round(this.currentDate.minute() / 5))
+					// 	{
+					// 		minuteLink.addClass('selected');
+					// 		this.currentDate.minute(m);
+					// 	}
+				}
 
 				minute.append(minuteLink);
       			minutes.push(minute);
@@ -455,8 +548,12 @@
 				'<div class="dtp-clock-center"></div>'
 			);
 	
+			var cW = this.$dtpElement.find('.dtp-picker-clock').width();
+			var oT = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingTop').replace('px', '');
+			var oL = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingLeft').replace('px', '');
 			var pL = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingLeft').replace('px', '');
 			var pT = this.$dtpElement.find('.dtp-picker-clock').parent().parent().css('paddingTop').replace('px', '');
+
 			var mL = this.$dtpElement.find('.dtp-picker-clock').css('marginLeft').replace('px', '');
 			var mT = this.$dtpElement.find('.dtp-picker-clock').css('marginTop').replace('px', '');	
 
@@ -466,24 +563,24 @@
 			var r = (this.$dtpElement.find('.dtp-picker-clock').innerWidth() / 2);
 			var j = r / 1.2;
 
-			var _hL = r / 1.7;
-			var _mL = r / 1.5;					
+			var _hL = ((this.params.shortTime === false) ? (r / 2.4) : (r / 1.8));
+			var _mL = ((this.params.shortTime === false) ? (r / 1.8) : (r / 1.4));					
 
 			this.$dtpElement.find('.dtp-hour-hand').css({
-				left: r + (parseInt(mL) * 1.5) + 'px',
+				left: ((parseInt(cW) + (parseInt(mL) * 2) + (parseInt(pL) * 2) + parseInt(oL)) / 2) + 8,
 				height: _hL + 'px',
 				marginTop: (r - _hL - parseInt(pL)) + 'px'
 			}).addClass((t === true) ? 'on' : '');
      		this.$dtpElement.find('.dtp-minute-hand').css
 			({
-				left: r + (parseInt(mL) * 1.5) + 'px',
+				left: ((parseInt(cW) + (parseInt(mL) * 2) + (parseInt(pL) * 2) + parseInt(oL)) / 2) + 8,
 				height: _mL + 'px',
 				marginTop: (r - _mL - parseInt(pL)) + 'px'
 			}).addClass((t === false) ? 'on' : '');
 			this.$dtpElement.find('.dtp-clock-center').css
 			({
-				left: r + parseInt(pL) + parseInt(mL) - w + 'px',
-				marginTop: (r - (parseInt(mL) / 2)) - h + 'px'
+				left: ((parseInt(cW) + (parseInt(mL) * 2) + (parseInt(pL) * 2) + parseInt(oL)) / 2),
+				marginTop: (0 - parseInt(pT)) + (parseInt(cW) + parseInt(pT)) / 2
 			});
 
 			this.animateHands();
@@ -606,7 +703,7 @@
 					if(this.params.shortTime)
 						this.$dtpElement.find('.dtp-actual-day').html(date.format('A'));
 					else
-						this.$dtpElement.find('.dtp-actual-day').html(' ');
+						this.$dtpElement.find('.dtp-actual-day').html('&nbsp;');
 
 					this.$dtpElement.find('.dtp-actual-maxtime').html(content);
 				}
@@ -786,6 +883,7 @@
 				{
 					var _hour = $(this).data('hour');
 
+					console.log(_self.convertHours(_hour))
 					var _date = moment(_self.currentDate);
 					_date.hour(_self.convertHours(_hour)).minute(0).second(0);
 
@@ -829,7 +927,7 @@
 		},
 		_attachEvent: function(el, ev, fn)
 		{
-			el.on(ev, fn);
+			el.on(ev, null, null, fn);
 			this._attachedEvents.push([el, ev, fn]);
 		},
 		_detachEvents: function()
@@ -872,9 +970,37 @@
 		{
 			e.stopPropagation();
 		},
+		_onKeydown: function(e)
+		{
+			if(e.which === 27)
+			{
+				this.hide();
+			}
+		},
 		_onCloseClick: function()
 		{
 			this.hide();
+		},		
+		_onClearClick: function()
+		{
+			this.hide();
+			this.$element.val('');
+		},		
+		_onNowClick: function()
+		{
+			this.currentDate = moment();
+
+			this.showDate(this.currentDate);
+			this.showTime(this.currentDate);
+
+			switch(this.currentView)
+			{
+				case 0 : this.initDate(); break;
+				case 1 : this.initHours(); break;
+				case 2 : this.initMinutes(); break;
+			}
+
+			this.animateHands();
 		},
 		_onOKClick: function()
 		{
@@ -955,6 +1081,9 @@
 			$(e.currentTarget).addClass('selected');
 
 			this.selectDate($(e.currentTarget).parent().data("date"));
+
+			if(this.params.switchOnClick === true && this.params.time === true)
+				setTimeout(this.initHours.bind(this), 200);
 		},
 		_onSelectHour: function(e)
 		{
@@ -962,13 +1091,18 @@
 			$(e.currentTarget).addClass('selected');
 
 			var dataHour = parseInt($(e.currentTarget).data('hour'));
-			if(this.isPM())
+			if(this.params.shortTime === true && this.isPM())
+			{
 				dataHour += 12;
+			}
 
 			this.currentDate.hour(dataHour);
 			this.showTime(this.currentDate);
 
 			this.animateHands();
+
+			if(this.params.switchOnClick === true)
+				setTimeout(this.initMinutes.bind(this), 200);
 		},
 		_onSelectMinute: function(e)
 		{
@@ -1008,8 +1142,13 @@
 		{
 			var _return = h;
 
-			if((h < 12) && this.isPM())
-				_return += 12;
+			if(this.params.shortTime === true)
+			{
+				if((h < 12) && this.isPM())
+				{
+					_return += 12;
+				}
+			}
 
 			return _return;
 		},
@@ -1036,10 +1175,12 @@
 		show: function()
 		{			
 			this.$dtpElement.removeClass('hidden');
+			this._attachEvent($(window), 'keydown', this._onKeydown.bind(this));
 			this._centerBox();
 		},
 		hide: function()
 		{
+			$(window).off('keydown', null, null, this._onKeydown.bind(this));
 			this.$dtpElement.addClass('hidden');
 		},
 		resetDate: function()
