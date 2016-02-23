@@ -81,6 +81,7 @@ jQuery(document).ready(function(){
             format: 'HH:mm',
             okText: recras_l10n.button_ok,
             shortTime: false,
+            switchOnClick: true,
         });
     }
 });
