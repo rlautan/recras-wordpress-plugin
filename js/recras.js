@@ -47,6 +47,10 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
                 if (redirect) {
                     window.location = redirect;
                 } else {
+                    var inputs = formEl.querySelectorAll('input, select, textarea');
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].value = '';
+                    }
                     formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<p class="recras-success">' + recras_l10n.sent_success + '</p>');
                 }
             } else if (response.error) {
