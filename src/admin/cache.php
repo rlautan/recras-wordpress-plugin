@@ -46,5 +46,5 @@
 <h2><?php _e('Products', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
 <form action="<?= admin_url('admin-post.php?action=clear_product_cache'); ?>" method="POST">
     <input type="hidden" name="product" value="0">
-    <input type="submit" value="<?php _e('Clear all', \Recras\Plugin::TEXT_DOMAIN); ?>">
+    <input type="submit" value="<?php _e('Clear product cache', \Recras\Plugin::TEXT_DOMAIN); ?>">
 </form>

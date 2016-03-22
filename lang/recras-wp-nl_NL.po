@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2016-01-21 11:12+0100\n"
-"PO-Revision-Date: 2016-01-21 11:13+0100\n"
+"POT-Creation-Date: 2016-03-22 16:12+0100\n"
+"PO-Revision-Date: 2016-03-22 16:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -215,13 +215,13 @@ msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
 #: src/Arrangement.php:40 src/Arrangement.php:177 src/Arrangement.php:211
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:439
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:454
 #: src/Products.php:97
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
 #: src/Arrangement.php:44 src/Arrangement.php:181 src/Arrangement.php:215
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:443
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:458
 #: src/Products.php:101
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
@@ -262,15 +262,15 @@ msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
 
-#: src/ContactForm.php:240
+#: src/ContactForm.php:255
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/ContactForm.php:241
+#: src/ContactForm.php:256
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:242
+#: src/ContactForm.php:257
 msgid "Female"
 msgstr "Vrouw"
 
@@ -342,7 +342,7 @@ msgstr "Decimaalscheiding"
 msgid "Use date/time picker script"
 msgstr "Gebruik datum-/tijdselectiescript"
 
-#: src/Settings.php:183
+#: src/Settings.php:177
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 
@@ -381,12 +381,15 @@ msgid "Products"
 msgstr "Producten"
 
 #: src/admin/cache.php:49
-msgid "Clear all"
-msgstr "Leeg alles"
+msgid "Clear product cache"
+msgstr "Leeg productencache"
 
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Clear all"
+#~ msgstr "Leeg alles"
 
 #~ msgid "No pre-filled arrangement"
 #~ msgstr "Geen vooraf ingevuld arrangement"
