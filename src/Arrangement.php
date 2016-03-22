@@ -226,6 +226,7 @@ class Arrangement
         foreach ($json as $arrangement) {
             $arrangements[$arrangement->arrangement_id] = $arrangement->Arrangement->arrangement;
         }
+        natcasesort($arrangements);
         return $arrangements;
     }
 
