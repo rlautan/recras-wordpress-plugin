@@ -216,7 +216,9 @@ class ContactForm
                     }
                     // The  isset()  is in case an arrangement is set, but it is not valid
                     if (is_null($options['arrangement']) || !isset($arrangementen[$options['arrangement']])) {
-                        $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $arrangementen);
+                        $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $arrangementen, [
+                            'placeholder' => $options['placeholders'],
+                        ]);
                     } else {
                         $html .= self::generateInput($field, [
                             'placeholder' => $options['placeholders'],
@@ -255,6 +257,8 @@ class ContactForm
                         'onbekend' => __('Unknown', Plugin::TEXT_DOMAIN),
                         'man' => __('Male', Plugin::TEXT_DOMAIN),
                         'vrouw' => __('Female', Plugin::TEXT_DOMAIN),
+                    ], [
+                        'placeholder' => $options['placeholders'],
                     ]);
                     break;
                 case 'header':
@@ -369,14 +373,17 @@ class ContactForm
      * Generate a dropdown field
      *
      * @param object $field
+     * @param array $selectItems
      * @param array $options
      *
      * @return string
      */
-    public static function generateSelect($field, $options)
+    public static function generateSelect($field, $selectItems, $options = [])
     {
-        $html = '<select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
-        foreach ($options as $value => $name) {
+        $html  = '<select id="field' . $field->id . '" name="' . $field->field_identifier . '"' . ($field->verplicht ? ' required' : '') . '>';
+        $html .= self::getSelectPlaceholder($field, $options);
+
+        foreach ($selectItems as $value => $name) {
             $html .= '<option value="' . $value . '">' . $name;
         }
         $html .= '</select>';
@@ -486,6 +493,24 @@ class ContactForm
             }
         } elseif ($options['placeholder']) {
             $placeholder = ' placeholder="' . htmlentities($field->naam, ENT_COMPAT | ENT_HTML5) . '"';
+            if ($field->verplicht) {
+                $placeholder .= '*';
+            }
+        }
+        return $placeholder;
+    }
+
+
+    private static function getSelectPlaceholder($field, $options)
+    {
+        $placeholder = '';
+        if (isset($options['placeholder']) && $options['placeholder']) {
+            $placeholder = '<option value="" selected disabled>';
+            if (is_string($options['placeholder'])) {
+                $placeholder .= $options['placeholder'];
+            } else {
+                $placeholder .= htmlentities($field->naam, ENT_COMPAT | ENT_HTML5);
+            }
             if ($field->verplicht) {
                 $placeholder .= '*';
             }
