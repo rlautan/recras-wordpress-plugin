@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
 Tested up to: 4.4.1
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,11 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.6.0 =
+* Simplified emptying caches and added more explanation
+* Arrangements in a contact form are now sorted alphabetically
+* Added workaround for dropdown placeholders
 
 = 1.5.0 =
 Succesfully submitting a contact form will now empty the form afterwards
