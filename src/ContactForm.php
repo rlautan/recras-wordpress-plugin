@@ -114,19 +114,16 @@ class ContactForm
      */
     public static function clearCache()
     {
-        $formID = $_REQUEST['contactform'];
         $subdomain = get_option('recras_subdomain');
+        $errors = 0;
 
-        if ($formID == 0) {
-            $forms = array_keys(self::getForms($subdomain));
-            foreach ($forms as $id) {
-                self::deleteTransients($subdomain, $id);
-            }
-            delete_transient('recras_' . $subdomain . '_contactforms');
-        } else {
-            self::deleteTransients($subdomain, $formID);
+        $forms = array_keys(self::getForms($subdomain));
+        foreach ($forms as $id) {
+            $errors += self::deleteTransients($subdomain, $id);
         }
-        header('Location: ' . admin_url('admin.php?page=recras-clear-cache'));
+        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactforms');
+
+        header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
         exit;
     }
 
@@ -136,12 +133,18 @@ class ContactForm
      *
      * @param string $subdomain
      * @param int $formID
+     *
+     * @return int
      */
     private static function deleteTransients($subdomain, $formID)
     {
-        delete_transient('recras_' . $subdomain . '_contactform_' . $formID);
-        delete_transient('recras_' . $subdomain . '_contactform_' . $formID . '_fields');
-        delete_transient('recras_' . $subdomain . '_contactform_' . $formID . '_arrangements');
+        $errors = 0;
+
+        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactform_' . $formID);
+        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactform_' . $formID . '_fields');
+        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactform_' . $formID . '_arrangements');
+
+        return $errors;
     }
 
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2016-01-21 11:11+0100\n"
-"PO-Revision-Date: 2016-01-21 11:12+0100\n"
+"POT-Creation-Date: 2016-03-23 12:06+0100\n"
+"PO-Revision-Date: 2016-03-23 12:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -211,14 +211,14 @@ msgstr ""
 msgid "Error: you have not set your Recras name yet"
 msgstr ""
 
-#: src/Arrangement.php:40 src/Arrangement.php:177 src/Arrangement.php:211
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:439
+#: src/Arrangement.php:40 src/Arrangement.php:174 src/Arrangement.php:208
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:464
 #: src/Products.php:97
 msgid "Error: could not retrieve external data"
 msgstr ""
 
-#: src/Arrangement.php:44 src/Arrangement.php:181 src/Arrangement.php:215
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:443
+#: src/Arrangement.php:44 src/Arrangement.php:178 src/Arrangement.php:212
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:468
 #: src/Products.php:101
 msgid "Error: could not parse external data"
 msgstr ""
@@ -227,28 +227,28 @@ msgstr ""
 msgid "Error: unknown option"
 msgstr ""
 
-#: src/Arrangement.php:122
+#: src/Arrangement.php:119
 msgid "From"
 msgstr ""
 
-#: src/Arrangement.php:122
+#: src/Arrangement.php:119
 msgid "Until"
 msgstr ""
 
-#: src/Arrangement.php:122
+#: src/Arrangement.php:119
 msgid "Activity"
 msgstr ""
 
-#: src/Arrangement.php:148
+#: src/Arrangement.php:145
 #, php-format
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:262
+#: src/Arrangement.php:260
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:284
+#: src/Arrangement.php:282
 msgid "No location specified"
 msgstr ""
 
@@ -257,15 +257,15 @@ msgid ""
 "Error: arrangement is set, but contact form does not support arrangements"
 msgstr ""
 
-#: src/ContactForm.php:240
+#: src/ContactForm.php:260
 msgid "Unknown"
 msgstr ""
 
-#: src/ContactForm.php:241
+#: src/ContactForm.php:261
 msgid "Male"
 msgstr ""
 
-#: src/ContactForm.php:242
+#: src/ContactForm.php:262
 msgid "Female"
 msgstr ""
 
@@ -281,27 +281,27 @@ msgstr ""
 msgid "Online booking"
 msgstr ""
 
-#: src/Plugin.php:112
+#: src/Plugin.php:136
 msgid "Could not connect to your Recras"
 msgstr ""
 
-#: src/Plugin.php:138
+#: src/Plugin.php:162
 msgid "Loading..."
 msgstr ""
 
-#: src/Plugin.php:139
+#: src/Plugin.php:163
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:140
+#: src/Plugin.php:164
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:151
+#: src/Plugin.php:175
 msgid "Cancel"
 msgstr ""
 
-#: src/Plugin.php:152
+#: src/Plugin.php:176
 msgid "OK"
 msgstr ""
 
@@ -337,43 +337,64 @@ msgstr ""
 msgid "Use date/time picker script"
 msgstr ""
 
-#: src/Settings.php:183
+#: src/Settings.php:177
 msgid "Enter your Recras details here"
 msgstr ""
 
-#: src/admin/cache.php:1
+#: src/admin/cache.php:6
+msgid "The selected cache was cleared."
+msgstr ""
+
+#: src/admin/cache.php:19
 msgid "Clear Recras cache"
 msgstr ""
 
-#: src/admin/cache.php:6
+#: src/admin/cache.php:24
 msgid ""
-"Data coming from your Recras (contact forms, arrangements, products) are "
+"Data coming from your Recras (contact forms, arrangements, products) is "
 "cached for up to 24 hours. If you make important changes (i.e. a price "
 "increase) it is recommended you clear the corresponding cache."
 msgstr ""
 
-#: src/admin/cache.php:8
+#: src/admin/cache.php:27
 msgid "Arrangements"
 msgstr ""
 
-#: src/admin/cache.php:14 src/admin/cache.php:33
-msgid "All"
+#: src/admin/cache.php:28
+#, php-format
+msgid "This clears the cache for all arrangements, used in the %s shortcode."
 msgstr ""
 
-#: src/admin/cache.php:24 src/admin/cache.php:43
-msgid "Clear"
+#: src/admin/cache.php:30
+msgid "Clear arrangements cache"
 msgstr ""
 
-#: src/admin/cache.php:27
+#: src/admin/cache.php:34
 msgid "Contact forms"
 msgstr ""
 
-#: src/admin/cache.php:46
+#: src/admin/cache.php:35
+#, php-format
+msgid ""
+"This clears the cache for all contact forms, including fields and list of "
+"arrangements for each form. These are used in the %s shortcode."
+msgstr ""
+
+#: src/admin/cache.php:37
+msgid "Clear contact form cache"
+msgstr ""
+
+#: src/admin/cache.php:41
 msgid "Products"
 msgstr ""
 
-#: src/admin/cache.php:49
-msgid "Clear all"
+#: src/admin/cache.php:42
+#, php-format
+msgid "This clears the cache for all products, used in the %s shortcode."
+msgstr ""
+
+#: src/admin/cache.php:44
+msgid "Clear product cache"
 msgstr ""
 
 #: src/admin/settings.php:7

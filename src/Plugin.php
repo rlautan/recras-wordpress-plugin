@@ -105,6 +105,30 @@ class Plugin
     }
 
 
+    /**
+     * Delete a transient. Returns 0 for success, 1 for error for easy error counting
+     *
+     * @param $name
+     *
+     * @return int
+     */
+    public static function deleteTransient($name)
+    {
+        return (delete_transient($name) ? 0 : 1);
+    }
+
+
+    /**
+     * @param int $errors
+     *
+     * @return string
+     */
+    public static function getStatusMessage($errors)
+    {
+        return ($errors === 0 ? 'success' : 'error');
+    }
+
+
     public function loadAdminScripts()
     {
         wp_register_script('recras-admin', plugins_url('/js/admin.js', dirname(__FILE__)), [], '1.0.0', true);

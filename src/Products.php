@@ -73,15 +73,15 @@ class Products
     public static function clearCache()
     {
         $subdomain = get_option('recras_subdomain');
-        delete_transient('recras_' . $subdomain . '_products');
+        $error = Plugin::deleteTransient('recras_' . $subdomain . '_products');
 
-        header('Location: ' . admin_url('admin.php?page=recras-clear-cache'));
+        header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
         exit;
     }
 
 
     /**
-     * Get productsfrom the Recras API
+     * Get products from the Recras API
      *
      * @param string $subdomain
      *

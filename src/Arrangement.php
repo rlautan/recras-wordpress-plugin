@@ -87,19 +87,16 @@ class Arrangement
      */
     public static function clearCache()
     {
-        $arrangementID = $_REQUEST['arrangement'];
         $subdomain = get_option('recras_subdomain');
+        $errors = 0;
 
-        if ($arrangementID == 0) {
-            $arrangements = array_keys(self::getArrangements($subdomain));
-            foreach ($arrangements as $id) {
-                delete_transient('recras_' . $subdomain . '_arrangement_' . $id);
-            }
-            delete_transient('recras_' . $subdomain . '_arrangements');
-        } else {
-            delete_transient('recras_' . $subdomain . '_arrangement_' . $arrangementID);
+        $arrangements = array_keys(self::getArrangements($subdomain));
+        foreach ($arrangements as $id) {
+            $errors += Plugin::deleteTransient('recras_' . $subdomain . '_arrangement_' . $id);
         }
-        header('Location: ' . admin_url('admin.php?page=recras-clear-cache'));
+        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_arrangements');
+
+        header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
         exit;
     }
 
