@@ -200,7 +200,7 @@ class Arrangement
      */
     public function getArrangementsForContactForm($subdomain, $contactformID)
     {
-        $json = get_transient('recras_' . $subdomain . 'contactform_' . $contactformID . '_arrangements');
+        $json = get_transient('recras_' . $subdomain . '_contactform_' . $contactformID . '_arrangements');
         if ($json === false) {
             $baseUrl = 'https://' . $subdomain . '.recras.nl/api2.php/contactformulieren/' . $contactformID . '/arrangementen';
             $json = @file_get_contents($baseUrl);
@@ -211,7 +211,7 @@ class Arrangement
             if (is_null($json)) {
                 return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
             }
-            set_transient('recras_' . $subdomain . 'contactform_' . $contactformID . '_arrangements', $json, 86400);
+            set_transient('recras_' . $subdomain . '_contactform_' . $contactformID . '_arrangements', $json, 86400);
         }
         if ($json === []) {
             return [];
