@@ -17,16 +17,20 @@ function getContactFormArrangements(formID, subdomain)
                 xhr.response.forEach(function(item){
                     contactFormArrangements.push(item.arrangement_id);
                 });
-                disableUnsetArrangements(contactFormArrangements);
+                disableNotAllowed(contactFormArrangements);
             }
         }
     };
 }
 
-function disableUnsetArrangements(arrangementIDs)
+/**
+ * Disable arrangements that are not allowed for this contact form
+ *
+ * @param {Array} arrangementIDs
+ */
+function disableNotAllowed(arrangementIDs)
 {
     var options = document.getElementById('arrangement_id').getElementsByTagName('option');
-    console.log(arrangementIDs);
     for (var i = 0; i < options.length; i++) {
         options[i].disabled = (arrangementIDs.indexOf(parseInt(options[i].value,10)) > -1);
     }
