@@ -156,6 +156,16 @@ class ArrangementTest extends \WP_UnitTestCase
         $plugin = new Arrangement;
         $arrangements = $plugin->getArrangements('ObviouslyFakeSubdomainThatDoesNotExist');
         $this->assertTrue(is_string($arrangements), 'getArrangements on a non-existing subdomain should return an error message');
+        $this->assertTrue(isset($arrangements[8]), 'Should include arrangements that are not bookable online');
+        $this->assertTrue(isset($arrangements[18]), 'Should include arrangements that are bookable online');
+    }
+
+    function testGetOnlineArrangements()
+    {
+        $plugin = new Arrangement;
+        $arrangements = $plugin->getArrangements('demo', true);
+        $this->assertFalse(isset($arrangements[8]), 'Should not include arrangements that are not bookable online');
+        $this->assertTrue(isset($arrangements[18]), 'Should include arrangements that are bookable online');
     }
 
     function testGetFormArrangementsInvalidForm()

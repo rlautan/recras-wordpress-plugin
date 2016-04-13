@@ -31,18 +31,4 @@ class PluginTest extends \WP_UnitTestCase
         $this->assertEquals('demo', $result, 'Valid subdomain should be valid');
     }
 
-    function testGetArrangements()
-    {
-        $plugin = new Arrangement;
-        $arrangements = $plugin->getArrangements('demo');
-        $this->assertGreaterThan(0, count($arrangements), 'getArrangements should return a non-empty array');
-    }
-
-    function testGetArrangementsInvalidDomain()
-    {
-        $plugin = new Arrangement;
-        $arrangements = $plugin->getArrangements('ObviouslyFakeSubdomainThatDoesNotExist');
-        $this->assertTrue(is_string($arrangements), 'getArrangements on a non-existing subdomain should return an error message');
-    }
-
 }

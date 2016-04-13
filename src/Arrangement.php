@@ -161,10 +161,11 @@ class Arrangement
      * Get arrangements from the Recras API
      *
      * @param string $subdomain
+     * @param bool $onlyOnline
      *
      * @return array|string
      */
-    public static function getArrangements($subdomain)
+    public static function getArrangements($subdomain, $onlyOnline = false)
     {
         $json = get_transient('recras_' . $subdomain . '_arrangements');
         if ($json === false) {
@@ -184,7 +185,9 @@ class Arrangement
             0 => (object) ['arrangement' => ''],
         ];
         foreach ($json as $arrangement) {
-            $arrangements[$arrangement->id] = $arrangement;
+            if (!$onlyOnline || $arrangement->mag_online) {
+                $arrangements[$arrangement->id] = $arrangement;
+            }
         }
         return $arrangements;
     }
