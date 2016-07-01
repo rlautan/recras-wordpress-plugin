@@ -131,7 +131,11 @@ class Plugin
      */
     public static function getNoSubdomainError()
     {
-        return __('Error: you have not set your Recras name yet', Plugin::TEXT_DOMAIN);
+        if (current_user_can('manage_options')) {
+            return __('Error: you have not set your Recras name yet', Plugin::TEXT_DOMAIN);
+        } else {
+            return __('Error: your Recras name has not been set yet, but you do not have the permission to set this. Please ask your site administrator to do this for you.', Plugin::TEXT_DOMAIN);
+        }
     }
 
 

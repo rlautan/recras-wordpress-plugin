@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2016-03-23 12:06+0100\n"
-"PO-Revision-Date: 2016-03-23 12:06+0100\n"
+"POT-Creation-Date: 2016-07-01 11:08+0200\n"
+"PO-Revision-Date: 2016-07-01 11:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 editor/form-contact.php:32 src/Plugin.php:88
+#: editor/form-arrangement.php:14 editor/form-booking.php:13
+#: editor/form-contact.php:32 src/Plugin.php:95
 msgid "Arrangement"
 msgstr "Arrangement"
 
@@ -81,12 +82,16 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:44 editor/form-contact.php:67
-#: editor/form-product.php:34
+#: editor/form-arrangement.php:44 editor/form-booking.php:26
+#: editor/form-contact.php:67 editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
-#: editor/form-contact.php:15 src/Plugin.php:89
+#: editor/form-booking.php:19
+msgid "No pre-filled arrangement"
+msgstr "Geen vooraf ingevuld arrangement"
+
+#: editor/form-contact.php:15 src/Plugin.php:96
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -131,8 +136,7 @@ msgstr "Tabel"
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:51 editor/form-contact.php:92
-#: src/ContactForm.php:90
+#: editor/form-contact.php:51 editor/form-contact.php:92 src/ContactForm.php:90
 msgid "Send"
 msgstr "Versturen"
 
@@ -152,7 +156,7 @@ msgstr "Pagina's"
 msgid "Posts"
 msgstr "Berichten"
 
-#: editor/form-product.php:11 src/Plugin.php:91
+#: editor/form-product.php:11 src/Plugin.php:98
 msgid "Product"
 msgstr "Product"
 
@@ -209,19 +213,14 @@ msgstr "Fout: optie \"show\" niet ingesteld"
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: src/Arrangement.php:32 src/ContactForm.php:24 src/OnlineBooking.php:21
-#: src/Products.php:30
-msgid "Error: you have not set your Recras name yet"
-msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
-
-#: src/Arrangement.php:40 src/Arrangement.php:174 src/Arrangement.php:208
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:464
+#: src/Arrangement.php:40 src/Arrangement.php:175 src/Arrangement.php:211
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:470
 #: src/Products.php:97
 msgid "Error: could not retrieve external data"
 msgstr "Fout: kon externe data niet ophalen"
 
-#: src/Arrangement.php:44 src/Arrangement.php:178 src/Arrangement.php:212
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:468
+#: src/Arrangement.php:44 src/Arrangement.php:179 src/Arrangement.php:215
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:474
 #: src/Products.php:101
 msgid "Error: could not parse external data"
 msgstr "Fout: kon externe data niet parsen"
@@ -247,11 +246,11 @@ msgstr "Activiteit"
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:260
+#: src/Arrangement.php:263
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:282
+#: src/Arrangement.php:285
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
@@ -274,39 +273,52 @@ msgstr "Man"
 msgid "Female"
 msgstr "Vrouw"
 
-#: src/Plugin.php:73 src/Plugin.php:74
+#: src/Plugin.php:78 src/Plugin.php:79
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Plugin.php:81 src/Plugin.php:82
+#: src/Plugin.php:88 src/Plugin.php:89
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:90
+#: src/Plugin.php:97
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:136
+#: src/Plugin.php:135
+msgid "Error: you have not set your Recras name yet"
+msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
+
+#: src/Plugin.php:137
+msgid ""
+"Error: your Recras name has not been set yet, but you do not have the "
+"permission to set this. Please ask your site administrator to do this for "
+"you."
+msgstr ""
+"Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
+"dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
+
+#: src/Plugin.php:157
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:162
+#: src/Plugin.php:183
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:163
+#: src/Plugin.php:184
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:164
+#: src/Plugin.php:185
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:175
+#: src/Plugin.php:196
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:176
+#: src/Plugin.php:197
 msgid "OK"
 msgstr "OK"
 
@@ -318,31 +330,31 @@ msgstr "Fout: product bestaat niet"
 msgid "Error: external data does not contain any results"
 msgstr "Fout: externe data bevat geen resultaten"
 
-#: src/Settings.php:75 src/Settings.php:88
+#: src/Settings.php:74 src/Settings.php:86
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
 
-#: src/Settings.php:135 src/admin/settings.php:1
+#: src/Settings.php:133 src/admin/settings.php:1
 msgid "Recras settings"
 msgstr "Recras-instellingen"
 
-#: src/Settings.php:145
+#: src/Settings.php:143
 msgid "Recras name"
 msgstr "Recrasnaam"
 
-#: src/Settings.php:146
+#: src/Settings.php:144
 msgid "Currency symbol"
 msgstr "Valutasymbool"
 
-#: src/Settings.php:147
+#: src/Settings.php:145
 msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
-#: src/Settings.php:148
+#: src/Settings.php:146
 msgid "Use date/time picker script"
 msgstr "Gebruik datum-/tijdselectiescript"
 
-#: src/Settings.php:177
+#: src/Settings.php:175
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 
@@ -431,9 +443,6 @@ msgstr "Opslaan"
 
 #~ msgid "Clear all"
 #~ msgstr "Leeg alles"
-
-#~ msgid "No pre-filled arrangement"
-#~ msgstr "Geen vooraf ingevuld arrangement"
 
 #~ msgid ""
 #~ "The cURL extension for PHP is not installed. Without this, submitting "

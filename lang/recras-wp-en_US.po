@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2016-03-23 12:06+0100\n"
-"PO-Revision-Date: 2016-03-23 12:06+0100\n"
+"POT-Creation-Date: 2016-07-01 11:08+0200\n"
+"PO-Revision-Date: 2016-07-01 11:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 editor/form-contact.php:32 src/Plugin.php:88
+#: editor/form-arrangement.php:14 editor/form-booking.php:13
+#: editor/form-contact.php:32 src/Plugin.php:95
 msgid "Arrangement"
 msgstr ""
 
@@ -81,12 +82,16 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: editor/form-arrangement.php:44 editor/form-contact.php:67
-#: editor/form-product.php:34
+#: editor/form-arrangement.php:44 editor/form-booking.php:26
+#: editor/form-contact.php:67 editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr ""
 
-#: editor/form-contact.php:15 src/Plugin.php:89
+#: editor/form-booking.php:19
+msgid "No pre-filled arrangement"
+msgstr ""
+
+#: editor/form-contact.php:15 src/Plugin.php:96
 msgid "Contact form"
 msgstr ""
 
@@ -128,8 +133,7 @@ msgstr ""
 msgid "Submit button text"
 msgstr ""
 
-#: editor/form-contact.php:51 editor/form-contact.php:92
-#: src/ContactForm.php:90
+#: editor/form-contact.php:51 editor/form-contact.php:92 src/ContactForm.php:90
 msgid "Send"
 msgstr ""
 
@@ -149,7 +153,7 @@ msgstr ""
 msgid "Posts"
 msgstr ""
 
-#: editor/form-product.php:11 src/Plugin.php:91
+#: editor/form-product.php:11 src/Plugin.php:98
 msgid "Product"
 msgstr ""
 
@@ -206,19 +210,14 @@ msgstr ""
 msgid "Error: invalid \"show\" option"
 msgstr ""
 
-#: src/Arrangement.php:32 src/ContactForm.php:24 src/OnlineBooking.php:21
-#: src/Products.php:30
-msgid "Error: you have not set your Recras name yet"
-msgstr ""
-
-#: src/Arrangement.php:40 src/Arrangement.php:174 src/Arrangement.php:208
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:464
+#: src/Arrangement.php:40 src/Arrangement.php:175 src/Arrangement.php:211
+#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:470
 #: src/Products.php:97
 msgid "Error: could not retrieve external data"
 msgstr ""
 
-#: src/Arrangement.php:44 src/Arrangement.php:178 src/Arrangement.php:212
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:468
+#: src/Arrangement.php:44 src/Arrangement.php:179 src/Arrangement.php:215
+#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:474
 #: src/Products.php:101
 msgid "Error: could not parse external data"
 msgstr ""
@@ -244,11 +243,11 @@ msgstr ""
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:260
+#: src/Arrangement.php:263
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:282
+#: src/Arrangement.php:285
 msgid "No location specified"
 msgstr ""
 
@@ -269,39 +268,50 @@ msgstr ""
 msgid "Female"
 msgstr ""
 
-#: src/Plugin.php:73 src/Plugin.php:74
+#: src/Plugin.php:78 src/Plugin.php:79
 msgid "Settings"
 msgstr ""
 
-#: src/Plugin.php:81 src/Plugin.php:82
+#: src/Plugin.php:88 src/Plugin.php:89
 msgid "Cache"
 msgstr ""
 
-#: src/Plugin.php:90
+#: src/Plugin.php:97
 msgid "Online booking"
 msgstr ""
 
-#: src/Plugin.php:136
+#: src/Plugin.php:135
+msgid "Error: you have not set your Recras name yet"
+msgstr ""
+
+#: src/Plugin.php:137
+msgid ""
+"Error: your Recras name has not been set yet, but you do not have the "
+"permission to set this. Please ask your site administrator to do this for "
+"you."
+msgstr ""
+
+#: src/Plugin.php:157
 msgid "Could not connect to your Recras"
 msgstr ""
 
-#: src/Plugin.php:162
+#: src/Plugin.php:183
 msgid "Loading..."
 msgstr ""
 
-#: src/Plugin.php:163
+#: src/Plugin.php:184
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:164
+#: src/Plugin.php:185
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:175
+#: src/Plugin.php:196
 msgid "Cancel"
 msgstr ""
 
-#: src/Plugin.php:176
+#: src/Plugin.php:197
 msgid "OK"
 msgstr ""
 
@@ -313,31 +323,31 @@ msgstr ""
 msgid "Error: external data does not contain any results"
 msgstr ""
 
-#: src/Settings.php:75 src/Settings.php:88
+#: src/Settings.php:74 src/Settings.php:86
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: src/Settings.php:135 src/admin/settings.php:1
+#: src/Settings.php:133 src/admin/settings.php:1
 msgid "Recras settings"
 msgstr ""
 
-#: src/Settings.php:145
+#: src/Settings.php:143
 msgid "Recras name"
 msgstr ""
 
-#: src/Settings.php:146
+#: src/Settings.php:144
 msgid "Currency symbol"
 msgstr ""
 
-#: src/Settings.php:147
+#: src/Settings.php:145
 msgid "Decimal separator"
 msgstr ""
 
-#: src/Settings.php:148
+#: src/Settings.php:146
 msgid "Use date/time picker script"
 msgstr ""
 
-#: src/Settings.php:177
+#: src/Settings.php:175
 msgid "Enter your Recras details here"
 msgstr ""
 
