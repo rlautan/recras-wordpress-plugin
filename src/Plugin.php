@@ -22,7 +22,7 @@ class Plugin
 
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
 
-        add_action('init', [&$this, 'addEditorButtons']);
+        add_action('admin_init', [&$this, 'addEditorButtons']);
         add_action('init', [&$this, 'setBaseUrl']);
 
         add_filter('mce_external_languages', [&$this, 'loadEditorLanguage']);
@@ -44,8 +44,8 @@ class Plugin
      */
     public function addEditorButtons()
     {
-        add_filter('mce_external_plugins', [&$this, 'addEditorScripts']);
         add_filter('mce_buttons', [&$this, 'registerEditorButtons']);
+        add_filter('mce_external_plugins', [&$this, 'addEditorScripts']);
         add_thickbox();
     }
 
