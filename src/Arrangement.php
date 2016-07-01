@@ -29,7 +29,7 @@ class Arrangement
 
         $subdomain = Settings::getSubdomain($attributes);
         if (!$subdomain) {
-            return __('Error: you have not set your Recras name yet', Plugin::TEXT_DOMAIN);
+            return Plugin::getNoSubdomainError();
         }
 
 

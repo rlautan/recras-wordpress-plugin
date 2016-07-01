@@ -126,6 +126,16 @@ class Plugin
 
 
     /**
+     * Get error message if no subdomain has been entered yet
+     * @return string
+     */
+    public static function getNoSubdomainError()
+    {
+        return __('Error: you have not set your Recras name yet', Plugin::TEXT_DOMAIN);
+    }
+
+
+    /**
      * @param int $errors
      *
      * @return string
