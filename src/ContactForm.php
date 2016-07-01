@@ -292,6 +292,7 @@ class ContactForm
             }
             //$html .= print_r($field, true); //DEBUG
         }
+        $plugin = new Plugin;
         $html .= self::generateEndTag($options['element']);
 
         $html .= '<input type="submit" value="' . $options['submitText'] . '">';
@@ -299,7 +300,12 @@ class ContactForm
         $html .= '<script>jQuery(document).ready(function(){
     jQuery("#recras-form' . $generatedFormID . '").on("submit", function(e){
         e.preventDefault();
-        return submitRecrasForm("' . $generatedFormID . '", "' . $options['subdomain'] . '", "' . plugins_url('/', dirname(__FILE__)) . '", "' . $options['redirect']. '");
+        return submitRecrasForm(
+            "' . $generatedFormID . '",
+            "' . $options['subdomain'] . '",
+            "' . $plugin->baseUrl . '/",
+            "' . $options['redirect']. '"
+        );
     });
 });</script>';
 

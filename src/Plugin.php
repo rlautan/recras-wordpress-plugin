@@ -5,6 +5,8 @@ class Plugin
 {
     const TEXT_DOMAIN = 'recras-wp';
 
+    public $baseUrl;
+
 
     /**
      * Init all the things!
@@ -21,6 +23,7 @@ class Plugin
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
 
         add_action('init', [&$this, 'addEditorButtons']);
+        add_action('init', [&$this, 'setBaseUrl']);
 
         add_filter('mce_external_languages', [&$this, 'loadEditorLanguage']);
 
@@ -56,7 +59,7 @@ class Plugin
      */
     public function addEditorScripts($plugins)
     {
-        $plugins['recras'] = plugins_url('/editor/plugin.js', dirname(__FILE__));
+        $plugins['recras'] = $this->baseUrl . '/editor/plugin.js';
         return $plugins;
     }
 
@@ -131,7 +134,7 @@ class Plugin
 
     public function loadAdminScripts()
     {
-        wp_register_script('recras-admin', plugins_url('/js/admin.js', dirname(__FILE__)), [], '1.0.0', true);
+        wp_register_script('recras-admin', $this->baseUrl .'/js/admin.js', [], '1.0.0', true);
         wp_localize_script('recras-admin', 'recras_l10n', [
             'no_connection' => __('Could not connect to your Recras', $this::TEXT_DOMAIN),
         ]);
@@ -167,8 +170,8 @@ class Plugin
         if ($value = get_option('recras_datetimepicker')) {
             wp_enqueue_script('momentjs', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js', [], false, true); // ver=false because it's already in the URL
             wp_enqueue_script('momentjs-nl', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/locale/nl.js', ['momentjs'], false, true);
-            wp_enqueue_script('datetimepicker', plugins_url('/datetimepicker/bootstrap-material-datetimepicker.js', dirname(__FILE__)), ['momentjs'], '20151019', true);
-            wp_enqueue_style('datetimepicker', plugins_url('/datetimepicker/bootstrap-material-datetimepicker.css', dirname(__FILE__)), [], '20151019');
+            wp_enqueue_script('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.js', ['momentjs'], '20151019', true);
+            wp_enqueue_style('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.css', [], '20151019');
             wp_enqueue_style('material-font', 'https://fonts.googleapis.com/icon?family=Material+Icons');
 
             $localisation['language'] = get_locale();
@@ -176,7 +179,7 @@ class Plugin
             $localisation['button_ok'] = __('OK', $this::TEXT_DOMAIN);
         }
 
-        wp_register_script('recras', plugins_url('/js/recras.js', dirname(__FILE__)), ['jquery'], '1.5.0', true);
+        wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '1.5.0', true);
         wp_localize_script('recras', 'recras_l10n', $localisation);
         wp_enqueue_script('recras');
 
@@ -194,5 +197,14 @@ class Plugin
     {
         array_push($buttons, 'recras-arrangement', 'recras-booking', 'recras-contact', 'recras-product');
         return $buttons;
+    }
+
+
+    /**
+     * Set plugin base dir
+     */
+    public function setBaseUrl()
+    {
+        $this->baseUrl = rtrim(plugins_url('', dirname(__FILE__)), '/');
     }
 }
