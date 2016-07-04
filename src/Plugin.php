@@ -21,11 +21,10 @@ class Plugin
         add_action('admin_menu', [&$this, 'addMenuItems']);
 
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
-
-        add_action('admin_init', [&$this, 'addEditorButtons']);
+        add_action('admin_init', ['Recras\Editor', 'addButtons']);
         add_action('init', [&$this, 'setBaseUrl']);
 
-        add_filter('mce_external_languages', [&$this, 'loadEditorLanguage']);
+        add_filter('mce_external_languages', ['Recras\Editor', 'loadTranslations']);
 
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
@@ -36,31 +35,6 @@ class Plugin
         add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
 
         $this->addShortcodes();
-    }
-
-
-    /**
-     * Add the shortcode generator buttons to TinyMCE
-     */
-    public function addEditorButtons()
-    {
-        add_filter('mce_buttons', [&$this, 'registerEditorButtons']);
-        add_filter('mce_external_plugins', [&$this, 'addEditorScripts']);
-        add_thickbox();
-    }
-
-
-    /**
-     * Load the script needed for TinyMCE
-     *
-     * @param array $plugins
-     *
-     * @return array
-     */
-    public function addEditorScripts($plugins)
-    {
-        $plugins['recras'] = $this->baseUrl . '/editor/plugin.js';
-        return $plugins;
     }
 
 
@@ -150,6 +124,9 @@ class Plugin
     }
 
 
+    /**
+     * Load scripts for use in the WP admin
+     */
     public function loadAdminScripts()
     {
         wp_register_script('recras-admin', $this->baseUrl .'/js/admin.js', [], '1.0.0', true);
@@ -157,20 +134,6 @@ class Plugin
             'no_connection' => __('Could not connect to your Recras', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
-    }
-
-
-    /**
-     * Load the TinyMCE translation
-     *
-     * @param array $locales
-     *
-     * @return array
-     */
-    public function loadEditorLanguage($locales)
-    {
-        $locales['recras'] = plugin_dir_path(__FILE__) . '/editor/translation.php';
-        return $locales;
     }
 
 
@@ -201,20 +164,6 @@ class Plugin
         wp_localize_script('recras', 'recras_l10n', $localisation);
         wp_enqueue_script('recras');
 
-    }
-
-
-    /**
-     * Register TinyMCE buttons
-     *
-     * @param array $buttons
-     *
-     * @return array
-     */
-    public function registerEditorButtons($buttons)
-    {
-        array_push($buttons, 'recras-arrangement', 'recras-booking', 'recras-contact', 'recras-product');
-        return $buttons;
     }
 
 
