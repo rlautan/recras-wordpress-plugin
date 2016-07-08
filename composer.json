@@ -9,8 +9,8 @@
     "require": {
         "php": ">=5.4"
     },
-    "require_dev": {
-        "phpunit/phpunit": "^4.8",
+    "require-dev": {
+        "phpunit/phpunit": "^5.4",
         "wp-cli/wp-cli": "^0.20.1"
     },
     "authors": [
