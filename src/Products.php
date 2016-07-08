@@ -91,15 +91,12 @@ class Products
     {
         $json = get_transient('recras_' . $subdomain . '_products');
         if ($json === false) {
-            $baseUrl = 'https://' . $subdomain . '.recras.nl/api/json/producten';
-            $json = @file_get_contents($baseUrl);
-            if ($json === false) {
-                return __('Error: could not retrieve external data', Plugin::TEXT_DOMAIN);
+            try {
+                $json = Http::get($subdomain, 'producten', 'api/json');
+            } catch (\Exception $e) {
+                return $e->getMessage();
             }
-            $json = json_decode($json);
-            if (is_null($json)) {
-                return __('Error: could not parse external data', Plugin::TEXT_DOMAIN);
-            }
+
             set_transient('recras_' . $subdomain . '_products', $json, 86400);
         }
         if (!isset($json->results)) {
