@@ -27,7 +27,7 @@ var recrasPlugin = function(editor, url) {
         title : 'Product',
         image : url + '/product.svg',
         onclick : function(){
-            tb_show('Contact', 'admin.php?page=form-product');
+            tb_show('Product', 'admin.php?page=form-product');
         }
     });
 };
