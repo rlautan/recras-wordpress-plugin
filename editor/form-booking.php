@@ -7,7 +7,6 @@
 
     $model = new \Recras\Arrangement;
     $arrangements = $model->getArrangements($subdomain, true);
-    unset($arrangements[0]);
 ?>
 <dl>
     <dt><label for="arrangement_id"><?php _e('Arrangement', \Recras\Plugin::TEXT_DOMAIN); ?></label>
@@ -15,6 +14,7 @@
             <input type="number" id="arrangement_id" min="0">
             <?= $arrangements; ?>
         <?php } elseif(is_array($arrangements)) { ?>
+            <?php unset($arrangements[0]); ?>
             <select id="arrangement_id" required>
                 <option value="0"><?php _e('No pre-filled arrangement', \Recras\Plugin::TEXT_DOMAIN); ?>
                 <?php foreach ($arrangements as $ID => $arrangement) { ?>
