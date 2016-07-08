@@ -21,7 +21,7 @@ class Editor
      *
      * @return array
      */
-    public function addScripts($plugins)
+    public static function addScripts($plugins)
     {
         global $recras;
 
@@ -37,7 +37,7 @@ class Editor
      *
      * @return array
      */
-    public function loadTranslations($locales)
+    public static function loadTranslations($locales)
     {
         $locales['recras'] = plugin_dir_path(__FILE__) . '/editor/translation.php';
         return $locales;
@@ -51,7 +51,7 @@ class Editor
      *
      * @return array
      */
-    public function registerButtons($buttons)
+    public static function registerButtons($buttons)
     {
         array_push($buttons, 'recras-arrangement', 'recras-booking', 'recras-contact', 'recras-product');
         return $buttons;
