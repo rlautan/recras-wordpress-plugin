@@ -1,6 +1,7 @@
 # Recras WordPress plugin
 
 [![Build Status](https://travis-ci.org/Recras/recras-wordpress-plugin.svg?branch=master)](https://travis-ci.org/Recras/recras-wordpress-plugin)
+[![Minimum PHP Version](https://img.shields.io/badge/php->%3D%205.4-8892BF.svg)](https://php.net/)
 
 Easily integrate data from your Recras instance, such as arrangements and contact forms, into your own website.
 
