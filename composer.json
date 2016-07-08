@@ -1,5 +1,11 @@
 {
     "name": "recras/recras-wordpress-plugin",
+    "keywords": ["WordPress", "Recras"],
+    "license": "MIT",
+    "support": {
+        "email": "sander@recras.nl",
+        "wiki": "http://wiki.recras.nl/wiki/WordPress-plugin"
+    },
     "require": {
         "php": ">=5.4"
     },
