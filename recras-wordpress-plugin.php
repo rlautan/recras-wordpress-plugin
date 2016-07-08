@@ -23,7 +23,7 @@ try {
         function phpVersionTooOld() {
             echo '<div class="error"><p>';
             echo 'The Recras WordPress plugin requires PHP 5.4 or higher and will not be activated. Your server is running PHP version ' . phpversion();
-            echo 'Any PHP version less than 5.5.0 has reached "End of Life" and no longer receives bugfixes or security updates.';
+            echo 'Any PHP version less than 5.6.0 has reached "End of Life" and no longer receives bugfixes or security updates.';
             echo 'The official information on how to update and why at <a href="http://php.net/eol.php" target="_blank"><strong>php.net/eol.php</strong></a>';
             echo '</p></div>';
         }
