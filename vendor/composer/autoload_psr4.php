@@ -13,4 +13,5 @@ return array(
     'Recras\\' => array($baseDir . '/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );
