@@ -45,8 +45,12 @@ class Arrangement
 
 
         switch ($attributes['show']) {
+            case 'description':
+                return $json->uitgebreide_beschrijving;
             case 'duration':
                 return self::getDuration($json);
+            case 'image_url':
+                return $json->image_filename;
             case 'location':
                 return self::getLocation($json);
             case 'persons':
@@ -284,7 +288,7 @@ class Arrangement
      */
     public static function getValidOptions()
     {
-        return ['duration', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
+        return ['description', 'duration', 'image_url', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
     }
 
 

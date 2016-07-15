@@ -50,6 +50,15 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertEquals('<span class="recras-title">2-daags vergaderarrangement</span>' . "\n", $content, 'Should show title');
 	}
 
+	function testShortcodeDescription()
+	{
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-arrangement id=8 show=description]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->markTestIncomplete('This has not been implemented in the API yet');
+	}
+
 	function testShortcodeDuration()
 	{
         $post = $this->factory->post->create_and_get([
@@ -58,6 +67,15 @@ class ArrangementTest extends \WP_UnitTestCase
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('<span class="recras-duration">1:7:30</span>' . "\n", $content, 'Should show duration');
 	}
+
+    function testShortcodeImage()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-arrangement id=8 show=image_url]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->markTestIncomplete('This has not been implemented in the API yet');
+    }
 
 	function testShortcodeLocation()
 	{

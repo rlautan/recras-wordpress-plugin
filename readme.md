@@ -24,7 +24,9 @@ Setting your Recras name is the most important step here. Other settings are:
 Add the `[recras-arrangement]` shortcode anywhere on your site. The following parameters are supported:
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
+  * description - shows the long description of this arrangement
   * duration - shows the duration of this arrangement (i.e. time between start of first activity and end of last activity)
+  * image_url - gives the arrangement image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * location - shows the starting location of this arrangement
   * persons - shows the minimum number of persons needed for this arrangement
   * price_pp_excl_vat - shows the price per person, excluding VAT
@@ -47,6 +49,7 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 * showlabels - show the label for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
 * showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value. Placeholders are [not supported](http://caniuse.com/#search=placeholder) in Internet Explorer versions 9 and lower.
 * submittext - the text for the form submission button. Defaults to "Send"
+* redirect - a URL that the user is redirected to, after submitting the form successfully.
 
 Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
 
@@ -90,6 +93,12 @@ Easy installation (preferred):
 Self install:
 
 1. Upload the `recras-wordpress-plugin` folder to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+
+Using Composer:
+
+1. Type `composer require recras/recras-wordpress-plugin` in your terminal
+1. The plugin will automatically be installed in the `/wp-content/plugins/` directory by using Composer Installers
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 ## Support

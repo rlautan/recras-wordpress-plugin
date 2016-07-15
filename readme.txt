@@ -28,7 +28,9 @@ Add the `[recras-arrangement]` shortcode anywhere on your site. The following pa
 
 * id (required) - corresponds to the arrangement ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
+  * description - shows the long description of this arrangement
   * duration - shows the duration of this arrangement (i.e. time between start of first activity and end of last activity)
+  * image_url - gives the arrangement image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * location - shows the starting location of this arrangement
   * persons - shows the minimum number of persons needed for this arrangement
   * price_pp_excl_vat - shows the price per person, excluding VAT
@@ -97,7 +99,14 @@ All data from your Recras is cached for up to 24 hours. If you make important ch
 
 **Self install**
 
+1. Download the zip file containing the plugin and extract it somewhere to your hard drive
 1. Upload the `recras-wordpress-plugin` folder to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+
+**Using Composer**
+
+1. Type `composer require recras/recras-wordpress-plugin` in your terminal
+1. The plugin will automatically be installed in the `/wp-content/plugins/` directory by using Composer Installers
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
@@ -107,6 +116,11 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= master =
+* Add image URL and description to arrangements
+* The plugin is now available on Packagist, which means you can use Composer to install the plugin.
+* Various small bug fixes
 
 = 1.7.1 =
 * The Settings page is now hidden if you don't have permission to see it.

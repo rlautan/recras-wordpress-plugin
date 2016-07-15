@@ -25,6 +25,7 @@
     <dt><label for="show_what"><?php _e('Show what?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="show_what" required>
             <option value="title"><?php _e('Title', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="description"><?php _e('Description', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="duration"><?php _e('Duration', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="location"><?php _e('Starting location', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="persons"><?php _e('Minimum number of persons', \Recras\Plugin::TEXT_DOMAIN); ?>
@@ -33,6 +34,7 @@
             <option value="price_total_excl_vat"><?php _e('Total price excl. VAT', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="price_total_incl_vat"><?php _e('Total price incl. VAT', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="programme"><?php _e('Programme', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="image_url"><?php _e('Image URL', \Recras\Plugin::TEXT_DOMAIN); ?>
         </select>
     <dt class="programme-only"><label for="starttime"><?php _e('Start time', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd class="programme-only"><input type="text" id="starttime" pattern="[01][0-9]:[0-5][1-9]" placeholder="<?php _e('hh:mm', \Recras\Plugin::TEXT_DOMAIN); ?>" value="00:00">
