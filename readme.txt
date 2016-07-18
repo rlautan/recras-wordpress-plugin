@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
 Tested up to: 4.5.3
-Stable tag: 1.7.1
+Stable tag: 1.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,7 +117,7 @@ None yet!
 
 == Changelog ==
 
-= master =
+= 1.8.0 =
 * Add image URL and description to arrangements
 * The plugin is now available on Packagist, which means you can use Composer to install the plugin.
 * Various small bug fixes
