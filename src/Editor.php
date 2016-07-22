@@ -8,8 +8,8 @@ class Editor
      */
     public static function addButtons()
     {
-        add_filter('mce_buttons', ['Recras\Editor', 'registerButtons']);
-        add_filter('mce_external_plugins', ['Recras\Editor', 'addScripts']);
+        add_filter('mce_buttons', ['Recras\Editor', 'registerButtons'], 999, 2);
+        add_filter('mce_external_plugins', ['Recras\Editor', 'addScripts'], 999);
         add_thickbox();
     }
 
@@ -48,10 +48,11 @@ class Editor
      * Register TinyMCE buttons
      *
      * @param array $buttons
+     * @param int $editorId
      *
      * @return array
      */
-    public static function registerButtons($buttons)
+    public static function registerButtons($buttons, $editorId)
     {
         array_push($buttons, 'recras-arrangement', 'recras-booking', 'recras-contact', 'recras-product');
         return $buttons;
