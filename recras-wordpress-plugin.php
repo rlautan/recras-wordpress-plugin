@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Recras WordPress Plugin
-Plugin URI: http://www.recras.nl/
+Plugin URI: https://www.recras.nl/
 Description: Easily integrate your Recras data into your own site
 Author: Recras
 Text Domain: recras-wp
 Domain Path: /lang
-Version: 1.8.1
+Version: 1.8.1.1
 
-Author URI: http://www.recras.nl/
+Author URI: https://www.recras.nl/
 */
 
 // Debugging
@@ -26,7 +26,7 @@ try {
             echo '<div class="error"><p>';
             echo 'The Recras WordPress plugin requires PHP 5.4 or higher and will not be activated. Your server is running PHP version ' . phpversion();
             echo 'Any PHP version less than 5.6.0 has reached "End of Life" and no longer receives bugfixes or security updates.';
-            echo 'The official information on how to update and why at <a href="http://php.net/eol.php" target="_blank"><strong>php.net/eol.php</strong></a>';
+            echo 'The official information on how to update and why can be found on <a href="https://secure.php.net/supported-versions.php" target="_blank"><strong>the PHP website</strong></a>';
             echo '</p></div>';
         }
         add_action('admin_notices', 'phpVersionTooOld');

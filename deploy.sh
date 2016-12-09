@@ -8,7 +8,7 @@ PLUGINDIR="$CURRENTDIR"
 GITPATH="$PLUGINDIR/" # this file should be in the base of your git repository
 MAINFILE="recras-wordpress-plugin.php"
 SVNPATH="/tmp/$PLUGINSLUG"
-SVNURL="http://plugins.svn.wordpress.org/$PLUGINSLUG"
+SVNURL="https://plugins.svn.wordpress.org/$PLUGINSLUG"
 SVNUSER="ZanderZ"
 
 echo "..............................................."
