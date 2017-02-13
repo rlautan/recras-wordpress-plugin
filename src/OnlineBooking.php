@@ -34,8 +34,18 @@ class OnlineBooking
             $url .= '/step1/arrangement/' . $arrangementID;
         }
 
-        $html  = '<script>function resizeBookingIframe(obj){ obj.style.height=obj.contentWindow.document.body.scrollHeight+"px" }</script>';
-        $html .= '<iframe src="' . $url . '" style="width:100%;height:450px" frameborder=0 scrolling="auto" onload="resizeBookingIframe(this)"></iframe>';
+        $iframeUID = uniqid('robi'); // Recras Online Boeking Iframe
+        $html = '';
+        $html .= '<iframe src="' . $url . '" style="width:100%;height:450px" frameborder=0 scrolling="auto" id="' . $iframeUID . '"></iframe>';
+        $html .= <<<SCRIPT
+    window.addEventListener('message', function(e) {
+        var origin = event.origin || event.originalEvent.origin;
+        if (origin.match(/{$subdomain}\.recras\.nl\/)) {
+            document.getElementById('{$iframeUID}').style.height = e.data.iframeHeight + 'px';
+        }
+    });
+</script>
+SCRIPT;
         return $html;
     }
 
