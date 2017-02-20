@@ -41,7 +41,7 @@ class OnlineBooking
 <script>
     window.addEventListener('message', function(e) {
         var origin = event.origin || event.originalEvent.origin;
-        if (origin.match(/{$subdomain}\.recras\.nl\/)) {
+        if (origin.match(/{$subdomain}\.recras\.nl/)) {
             document.getElementById('{$iframeUID}').style.height = e.data.iframeHeight + 'px';
         }
     });

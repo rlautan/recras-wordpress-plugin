@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
 Tested up to: 4.7.2
-Stable tag: 1.9.1
+Stable tag: 1.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,8 +117,8 @@ None yet!
 
 == Changelog ==
 
-= 1.9.1 =
-* Fix bug in previous version
+= 1.9.1 & 1.9.2 =
+* Fix bug with iframe height
 
 = 1.9.0 =
 * Listen for height-update message
