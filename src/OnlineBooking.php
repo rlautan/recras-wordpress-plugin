@@ -38,6 +38,7 @@ class OnlineBooking
         $html = '';
         $html .= '<iframe src="' . $url . '" style="width:100%;height:450px" frameborder=0 scrolling="auto" id="' . $iframeUID . '"></iframe>';
         $html .= <<<SCRIPT
+<script>
     window.addEventListener('message', function(e) {
         var origin = event.origin || event.originalEvent.origin;
         if (origin.match(/{$subdomain}\.recras\.nl\/)) {
