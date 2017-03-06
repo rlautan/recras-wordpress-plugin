@@ -93,7 +93,8 @@ class Products
             return '';
         }
 
-        list($h, $m) = explode(':', $product->duur, 2); // Discard seconds
+        list($h, $m) = explode(':', $product->duur); // Discard seconds
+        $h = (int) $h;
         return '<span class="recras-duration">' . $h . ':' . $m . '</span>';
     }
 

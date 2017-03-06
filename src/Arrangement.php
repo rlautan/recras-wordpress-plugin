@@ -253,6 +253,11 @@ class Arrangement
         if ($duration->h) {
             $durations[] = $duration->h;
         }
+        if ($duration->i) {
+            $durations[] = str_pad($duration->i, 2, '0', STR_PAD_LEFT);
+        } else {
+            $durations[] = '00';
+        }
         if (empty($durations)) {
             $html .= __('No duration specified', Plugin::TEXT_DOMAIN);
         } else {

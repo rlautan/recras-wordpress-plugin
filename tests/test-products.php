@@ -112,7 +112,7 @@ class ProductsTest extends \WP_UnitTestCase
             'post_content' => '[recras-product id=48 show=duration]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-duration">01:00:00</span>' . "\n", $content, 'Should show duration');
+        $this->assertEquals('<span class="recras-duration">1:00</span>' . "\n", $content, 'Should show duration');
     }
 
     function testShortcodeShowEmptyDuration()
