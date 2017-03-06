@@ -3,7 +3,7 @@ Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
 Tested up to: 4.7.2
-Stable tag: 1.9.2
+Stable tag: 1.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,7 @@ Add the `[recras-arrangement]` shortcode anywhere on your site. The following pa
   * price_total_excl_vat - shows the total price, excluding VAT
   * price_total_incl_vat - same as above, but including VAT
   * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
-  * title - shows the title of the arrangement
+  * title - shows the title (display name) of the arrangement
 * starttime - only used for `programme`, determines the starting time of an arrangement. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
@@ -73,7 +73,7 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
   * duration - shows duration of this product, if product has a duration
   * image_url - gives the product image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * minimum_amount - shows the minimum amount of this product
-  * title - shows the title of the product
+  * title - shows the title (display name) of the product
   * price_excl_vat - shows the price of the product, excluding VAT
   * price_incl_vat - same as above, but including VAT
   * description - shows the short description of the product
@@ -116,6 +116,10 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.10.0 =
+* Don't show seconds in arrangement/product durations
+* Use display name instead of internal name for arrangements
 
 = 1.9.1 & 1.9.2 =
 * Fix bug with iframe height
