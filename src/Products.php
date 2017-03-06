@@ -56,7 +56,11 @@ class Products
             case 'price_incl_vat':
                 return Price::format($product->prijs_inc);
             case 'title':
-                return '<span class="recras-title">' . $product->weergavenaam . '</span>';
+                $title = $product->weergavenaam;
+                if ($title === '') {
+                    $title = $product->naam;
+                }
+                return '<span class="recras-title">' . $title . '</span>';
             default:
                 return __('Error: unknown option', Plugin::TEXT_DOMAIN);
         }

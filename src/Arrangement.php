@@ -69,7 +69,11 @@ class Arrangement
                 $showHeader = !isset($attributes['showheader']) || Settings::parseBoolean($attributes['showheader']);
                 return self::generateProgramme($json->programma, $startTime, $showHeader);
             case 'title':
-                return '<span class="recras-title">' . $json->arrangement . '</span>';
+                $title = $json->weergavenaam;
+                if ($title === '') {
+                    $title = $json->arrangement;
+                }
+                return '<span class="recras-title">' . $title . '</span>';
             default:
                 return __('Error: unknown option', Plugin::TEXT_DOMAIN);
         }
