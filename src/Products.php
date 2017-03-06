@@ -46,11 +46,7 @@ class Products
                     return '';
                 }
             case 'duration':
-                if ($product->duur) {
-                    return '<span class="recras-duration">' . $product->duur . '</span>';
-                } else {
-                    return '';
-                }
+                return self::getDuration($product);
             case 'image_url':
                 return $product->image_url;
             case 'minimum_amount':
@@ -77,6 +73,24 @@ class Products
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
         exit;
+    }
+
+
+    /**
+     * Get duration of a product
+     *
+     * @param object $product
+     *
+     * @return string
+     */
+    private static function getDuration($product)
+    {
+        if (!$product->duur) {
+            return '';
+        }
+
+        list($h, $m) = explode(':', $product->duur, 2); // Discard seconds
+        return '<span class="recras-duration">' . $h . ':' . $m . '</span>';
     }
 
 

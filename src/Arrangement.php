@@ -249,9 +249,6 @@ class Arrangement
         if ($duration->h) {
             $durations[] = $duration->h;
         }
-        if ($duration->i) {
-            $durations[] = $duration->i;
-        }
         if (empty($durations)) {
             $html .= __('No duration specified', Plugin::TEXT_DOMAIN);
         } else {
