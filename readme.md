@@ -66,7 +66,7 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
   * duration - shows duration of this product, if product has a duration
   * image_url - gives the product image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * minimum_amount - shows the minimum amount of this product
-  * title - shows the title of the product
+  * title - shows the title (display name) of the product
   * price_excl_vat - shows the price of the product, excluding VAT
   * price_incl_vat - same as above, but including VAT
   * description - shows the short description of the product
@@ -75,7 +75,7 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
 Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
 
 ### Date/Time picker
-By default, date and time pickers use whatever the browser has available. At the time of writing (January 2016) Internet Explorer (all versions), Firefox (all versions), and Safari (desktop) do not have native date/time pickers and only show a text field. We have included a modern looking date/time picker that you can enable on the Recras -> Settings page.
+By default, date and time pickers use whatever the browser has available. Currently (March 2017) Internet Explorer (all versions), Firefox (all versions), and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras -> Settings page.
 
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
