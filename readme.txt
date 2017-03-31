@@ -2,8 +2,8 @@
 Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
-Tested up to: 4.7.2
-Stable tag: 1.10.1
+Tested up to: 4.7.3
+Stable tag: 1.10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,6 +118,9 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.10.2 =
+Fix detailed description of arrangements
 
 = 1.10.1 =
 Fix available arrangements for a contact form

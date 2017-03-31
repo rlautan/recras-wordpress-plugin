@@ -53,10 +53,10 @@ class ArrangementTest extends \WP_UnitTestCase
 	function testShortcodeDescription()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-arrangement id=8 show=description]'
+            'post_content' => '[recras-arrangement id=7 show=description]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->markTestIncomplete('This has not been implemented in the API yet');
+        $this->assertTrue(strpos($content, '<p><strong>Ontvangst:') !== false, 'Should show description');
 	}
 
 	function testShortcodeDuration()
@@ -74,7 +74,7 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-arrangement id=8 show=image_url]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->markTestIncomplete('This has not been implemented in the API yet');
+        $this->assertEquals('/api2.php/arrangementen/7/afbeelding', $content, 'Should return image URL');
     }
 
 	function testShortcodeLocation()

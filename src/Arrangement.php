@@ -46,7 +46,7 @@ class Arrangement
 
         switch ($attributes['show']) {
             case 'description':
-                return $json->uitgebreide_beschrijving;
+                return $json->uitgebreide_omschrijving;
             case 'duration':
                 return self::getDuration($json);
             case 'image_url':

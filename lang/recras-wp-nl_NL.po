@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2016-07-01 11:08+0200\n"
-"PO-Revision-Date: 2016-07-01 11:09+0200\n"
+"POT-Creation-Date: 2017-03-31 11:35+0200\n"
+"PO-Revision-Date: 2017-03-31 11:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -17,8 +17,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
-#: editor/form-arrangement.php:14 editor/form-booking.php:13
-#: editor/form-contact.php:32 src/Plugin.php:95
+#: editor/form-arrangement.php:14 editor/form-booking.php:12
+#: editor/form-contact.php:32 src/Plugin.php:69
 msgid "Arrangement"
 msgstr "Arrangement"
 
@@ -30,59 +30,67 @@ msgstr "Toon wat?"
 msgid "Title"
 msgstr "Titel"
 
-#: editor/form-arrangement.php:28 editor/form-product.php:27
+#: editor/form-arrangement.php:28
+msgid "Description"
+msgstr "Beschrijving"
+
+#: editor/form-arrangement.php:29 editor/form-product.php:27
 msgid "Duration"
 msgstr "Duur"
 
-#: editor/form-arrangement.php:29
+#: editor/form-arrangement.php:30
 msgid "Starting location"
 msgstr "Startlocatie"
 
-#: editor/form-arrangement.php:30
+#: editor/form-arrangement.php:31
 msgid "Minimum number of persons"
 msgstr "Minimum aantal personen"
 
-#: editor/form-arrangement.php:31
+#: editor/form-arrangement.php:32
 msgid "Price p.p. excl. VAT"
 msgstr "Prijs p.p. excl. btw"
 
-#: editor/form-arrangement.php:32
+#: editor/form-arrangement.php:33
 msgid "Price p.p. incl. VAT"
 msgstr "Prijs p.p. incl. btw"
 
-#: editor/form-arrangement.php:33
+#: editor/form-arrangement.php:34
 msgid "Total price excl. VAT"
 msgstr "Totaalprijs excl. btw"
 
-#: editor/form-arrangement.php:34
+#: editor/form-arrangement.php:35
 msgid "Total price incl. VAT"
 msgstr "Totaalprijs incl. btw"
 
-#: editor/form-arrangement.php:35
+#: editor/form-arrangement.php:36
 msgid "Programme"
 msgstr "Programma"
 
-#: editor/form-arrangement.php:37
+#: editor/form-arrangement.php:37 editor/form-product.php:28
+msgid "Image URL"
+msgstr "Afbeelding-URL"
+
+#: editor/form-arrangement.php:39
 msgid "Start time"
 msgstr "Starttijd"
 
-#: editor/form-arrangement.php:38
+#: editor/form-arrangement.php:40
 msgid "hh:mm"
 msgstr "uu:mm"
 
-#: editor/form-arrangement.php:39
+#: editor/form-arrangement.php:41
 msgid "Show header?"
 msgstr "Toon header?"
 
-#: editor/form-arrangement.php:41
+#: editor/form-arrangement.php:43
 msgid "Yes"
 msgstr "Ja"
 
-#: editor/form-arrangement.php:42
+#: editor/form-arrangement.php:44
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:44 editor/form-booking.php:26
+#: editor/form-arrangement.php:46 editor/form-booking.php:26
 #: editor/form-contact.php:67 editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
@@ -91,7 +99,7 @@ msgstr "Voeg shortcode in"
 msgid "No pre-filled arrangement"
 msgstr "Geen vooraf ingevuld arrangement"
 
-#: editor/form-contact.php:15 src/Plugin.php:96
+#: editor/form-contact.php:15 src/Plugin.php:70
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -136,7 +144,7 @@ msgstr "Tabel"
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:51 editor/form-contact.php:92 src/ContactForm.php:90
+#: editor/form-contact.php:51 editor/form-contact.php:92 src/ContactForm.php:84
 msgid "Send"
 msgstr "Versturen"
 
@@ -156,7 +164,7 @@ msgstr "Pagina's"
 msgid "Posts"
 msgstr "Berichten"
 
-#: editor/form-product.php:11 src/Plugin.php:98
+#: editor/form-product.php:11 src/Plugin.php:72
 msgid "Product"
 msgstr "Product"
 
@@ -167,10 +175,6 @@ msgstr "Beschrijving (kort)"
 #: editor/form-product.php:26
 msgid "Description (long)"
 msgstr "Beschrijving (lang)"
-
-#: editor/form-product.php:28
-msgid "Image URL"
-msgstr "Afbeelding-URL"
 
 #: editor/form-product.php:29
 msgid "Minimum amount"
@@ -213,83 +217,79 @@ msgstr "Fout: optie \"show\" niet ingesteld"
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: src/Arrangement.php:40 src/Arrangement.php:175 src/Arrangement.php:211
-#: src/ContactForm.php:34 src/ContactForm.php:63 src/ContactForm.php:470
-#: src/Products.php:97
-msgid "Error: could not retrieve external data"
-msgstr "Fout: kon externe data niet ophalen"
-
-#: src/Arrangement.php:44 src/Arrangement.php:179 src/Arrangement.php:215
-#: src/ContactForm.php:38 src/ContactForm.php:67 src/ContactForm.php:474
-#: src/Products.php:101
-msgid "Error: could not parse external data"
-msgstr "Fout: kon externe data niet parsen"
-
-#: src/Arrangement.php:73 src/Products.php:65
+#: src/Arrangement.php:78 src/Products.php:65
 msgid "Error: unknown option"
 msgstr "Fout: onbekende optie"
 
-#: src/Arrangement.php:119
+#: src/Arrangement.php:124
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:119
+#: src/Arrangement.php:124
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:119
+#: src/Arrangement.php:124
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:145
+#: src/Arrangement.php:150
 #, php-format
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:263
+#: src/Arrangement.php:262
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:285
+#: src/Arrangement.php:284
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
-#: src/ContactForm.php:86
+#: src/ContactForm.php:80
 msgid ""
 "Error: arrangement is set, but contact form does not support arrangements"
 msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
 
-#: src/ContactForm.php:260
+#: src/ContactForm.php:254
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/ContactForm.php:261
+#: src/ContactForm.php:255
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:262
+#: src/ContactForm.php:256
 msgid "Female"
 msgstr "Vrouw"
 
-#: src/Plugin.php:78 src/Plugin.php:79
+#: src/Http.php:20
+msgid "Error: could not retrieve external data"
+msgstr "Fout: kon externe data niet ophalen"
+
+#: src/Http.php:24
+msgid "Error: could not parse external data"
+msgstr "Fout: kon externe data niet parsen"
+
+#: src/Plugin.php:52 src/Plugin.php:53
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Plugin.php:88 src/Plugin.php:89
+#: src/Plugin.php:62 src/Plugin.php:63
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:97
+#: src/Plugin.php:71
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:135
+#: src/Plugin.php:109
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Plugin.php:137
+#: src/Plugin.php:111
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
@@ -298,27 +298,27 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:157
+#: src/Plugin.php:134
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:183
+#: src/Plugin.php:146
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:184
+#: src/Plugin.php:147
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:185
+#: src/Plugin.php:148
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:196
+#: src/Plugin.php:159
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:197
+#: src/Plugin.php:160
 msgid "OK"
 msgstr "OK"
 
@@ -326,7 +326,7 @@ msgstr "OK"
 msgid "Error: product does not exist"
 msgstr "Fout: product bestaat niet"
 
-#: src/Products.php:106
+#: src/Products.php:122
 msgid "Error: external data does not contain any results"
 msgstr "Fout: externe data bevat geen resultaten"
 
@@ -450,9 +450,6 @@ msgstr "Opslaan"
 #~ msgstr ""
 #~ "De cURL-extensie voor PHP is niet geïnstalleerd. Zonder deze extensie "
 #~ "werkt het versturen van contactformulieren niet."
-
-#~ msgid "Description"
-#~ msgstr "Beschrijving"
 
 #~ msgid "Error: you have not set your Recras subdomain yet"
 #~ msgstr "Fout: je hebt je Recras-subdomein nog niet ingesteld"
