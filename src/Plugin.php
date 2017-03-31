@@ -129,7 +129,7 @@ class Plugin
      */
     public function loadAdminScripts()
     {
-        wp_register_script('recras-admin', $this->baseUrl .'/js/admin.js', [], '1.0.0', true);
+        wp_register_script('recras-admin', $this->baseUrl .'/js/admin.js', [], '1.10.1', true);
         wp_localize_script('recras-admin', 'recras_l10n', [
             'no_connection' => __('Could not connect to your Recras', $this::TEXT_DOMAIN),
         ]);

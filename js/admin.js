@@ -32,6 +32,6 @@ function disableNotAllowed(arrangementIDs)
 {
     var options = document.getElementById('arrangement_id').getElementsByTagName('option');
     for (var i = 0; i < options.length; i++) {
-        options[i].disabled = (arrangementIDs.indexOf(parseInt(options[i].value,10)) > -1);
+        options[i].disabled = (arrangementIDs.indexOf(parseInt(options[i].value,10)) === -1);
     }
 }
