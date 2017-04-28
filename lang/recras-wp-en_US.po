@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-04-28 11:23+0200\n"
-"PO-Revision-Date: 2017-04-28 11:23+0200\n"
+"POT-Creation-Date: 2017-04-28 15:11+0200\n"
+"PO-Revision-Date: 2017-04-28 15:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -19,7 +19,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
-#: editor/form-contact.php:32 src/Plugin.php:69
+#: editor/form-contact.php:32 editor/form-package-availability.php:11
+#: src/Plugin.php:67 src/Plugin.php:138
 msgid "Package"
 msgstr ""
 
@@ -92,7 +93,8 @@ msgid "No"
 msgstr ""
 
 #: editor/form-arrangement.php:46 editor/form-booking.php:26
-#: editor/form-contact.php:67 editor/form-product.php:34
+#: editor/form-contact.php:67 editor/form-package-availability.php:30
+#: editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr ""
 
@@ -100,7 +102,7 @@ msgstr ""
 msgid "No pre-filled package"
 msgstr ""
 
-#: editor/form-contact.php:15 src/Plugin.php:70
+#: editor/form-contact.php:15 src/Plugin.php:69 src/Plugin.php:135
 msgid "Contact form"
 msgstr ""
 
@@ -162,7 +164,7 @@ msgstr ""
 msgid "Posts"
 msgstr ""
 
-#: editor/form-product.php:11 src/Plugin.php:72
+#: editor/form-product.php:11 src/Plugin.php:71 src/Plugin.php:140
 msgid "Product"
 msgstr ""
 
@@ -186,24 +188,13 @@ msgstr ""
 msgid "Price incl. VAT"
 msgstr ""
 
-#: editor/translation.php:12
-msgid "What is the ID of the package?"
-msgstr ""
-
-#: editor/translation.php:13
-msgid "What is the ID of the contact form?"
-msgstr ""
-
-#: editor/translation.php:14
-msgid "ID should be a positive integer"
-msgstr ""
-
-#: src/Arrangement.php:17 src/ContactForm.php:16 src/Products.php:16
+#: src/Arrangement.php:17 src/Availability.php:17 src/ContactForm.php:16
+#: src/Products.php:16
 msgid "Error: no ID set"
 msgstr ""
 
-#: src/Arrangement.php:20 src/ContactForm.php:19 src/OnlineBooking.php:16
-#: src/Products.php:19
+#: src/Arrangement.php:20 src/Availability.php:20 src/ContactForm.php:19
+#: src/OnlineBooking.php:16 src/Products.php:19
 msgid "Error: ID is not a number"
 msgstr ""
 
@@ -261,22 +252,26 @@ msgid "Female"
 msgstr ""
 
 #: src/Http.php:20
-msgid "Error: could not retrieve external data"
+msgid "Error: could not retrieve data from Recras"
 msgstr ""
 
 #: src/Http.php:24
-msgid "Error: could not parse external data"
+msgid "Error: could not parse data from Recras"
 msgstr ""
 
-#: src/Plugin.php:52 src/Plugin.php:53
+#: src/Plugin.php:50 src/Plugin.php:51
 msgid "Settings"
 msgstr ""
 
-#: src/Plugin.php:62 src/Plugin.php:63
+#: src/Plugin.php:60 src/Plugin.php:61
 msgid "Cache"
 msgstr ""
 
-#: src/Plugin.php:71
+#: src/Plugin.php:68 src/Plugin.php:139
+msgid "Package availability"
+msgstr ""
+
+#: src/Plugin.php:70 src/Plugin.php:137
 msgid "Online booking"
 msgstr ""
 
@@ -291,27 +286,27 @@ msgid ""
 "you."
 msgstr ""
 
-#: src/Plugin.php:135
+#: src/Plugin.php:136
 msgid "Could not connect to your Recras"
 msgstr ""
 
-#: src/Plugin.php:147
+#: src/Plugin.php:152
 msgid "Loading..."
 msgstr ""
 
-#: src/Plugin.php:148
+#: src/Plugin.php:153
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:149
+#: src/Plugin.php:154
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:160
+#: src/Plugin.php:165
 msgid "Cancel"
 msgstr ""
 
-#: src/Plugin.php:161
+#: src/Plugin.php:166
 msgid "OK"
 msgstr ""
 

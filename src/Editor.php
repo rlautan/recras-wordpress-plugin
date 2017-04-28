@@ -30,19 +30,6 @@ class Editor
     }
 
 
-    /**
-     * Load the TinyMCE translation
-     *
-     * @param array $locales
-     *
-     * @return array
-     */
-    public static function loadTranslations($locales)
-    {
-        $locales['recras'] = plugin_dir_path(__FILE__) . '/editor/translation.php';
-        return $locales;
-    }
-
 
     /**
      * Register TinyMCE buttons
@@ -54,7 +41,7 @@ class Editor
      */
     public static function registerButtons($buttons, $editorId)
     {
-        array_push($buttons, 'recras-arrangement', 'recras-booking', 'recras-contact', 'recras-product');
+        array_push($buttons, 'recras-arrangement', 'recras-availability', 'recras-booking', 'recras-contact', 'recras-product');
         return $buttons;
     }
 }

@@ -108,5 +108,5 @@ We would appreciate it if you use [our GitHub page](https://github.com/Recras/re
 We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
 
 ## Credits
-* Icons from [Genericons](https://github.com/Automattic/Genericons/) by Automattic, released under the GPL.
+* Icons from [Genericons Neue](https://github.com/Automattic/genericons-neue) by Automattic, released under the GPL.
 * Date/Time picker by [T00rk](https://github.com/T00rk/bootstrap-material-datetimepicker), released under the MIT licence.

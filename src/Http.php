@@ -17,11 +17,11 @@ class Http
     {
         $json = @file_get_contents('https://' . $subdomain . '.recras.nl/' . $api . '/' . $uri);
         if ($json === false) {
-            throw new Exception\UrlException(__('Error: could not retrieve external data', Plugin::TEXT_DOMAIN));
+            throw new Exception\UrlException(__('Error: could not retrieve data from Recras', Plugin::TEXT_DOMAIN));
         }
         $json = json_decode($json);
         if (is_null($json)) {
-            throw new Exception\JsonParseException(__('Error: could not parse external data', Plugin::TEXT_DOMAIN));
+            throw new Exception\JsonParseException(__('Error: could not parse data from Recras', Plugin::TEXT_DOMAIN));
         }
         return $json;
     }

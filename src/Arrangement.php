@@ -5,7 +5,7 @@ namespace Recras;
 class Arrangement
 {
     /**
-     * Add the [recras-arrangement] shortcode
+     * Add the [recras-package] shortcode
      *
      * @param array $attributes
      *
@@ -82,7 +82,7 @@ class Arrangement
 
     public static function addArrangementShortcodeOld($attributes)
     {
-        error_log('Notice: [arrangement] is deprecated, please use [recras-arrangement] instead!');
+        error_log('Notice: [recras-arrangement] is deprecated, please use [recras-package] instead!');
         return self::addArrangementShortcode($attributes);
     }
 

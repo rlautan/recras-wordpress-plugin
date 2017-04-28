@@ -1,33 +1,41 @@
 var recrasPlugin = function(editor, url) {
     editor.addButton('recras-arrangement', {
-        title : 'Package',
-        image : url + '/arrangement.svg',
-        onclick : function(){
-            tb_show('Package', 'admin.php?page=form-arrangement');
+        title: recras_l10n.package,
+        image: url + '/package.svg',
+        onclick: function() {
+            tb_show(recras_l10n.package, 'admin.php?page=form-arrangement');
+        }
+    });
+
+    editor.addButton('recras-availability', {
+        title: recras_l10n.package_availability,
+        image: url + '/availability.svg',
+        onclick: function() {
+            tb_show(recras_l10n.package_availability, 'admin.php?page=form-package-availability');
         }
     });
 
     editor.addButton('recras-booking', {
-        title : 'Online booking',
-        image : url + '/calendar.svg',
-        onclick : function(){
-            tb_show('Online booking', 'admin.php?page=form-booking');
+        title: recras_l10n.online_booking,
+        image: url + '/online-booking.svg',
+        onclick: function() {
+            tb_show(recras_l10n.online_booking, 'admin.php?page=form-booking');
         }
     });
 
     editor.addButton('recras-contact', {
-        title : 'Contact Form',
-        image : url + '/contact.svg',
-        onclick : function(){
-            tb_show('Contact', 'admin.php?page=form-contact');
+        title: recras_l10n.contact_form,
+        image: url + '/contact.svg',
+        onclick: function() {
+            tb_show(recras_l10n.contact_form, 'admin.php?page=form-contact');
         }
     });
 
     editor.addButton('recras-product', {
-        title : 'Product',
-        image : url + '/product.svg',
-        onclick : function(){
-            tb_show('Product', 'admin.php?page=form-product');
+        title: recras_l10n.product,
+        image: url + '/product.svg',
+        onclick: function() {
+            tb_show(recras_l10n.product, 'admin.php?page=form-product');
         }
     });
 };

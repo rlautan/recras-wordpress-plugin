@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-04-28 11:23+0200\n"
-"PO-Revision-Date: 2017-04-28 11:23+0200\n"
+"POT-Creation-Date: 2017-04-28 15:11+0200\n"
+"PO-Revision-Date: 2017-04-28 15:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -19,7 +19,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
-#: editor/form-contact.php:32 src/Plugin.php:69
+#: editor/form-contact.php:32 editor/form-package-availability.php:11
+#: src/Plugin.php:67 src/Plugin.php:138
 msgid "Package"
 msgstr "Arrangement"
 
@@ -92,7 +93,8 @@ msgid "No"
 msgstr "Nee"
 
 #: editor/form-arrangement.php:46 editor/form-booking.php:26
-#: editor/form-contact.php:67 editor/form-product.php:34
+#: editor/form-contact.php:67 editor/form-package-availability.php:30
+#: editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
@@ -100,7 +102,7 @@ msgstr "Voeg shortcode in"
 msgid "No pre-filled package"
 msgstr "Geen vooraf ingevuld arrangement"
 
-#: editor/form-contact.php:15 src/Plugin.php:70
+#: editor/form-contact.php:15 src/Plugin.php:69 src/Plugin.php:135
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -165,7 +167,7 @@ msgstr "Pagina's"
 msgid "Posts"
 msgstr "Berichten"
 
-#: editor/form-product.php:11 src/Plugin.php:72
+#: editor/form-product.php:11 src/Plugin.php:71 src/Plugin.php:140
 msgid "Product"
 msgstr "Product"
 
@@ -189,24 +191,13 @@ msgstr "Prijs excl. btw"
 msgid "Price incl. VAT"
 msgstr "Prijs incl. btw"
 
-#: editor/translation.php:12
-msgid "What is the ID of the package?"
-msgstr "Wat is het ID van het arrangement?"
-
-#: editor/translation.php:13
-msgid "What is the ID of the contact form?"
-msgstr "Wat is het ID van het arrangement?"
-
-#: editor/translation.php:14
-msgid "ID should be a positive integer"
-msgstr "ID moet een positief geheel getal zijn"
-
-#: src/Arrangement.php:17 src/ContactForm.php:16 src/Products.php:16
+#: src/Arrangement.php:17 src/Availability.php:17 src/ContactForm.php:16
+#: src/Products.php:16
 msgid "Error: no ID set"
 msgstr "Fout: geen ID ingesteld"
 
-#: src/Arrangement.php:20 src/ContactForm.php:19 src/OnlineBooking.php:16
-#: src/Products.php:19
+#: src/Arrangement.php:20 src/Availability.php:20 src/ContactForm.php:19
+#: src/OnlineBooking.php:16 src/Products.php:19
 msgid "Error: ID is not a number"
 msgstr "Fout: ID is geen getal"
 
@@ -266,22 +257,26 @@ msgid "Female"
 msgstr "Vrouw"
 
 #: src/Http.php:20
-msgid "Error: could not retrieve external data"
-msgstr "Fout: kon externe data niet ophalen"
+msgid "Error: could not retrieve data from Recras"
+msgstr "Fout: kon data niet ophalen uit Recras"
 
 #: src/Http.php:24
-msgid "Error: could not parse external data"
-msgstr "Fout: kon externe data niet parsen"
+msgid "Error: could not parse data from Recras"
+msgstr "Fout: kon data uit Recras niet verwerken"
 
-#: src/Plugin.php:52 src/Plugin.php:53
+#: src/Plugin.php:50 src/Plugin.php:51
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Plugin.php:62 src/Plugin.php:63
+#: src/Plugin.php:60 src/Plugin.php:61
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:71
+#: src/Plugin.php:68 src/Plugin.php:139
+msgid "Package availability"
+msgstr "Arrangement-beschikbaarheid"
+
+#: src/Plugin.php:70 src/Plugin.php:137
 msgid "Online booking"
 msgstr "Online boeking"
 
@@ -298,27 +293,27 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:135
+#: src/Plugin.php:136
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:147
+#: src/Plugin.php:152
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:148
+#: src/Plugin.php:153
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:149
+#: src/Plugin.php:154
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:160
+#: src/Plugin.php:165
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:161
+#: src/Plugin.php:166
 msgid "OK"
 msgstr "OK"
 
@@ -424,6 +419,21 @@ msgstr "Leeg productencache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "What is the ID of the package?"
+#~ msgstr "Wat is het ID van het arrangement?"
+
+#~ msgid "What is the ID of the contact form?"
+#~ msgstr "Wat is het ID van het arrangement?"
+
+#~ msgid "ID should be a positive integer"
+#~ msgstr "ID moet een positief geheel getal zijn"
+
+#~ msgid "Error: could not retrieve external data"
+#~ msgstr "Fout: kon externe data niet ophalen"
+
+#~ msgid "Error: could not parse external data"
+#~ msgstr "Fout: kon externe data niet parsen"
 
 #~ msgid ""
 #~ "This clears the cache for all contact forms, including fields and list of "

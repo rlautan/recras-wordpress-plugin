@@ -2,8 +2,8 @@
 Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
-Tested up to: 4.7.3
-Stable tag: 1.10.2
+Tested up to: 4.7.4
+Stable tag: 1.11.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,7 +121,8 @@ None yet!
 
 = 1.11.0 =
 * Rename "arrangement" to "package" to reflect text change in Recras
-* Add `[recras-package]` as synonym of `[recras-arrangement]`
+* Deprecated `[recras-arrangement]` shortcode in favour of `[recras-package]`
+* New icons for TinyMCE buttons
 
 = 1.10.2 =
 Fix detailed description of arrangements
@@ -340,5 +341,5 @@ We would appreciate it if you use [our GitHub page](https://github.com/Recras/re
 We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
 
 == Credits ==
-* Icons from [Genericons](https://github.com/Automattic/Genericons/) by Automattic, released under the GPL.
+* Icons from [Genericons Neue](https://github.com/Automattic/genericons-neue) by Automattic, released under the GPL.
 * Date/Time picker by [T00rk](https://github.com/T00rk/bootstrap-material-datetimepicker), released under the MIT licence.

@@ -24,8 +24,6 @@ class Plugin
         add_action('admin_init', ['Recras\Editor', 'addButtons']);
         add_action('init', [&$this, 'setBaseUrl']);
 
-        add_filter('mce_external_languages', ['Recras\Editor', 'loadTranslations']);
-
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
@@ -67,6 +65,7 @@ class Plugin
         );
 
         add_submenu_page(null, __('Package', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-arrangement', ['Recras\Arrangement', 'showForm']);
+        add_submenu_page(null, __('Package availability', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-package-availability', ['Recras\Availability', 'showForm']);
         add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
         add_submenu_page(null, __('Online booking', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-booking', ['Recras\OnlineBooking', 'showForm']);
         add_submenu_page(null, __('Product', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-product', ['Recras\Products', 'showForm']);
@@ -78,11 +77,12 @@ class Plugin
      */
     public function addShortcodes()
     {
-        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED
-        add_shortcode('recras-arrangement', ['Recras\Arrangement', 'addArrangementShortcode']);
+        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.0.0 - use recras-package
+        add_shortcode('recras-arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.11.0 - use recras-package
+        add_shortcode('recras-availability', ['Recras\Availability', 'addAvailabilityShortcode']);
         add_shortcode('recras-booking', ['Recras\OnlineBooking', 'addBookingShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
-        add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']); // English synonym for [recras-arrangement]
+        add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-product', ['Recras\Products', 'addProductShortcode']);
     }
 
@@ -132,7 +132,12 @@ class Plugin
     {
         wp_register_script('recras-admin', $this->baseUrl .'/js/admin.js', [], '1.10.1', true);
         wp_localize_script('recras-admin', 'recras_l10n', [
+            'contact_form' => __('Contact form', $this::TEXT_DOMAIN),
             'no_connection' => __('Could not connect to your Recras', $this::TEXT_DOMAIN),
+            'online_booking' => __('Online booking', $this::TEXT_DOMAIN),
+            'package' => __('Package', $this::TEXT_DOMAIN),
+            'package_availability' => __('Package availability', $this::TEXT_DOMAIN),
+            'product' => __('Product', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
     }

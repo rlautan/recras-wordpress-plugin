@@ -40,7 +40,7 @@ class OnlineBooking
         $html .= <<<SCRIPT
 <script>
     window.addEventListener('message', function(e) {
-        var origin = event.origin || event.originalEvent.origin;
+        var origin = e.origin || e.originalEvent.origin;
         if (origin.match(/{$subdomain}\.recras\.nl/)) {
             document.getElementById('{$iframeUID}').style.height = e.data.iframeHeight + 'px';
         }
