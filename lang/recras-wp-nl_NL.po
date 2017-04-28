@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-03-31 11:35+0200\n"
-"PO-Revision-Date: 2017-03-31 11:35+0200\n"
+"POT-Creation-Date: 2017-04-28 11:23+0200\n"
+"PO-Revision-Date: 2017-04-28 11:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -13,13 +13,14 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
 
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
 #: editor/form-contact.php:32 src/Plugin.php:69
-msgid "Arrangement"
+msgid "Package"
 msgstr "Arrangement"
 
 #: editor/form-arrangement.php:25 editor/form-product.php:22
@@ -96,7 +97,7 @@ msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
 #: editor/form-booking.php:19
-msgid "No pre-filled arrangement"
+msgid "No pre-filled package"
 msgstr "Geen vooraf ingevuld arrangement"
 
 #: editor/form-contact.php:15 src/Plugin.php:70
@@ -117,7 +118,7 @@ msgstr "Toon placeholders?"
 
 #: editor/form-contact.php:43
 msgid ""
-"Some arrangements may not be available for all contact forms. You can change "
+"Some packages may not be available for all contact forms. You can change "
 "this by editing your contact forms in Recras."
 msgstr ""
 "Sommige arrangementen zijn mogelijk niet beschikbaar voor alle "
@@ -189,12 +190,12 @@ msgid "Price incl. VAT"
 msgstr "Prijs incl. btw"
 
 #: editor/translation.php:12
-msgid "What is the ID of the arrangement?"
+msgid "What is the ID of the package?"
 msgstr "Wat is het ID van het arrangement?"
 
 #: editor/translation.php:13
 msgid "What is the ID of the contact form?"
-msgstr "Wat is het ID van het contactformulier?"
+msgstr "Wat is het ID van het arrangement?"
 
 #: editor/translation.php:14
 msgid "ID should be a positive integer"
@@ -247,8 +248,7 @@ msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
 #: src/ContactForm.php:80
-msgid ""
-"Error: arrangement is set, but contact form does not support arrangements"
+msgid "Error: package is set, but contact form does not support packages"
 msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
@@ -285,11 +285,11 @@ msgstr "Cache"
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:109
+#: src/Plugin.php:110
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Plugin.php:111
+#: src/Plugin.php:112
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
@@ -298,27 +298,27 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:134
+#: src/Plugin.php:135
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:146
+#: src/Plugin.php:147
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:147
+#: src/Plugin.php:148
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:148
+#: src/Plugin.php:149
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:159
+#: src/Plugin.php:160
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:160
+#: src/Plugin.php:161
 msgid "OK"
 msgstr "OK"
 
@@ -368,26 +368,26 @@ msgstr "Leeg Recras-cache"
 
 #: src/admin/cache.php:24
 msgid ""
-"Data coming from your Recras (contact forms, arrangements, products) is "
-"cached for up to 24 hours. If you make important changes (i.e. a price "
-"increase) it is recommended you clear the corresponding cache."
+"Data coming from your Recras (contact forms, packages, products) is cached "
+"for up to 24 hours. If you make important changes (i.e. a price increase) it "
+"is recommended you clear the corresponding cache."
 msgstr ""
 "Data die uit Recras komt (contactformulieren, arrangementen, producten) "
 "wordt tot 24 uur bewaard. Als je belangrijke wijzigingen maakt (bijv. een "
 "prijsverhoging) dan is het aan te raden om de bijbehorende cache te legen."
 
 #: src/admin/cache.php:27
-msgid "Arrangements"
+msgid "Packages"
 msgstr "Arrangementen"
 
 #: src/admin/cache.php:28
 #, php-format
-msgid "This clears the cache for all arrangements, used in the %s shortcode."
+msgid "This clears the cache for all packages, used in the %s shortcode."
 msgstr ""
 "Dit leegt de cache voor alle arrangementen, gebruikt in de shortcode %s."
 
 #: src/admin/cache.php:30
-msgid "Clear arrangements cache"
+msgid "Clear packages cache"
 msgstr "Leeg arrangementencache"
 
 #: src/admin/cache.php:34
@@ -398,7 +398,7 @@ msgstr "Contactformulieren"
 #, php-format
 msgid ""
 "This clears the cache for all contact forms, including fields and list of "
-"arrangements for each form. These are used in the %s shortcode."
+"packages for each form. These are used in the %s shortcode."
 msgstr ""
 "Dit leegt de cache voor alle contactformulieren, inclusief velden en lijst "
 "met arrangementen voor elk formulier. Deze worden gebruikt in de shortcode "
@@ -424,6 +424,57 @@ msgstr "Leeg productencache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid ""
+#~ "This clears the cache for all contact forms, including fields and list of "
+#~ "arrangements for each form. These are used in the %s shortcode."
+#~ msgstr ""
+#~ "Dit leegt de cache voor alle contactformulieren, inclusief velden en "
+#~ "lijst met arrangementen voor elk formulier. Deze worden gebruikt in de "
+#~ "shortcode %s."
+
+#~ msgid ""
+#~ "Some arrangements may not be available for all contact forms. You can "
+#~ "change this by editing your contact forms in Recras."
+#~ msgstr ""
+#~ "Sommige arrangementen zijn mogelijk niet beschikbaar voor alle "
+#~ "contactformulieren. Je kunt dit wijzigen door je contactformulieren in "
+#~ "Recras te bewerken."
+
+#~ msgid ""
+#~ "Data coming from your Recras (contact forms, arrangements, products) is "
+#~ "cached for up to 24 hours. If you make important changes (i.e. a price "
+#~ "increase) it is recommended you clear the corresponding cache."
+#~ msgstr ""
+#~ "Data die uit Recras komt (contactformulieren, arrangementen, producten) "
+#~ "wordt tot 24 uur bewaard. Als je belangrijke wijzigingen maakt (bijv. een "
+#~ "prijsverhoging) dan is het aan te raden om de bijbehorende cache te legen."
+
+#~ msgid "Arrangements"
+#~ msgstr "Arrangementen"
+
+#~ msgid "Clear arrangements cache"
+#~ msgstr "Leeg arrangementencache"
+
+#~ msgid "Arrangement"
+#~ msgstr "Arrangement"
+
+#~ msgid "No pre-filled arrangement"
+#~ msgstr "Geen vooraf ingevuld arrangement"
+
+#~ msgid "What is the ID of the arrangement?"
+#~ msgstr "Wat is het ID van het arrangement?"
+
+#~ msgid ""
+#~ "Error: arrangement is set, but contact form does not support arrangements"
+#~ msgstr ""
+#~ "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
+#~ "arrangementen"
+
+#~ msgid ""
+#~ "This clears the cache for all arrangements, used in the %s shortcode."
+#~ msgstr ""
+#~ "Dit leegt de cache voor alle arrangementen, gebruikt in de shortcode %s."
 
 #~ msgid "All"
 #~ msgstr "Alles"

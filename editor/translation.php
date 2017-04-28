@@ -9,7 +9,7 @@ if (!class_exists('_WP_Editors'))
 function recrasPluginTranslation()
 {
     $strings = [
-        'get_arrangement_id' => __('What is the ID of the arrangement?', \Recras\Plugin::TEXT_DOMAIN),
+        'get_arrangement_id' => __('What is the ID of the package?', \Recras\Plugin::TEXT_DOMAIN),
         'get_contact_id' => __('What is the ID of the contact form?', \Recras\Plugin::TEXT_DOMAIN),
         'id_positive' => __('ID should be a positive integer', \Recras\Plugin::TEXT_DOMAIN),
     ];

@@ -229,7 +229,7 @@ class Arrangement
 
 
     /**
-     * Get duration of an arrangement
+     * Get duration of a package
      *
      * @param object $json
      *
@@ -270,7 +270,7 @@ class Arrangement
 
 
     /**
-     * Get the starting location of an arrangement
+     * Get the starting location of a package
      *
      * @param object $json
      *
@@ -299,7 +299,7 @@ class Arrangement
 
 
     /**
-     * Show the TinyMCE shortcode generator arrangement form
+     * Show the TinyMCE shortcode generator package form
      */
     public static function showForm()
     {

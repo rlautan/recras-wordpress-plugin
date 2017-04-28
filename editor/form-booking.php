@@ -9,14 +9,14 @@
     $arrangements = $model->getArrangements($subdomain, true);
 ?>
 <dl>
-    <dt><label for="arrangement_id"><?php _e('Arrangement', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="arrangement_id"><?php _e('Package', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><?php if (is_string($arrangements)) { ?>
             <input type="number" id="arrangement_id" min="0">
             <?= $arrangements; ?>
         <?php } elseif(is_array($arrangements)) { ?>
             <?php unset($arrangements[0]); ?>
             <select id="arrangement_id" required>
-                <option value="0"><?php _e('No pre-filled arrangement', \Recras\Plugin::TEXT_DOMAIN); ?>
+                <option value="0"><?php _e('No pre-filled package', \Recras\Plugin::TEXT_DOMAIN); ?>
                 <?php foreach ($arrangements as $ID => $arrangement) { ?>
                 <option value="<?= $ID; ?>"><?= $arrangement->arrangement; ?>
                 <?php } ?>

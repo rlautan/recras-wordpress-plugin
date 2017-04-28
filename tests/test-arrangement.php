@@ -221,4 +221,13 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertEquals('<span class="recras-price">¥ 409.91</span>' . "\n", $content, 'Should respect currency setting');
         update_option('recras_currency', '€');
     }
+
+    function testSynonym()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-package id=8 show=title]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<span class="recras-title">2-daags vergaderarrangement</span>' . "\n", $content, 'Should show title');
+    }
 }

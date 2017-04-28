@@ -69,7 +69,7 @@ class ContactForm
         if (isset($attributes['arrangement'])) {
             $arrangementID = (int) $attributes['arrangement'];
 
-            // Check if the contact form supports setting an arrangement
+            // Check if the contact form supports setting a package
             $fieldFound = false;
             foreach ($formFields as $field) {
                 if ($field->soort_invoer === 'boeking.arrangement') {
@@ -77,7 +77,7 @@ class ContactForm
                 }
             }
             if (!$fieldFound) {
-                return __('Error: arrangement is set, but contact form does not support arrangements', Plugin::TEXT_DOMAIN);
+                return __('Error: package is set, but contact form does not support packages', Plugin::TEXT_DOMAIN);
             }
         }
 
@@ -205,13 +205,13 @@ class ContactForm
             }
             switch ($field->soort_invoer) {
                 case 'boeking.arrangement':
-                    // It is possible that an arrangement was valid for this contact form in the past, not not in the present.
+                    // It is possible that a package was valid for this contact form in the past, not not in the present.
                     // So we show only arrangements that are valid for this form.
                     if (empty($arrangementen)) {
                         $classArrangement = new Arrangement;
                         $arrangementen = $classArrangement->getArrangementsForContactForm($options['subdomain'], $formID);
                     }
-                    // The  isset()  is in case an arrangement is set, but it is not valid
+                    // The  isset()  is in case a package is set, but it is not valid
                     if (is_null($options['arrangement']) || !isset($arrangementen[$options['arrangement']])) {
                         $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $arrangementen, [
                             'placeholder' => $options['placeholders'],

@@ -21,18 +21,18 @@
     $subdomain = get_option('recras_subdomain');
 ?>
 
-<p><?php _e('Data coming from your Recras (contact forms, arrangements, products) is cached for up to 24 hours. If you make important changes (i.e. a price increase) it is recommended you clear the corresponding cache.', \Recras\Plugin::TEXT_DOMAIN); ?></p>
+<p><?php _e('Data coming from your Recras (contact forms, packages, products) is cached for up to 24 hours. If you make important changes (i.e. a price increase) it is recommended you clear the corresponding cache.', \Recras\Plugin::TEXT_DOMAIN); ?></p>
 <hr>
 
-<h2><?php _e('Arrangements', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-<p><?php printf(__('This clears the cache for all arrangements, used in the %s shortcode.', \Recras\Plugin::TEXT_DOMAIN), '<code>[recras-arrangement]</code>'); ?></p>
+<h2><?php _e('Packages', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
+<p><?php printf(__('This clears the cache for all packages, used in the %s shortcode.', \Recras\Plugin::TEXT_DOMAIN), '<code>[recras-arrangement]</code>'); ?></p>
 <form action="<?= admin_url('admin-post.php?action=clear_arrangement_cache'); ?>" method="POST">
-    <input type="submit" value="<?php _e('Clear arrangements cache', \Recras\Plugin::TEXT_DOMAIN); ?>">
+    <input type="submit" value="<?php _e('Clear packages cache', \Recras\Plugin::TEXT_DOMAIN); ?>">
 </form>
 <hr>
 
 <h2><?php _e('Contact forms', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-<p><?php printf(__('This clears the cache for all contact forms, including fields and list of arrangements for each form. These are used in the %s shortcode.', \Recras\Plugin::TEXT_DOMAIN), '<code>[recras-contact]</code>'); ?></p>
+<p><?php printf(__('This clears the cache for all contact forms, including fields and list of packages for each form. These are used in the %s shortcode.', \Recras\Plugin::TEXT_DOMAIN), '<code>[recras-contact]</code>'); ?></p>
 <form action="<?= admin_url('admin-post.php?action=clear_contactform_cache'); ?>" method="POST">
     <input type="submit" value="<?php _e('Clear contact form cache', \Recras\Plugin::TEXT_DOMAIN); ?>">
 </form>

@@ -1,9 +1,9 @@
 var recrasPlugin = function(editor, url) {
     editor.addButton('recras-arrangement', {
-        title : 'Arrangement',
+        title : 'Package',
         image : url + '/arrangement.svg',
         onclick : function(){
-            tb_show('Arrangement', 'admin.php?page=form-arrangement');
+            tb_show('Package', 'admin.php?page=form-arrangement');
         }
     });
 

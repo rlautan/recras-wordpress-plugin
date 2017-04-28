@@ -29,7 +29,7 @@
         <dd><input type="checkbox" id="showlabels" checked>
     <dt><label for="showplaceholders"><?php _e('Show placeholders?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="showplaceholders" checked>
-    <dt><label for="arrangement_id"><?php _e('Arrangement', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="arrangement_id"><?php _e('Package', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><?php if (is_string($arrangements)) { ?>
             <input type="number" id="arrangement_id" min="0" required>
             <?= $arrangements; ?>
@@ -40,7 +40,7 @@
                 <?php } ?>
             </select>
         <?php } ?>
-        <p><?php _e('Some arrangements may not be available for all contact forms. You can change this by editing your contact forms in Recras.', \Recras\Plugin::TEXT_DOMAIN); ?></p>
+        <p><?php _e('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.', \Recras\Plugin::TEXT_DOMAIN); ?></p>
     <dt><label for="container_element"><?php _e('HTML element', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="container_element">
                 <option value="dl" selected><?php _e('Definition list', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;dl&gt;)
