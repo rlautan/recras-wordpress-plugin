@@ -51,7 +51,7 @@
     });
 
     document.getElementById('arrangement_submit').addEventListener('click', function(){
-        var shortcode = '[recras-arrangement id="' + document.getElementById('arrangement_id').value + '" show="' + document.getElementById('show_what').value + '"';
+        var shortcode = '[recras-package id="' + document.getElementById('arrangement_id').value + '" show="' + document.getElementById('show_what').value + '"';
         if (document.getElementById('show_what').value == 'programme') {
             if (document.getElementById('starttime').value !== '00:00') {
                 shortcode += ' starttime="' + document.getElementById('starttime').value + '"';

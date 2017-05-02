@@ -77,13 +77,15 @@ class Plugin
      */
     public function addShortcodes()
     {
-        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.0.0 - use recras-package
-        add_shortcode('recras-arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.11.0 - use recras-package
         add_shortcode('recras-availability', ['Recras\Availability', 'addAvailabilityShortcode']);
         add_shortcode('recras-booking', ['Recras\OnlineBooking', 'addBookingShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
         add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-product', ['Recras\Products', 'addProductShortcode']);
+
+        // DEPRECATED
+        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.0.0 - use recras-package
+        add_shortcode('recras-arrangement', ['Recras\Arrangement', 'addArrangementShortcode']); // DEPRECATED IN v1.11.0 - use recras-package
     }
 
 

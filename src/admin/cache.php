@@ -25,7 +25,7 @@
 <hr>
 
 <h2><?php _e('Packages', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-<p><?php printf(__('This clears the cache for all packages, used in the %s shortcode.', \Recras\Plugin::TEXT_DOMAIN), '<code>[recras-arrangement]</code>'); ?></p>
+<p><?php printf(__('This clears the cache for all packages, used in the %s shortcode.', \Recras\Plugin::TEXT_DOMAIN), '<code>[recras-package]</code>'); ?></p>
 <form action="<?= admin_url('admin-post.php?action=clear_arrangement_cache'); ?>" method="POST">
     <input type="submit" value="<?php _e('Clear packages cache', \Recras\Plugin::TEXT_DOMAIN); ?>">
 </form>

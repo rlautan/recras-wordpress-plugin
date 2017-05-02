@@ -24,7 +24,7 @@ Setting your Recras name is the most important step here. Other settings are:
 * Use date/time picker script - please see the Date/Time picker section for details.
 
 = Packages =
-Add the `[recras-arrangement]` or `[recras-package]` shortcode anywhere on your site. The following parameters are supported:
+Add the `[recras-package]` shortcode anywhere on your site. The following parameters are supported:
 
 * id (required) - corresponds to the package ID in Recras
 * show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
@@ -42,7 +42,7 @@ Add the `[recras-arrangement]` or `[recras-package]` shortcode anywhere on your 
 * starttime - only used for `programme`, determines the starting time of a package. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
-Example: `[recras-arrangement id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the package with ID 1.
+Example: `[recras-package id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the package with ID 1.
 
 = Contact forms =
 Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
