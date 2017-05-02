@@ -13,6 +13,8 @@ class Plugin
      */
     public function __construct()
     {
+        $this->setBaseUrl();
+
         // Init Localisation
         load_default_textdomain();
         load_plugin_textdomain($this::TEXT_DOMAIN, false, dirname(plugin_basename(dirname(__FILE__))) . '/lang');
@@ -22,7 +24,6 @@ class Plugin
 
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
         add_action('admin_init', ['Recras\Editor', 'addButtons']);
-        add_action('init', [&$this, 'setBaseUrl']);
 
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);

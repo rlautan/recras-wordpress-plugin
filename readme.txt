@@ -123,6 +123,7 @@ None yet!
 * Rename "arrangement" to "package" to reflect text change in Recras
 * Deprecated `[recras-arrangement]` shortcode in favour of `[recras-package]`
 * New icons for TinyMCE buttons
+* Fix loading icon when submitting a contact form
 
 = 1.10.2 =
 Fix detailed description of arrangements
