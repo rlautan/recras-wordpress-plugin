@@ -120,10 +120,12 @@ None yet!
 == Changelog ==
 
 = 1.11.0 =
+* Added `[recras-availability]` shortcode to show availability calendar
 * Rename "arrangement" to "package" to reflect text change in Recras
 * Deprecated `[recras-arrangement]` shortcode in favour of `[recras-package]`
 * New icons for TinyMCE buttons
 * Fix loading icon when submitting a contact form
+* Fix empty text on submit button after submitting a contact form
 
 = 1.10.2 =
 Fix detailed description of arrangements
