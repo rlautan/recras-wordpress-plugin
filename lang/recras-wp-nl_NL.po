@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-04-28 15:11+0200\n"
-"PO-Revision-Date: 2017-04-28 15:11+0200\n"
+"POT-Creation-Date: 2017-05-22 16:45+0200\n"
+"PO-Revision-Date: 2017-05-22 16:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
 #: editor/form-contact.php:32 editor/form-package-availability.php:11
-#: src/Plugin.php:67 src/Plugin.php:138
+#: src/Plugin.php:68 src/Plugin.php:141
 msgid "Package"
 msgstr "Arrangement"
 
@@ -102,7 +102,7 @@ msgstr "Voeg shortcode in"
 msgid "No pre-filled package"
 msgstr "Geen vooraf ingevuld arrangement"
 
-#: editor/form-contact.php:15 src/Plugin.php:69 src/Plugin.php:135
+#: editor/form-contact.php:15 src/Plugin.php:70 src/Plugin.php:138
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -167,7 +167,7 @@ msgstr "Pagina's"
 msgid "Posts"
 msgstr "Berichten"
 
-#: editor/form-product.php:11 src/Plugin.php:71 src/Plugin.php:140
+#: editor/form-product.php:11 src/Plugin.php:72 src/Plugin.php:143
 msgid "Product"
 msgstr "Product"
 
@@ -256,35 +256,64 @@ msgstr "Man"
 msgid "Female"
 msgstr "Vrouw"
 
-#: src/Http.php:20
-msgid "Error: could not retrieve data from Recras"
-msgstr "Fout: kon data niet ophalen uit Recras"
+#: src/Http.php:9
+msgid "The maximum stack depth has been exceeded"
+msgstr "De maximale JSON-diepte is overschreden"
 
-#: src/Http.php:24
-msgid "Error: could not parse data from Recras"
-msgstr "Fout: kon data uit Recras niet verwerken"
+#: src/Http.php:11
+msgid "Invalid or malformed JSON"
+msgstr "Ongeldige of misvormde JSON"
 
-#: src/Plugin.php:50 src/Plugin.php:51
+#: src/Http.php:13
+msgid "Control character error, possibly incorrectly encoded"
+msgstr "Fout controleteken, mogelijk incorrect geëncodeerd"
+
+#: src/Http.php:15
+msgid "Syntax error"
+msgstr "Syntaxisfout"
+
+#: src/Http.php:17
+msgid "Malformed UTF-8 characters, possibly incorrectly encoded"
+msgstr "Misvormde UTF-8-tekens, mogelijk incorrect geëncodeerd"
+
+#: src/Http.php:19
+msgid "Unknown JSON error"
+msgstr "Onbekende JSON-fout"
+
+#: src/Http.php:46
+#, php-format
+msgid ""
+"Error: could not retrieve data from Recras. The error message received was: "
+"%s"
+msgstr ""
+"Fout: kon data niet ophalen uit Recras. De ontvangen foutmelding was: %s"
+
+#: src/Http.php:55
+#, php-format
+msgid "Error: could not parse data from Recras. The error message was: %s"
+msgstr "Fout: kon data uit Recras niet verwerken. De foutmelding was: %s"
+
+#: src/Plugin.php:51 src/Plugin.php:52
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Plugin.php:60 src/Plugin.php:61
+#: src/Plugin.php:61 src/Plugin.php:62
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:68 src/Plugin.php:139
+#: src/Plugin.php:69 src/Plugin.php:142
 msgid "Package availability"
 msgstr "Arrangement-beschikbaarheid"
 
-#: src/Plugin.php:70 src/Plugin.php:137
+#: src/Plugin.php:71 src/Plugin.php:140
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:110
+#: src/Plugin.php:113
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Plugin.php:112
+#: src/Plugin.php:115
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
@@ -293,27 +322,27 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:136
+#: src/Plugin.php:139
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:152
+#: src/Plugin.php:155
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:153
+#: src/Plugin.php:156
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:154
+#: src/Plugin.php:157
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:165
+#: src/Plugin.php:168
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:166
+#: src/Plugin.php:169
 msgid "OK"
 msgstr "OK"
 
@@ -419,6 +448,12 @@ msgstr "Leeg productencache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Error: could not retrieve data from Recras"
+#~ msgstr "Fout: kon data niet ophalen uit Recras"
+
+#~ msgid "Error: could not parse data from Recras"
+#~ msgstr "Fout: kon data uit Recras niet verwerken"
 
 #~ msgid "What is the ID of the package?"
 #~ msgstr "Wat is het ID van het arrangement?"
