@@ -2,8 +2,8 @@
 Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.3
-Tested up to: 4.7.4
-Stable tag: 1.11.0
+Tested up to: 4.8
+Stable tag: 1.11.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,6 +118,10 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.11.1 =
+* Show more helpful errors if something goes wrong
+* Fix iframe heights if there is more than one iframe on a page
 
 = 1.11.0 =
 * Added `[recras-availability]` shortcode to show availability calendar
