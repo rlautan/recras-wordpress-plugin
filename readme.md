@@ -82,7 +82,7 @@ No custom styling is applied by default, so it will integrate with your site eas
 Styling for the date/time picker can be based off of `datetimepicker/bootstrap-material-datetimepicker.css`. Be sure to make any changes in your own theme, as this file may be overwritten when a new version of the plugin is released.
 
 ### Cache
-All data from your Recras is cached for up to 24 hours. If you make important changes like, for example, increasing the price of a product, you can clear the cache to reflect those changes on your site immediately.
+All data from your Recras is cached for up to 24 hours. If you make important changes, such as increasing the price of a product, you can clear the cache to reflect those changes on your site immediately.
 
 ## Installation
 

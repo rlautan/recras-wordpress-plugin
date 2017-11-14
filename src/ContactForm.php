@@ -205,7 +205,7 @@ class ContactForm
             }
             switch ($field->soort_invoer) {
                 case 'boeking.arrangement':
-                    // It is possible that a package was valid for this contact form in the past, not not in the present.
+                    // It is possible that a package was valid for this contact form in the past, but not in the present.
                     // So we show only arrangements that are valid for this form.
                     if (empty($arrangementen)) {
                         $classArrangement = new Arrangement;

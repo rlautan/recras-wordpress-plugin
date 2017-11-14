@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-05-22 16:46+0200\n"
-"PO-Revision-Date: 2017-05-22 16:46+0200\n"
+"POT-Creation-Date: 2017-11-14 09:44+0100\n"
+"PO-Revision-Date: 2017-11-14 09:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -227,11 +227,11 @@ msgstr ""
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:262
+#: src/Arrangement.php:265
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:284
+#: src/Arrangement.php:287
 msgid "No location specified"
 msgstr ""
 
@@ -395,7 +395,8 @@ msgstr ""
 
 #: src/admin/cache.php:28
 #, php-format
-msgid "This clears the cache for all packages, used in the %s shortcode."
+msgid ""
+"This clears the cache for all packages, used in the %s and %s shortcodes."
 msgstr ""
 
 #: src/admin/cache.php:30

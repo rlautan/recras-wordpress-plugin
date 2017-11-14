@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-05-22 16:45+0200\n"
-"PO-Revision-Date: 2017-05-22 16:46+0200\n"
+"POT-Creation-Date: 2017-11-14 09:44+0100\n"
+"PO-Revision-Date: 2017-11-14 09:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -230,11 +230,11 @@ msgstr "Activiteit"
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:262
+#: src/Arrangement.php:265
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:284
+#: src/Arrangement.php:287
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
@@ -406,9 +406,11 @@ msgstr "Arrangementen"
 
 #: src/admin/cache.php:28
 #, php-format
-msgid "This clears the cache for all packages, used in the %s shortcode."
+msgid ""
+"This clears the cache for all packages, used in the %s and %s shortcodes."
 msgstr ""
-"Dit leegt de cache voor alle arrangementen, gebruikt in de shortcode %s."
+"Dit leegt de cache voor alle arrangementen, gebruikt in de shortcodes %s en "
+"%s."
 
 #: src/admin/cache.php:30
 msgid "Clear packages cache"
@@ -448,6 +450,10 @@ msgstr "Leeg productencache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "This clears the cache for all packages, used in the %s shortcode."
+#~ msgstr ""
+#~ "Dit leegt de cache voor alle arrangementen, gebruikt in de shortcode %s."
 
 #~ msgid "Error: could not retrieve data from Recras"
 #~ msgstr "Fout: kon data niet ophalen uit Recras"
