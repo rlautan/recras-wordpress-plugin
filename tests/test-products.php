@@ -85,22 +85,22 @@ class ProductsTest extends \WP_UnitTestCase
             'post_content' => '[recras-product id=48 show=description]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-description">Bowlen op onze met led lampen verlichte bowlingbaan</span>' . "\n", $content, 'Should show description');
+        $this->assertEquals('<span class="recras-description">Bowlen op onze met led-lampen verlichte bowlingbaan!</span>' . "\n", $content, 'Should show description');
     }
 
     function testShortcodeShowLongDescription()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-product id=1 show=description_long]'
+            'post_content' => '[recras-product id=103 show=description_long]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertNotFalse(strpos($content, 'span class="recras-description"><p>Op onze klimbaan met de langste zipine van Nederland kan iedereen zich helemaal uitleven.&nbsp;</p>'), 'Should show long description');
+        $this->assertNotFalse(strpos($content, 'span class="recras-description"><p>Op onze klimbaan met de langste zipline van Nederland kan iedereen zich helemaal uitleven.&nbsp;<br />Na uitgebreide instructie op ons instructieparcours wordt het parcours uitgelegd en kun je het 2 uur durende avontuur aangaan.<br /><br /></p>'), 'Should show long description');
     }
 
     function testShortcodeShowEmptyLongDescription()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-product id=48 show=description_long]'
+            'post_content' => '[recras-product id=80 show=description_long]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('' . "\n", $content, 'Should not show empty description');
@@ -118,7 +118,7 @@ class ProductsTest extends \WP_UnitTestCase
     function testShortcodeShowEmptyDuration()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-product id=73 show=duration]'
+            'post_content' => '[recras-product id=19 show=duration]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('' . "\n", $content, 'Should not show duration');

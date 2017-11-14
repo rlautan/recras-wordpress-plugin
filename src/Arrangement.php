@@ -221,6 +221,9 @@ class Arrangement
             0 => '',
         ];
         foreach ($json as $arrangement) {
+            if (!$arrangement->Arrangement) {
+                continue;
+            }
             $arrangements[$arrangement->arrangement_id] = $arrangement->Arrangement->arrangement;
         }
         natcasesort($arrangements);

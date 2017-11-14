@@ -26,7 +26,7 @@ class ArrangementTest extends \WP_UnitTestCase
 	function testShortcodeWithValidIDWithoutShow()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8]'
+            'post_content' => '[recras-package id=7]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('Error: "show" option not set' . "\n", $content, 'Not setting "show" option should fail');
@@ -35,7 +35,7 @@ class ArrangementTest extends \WP_UnitTestCase
 	function testShortcodeWithInvalidShow()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=invalid]'
+            'post_content' => '[recras-package id=7 show=invalid]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('Error: invalid "show" option' . "\n", $content, '...');
@@ -44,10 +44,10 @@ class ArrangementTest extends \WP_UnitTestCase
 	function testShortcodeShowTitle()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=title]'
+            'post_content' => '[recras-package id=7 show=title]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">2-daags vergaderarrangement</span>' . "\n", $content, 'Should show title');
+        $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Should show title');
 	}
 
 	function testShortcodeDescription()
@@ -62,25 +62,34 @@ class ArrangementTest extends \WP_UnitTestCase
 	function testShortcodeDuration()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=duration]'
+            'post_content' => '[recras-package id=7 show=duration]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-duration">1:7:30</span>' . "\n", $content, 'Should show duration');
+        $this->assertEquals('<span class="recras-duration">6:15</span>' . "\n", $content, 'Should show duration');
 	}
 
     function testShortcodeImage()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=image_url]'
+            'post_content' => '[recras-package id=7 show=image_url]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('/api2.php/arrangementen/7/afbeelding', $content, 'Should return image URL');
+        $this->assertEquals('/api2.php/arrangementen/7/afbeelding' . "\n", $content, 'Should return image URL');
+    }
+
+    function testShortcodeImageInTag()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '<img src="[recras-package id=7 show=image_url]">'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<p><img src="/api2.php/arrangementen/7/afbeelding"></p>' . "\n", $content, 'Should return image URL');
     }
 
 	function testShortcodeLocation()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=location]'
+            'post_content' => '[recras-package id=6 show=location]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('<span class="recras-location">No location specified</span>' . "\n", $content, 'Should show location');
@@ -89,7 +98,7 @@ class ArrangementTest extends \WP_UnitTestCase
 	function testShortcodeShowPersons()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=persons]'
+            'post_content' => '[recras-package id=7 show=persons]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals('<span class="recras-persons">10</span>' . "\n", $content, 'Should show number of persons');
@@ -98,28 +107,28 @@ class ArrangementTest extends \WP_UnitTestCase
 	function testShortcodeShowPrices()
 	{
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=price_total_excl_vat]'
+            'post_content' => '[recras-package id=7 show=price_total_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 409.91</span>' . "\n", $content, 'Should show total price excl. vat');
+        $this->assertEquals('<span class="recras-price">€ 336.13</span>' . "\n", $content, 'Should show total price excl. vat');
 
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=price_total_incl_vat]'
+            'post_content' => '[recras-package id=7 show=price_total_incl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 434.50</span>' . "\n", $content, 'Should show total price incl. vat');
+        $this->assertEquals('<span class="recras-price">€ 362.50</span>' . "\n", $content, 'Should show total price incl. vat');
 
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=price_pp_excl_vat]'
+            'post_content' => '[recras-package id=7 show=price_pp_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 40.99</span>' . "\n", $content, 'Should show price per person excl. vat');
+        $this->assertEquals('<span class="recras-price">€ 33.61</span>' . "\n", $content, 'Should show price per person excl. vat');
 
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=price_pp_incl_vat]'
+            'post_content' => '[recras-package id=7 show=price_pp_incl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 43.45</span>' . "\n", $content, 'Should show price per person incl. vat');
+        $this->assertEquals('<span class="recras-price">€ 36.25</span>' . "\n", $content, 'Should show price per person incl. vat');
 	}
 
     function testSingleDayProgramme()
@@ -135,18 +144,21 @@ class ArrangementTest extends \WP_UnitTestCase
 
     function testProgrammeWithTimeOffset()
     {
-        $this->markTestSkipped('TODO: implement proper time offset');
-        /*$post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=5 starttime="16:00" show=programme]'
+        $this->markTestSkipped('TODO: implement proper time offset'); //TODO
+
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-package id=7 starttime="22:00" show=programme]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals(2, substr_count($content, '<tr class="recras-new-day'), 'Should span two days');*/
+        $this->assertEquals(2, substr_count($content, '<tr class="recras-new-day'), 'Should span two days');
     }
 
     function testMultiDayProgramme()
     {
+        $this->markTestSkipped('TODO: there is no multi-day programme anymore'); //TODO
+
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=programme]'
+            'post_content' => '[recras-package id=7 show=programme]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertEquals(2, substr_count($content, '<tr class="recras-new-day'), 'Should span two days');
@@ -155,7 +167,7 @@ class ArrangementTest extends \WP_UnitTestCase
     function testShortcodeProgrammeWithoutHeader()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=programme showheader=false]'
+            'post_content' => '[recras-package id=7 show=programme showheader=false]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
         $this->assertNotFalse(strpos($content, '<table'), 'Should return an HTML table');
@@ -204,10 +216,10 @@ class ArrangementTest extends \WP_UnitTestCase
     {
         update_option('recras_decimal', ',');
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=price_total_excl_vat]'
+            'post_content' => '[recras-package id=7 show=price_total_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 409,91</span>' . "\n", $content, 'Should respect decimal setting');
+        $this->assertEquals('<span class="recras-price">€ 336,13</span>' . "\n", $content, 'Should respect decimal setting');
         update_option('recras_decimal', '.');
     }
 
@@ -215,25 +227,25 @@ class ArrangementTest extends \WP_UnitTestCase
     {
         update_option('recras_currency', '¥');
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=8 show=price_total_excl_vat]'
+            'post_content' => '[recras-package id=7 show=price_total_excl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">¥ 409.91</span>' . "\n", $content, 'Should respect currency setting');
+        $this->assertEquals('<span class="recras-price">¥ 336.13</span>' . "\n", $content, 'Should respect currency setting');
         update_option('recras_currency', '€');
     }
 
     function testOldShortcodes()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[arrangement id=8 show=title]'
+            'post_content' => '[arrangement id=7 show=title]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">2-daags vergaderarrangement</span>' . "\n", $content, 'Old shortcode (< 1.0.0) should still work');
+        $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Old shortcode (< 1.0.0) should still work');
 
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-arrangement id=8 show=title]'
+            'post_content' => '[recras-arrangement id=7 show=title]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">2-daags vergaderarrangement</span>' . "\n", $content, 'Old shortcode (< 1.11.0) should still work');
+        $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Old shortcode (< 1.11.0) should still work');
     }
 }
