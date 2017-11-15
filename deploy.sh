@@ -13,7 +13,7 @@ SVNUSER="ZanderZ"
 
 echo "..............................................."
 echo
-echo "WordPress Plugin Git-Flow SVN Deploy v2.0.0-dev"
+echo "WordPress Plugin Git-Flow SVN Deploy v2.1.0"
 echo
 echo "Preparing to deploy WordPress plugin"
 echo
@@ -21,9 +21,9 @@ echo "..............................................."
 echo
 
 # Check version in readme.txt is the same as plugin file after translating both to unix line breaks to work around grep's failure to identify mac line breaks
-PLUGINVERSION=`grep "Version:" $GITPATH/$MAINFILE | awk -F' ' '{print $NF}' | tr -d '\r'`
+PLUGINVERSION=`grep -i "Version:" $GITPATH/$MAINFILE | awk -F' ' '{print $NF}' | tr -d '\r'`
 echo "$MAINFILE version: $PLUGINVERSION"
-READMEVERSION=`grep "^Stable tag:" $GITPATH/readme.txt | awk -F' ' '{print $NF}' | tr -d '\r'`
+READMEVERSION=`grep -i "Stable tag:" $GITPATH/readme.txt | awk -F' ' '{print $NF}' | tr -d '\r'`
 echo "readme.txt version: $READMEVERSION"
 
 if [ "$READMEVERSION" = "trunk" ]; then
@@ -47,6 +47,7 @@ echo "Ignoring certain files"
 svn propset svn:ignore "README.md
 Thumbs.db
 .git
+.gitattributes
 .gitignore" "$SVNPATH/trunk/"
 
 echo "Exporting the HEAD of master from git to the trunk of SVN"
@@ -82,18 +83,18 @@ svn delete --force $SVNPATH/trunk/assets
 echo "Changing directory to SVN and committing to trunk"
 cd $SVNPATH/trunk/
 # Delete all files that should not now be added.
-svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2}' | xargs svn del
+svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
 # Add all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
+svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
 svn commit --username=$SVNUSER -m "Preparing for $PLUGINVERSION release"
 
 echo "Updating WordPress plugin repo assets and committing"
 cd $SVNPATH/assets/
 # Delete all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2}' | xargs svn del
+svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
 # Add all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
-svn update --accept mine-full $SVNPATH/assets/*
+svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
+svn update --quiet --accept working $SVNPATH/assets/*
 svn commit --username=$SVNUSER -m "Updating assets"
 
 echo "Creating new SVN tag and committing it"
@@ -103,6 +104,7 @@ svn copy --quiet trunk/ tags/$PLUGINVERSION/
 # Remove assets and trunk directories from tag directory
 svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/assets
 svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/trunk
+svn update --quiet --accept working $SVNPATH/tags/$PLUGINVERSION
 cd $SVNPATH/tags/$PLUGINVERSION
 svn commit --username=$SVNUSER -m "Tagging version $PLUGINVERSION"
 
