@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-11-14 09:44+0100\n"
-"PO-Revision-Date: 2017-11-14 09:44+0100\n"
+"POT-Creation-Date: 2017-11-24 10:40+0100\n"
+"PO-Revision-Date: 2017-11-24 10:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -24,76 +24,85 @@ msgstr ""
 msgid "Package"
 msgstr "Arrangement"
 
-#: editor/form-arrangement.php:25 editor/form-product.php:22
+#: editor/form-arrangement.php:24
+msgid ""
+"If you are not seeing certain packages, make sure \"May be presented on a "
+"website (via API)\" is enabled on the tab \"Extra settings\" of the package."
+msgstr ""
+"Als je bepaalde arrangementen niet ziet, zorg dan dat \"Mag op een website "
+"gepresenteerd worden (via API)\" is aangevinkt op het tabblad \"Extra "
+"instellingen\" van het arrangement."
+
+#: editor/form-arrangement.php:26 editor/form-product.php:22
 msgid "Show what?"
 msgstr "Toon wat?"
 
-#: editor/form-arrangement.php:27 editor/form-product.php:24
+#: editor/form-arrangement.php:28 editor/form-product.php:24
 msgid "Title"
 msgstr "Titel"
 
-#: editor/form-arrangement.php:28
+#: editor/form-arrangement.php:29
 msgid "Description"
 msgstr "Beschrijving"
 
-#: editor/form-arrangement.php:29 editor/form-product.php:27
+#: editor/form-arrangement.php:30 editor/form-product.php:27
 msgid "Duration"
 msgstr "Duur"
 
-#: editor/form-arrangement.php:30
+#: editor/form-arrangement.php:31
 msgid "Starting location"
 msgstr "Startlocatie"
 
-#: editor/form-arrangement.php:31
+#: editor/form-arrangement.php:32
 msgid "Minimum number of persons"
 msgstr "Minimum aantal personen"
 
-#: editor/form-arrangement.php:32
+#: editor/form-arrangement.php:33
 msgid "Price p.p. excl. VAT"
 msgstr "Prijs p.p. excl. btw"
 
-#: editor/form-arrangement.php:33
+#: editor/form-arrangement.php:34
 msgid "Price p.p. incl. VAT"
 msgstr "Prijs p.p. incl. btw"
 
-#: editor/form-arrangement.php:34
+#: editor/form-arrangement.php:35
 msgid "Total price excl. VAT"
 msgstr "Totaalprijs excl. btw"
 
-#: editor/form-arrangement.php:35
+#: editor/form-arrangement.php:36
 msgid "Total price incl. VAT"
 msgstr "Totaalprijs incl. btw"
 
-#: editor/form-arrangement.php:36
+#: editor/form-arrangement.php:37
 msgid "Programme"
 msgstr "Programma"
 
-#: editor/form-arrangement.php:37 editor/form-product.php:28
+#: editor/form-arrangement.php:38 editor/form-product.php:28
 msgid "Image URL"
 msgstr "Afbeelding-URL"
 
-#: editor/form-arrangement.php:39
+#: editor/form-arrangement.php:40
 msgid "Start time"
 msgstr "Starttijd"
 
-#: editor/form-arrangement.php:40
+#: editor/form-arrangement.php:41
 msgid "hh:mm"
 msgstr "uu:mm"
 
-#: editor/form-arrangement.php:41
+#: editor/form-arrangement.php:42
 msgid "Show header?"
 msgstr "Toon header?"
 
-#: editor/form-arrangement.php:43
+#: editor/form-arrangement.php:44
 msgid "Yes"
 msgstr "Ja"
 
-#: editor/form-arrangement.php:44
+#: editor/form-arrangement.php:45
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:46 editor/form-booking.php:26
-#: editor/form-contact.php:67 editor/form-package-availability.php:30
+#: editor/form-arrangement.php:47 editor/form-booking.php:26
+#: editor/form-contact.php:70 editor/form-package-availability.php:30
 #: editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
@@ -118,7 +127,7 @@ msgstr "Toon labels?"
 msgid "Show placeholders?"
 msgstr "Toon placeholders?"
 
-#: editor/form-contact.php:43
+#: editor/form-contact.php:44
 msgid ""
 "Some packages may not be available for all contact forms. You can change "
 "this by editing your contact forms in Recras."
@@ -127,43 +136,52 @@ msgstr ""
 "contactformulieren. Je kunt dit wijzigen door je contactformulieren in "
 "Recras te bewerken."
 
-#: editor/form-contact.php:44
+#: editor/form-contact.php:45
+msgid ""
+"If you are still missing packages, make sure \"May be presented on a website "
+"(via API)\" is enabled on the tab \"Extra settings\" of the package."
+msgstr ""
+"Als je nog steeds arrangementen mist, zorg dan dat \"Mag op een website "
+"gepresenteerd worden (via API)\" is aangevinkt op het tabblad \"Extra "
+"instellingen\" van het arrangement."
+
+#: editor/form-contact.php:47
 msgid "HTML element"
 msgstr "HTML-element"
 
-#: editor/form-contact.php:46
+#: editor/form-contact.php:49
 msgid "Definition list"
 msgstr "Definitielijst"
 
-#: editor/form-contact.php:47
+#: editor/form-contact.php:50
 msgid "Ordered list"
 msgstr "Geordende lijst"
 
-#: editor/form-contact.php:48
+#: editor/form-contact.php:51
 msgid "Table"
 msgstr "Tabel"
 
-#: editor/form-contact.php:50
+#: editor/form-contact.php:53
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:51 editor/form-contact.php:92 src/ContactForm.php:84
+#: editor/form-contact.php:54 editor/form-contact.php:95 src/ContactForm.php:84
 msgid "Send"
 msgstr "Versturen"
 
-#: editor/form-contact.php:52
+#: editor/form-contact.php:55
 msgid "Redirect after submission"
 msgstr "Doorsturen na versturen"
 
-#: editor/form-contact.php:54
+#: editor/form-contact.php:57
 msgid "Don't redirect"
 msgstr "Niet doorsturen"
 
-#: editor/form-contact.php:55
+#: editor/form-contact.php:58
 msgid "Pages"
 msgstr "Pagina's"
 
-#: editor/form-contact.php:60
+#: editor/form-contact.php:63
 msgid "Posts"
 msgstr "Berichten"
 
@@ -326,23 +344,23 @@ msgstr ""
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:155
+#: src/Plugin.php:156
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:156
+#: src/Plugin.php:157
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:157
+#: src/Plugin.php:158
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:168
+#: src/Plugin.php:169
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:169
+#: src/Plugin.php:170
 msgid "OK"
 msgstr "OK"
 

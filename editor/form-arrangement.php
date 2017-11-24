@@ -15,12 +15,13 @@
         <dd><?php if (is_string($arrangements)) { ?>
             <input type="number" id="arrangement_id" min="0" required>
             <?= $arrangements; ?>
-        <?php } elseif(is_array($arrangements)) { ?>
+        <?php } elseif (is_array($arrangements)) { ?>
             <select id="arrangement_id" required>
             <?php foreach ($arrangements as $ID => $arrangement) { ?>
                 <option value="<?= $ID; ?>"><?= $arrangement->arrangement; ?>
             <?php } ?>
             </select>
+            <?php _e('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', \Recras\Plugin::TEXT_DOMAIN); ?>
         <?php } ?>
     <dt><label for="show_what"><?php _e('Show what?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="show_what" required>

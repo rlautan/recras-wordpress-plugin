@@ -1,0 +1,5 @@
+#TB_ajaxContent .recras-notice {
+    background: hsl(209, 40%, 90%);
+    border-left: 3px solid hsl(209, 80%, 60%);
+    padding-left: 1em !important;
+}

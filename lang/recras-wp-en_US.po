@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-11-14 09:44+0100\n"
-"PO-Revision-Date: 2017-11-14 09:44+0100\n"
+"POT-Creation-Date: 2017-11-21 16:52+0100\n"
+"PO-Revision-Date: 2017-11-21 16:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -93,7 +93,7 @@ msgid "No"
 msgstr ""
 
 #: editor/form-arrangement.php:46 editor/form-booking.php:26
-#: editor/form-contact.php:67 editor/form-package-availability.php:30
+#: editor/form-contact.php:70 editor/form-package-availability.php:30
 #: editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr ""
@@ -118,49 +118,55 @@ msgstr ""
 msgid "Show placeholders?"
 msgstr ""
 
-#: editor/form-contact.php:43
+#: editor/form-contact.php:44
 msgid ""
 "Some packages may not be available for all contact forms. You can change "
 "this by editing your contact forms in Recras."
 msgstr ""
 
-#: editor/form-contact.php:44
-msgid "HTML element"
-msgstr ""
-
-#: editor/form-contact.php:46
-msgid "Definition list"
+#: editor/form-contact.php:45
+msgid ""
+"If you are still missing packages, make sure \"May be presented on a website "
+"(via API)\" is enabled on the tab \"Extra settings\" of the package."
 msgstr ""
 
 #: editor/form-contact.php:47
-msgid "Ordered list"
+msgid "HTML element"
 msgstr ""
 
-#: editor/form-contact.php:48
-msgid "Table"
+#: editor/form-contact.php:49
+msgid "Definition list"
 msgstr ""
 
 #: editor/form-contact.php:50
+msgid "Ordered list"
+msgstr ""
+
+#: editor/form-contact.php:51
+msgid "Table"
+msgstr ""
+
+#: editor/form-contact.php:53
 msgid "Submit button text"
 msgstr ""
 
-#: editor/form-contact.php:51 editor/form-contact.php:92 src/ContactForm.php:84
+#: editor/form-contact.php:54 editor/form-contact.php:95 src/ContactForm.php:84
 msgid "Send"
 msgstr ""
 
-#: editor/form-contact.php:52
+#: editor/form-contact.php:55
 msgid "Redirect after submission"
 msgstr ""
 
-#: editor/form-contact.php:54
+#: editor/form-contact.php:57
 msgid "Don't redirect"
 msgstr ""
 
-#: editor/form-contact.php:55
+#: editor/form-contact.php:58
 msgid "Pages"
 msgstr ""
 
-#: editor/form-contact.php:60
+#: editor/form-contact.php:63
 msgid "Posts"
 msgstr ""
 
