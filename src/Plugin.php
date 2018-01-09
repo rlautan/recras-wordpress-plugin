@@ -161,8 +161,8 @@ class Plugin
         if ($value = get_option('recras_datetimepicker')) {
             wp_enqueue_script('momentjs', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js', [], false, true); // ver=false because it's already in the URL
             wp_enqueue_script('momentjs-nl', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/locale/nl.js', ['momentjs'], false, true);
-            wp_enqueue_script('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.js', ['momentjs'], '20151019', true);
-            wp_enqueue_style('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.css', [], '20151019');
+            wp_enqueue_script('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.js', ['momentjs'], '20160204', true);
+            wp_enqueue_style('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.css', [], '20160204');
             wp_enqueue_style('material-font', 'https://fonts.googleapis.com/icon?family=Material+Icons');
 
             $localisation['language'] = get_locale();
