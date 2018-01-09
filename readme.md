@@ -75,7 +75,7 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
 Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
 
 ### Date/Time picker
-By default, date and time pickers use whatever the browser has available. Currently (March 2017) Internet Explorer (all versions), Firefox (all versions), and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras -> Settings page.
+By default, date and time pickers use whatever the browser has available. Currently (January 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras -> Settings page.
 
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
