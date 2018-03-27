@@ -264,6 +264,7 @@ class ContactForm
                         $keuzes[$id] = $name;
                     }
                     $html .= self::generateSubTag($options['element']) . self::generateChoices($field, $keuzes);
+                    break;
                 case 'header':
                     if (strpos($html, '<dt') !== false || strpos($html, '<li') !== false || strpos($html, '<tr') !== false) {
                         $html .= self::generateEndTag($options['element']);
