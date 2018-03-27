@@ -8,9 +8,9 @@ Easily integrate data from your Recras instance, such as packages and contact fo
 ## Usage
 With this plugin, you can easily integrate data from your [Recras](https://recras.nl/) instance, such as packages and contact forms, into your own website.
 
-To get started, go to the Recras -> Settings page and enter your Recras name. For example, if you log in to Recras at `https://mysite.recras.nl/` then your Recras name is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
+To get started, go to the Recras → Settings page and enter your Recras name. For example, if you log in to Recras at `https://mysite.recras.nl/` then your Recras name is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
 
-This plugin consists of four shortcodes. To use them, you first need to set your Recras name on the Recras -> Settings page.
+This plugin consists of five shortcodes. To use them, you first need to set your Recras name on the Recras → Settings page.
 
 ### Settings
 Setting your Recras name is the most important step here. Other settings are:
@@ -55,9 +55,9 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 
 ### Online booking
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
-* id - corresponds to the contact form ID in Recras
+* id - corresponds to the package ID in Recras
 
-Example: `[recras-booking id=17]` will show the booking form with ID 17.
+Example: `[recras-booking id=17]` will show the booking form with package ID 17.
 
 ### Products
 Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
@@ -75,7 +75,7 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
 Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
 
 ### Date/Time picker
-By default, date and time pickers use whatever the browser has available. Currently (January 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras -> Settings page.
+By default, date and time pickers use whatever the browser has available. Currently (March 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
 
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
