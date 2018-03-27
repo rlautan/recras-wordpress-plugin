@@ -258,6 +258,12 @@ class ContactForm
                         'placeholder' => $options['placeholders'],
                     ]);
                     break;
+                case 'contactpersoon.nieuwsbrieven':
+                    $keuzes = [];
+                    foreach ($field->newsletter_options as $id => $name) {
+                        $keuzes[$id] = $name;
+                    }
+                    $html .= self::generateSubTag($options['element']) . self::generateChoices($field, $keuzes);
                 case 'header':
                     if (strpos($html, '<dt') !== false || strpos($html, '<li') !== false || strpos($html, '<tr') !== false) {
                         $html .= self::generateEndTag($options['element']);
