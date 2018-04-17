@@ -22,6 +22,8 @@
                 <?php } ?>
             </select>
         <?php } ?>
+    <dt><label for="auto_resize"><?php _e('Automatic resize?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><input type="checkbox" id="auto_resize" checked>
 </dl>
 <button class="button button-primary" id="booking_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
@@ -31,6 +33,9 @@
         var shortcode  = '[recras-booking';
         if (arrangementID !== '0') {
             shortcode += ' id="' + arrangementID + '"';
+        }
+        if (!document.getElementById('auto_resize').checked) {
+            shortcode += ' autoresize=0';
         }
         shortcode += ']';
 

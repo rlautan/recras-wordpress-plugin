@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2017-11-24 10:40+0100\n"
-"PO-Revision-Date: 2017-11-24 10:41+0100\n"
+"POT-Creation-Date: 2018-04-17 15:55+0200\n"
+"PO-Revision-Date: 2018-04-17 15:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -101,8 +101,8 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:47 editor/form-booking.php:26
-#: editor/form-contact.php:70 editor/form-package-availability.php:30
+#: editor/form-arrangement.php:47 editor/form-booking.php:28
+#: editor/form-contact.php:70 editor/form-package-availability.php:32
 #: editor/form-product.php:34
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
@@ -110,6 +110,10 @@ msgstr "Voeg shortcode in"
 #: editor/form-booking.php:19
 msgid "No pre-filled package"
 msgstr "Geen vooraf ingevuld arrangement"
+
+#: editor/form-booking.php:25 editor/form-package-availability.php:29
+msgid "Automatic resize?"
+msgstr "Automatisch schalen?"
 
 #: editor/form-contact.php:15 src/Plugin.php:70 src/Plugin.php:138
 msgid "Contact form"
@@ -402,7 +406,7 @@ msgstr "Voer je Recras-gegevens hier in"
 
 #: src/admin/cache.php:6
 msgid "The selected cache was cleared."
-msgstr "De geselecteerde cache is geleegd."
+msgstr "De geselecteerde cache is gewist."
 
 #: src/admin/cache.php:19
 msgid "Clear Recras cache"
@@ -416,7 +420,7 @@ msgid ""
 msgstr ""
 "Data die uit Recras komt (contactformulieren, arrangementen, producten) "
 "wordt tot 24 uur bewaard. Als je belangrijke wijzigingen maakt (bijv. een "
-"prijsverhoging) dan is het aan te raden om de bijbehorende cache te legen."
+"prijsverhoging) dan is het aan te raden om de bijbehorende cache te wissen."
 
 #: src/admin/cache.php:27
 msgid "Packages"
@@ -427,12 +431,12 @@ msgstr "Arrangementen"
 msgid ""
 "This clears the cache for all packages, used in the %s and %s shortcodes."
 msgstr ""
-"Dit leegt de cache voor alle arrangementen, gebruikt in de shortcodes %s en "
+"Dit wist de cache voor alle arrangementen, gebruikt in de shortcodes %s en "
 "%s."
 
 #: src/admin/cache.php:30
 msgid "Clear packages cache"
-msgstr "Leeg arrangementencache"
+msgstr "Wis arrangementencache"
 
 #: src/admin/cache.php:34
 msgid "Contact forms"
@@ -444,13 +448,13 @@ msgid ""
 "This clears the cache for all contact forms, including fields and list of "
 "packages for each form. These are used in the %s shortcode."
 msgstr ""
-"Dit leegt de cache voor alle contactformulieren, inclusief velden en lijst "
+"Dit wist de cache voor alle contactformulieren, inclusief velden en lijst "
 "met arrangementen voor elk formulier. Deze worden gebruikt in de shortcode "
 "%s."
 
 #: src/admin/cache.php:37
 msgid "Clear contact form cache"
-msgstr "Leeg contactformuliercache"
+msgstr "Wis contactformuliercache"
 
 #: src/admin/cache.php:41
 msgid "Products"
@@ -459,11 +463,11 @@ msgstr "Producten"
 #: src/admin/cache.php:42
 #, php-format
 msgid "This clears the cache for all products, used in the %s shortcode."
-msgstr "Dit leegt de cache voor alle producten, gebruikt in de shortcode %s."
+msgstr "Dit wist de cache voor alle producten, gebruikt in de shortcode %s."
 
 #: src/admin/cache.php:44
 msgid "Clear product cache"
-msgstr "Leeg productencache"
+msgstr "Wis productencache"
 
 #: src/admin/settings.php:7
 msgid "Save"

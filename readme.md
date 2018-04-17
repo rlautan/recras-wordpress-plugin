@@ -34,7 +34,7 @@ Add the `[recras-package]` shortcode anywhere on your site. The following parame
   * price_total_excl_vat - shows the total price, excluding VAT
   * price_total_incl_vat - same as above, but including VAT
   * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
-  * title - shows the title of the package
+  * title - shows the title (display name) of the package
 * starttime - only used for `programme`, determines the starting time of a package. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
 
@@ -56,8 +56,19 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 ### Online booking
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
 * id - corresponds to the package ID in Recras
+* autoresize - enabled by default. Disable this if you have more than one Recras iframe on your page
 
 Example: `[recras-booking id=17]` will show the booking form with package ID 17.
+
+The online booking shortcode adds an iframe to your site, which automatically adjusts its height to fit the content, unless the option "autoresize" is disabled.
+
+### Availability
+Add the `[recras-availability]` shortcode anywhere on your site. The following parameters are supported:
+
+* id - corresponds to the package ID in Recras
+* autoresize - disabled by default. Should not be necessary to use. Keep this disabled if you have more than one Recras iframe on your page
+
+The availability shortcode adds an iframe with availability calendar to your site.
 
 ### Products
 Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:

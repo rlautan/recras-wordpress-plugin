@@ -25,6 +25,7 @@ class Availability
         if (!$subdomain) {
             return Plugin::getNoSubdomainError();
         }
+        $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
 
 
         $json = get_transient('recras_' . $subdomain . '_arrangement_' . $attributes['id']);
@@ -42,10 +43,10 @@ class Availability
         $iframeUID = uniqid('rpai'); // Recras Package Availability Iframe
         $html = '';
         $html .= '<iframe src="' . $url . '" style="width:100%;height:250px" frameborder=0 scrolling="auto" id="' . $iframeUID . '"></iframe>';
-        $html .= <<<SCRIPT
+        if ($enableResize) {
+            $html .= <<<SCRIPT
 <script>
     window.addEventListener('message', function(e) {
-        console.log(e.data);
         var origin = e.origin || e.originalEvent.origin;
         if (origin.match(/{$subdomain}\.recras\.nl/)) {
             document.getElementById('{$iframeUID}').style.height = e.data.iframeHeight + 'px';
@@ -53,6 +54,7 @@ class Availability
     });
 </script>
 SCRIPT;
+        }
         return $html;
     }
 

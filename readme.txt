@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 1.11.5
+Stable tag: 1.12.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,10 +63,19 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
 
 * id - corresponds to the package ID in Recras
+* autoresize - enabled by default. Disable this if you have more than one Recras iframe on your page
 
 Example: `[recras-booking id=17]` will show the booking form with package ID 17.
 
-The online booking shortcode adds an iframe to your site, which automatically adjusts its height to fit the content.
+The online booking shortcode adds an iframe to your site, which automatically adjusts its height to fit the content, unless the option "autoresize" is disabled.
+
+= Availability =
+Add the `[recras-availability]` shortcode anywhere on your site. The following parameters are supported:
+
+* id - corresponds to the package ID in Recras
+* autoresize - disabled by default. Should not be necessary to use. Keep this disabled if you have more than one Recras iframe on your page
+
+The availability shortcode adds an iframe with availability calendar to your site.
 
 = Products =
 Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
@@ -119,6 +128,9 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.12.0 =
+* Add option to disable automatic resizing of online booking & availability iframes
 
 = 1.11.5 =
 * Fix selection of newsletters in a contact form

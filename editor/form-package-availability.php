@@ -26,12 +26,18 @@ $arrangements = $model->getArrangements(get_option('recras_subdomain'));
                 ?>
             </select>
         <?php } ?>
+    <dt><label for="auto_resize"><?php _e('Automatic resize?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><input type="checkbox" id="auto_resize">
 </dl>
 <button class="button button-primary" id="arrangement_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
 <script>
     document.getElementById('arrangement_submit').addEventListener('click', function(){
-        var shortcode = '[recras-availability id="' + document.getElementById('arrangement_id').value + '"]';
+        var shortcode = '[recras-availability id="' + document.getElementById('arrangement_id').value + '"';
+        if (!document.getElementById('auto_resize').checked) {
+            shortcode += ' autoresize=0';
+        }
+        shortcode += ']';
 
         tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
         tb_remove();

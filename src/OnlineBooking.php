@@ -22,12 +22,13 @@ class OnlineBooking
         }
 
         $arrangementID = isset($attributes['id']) ? $attributes['id'] : null;
+        $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
 
-        return self::generateIframe($subdomain, $arrangementID);
+        return self::generateIframe($subdomain, $arrangementID, $enableResize);
     }
 
 
-    private static function generateIframe($subdomain, $arrangementID)
+    private static function generateIframe($subdomain, $arrangementID, $enableResize)
     {
         $url = 'https://' . $subdomain . '.recras.nl/onlineboeking';
         if ($arrangementID) {
@@ -37,7 +38,8 @@ class OnlineBooking
         $iframeUID = uniqid('robi'); // Recras Online Boeking Iframe
         $html = '';
         $html .= '<iframe src="' . $url . '" style="width:100%;height:450px" frameborder=0 scrolling="auto" id="' . $iframeUID . '"></iframe>';
-        $html .= <<<SCRIPT
+        if ($enableResize) {
+            $html .= <<<SCRIPT
 <script>
     window.addEventListener('message', function(e) {
         var origin = e.origin || e.originalEvent.origin;
@@ -47,6 +49,7 @@ class OnlineBooking
     });
 </script>
 SCRIPT;
+        }
         return $html;
     }
 
