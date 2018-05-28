@@ -38,6 +38,14 @@ var recrasPlugin = function(editor, url) {
             tb_show(recras_l10n.product, 'admin.php?page=form-product');
         }
     });
+
+    editor.addButton('recras-vouchers', {
+        title: recras_l10n.vouchers,
+        image: url + '/vouchers.svg',
+        onclick: function() {
+            tinyMCE.activeEditor.execCommand('mceInsertContent', 0, '[recras-vouchers]');
+        }
+    });
 };
 
 tinymce.PluginManager.add('recras', recrasPlugin);

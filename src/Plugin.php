@@ -141,6 +141,7 @@ class Plugin
             'package' => __('Package', $this::TEXT_DOMAIN),
             'package_availability' => __('Package availability', $this::TEXT_DOMAIN),
             'product' => __('Product', $this::TEXT_DOMAIN),
+            'vouchers' => __('Vouchers', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
         wp_enqueue_style('recras-admin-style', $this->baseUrl . '/admin-style.css', [], '1.10.1');
