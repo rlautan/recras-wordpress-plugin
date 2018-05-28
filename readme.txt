@@ -28,7 +28,7 @@ Setting your Recras name is the most important step here. Other settings are:
 Add the `[recras-package]` shortcode anywhere on your site. The following parameters are supported:
 
 * id (required) - corresponds to the package ID in Recras
-* show (required) - can be any of the following: `title`, `persons`, `price_pp_excl_vat`, `price_pp_incl_vat`, `price_total_excl_vat`, `price_total_incl_vat`, `programme`. `program` is included as alias for `programme`.
+* show (required) - can be any of the following:
   * description - shows the long description of this package
   * duration - shows the duration of this package (i.e. time between start of first activity and end of last activity)
   * image_url - gives the package image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
@@ -39,6 +39,7 @@ Add the `[recras-package]` shortcode anywhere on your site. The following parame
   * price_total_excl_vat - shows the total price, excluding VAT
   * price_total_incl_vat - same as above, but including VAT
   * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
+  * program - alias of `programme`
   * title - shows the title (display name) of the package
 * starttime - only used for `programme`, determines the starting time of a package. If not set, it will default to 12:00
 * showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
@@ -81,7 +82,7 @@ The availability shortcode adds an iframe with availability calendar to your sit
 Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
 
 * id (required) - corresponds to the product ID in Recras
-* show (required) - can be any of the following: `title`, `description`, `price_excl_vat`, `price_incl_vat`.
+* show (required) - can be any of the following:
   * duration - shows duration of this product, if product has a duration
   * image_url - gives the product image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * minimum_amount - shows the minimum amount of this product
@@ -92,6 +93,12 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
   * description_long - shows the long description of the product, if present.
 
 Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
+
+= Vouchers =
+Add the `[recras-vouchers]` shortcode anywhere on your site. The following parameter is supported:
+* redirect - a URL that the user is redirected to, after submitting the form successfully.
+
+This will a voucher sales module to your website.
 
 = Date/Time picker =
 By default, date and time pickers use whatever the browser has available. Currently (March 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
@@ -128,6 +135,9 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= not yet released =
+* Add voucher sales module
 
 = 1.12.0 =
 * Add option to disable automatic resizing of online booking & availability iframes

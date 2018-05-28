@@ -17,9 +17,12 @@ class Vouchers
             return Plugin::getNoSubdomainError();
         }
 
-        $generatedDivID = uniqid('V');
+        $redirect = '';
+        if (isset($attributes['redirect'])) {
+            $redirect = "redirect_url: '" . $attributes['redirect'] . "',";
+        }
 
-        $locale = Settings::externalLocale();
+        $generatedDivID = uniqid('V');
 
         $plugin = new Plugin();
         return "
@@ -30,11 +33,20 @@ class Vouchers
         var voucherOptions = new RecrasOptions({
             recras_hostname: '" . $subdomain . ".recras.nl',
             element: document.getElementById('" . $generatedDivID . "'),
-            locale: '" . $locale . "',
-            //redirect_url: 'https://www.onionbooking.com/', // Optional, but recommended
+            locale: '" . Settings::externalLocale() . "',
+            " . $redirect . "
         });
         new RecrasVoucher(voucherOptions);
     });
 </script>";
+    }
+
+
+    /**
+     * Show the TinyMCE shortcode generator product form
+     */
+    public static function showForm()
+    {
+        require_once(dirname(__FILE__) . '/../editor/form-vouchers.php');
     }
 }
