@@ -98,6 +98,8 @@ class Settings
     {
         $localeShort = substr(get_locale(), 0, 2);
         switch ($localeShort) {
+            case 'de':
+                return 'de_DE';
             case 'fy':
             case 'nl':
                 return 'nl_NL';
