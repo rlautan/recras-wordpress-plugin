@@ -83,6 +83,7 @@ class Plugin
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
         add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-product', ['Recras\Products', 'addProductShortcode']);
+        add_shortcode('recras-vouchers', ['Recras\Vouchers', 'addVoucherShortcode']);
 
         // DEPRECATED
         add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.0.0 - use recras-package
@@ -174,7 +175,6 @@ class Plugin
         wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '1.11.0', true);
         wp_localize_script('recras', 'recras_l10n', $localisation);
         wp_enqueue_script('recras');
-
     }
 
 
