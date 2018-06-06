@@ -183,7 +183,10 @@ class Arrangement
         }
 
         $arrangements = [
-            0 => (object) ['arrangement' => ''],
+            0 => (object) [
+                'arrangement' => '',
+                'mag_online' => false,
+            ],
         ];
         foreach ($json as $arrangement) {
             if (!$onlyOnline || $arrangement->mag_online) {

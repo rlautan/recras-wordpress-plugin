@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 1.12.0
+Stable tag: 1.12.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,9 @@ None yet!
 1. Example of a programme with the default Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.12.1 =
+* Enable automatic resizing initially for availability calendar
 
 = 1.12.0 =
 * Add option to disable automatic resizing of online booking & availability iframes
