@@ -47,7 +47,7 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-package id=7 show=title]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Should show title');
+        $this->assertEquals('<span class="recras-title">Actieve mysqlFamiliedag</span>' . "\n", $content, 'Should show title');
 	}
 
 	function testShortcodeDescription()
@@ -193,9 +193,11 @@ class ArrangementTest extends \WP_UnitTestCase
     function testGetOnlineArrangements()
     {
         $plugin = new Arrangement;
-        $arrangements = $plugin->getArrangements('demo', true);
-        $this->assertFalse(isset($arrangements[8]), 'Should not include arrangements that are not bookable online');
-        $this->assertTrue(isset($arrangements[18]), 'Should include arrangements that are bookable online');
+        $packages = $plugin->getArrangements('demo', true);
+        $packagesOnline = array_filter($packages, function($p) {
+            return $p->mag_online;
+        });
+        $this->assertEquals($packages, $packagesOnline, 'All packages should be bookable online');
     }
 
     function testGetFormArrangementsInvalidForm()

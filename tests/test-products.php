@@ -82,10 +82,10 @@ class ProductsTest extends \WP_UnitTestCase
     function testShortcodeShowDescription()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-product id=48 show=description]'
+            'post_content' => '[recras-product id=6 show=description]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-description">Bowlen op onze met led-lampen verlichte bowlingbaan!</span>' . "\n", $content, 'Should show description');
+        $this->assertEquals('<span class="recras-description">Met de hele groep, onder begeleiding, heerlijk klimmen.</span>' . "\n", $content, 'Should show description');
     }
 
     function testShortcodeShowLongDescription()
@@ -109,10 +109,10 @@ class ProductsTest extends \WP_UnitTestCase
     function testShortcodeShowDuration()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-product id=48 show=duration]'
+            'post_content' => '[recras-product id=6 show=duration]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-duration">1:00</span>' . "\n", $content, 'Should show duration');
+        $this->assertEquals('<span class="recras-duration">2:30</span>' . "\n", $content, 'Should show duration');
     }
 
     function testShortcodeShowEmptyDuration()

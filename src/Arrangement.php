@@ -281,7 +281,7 @@ class Arrangement
      */
     private static function getLocation($json)
     {
-        if ($json->ontvangstlocatie) {
+        if (isset($json->ontvangstlocatie)) {
             $location = $json->ontvangstlocatie;
         } else {
             $location = __('No location specified', Plugin::TEXT_DOMAIN);
