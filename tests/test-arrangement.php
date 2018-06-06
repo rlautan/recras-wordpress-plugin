@@ -47,7 +47,7 @@ class ArrangementTest extends \WP_UnitTestCase
             'post_content' => '[recras-package id=7 show=title]'
         ]);
         $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">Actieve mysqlFamiliedag</span>' . "\n", $content, 'Should show title');
+        $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Should show title');
 	}
 
 	function testShortcodeDescription()
