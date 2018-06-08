@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-04-17 15:55+0200\n"
-"PO-Revision-Date: 2018-04-17 15:57+0200\n"
+"POT-Creation-Date: 2018-06-08 09:23+0200\n"
+"PO-Revision-Date: 2018-06-08 09:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -231,32 +231,36 @@ msgstr "Fout: optie \"show\" niet ingesteld"
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: src/Arrangement.php:78 src/Products.php:65
+#: src/Arrangement.php:69
+msgid "Error: programme is empty"
+msgstr "Fout: programma is leeg"
+
+#: src/Arrangement.php:81 src/Products.php:65
 msgid "Error: unknown option"
 msgstr "Fout: onbekende optie"
 
-#: src/Arrangement.php:124
+#: src/Arrangement.php:127
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:124
+#: src/Arrangement.php:127
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:124
+#: src/Arrangement.php:127
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:150
+#: src/Arrangement.php:153
 #, php-format
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:265
+#: src/Arrangement.php:271
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:287
+#: src/Arrangement.php:293
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 

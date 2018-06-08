@@ -65,6 +65,9 @@ class Arrangement
                 return Price::format($json->prijs_totaal_inc);
             case 'program':
             case 'programme':
+                if (!isset($json->programma) || !is_array($json->programma) || empty($json->programma)) {
+                    return __('Error: programme is empty', Plugin::TEXT_DOMAIN);
+                }
                 $startTime = (isset($attributes['starttime']) ? $attributes['starttime'] : '00:00');
                 $showHeader = !isset($attributes['showheader']) || Settings::parseBoolean($attributes['showheader']);
                 return self::generateProgramme($json->programma, $startTime, $showHeader);

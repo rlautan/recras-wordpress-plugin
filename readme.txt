@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 1.12.1
+Stable tag: 1.12.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,9 +125,12 @@ All data from your Recras is cached for up to 24 hours. If you make important ch
 None yet!
 
 == Screenshots ==
-1. Example of a programme with the default Twenty Fifteen theme
+1. Example of a programme with the Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.12.2 =
+* Show error instead of crashing when package programme is empty
 
 = 1.12.1 =
 * Enable automatic resizing initially for availability calendar
