@@ -36,7 +36,7 @@ class Vouchers
         $plugin = new Plugin();
         return "
 <div id='" . $generatedDivID . "'></div>
-<script src='" . $plugin->baseUrl . '/js/onlinebooking.js?v=0.5.0' . "'></script>
+<script src='" . $plugin->baseUrl . '/js/onlinebooking.js?v=0.5.1' . "'></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var voucherOptions = new RecrasOptions({
