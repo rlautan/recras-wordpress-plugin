@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 1.12.2
+Stable tag: 1.12.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,9 @@ None yet!
 1. Example of a programme with the Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.12.3 =
+* Fix contact form submission when jQuery is loaded too late
 
 = 1.12.2 =
 * Show error instead of crashing when package programme is empty

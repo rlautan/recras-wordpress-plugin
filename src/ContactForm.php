@@ -298,8 +298,8 @@ class ContactForm
 
         $html .= '<input type="submit" value="' . $options['submitText'] . '">';
         $html .= '</form>';
-        $html .= '<script>jQuery(document).ready(function(){
-    jQuery("#recras-form' . $generatedFormID . '").on("submit", function(e){
+        $html .= '<script>document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("recras-form' . $generatedFormID . '").addEventListener("submit", function(e) {
         e.preventDefault();
         return submitRecrasForm(
             "' . $generatedFormID . '",

@@ -71,7 +71,7 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
     return false;
 }
 
-jQuery(document).ready(function(){
+document.addEventListener('DOMContentLoaded', function(){
     if (typeof jQuery.fn.bootstrapMaterialDatePicker === 'function') {
         jQuery('.recras-input-date').attr('type', 'text').bootstrapMaterialDatePicker({
             cancelText: recras_l10n.button_cancel,
