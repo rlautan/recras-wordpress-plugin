@@ -20,7 +20,7 @@ msgstr ""
 
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
 #: editor/form-contact.php:32 editor/form-package-availability.php:11
-#: src/Plugin.php:68 src/Plugin.php:141
+#: src/Plugin.php:68 src/Plugin.php:143
 msgid "Package"
 msgstr "Arrangement"
 
@@ -103,7 +103,7 @@ msgstr "Nee"
 
 #: editor/form-arrangement.php:47 editor/form-booking.php:28
 #: editor/form-contact.php:70 editor/form-package-availability.php:32
-#: editor/form-product.php:34
+#: editor/form-product.php:34 editor/form-vouchers.php:40
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
@@ -115,7 +115,7 @@ msgstr "Geen vooraf ingevuld arrangement"
 msgid "Automatic resize?"
 msgstr "Automatisch schalen?"
 
-#: editor/form-contact.php:15 src/Plugin.php:70 src/Plugin.php:138
+#: editor/form-contact.php:15 src/Plugin.php:70 src/Plugin.php:140
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -173,23 +173,23 @@ msgstr "Tekst op knop Versturen"
 msgid "Send"
 msgstr "Versturen"
 
-#: editor/form-contact.php:55
+#: editor/form-contact.php:55 editor/form-vouchers.php:25
 msgid "Redirect after submission"
 msgstr "Doorsturen na versturen"
 
-#: editor/form-contact.php:57
+#: editor/form-contact.php:57 editor/form-vouchers.php:27
 msgid "Don't redirect"
 msgstr "Niet doorsturen"
 
-#: editor/form-contact.php:58
+#: editor/form-contact.php:58 editor/form-vouchers.php:28
 msgid "Pages"
 msgstr "Pagina's"
 
-#: editor/form-contact.php:63
+#: editor/form-contact.php:63 editor/form-vouchers.php:33
 msgid "Posts"
 msgstr "Berichten"
 
-#: editor/form-product.php:11 src/Plugin.php:72 src/Plugin.php:143
+#: editor/form-product.php:11 src/Plugin.php:72 src/Plugin.php:145
 msgid "Product"
 msgstr "Product"
 
@@ -213,13 +213,21 @@ msgstr "Prijs excl. btw"
 msgid "Price incl. VAT"
 msgstr "Prijs incl. btw"
 
+#: editor/form-vouchers.php:13
+msgid "Template"
+msgstr ""
+
+#: editor/form-vouchers.php:19
+msgid "No pre-filled template"
+msgstr "Geen vooraf ingevuld template"
+
 #: src/Arrangement.php:17 src/Availability.php:17 src/ContactForm.php:16
 #: src/Products.php:16
 msgid "Error: no ID set"
 msgstr "Fout: geen ID ingesteld"
 
 #: src/Arrangement.php:20 src/Availability.php:20 src/ContactForm.php:19
-#: src/OnlineBooking.php:16 src/Products.php:19
+#: src/OnlineBooking.php:16 src/Products.php:19 src/Vouchers.php:16
 msgid "Error: ID is not a number"
 msgstr "Fout: ID is geen getal"
 
@@ -327,19 +335,23 @@ msgstr "Instellingen"
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:69 src/Plugin.php:142
+#: src/Plugin.php:69 src/Plugin.php:144
 msgid "Package availability"
 msgstr "Arrangement-beschikbaarheid"
 
-#: src/Plugin.php:71 src/Plugin.php:140
+#: src/Plugin.php:71 src/Plugin.php:142
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:113
+#: src/Plugin.php:73 src/Plugin.php:146
+msgid "Vouchers"
+msgstr "Tegoedbonnen"
+
+#: src/Plugin.php:115
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Plugin.php:115
+#: src/Plugin.php:117
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
@@ -348,27 +360,27 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:139
+#: src/Plugin.php:141
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:156
+#: src/Plugin.php:159
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:157
+#: src/Plugin.php:160
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:158
+#: src/Plugin.php:161
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:169
+#: src/Plugin.php:172
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:170
+#: src/Plugin.php:173
 msgid "OK"
 msgstr "OK"
 
@@ -384,27 +396,27 @@ msgstr "Fout: externe data bevat geen resultaten"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
 
-#: src/Settings.php:133 src/admin/settings.php:1
+#: src/Settings.php:153 src/admin/settings.php:1
 msgid "Recras settings"
 msgstr "Recras-instellingen"
 
-#: src/Settings.php:143
+#: src/Settings.php:163
 msgid "Recras name"
 msgstr "Recrasnaam"
 
-#: src/Settings.php:144
+#: src/Settings.php:164
 msgid "Currency symbol"
 msgstr "Valutasymbool"
 
-#: src/Settings.php:145
+#: src/Settings.php:165
 msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
-#: src/Settings.php:146
+#: src/Settings.php:166
 msgid "Use date/time picker script"
 msgstr "Gebruik datum-/tijdselectiescript"
 
-#: src/Settings.php:175
+#: src/Settings.php:195
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 

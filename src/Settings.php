@@ -90,6 +90,26 @@ class Settings
 
 
     /**
+     * This returns a valid locale, based on the locale set for WordPress, to use in "external" Recras scripts
+     *
+     * @return string
+     */
+    public static function externalLocale()
+    {
+        $localeShort = substr(get_locale(), 0, 2);
+        switch ($localeShort) {
+            case 'de':
+                return 'de_DE';
+            case 'fy':
+            case 'nl':
+                return 'nl_NL';
+            default:
+                return 'en_GB';
+        }
+    }
+
+
+    /**
      * Get the Recras subdomain, which can be set in the shortcode attributes or as global setting
      *
      * @param array $attributes

@@ -70,6 +70,7 @@ class Plugin
         add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
         add_submenu_page(null, __('Online booking', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-booking', ['Recras\OnlineBooking', 'showForm']);
         add_submenu_page(null, __('Product', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-product', ['Recras\Products', 'showForm']);
+        add_submenu_page(null, __('Vouchers', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-vouchers', ['Recras\Vouchers', 'showForm']);
     }
 
 
@@ -83,6 +84,7 @@ class Plugin
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
         add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-product', ['Recras\Products', 'addProductShortcode']);
+        add_shortcode('recras-vouchers', ['Recras\Vouchers', 'addVoucherShortcode']);
 
         // DEPRECATED
         add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.0.0 - use recras-package
@@ -141,6 +143,7 @@ class Plugin
             'package' => __('Package', $this::TEXT_DOMAIN),
             'package_availability' => __('Package availability', $this::TEXT_DOMAIN),
             'product' => __('Product', $this::TEXT_DOMAIN),
+            'vouchers' => __('Vouchers', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
         wp_enqueue_style('recras-admin-style', $this->baseUrl . '/admin-style.css', [], '1.10.1');
@@ -173,7 +176,6 @@ class Plugin
         wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '1.12.3', true);
         wp_localize_script('recras', 'recras_l10n', $localisation);
         wp_enqueue_script('recras');
-
     }
 
 
