@@ -19,7 +19,7 @@ if (WP_DEBUG) {
 
 try {
     require_once('vendor/autoload.php');
-    $recras = new \Recras\Plugin;
+    $recrasPlugin = new \Recras\Plugin;
 } catch (Exception $e) {
     if (version_compare(phpversion(), '5.4', '<')) {
         function phpVersionTooOld() {

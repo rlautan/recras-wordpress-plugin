@@ -184,6 +184,7 @@ class ContactForm
      */
     public static function generateForm($formID, $formFields, $options)
     {
+        global $recrasPlugin;
         $arrangementen = [];
 
         $html  = '';
@@ -293,7 +294,6 @@ class ContactForm
             }
             //$html .= print_r($field, true); //DEBUG
         }
-        $plugin = new Plugin;
         $html .= self::generateEndTag($options['element']);
 
         $html .= '<input type="submit" value="' . $options['submitText'] . '">';
@@ -304,7 +304,7 @@ class ContactForm
         return submitRecrasForm(
             "' . $generatedFormID . '",
             "' . $options['subdomain'] . '",
-            "' . $plugin->baseUrl . '/",
+            "' . $recrasPlugin->baseUrl . '/",
             "' . $options['redirect']. '"
         );
     });
