@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-06-08 09:23+0200\n"
-"PO-Revision-Date: 2018-06-08 09:23+0200\n"
+"POT-Creation-Date: 2018-06-13 11:47+0200\n"
+"PO-Revision-Date: 2018-06-13 11:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -101,7 +101,7 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:47 editor/form-booking.php:28
+#: editor/form-arrangement.php:47 editor/form-booking.php:30
 #: editor/form-contact.php:70 editor/form-package-availability.php:32
 #: editor/form-product.php:34 editor/form-vouchers.php:40
 msgid "Insert shortcode"
@@ -114,6 +114,10 @@ msgstr "Geen vooraf ingevuld arrangement"
 #: editor/form-booking.php:25 editor/form-package-availability.php:29
 msgid "Automatic resize?"
 msgstr "Automatisch schalen?"
+
+#: editor/form-booking.php:27
+msgid "Try new method?"
+msgstr "Nieuwe methode proberen?"
 
 #: editor/form-contact.php:15 src/Plugin.php:70 src/Plugin.php:140
 msgid "Contact form"

@@ -23,10 +23,48 @@ class OnlineBooking
 
         $arrangementID = isset($attributes['id']) ? $attributes['id'] : null;
         $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
+        $useNewLibrary = isset($attributes['use_new_library']) ? (!!$attributes['use_new_library']) : false;
+        $redirect = isset($attributes['redirect']) ? $attributes['redirect'] : null;
 
+        if ($useNewLibrary) {
+            return self::generateBookingForm($subdomain, $arrangementID, $redirect);
+        }
         return self::generateIframe($subdomain, $arrangementID, $enableResize);
     }
 
+
+    private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl)
+    {
+        global $recrasPlugin;
+
+        $generatedDivID = uniqid('V');
+
+        $packageText = '';
+        if ($arrangementID) {
+            $packageText = "package_id: " . $arrangementID . ",";
+        }
+
+        $redirect = '';
+        if ($redirectUrl) {
+            $redirect = "redirect_url: '" . $redirectUrl . "',";
+        }
+
+        return "
+<div id='" . $generatedDivID . "'></div>
+<script src='" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=0.6.0' . "'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var bookingOptions = new RecrasOptions({
+            recras_hostname: '" . $subdomain . ".recras.nl',
+            element: document.getElementById('" . $generatedDivID . "'),
+            locale: '" . Settings::externalLocale() . "',
+            " . $packageText . "
+            " . $redirect . "
+        });
+        new RecrasBooking(bookingOptions);
+    });
+</script>";
+    }
 
     private static function generateIframe($subdomain, $arrangementID, $enableResize)
     {
