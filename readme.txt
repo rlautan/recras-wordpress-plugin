@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 1.13.0
+Stable tag: 1.14.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,7 +64,9 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
 
 * id - corresponds to the package ID in Recras
-* autoresize - enabled by default. Disable this if you have more than one Recras iframe on your page
+* use_new_library - whether or not you want to try the new online booking method. This may have bugs, so use with care! Since this is a per-shortcode setting, you can create a new page to try this out.
+* redirect - a URL that the user is redirected to, after booking successfully. Note: this is only available for the new online booking method.
+* autoresize - enabled by default. Disable this if you have more than one Recras iframe on your page. Note: this is only available for the old online booking method.
 
 Example: `[recras-booking id=17]` will show the booking form with package ID 17.
 
@@ -135,6 +137,9 @@ None yet!
 1. Example of a programme with the Twenty Fifteen theme
 
 == Changelog ==
+
+= 1.14.0 =
+* Add option to try out the new online booking library
 
 = 1.13.0 =
 * Add voucher sales module
