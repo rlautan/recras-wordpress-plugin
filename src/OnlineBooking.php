@@ -51,6 +51,13 @@ class OnlineBooking
 
         return "
 <div id='" . $generatedDivID . "'></div>
+<script>
+if (!self.fetch) {
+    var scriptEl = document.createElement('script');
+    scriptEl.src = 'https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js';
+    document.head.appendChild(scriptEl);
+}
+</script>
 <script src='" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=0.6.0' . "'></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
