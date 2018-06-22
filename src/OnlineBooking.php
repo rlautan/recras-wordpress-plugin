@@ -52,14 +52,7 @@ class OnlineBooking
         return "
 <div id='" . $generatedDivID . "'></div>
 <script>
-if (!self.fetch) {
-    var scriptEl = document.createElement('script');
-    scriptEl.src = 'https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js';
-    document.head.appendChild(scriptEl);
-}
-</script>
-<script src='" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=0.6.0' . "'></script>
-<script>
+var initOnlineBooking = function() {
     document.addEventListener('DOMContentLoaded', function() {
         var bookingOptions = new RecrasOptions({
             recras_hostname: '" . $subdomain . ".recras.nl',
@@ -70,6 +63,33 @@ if (!self.fetch) {
         });
         new RecrasBooking(bookingOptions);
     });
+};
+var loadBookingScript = function() {
+    var scriptEl = document.createElement('script');
+    scriptEl.src = '" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=0.5.1' . "';
+    scriptEl.onload = initOnlineBooking;
+    document.head.appendChild(scriptEl);
+};
+
+if (self.fetch) {
+    loadBookingScript();
+} else {
+    var loadFetchPolyfill = function() {
+        var scriptEl = document.createElement('script');
+        scriptEl.src = 'https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js';
+        scriptEl.onload = loadBookingScript;
+        document.head.appendChild(scriptEl);
+    };
+
+    if (window.Promise) {
+        loadFetchPolyfill();
+    } else {
+        var scriptEl = document.createElement('script');
+        scriptEl.src = 'https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js';
+        scriptEl.onload = loadFetchPolyfill;
+        document.head.appendChild(scriptEl);
+    }
+}
 </script>";
     }
 
