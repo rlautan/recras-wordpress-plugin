@@ -8,7 +8,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**********************************
  *  Recras Online Booking library  *
- *  v 0.4.0                        *
+ *  v 0.5.1                        *
  **********************************/
 
 var RecrasBooking = function () {
@@ -152,6 +152,21 @@ var RecrasBooking = function () {
                 return 0;
             }
             return bookingSizeEl.value;
+        }
+    }, {
+        key: 'bookingSizeLines',
+        value: function bookingSizeLines(pack) {
+            return pack.regels.filter(function (line) {
+                return line.onlineboeking_aantalbepalingsmethode === 'boekingsgrootte';
+            });
+        }
+    }, {
+        key: 'bookingSizePrice',
+        value: function bookingSizePrice(pack) {
+            var lines = this.bookingSizeLines(pack);
+            return lines.reduce(function (acc, line) {
+                return line.product.verkoop + acc;
+            }, 0);
         }
     }, {
         key: 'changePackage',
@@ -316,6 +331,7 @@ var RecrasBooking = function () {
             if (this.datePicker) {
                 this.datePicker.destroy();
             }
+            this.availableDays = [];
             [].concat(_toConsumableArray(elements)).forEach(function (el) {
                 el.parentNode.removeChild(el);
             });
@@ -381,7 +397,7 @@ var RecrasBooking = function () {
                 eind: RecrasDateHelper.datePartOnly(end),
                 producten: this.productCounts()
             }).then(function (json) {
-                _this9.availableDays = json;
+                _this9.availableDays = [].concat(_toConsumableArray(new Set([].concat(_toConsumableArray(_this9.availableDays), _toConsumableArray(json)))));
                 return _this9.availableDays;
             });
         }
@@ -700,9 +716,7 @@ var RecrasBooking = function () {
     }, {
         key: 'shouldShowBookingSize',
         value: function shouldShowBookingSize(pack) {
-            return pack.regels.filter(function (line) {
-                return line.onlineboeking_aantalbepalingsmethode === 'boekingsgrootte';
-            }).length > 0;
+            return this.bookingSizeLines(pack).length > 0;
         }
     }, {
         key: 'showBookButton',
@@ -821,8 +835,27 @@ var RecrasBooking = function () {
                     },
                     field: _this20.findElement('.recras-onlinebooking-date'),
                     i18n: RecrasCalendarHelper.i18n(_this20.languageHelper),
-                    onDraw: function onDraw() {
-                        //TODO: callback function for when the picker draws a new month
+                    onDraw: function onDraw(pika) {
+                        var lastMonthYear = pika.calendars[pika.calendars.length - 1];
+                        var lastDay = new Date(lastMonthYear.year, lastMonthYear.month, 31);
+
+                        var lastAvailableDay = _this20.availableDays.reduce(function (acc, curVal) {
+                            return curVal > acc ? curVal : acc;
+                        }, '');
+                        if (!lastAvailableDay) {
+                            lastAvailableDay = new Date();
+                        } else {
+                            lastAvailableDay = new Date(lastAvailableDay);
+                        }
+                        if (lastAvailableDay > lastDay) {
+                            return;
+                        }
+
+                        var newEndDate = RecrasDateHelper.clone(lastAvailableDay);
+                        newEndDate.setFullYear(lastMonthYear.year);
+                        newEndDate.setMonth(lastMonthYear.month + 2);
+
+                        _this20.getAvailableDays(pack.id, lastAvailableDay, newEndDate);
                     },
                     onSelect: function onSelect(date) {
                         _this20.selectedDate = date;
@@ -885,7 +918,11 @@ var RecrasBooking = function () {
                 html += '<p>' + msgs[0] + '</p>';
 
                 if (_this22.shouldShowBookingSize(pack)) {
-                    html += '<div><div><label for="bookingsize">' + (pack.weergavenaam || pack.arrangement) + '</label></div><input type="number" id="bookingsize" class="bookingsize" min="0"></div>';
+                    html += '<div>';
+                    html += '<div><label for="bookingsize">' + (pack.weergavenaam || pack.arrangement) + '</label></div>';
+                    html += '<input type="number" id="bookingsize" class="bookingsize" min="0">';
+                    html += '<div class="recras-price">' + _this22.formatPrice(_this22.bookingSizePrice(pack)) + '</div>';
+                    html += '</div>';
                 }
 
                 var linesNoBookingSize = _this22.getLinesNoBookingSize(pack);
@@ -996,7 +1033,7 @@ var RecrasBooking = function () {
                     if (bookingParams.redirect_url) {
                         window.location.href = bookingParams.redirect_url;
                     } else {
-                        alert(json.message);
+                        window.alert(json.message);
                     }
                 } else {
                     console.log(json);
@@ -1056,11 +1093,10 @@ var RecrasCalendarHelper = function () {
         value: function defaultOptions() {
             return {
                 firstDay: 1, // Monday
-                format: 'yyyy-MM-dd', //Only used when Moment is loaded?
                 minDate: new Date(),
                 numberOfMonths: 2,
                 toString: function toString(date) {
-                    return RecrasDateHelper.datePartOnly(date);
+                    return RecrasDateHelper.toString(date);
                 }
             };
         }
@@ -1264,7 +1300,7 @@ var RecrasContactForm = function () {
     }]);
 
     return RecrasContactForm;
-}();"use strict";
+}();'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -1276,21 +1312,33 @@ var RecrasDateHelper = function () {
     }
 
     _createClass(RecrasDateHelper, null, [{
-        key: "datePartOnly",
+        key: 'clone',
+        value: function clone(date) {
+            return new Date(date.getTime());
+        }
+    }, {
+        key: 'datePartOnly',
         value: function datePartOnly(date) {
             var x = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000); // Fix off-by-1 errors
             return x.toISOString().substr(0, 10); // Format as 2018-03-13
         }
     }, {
-        key: "setTimeForDate",
+        key: 'setTimeForDate',
         value: function setTimeForDate(date, timeStr) {
             date.setHours(timeStr.substr(0, 2), timeStr.substr(3, 2));
             return date;
         }
     }, {
-        key: "timePartOnly",
+        key: 'timePartOnly',
         value: function timePartOnly(date) {
             return date.toTimeString().substr(0, 5); // Format at 09:00
+        }
+    }, {
+        key: 'toString',
+        value: function toString(date) {
+            var x = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000); // Fix off-by-1 errors
+            x = x.toISOString();
+            return x.substr(8, 2) + '-' + x.substr(5, 2) + '-' + x.substr(0, 4);
         }
     }]);
 
@@ -1765,7 +1813,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /****************************
  *  Recras voucher library  *
- *  v 0.1.0                 *
+ *  v 0.5.1                 *
  ***************************/
 
 var RecrasVoucher = function () {
@@ -1840,7 +1888,7 @@ var RecrasVoucher = function () {
                 if (json.payment_url) {
                     window.location.href = json.payment_url;
                 } else {
-                    console.log(result);
+                    console.log(json);
                 }
             });
         }
