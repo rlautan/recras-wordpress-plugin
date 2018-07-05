@@ -53,18 +53,16 @@ class OnlineBooking
 <div id='" . $generatedDivID . "'></div>
 <script>
 var initOnlineBooking = function() {
-    document.addEventListener('DOMContentLoaded', function() {
-        var bookingOptions = new RecrasOptions({
-            recras_hostname: '" . $subdomain . ".recras.nl',
-            element: document.getElementById('" . $generatedDivID . "'),
-            locale: '" . Settings::externalLocale() . "',
-            " . $packageText . "
-            " . $redirect . "
-        });
-        new RecrasBooking(bookingOptions);
+    var bookingOptions = new RecrasOptions({
+        recras_hostname: '" . $subdomain . ".recras.nl',
+        element: document.getElementById('" . $generatedDivID . "'),
+        locale: '" . Settings::externalLocale() . "',
+        " . $packageText . "
+        " . $redirect . "
     });
+    new RecrasBooking(bookingOptions);
 };
-var loadBookingScript = function() {
+var loadRecrasBookingScript = function() {
     var scriptEl = document.createElement('script');
     scriptEl.src = '" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=0.5.1' . "';
     scriptEl.onload = initOnlineBooking;
@@ -72,21 +70,21 @@ var loadBookingScript = function() {
 };
 
 if (self.fetch) {
-    loadBookingScript();
+    loadRecrasBookingScript();
 } else {
-    var loadFetchPolyfill = function() {
+    var loadRecrasFetchPolyfill = function() {
         var scriptEl = document.createElement('script');
         scriptEl.src = 'https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js';
-        scriptEl.onload = loadBookingScript;
+        scriptEl.onload = loadRecrasBookingScript;
         document.head.appendChild(scriptEl);
     };
 
     if (window.Promise) {
-        loadFetchPolyfill();
+        loadRecrasFetchPolyfill();
     } else {
         var scriptEl = document.createElement('script');
         scriptEl.src = 'https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js';
-        scriptEl.onload = loadFetchPolyfill;
+        scriptEl.onload = loadRecrasFetchPolyfill;
         document.head.appendChild(scriptEl);
     }
 }
