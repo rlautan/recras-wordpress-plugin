@@ -8,7 +8,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**********************************
  *  Recras Online Booking library  *
- *  v 0.5.1                        *
+ *  v 0.5.2                        *
  **********************************/
 
 var RecrasBooking = function () {
@@ -21,7 +21,7 @@ var RecrasBooking = function () {
 
         this.datePicker = null;
 
-        var CSS = '\n@import url(\'https://cdn.rawgit.com/dbushell/Pikaday/eddaaa3b/css/pikaday.css\');\n\n.recras-onlinebooking > *:not(.latestError):not(.recrasLoadingIndicator) {\n    padding: 1em 0;\n}\n.recras-onlinebooking > *:not(:first-child) + * {\n    border-top: 2px solid #dedede; /* Any love for Kirby out there? */\n}\n.recras-contactform > div, .recras-amountsform > div {\n    align-items: start;\n    display: flex;\n    justify-content: space-between;\n    padding: 0.25em 0;\n}\n.time-preview, .minimum-amount {\n    padding-left: 0.5em;\n} \n.minimum-amount {\n    color: hsl(0, 50%, 50%);\n}\n\n.recrasLoadingIndicator {\n    animation: recrasSpinner 1.1s infinite linear;\n    border: 0.2em solid rgba(0, 0, 0, 0.2);\n    border-left-color: rgba(0, 0, 0, 0.5);\n    border-radius: 50%;\n    display: inline-block;\n    height: 2em;\n    overflow: hidden;\n    text-indent: -100vw;\n    width: 2em;\n}\n@keyframes recrasSpinner {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n.bookPackage .recrasLoadingIndicator {\n    height: 1em;\n    margin-left: 0.5em;\n    vertical-align: middle;\n    width: 1em;\n}\n';
+        var CSS = '\n@import url(\'https://cdn.rawgit.com/dbushell/Pikaday/eddaaa3b/css/pikaday.css\');\n\n.recras-onlinebooking > *:not(.latestError):not(.recrasLoadingIndicator) {\n    padding: 1em 0;\n}\n.recras-onlinebooking > *:not(:first-child) + * {\n    border-top: 2px solid #dedede; /* Any love for Kirby out there? */\n}\n.recras-contactform > div, .recras-amountsform > div {\n    align-items: start;\n    display: flex;\n    justify-content: space-between;\n    padding: 0.25em 0;\n}\n.minimum-amount {\n    padding-left: 0.5em;\n}\n.time-preview {\n    padding-right: 0.5em;\n}\n.minimum-amount {\n    color: hsl(0, 50%, 50%);\n}\n\n.recrasLoadingIndicator {\n    animation: recrasSpinner 1.1s infinite linear;\n    border: 0.2em solid rgba(0, 0, 0, 0.2);\n    border-left-color: rgba(0, 0, 0, 0.5);\n    border-radius: 50%;\n    display: inline-block;\n    height: 2em;\n    overflow: hidden;\n    text-indent: -100vw;\n    width: 2em;\n}\n@keyframes recrasSpinner {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\n.bookPackage .recrasLoadingIndicator {\n    height: 1em;\n    margin-left: 0.5em;\n    vertical-align: middle;\n    width: 1em;\n}\n';
         this.PAYMENT_DIRECT = 'mollie';
         this.PAYMENT_AFTERWARDS = 'factuur';
 
@@ -53,7 +53,8 @@ var RecrasBooking = function () {
             }
         }
 
-        this.loadCSS(CSS);
+        RecrasCSSHelper.loadCSS(RecrasCSSHelper.cssGlobal());
+        RecrasCSSHelper.loadCSS(RecrasCSSHelper.cssBooking());
         this.clearAll();
 
         this.loadingIndicatorShow(this.element);
@@ -521,15 +522,6 @@ var RecrasBooking = function () {
             return voucherPrice;
         }
     }, {
-        key: 'loadCSS',
-        value: function loadCSS(content) {
-            var styleEl = document.createElement('style');
-            styleEl.innerHTML = content;
-
-            var refNode = document.head;
-            refNode.parentNode.insertBefore(styleEl, refNode);
-        }
-    }, {
         key: 'loadingIndicatorHide',
         value: function loadingIndicatorHide() {
             [].concat(_toConsumableArray(document.querySelectorAll('.recrasLoadingIndicator'))).forEach(function (el) {
@@ -614,7 +606,7 @@ var RecrasBooking = function () {
                 linesNoBookingSize.forEach(function (line, idx) {
                     var normalisedStart = _this15.normaliseDate(new Date(line.begin), packageStart, _this15.selectedDate);
                     var normalisedEnd = _this15.normaliseDate(new Date(line.eind), packageStart, _this15.selectedDate);
-                    _this15.findElement('label[for="packageline' + idx + '"]').insertAdjacentHTML('beforeend', '<span class="time-preview">(' + RecrasDateHelper.timePartOnly(normalisedStart) + ' \u2013 ' + RecrasDateHelper.timePartOnly(normalisedEnd) + ')</span>');
+                    _this15.findElement('label[for="packageline' + idx + '"]').insertAdjacentHTML('afterbegin', '<span class="time-preview">(' + RecrasDateHelper.timePartOnly(normalisedStart) + ' \u2013 ' + RecrasDateHelper.timePartOnly(normalisedEnd) + ')</span>');
                 });
             }
         }
@@ -1306,6 +1298,39 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var RecrasCSSHelper = function () {
+    function RecrasCSSHelper() {
+        _classCallCheck(this, RecrasCSSHelper);
+    }
+
+    _createClass(RecrasCSSHelper, null, [{
+        key: 'cssBooking',
+        value: function cssBooking() {
+            return '\n@import url(\'https://cdn.rawgit.com/dbushell/Pikaday/eddaaa3b/css/pikaday.css\');\n\n.recras-onlinebooking > *:not(:first-child) + * {\n    border-top: 2px solid #dedede; /* Any love for Kirby out there? */\n}\n\n.minimum-amount {\n    color: hsl(0, 50%, 50%);\n    padding-left: 0.5em;\n}\n.time-preview {\n    padding-right: 0.5em;\n}\n';
+        }
+    }, {
+        key: 'cssGlobal',
+        value: function cssGlobal() {
+            return '\n.recras-onlinebooking > *:not(.latestError):not(.recrasLoadingIndicator) {\n    padding: 1em 0;\n}\n.recras-contactform > div, .recras-amountsform > div {\n    align-items: start;\n    display: flex;\n    justify-content: space-between;\n    padding: 0.25em 0;\n}\n\n.recrasLoadingIndicator {\n    animation: recrasSpinner 1.1s infinite linear;\n    border: 0.2em solid rgba(0, 0, 0, 0.2);\n    border-left-color: rgba(0, 0, 0, 0.5);\n    border-radius: 50%;\n    display: inline-block;\n    height: 2em;\n    overflow: hidden;\n    text-indent: -100vw;\n    width: 2em;\n}\n@keyframes recrasSpinner {\n    0% {\n        transform: rotate(0deg);\n    }\n    100% {\n        transform: rotate(360deg);\n    }\n}\nbutton .recrasLoadingIndicator {\n    height: 1em;\n    margin-left: 0.5em;\n    vertical-align: middle;\n    width: 1em;\n}\n';
+        }
+    }, {
+        key: 'loadCSS',
+        value: function loadCSS(css) {
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = css;
+
+            var refNode = document.head;
+            refNode.parentNode.insertBefore(styleEl, refNode);
+        }
+    }]);
+
+    return RecrasCSSHelper;
+}();'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var RecrasDateHelper = function () {
     function RecrasDateHelper() {
         _classCallCheck(this, RecrasDateHelper);
@@ -1813,7 +1838,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /****************************
  *  Recras voucher library  *
- *  v 0.5.1                 *
+ *  v 0.5.2                 *
  ***************************/
 
 var RecrasVoucher = function () {
@@ -1840,6 +1865,8 @@ var RecrasVoucher = function () {
         this.postJson = function (url, data) {
             return RecrasHttpHelper.postJson(_this.options.getApiBase() + url, data, _this.error);
         };
+
+        RecrasCSSHelper.loadCSS(RecrasCSSHelper.cssGlobal());
 
         if (this.options.getLocale()) {
             if (!RecrasLanguageHelper.isValid(this.options.getLocale())) {
