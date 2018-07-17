@@ -3,6 +3,7 @@ namespace Recras;
 
 class Plugin
 {
+    const LIBRARY_VERSION = '0.5.4';
     const TEXT_DOMAIN = 'recras-wp';
 
     public $baseUrl;

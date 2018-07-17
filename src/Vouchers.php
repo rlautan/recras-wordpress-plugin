@@ -37,7 +37,7 @@ class Vouchers
 
         return "
 <div id='" . $generatedDivID . "'></div>
-<script src='" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=0.5.1' . "'></script>
+<script src='" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=' . $recrasPlugin::LIBRARY_VERSION . "'></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var voucherOptions = new RecrasOptions({

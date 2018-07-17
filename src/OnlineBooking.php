@@ -64,7 +64,7 @@ var initOnlineBooking = function() {
 };
 var loadRecrasBookingScript = function() {
     var scriptEl = document.createElement('script');
-    scriptEl.src = '" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=0.5.1' . "';
+    scriptEl.src = '" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=' . $recrasPlugin::LIBRARY_VERSION . "';
     scriptEl.onload = initOnlineBooking;
     document.head.appendChild(scriptEl);
 };
