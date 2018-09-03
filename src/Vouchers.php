@@ -12,8 +12,9 @@ class Vouchers
      */
     public static function addVoucherShortcode($attributes)
     {
-        global $recrasPlugin;
-
+        if (!isset($attributes['id'])) {
+            return __('Error: no ID set', Plugin::TEXT_DOMAIN);
+        }
         if (isset($attributes['id']) && !ctype_digit($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
@@ -37,7 +38,6 @@ class Vouchers
 
         return "
 <div id='" . $generatedDivID . "'></div>
-<script src='" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=' . $recrasPlugin::LIBRARY_VERSION . "'></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var voucherOptions = new RecrasOptions({

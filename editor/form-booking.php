@@ -52,7 +52,7 @@
 
     document.getElementById('booking_submit').addEventListener('click', function(){
         var arrangementID = document.getElementById('arrangement_id').value;
-        var shortcode  = '[recras-booking';
+        var shortcode = '[<?= \Recras\Plugin::SHORTCODE_ONLINE_BOOKING; ?>';
         if (arrangementID !== '0') {
             shortcode += ' id="' + arrangementID + '"';
         }

@@ -42,7 +42,7 @@
 <script>
     document.getElementById('voucher_submit').addEventListener('click', function(){
         var templateID = document.getElementById('template_id').value;
-        var shortcode = '[recras-vouchers';
+        var shortcode = '[<?= \Recras\Plugin::SHORTCODE_VOUCHERS; ?>';
 
         if (templateID !== '0') {
             shortcode += ' id="' + templateID + '"';

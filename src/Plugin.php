@@ -6,6 +6,9 @@ class Plugin
     const LIBRARY_VERSION = '0.6.2';
     const TEXT_DOMAIN = 'recras-wp';
 
+    const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
+    const SHORTCODE_VOUCHERS = 'recras-vouchers';
+
     public $baseUrl;
 
 
@@ -81,11 +84,11 @@ class Plugin
     public function addShortcodes()
     {
         add_shortcode('recras-availability', ['Recras\Availability', 'addAvailabilityShortcode']);
-        add_shortcode('recras-booking', ['Recras\OnlineBooking', 'addBookingShortcode']);
+        add_shortcode($this::SHORTCODE_ONLINE_BOOKING, ['Recras\OnlineBooking', 'addBookingShortcode']);
         add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
         add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-product', ['Recras\Products', 'addProductShortcode']);
-        add_shortcode('recras-vouchers', ['Recras\Vouchers', 'addVoucherShortcode']);
+        add_shortcode($this::SHORTCODE_VOUCHERS, ['Recras\Vouchers', 'addVoucherShortcode']);
 
         // DEPRECATED
         add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.0.0 - use recras-package
@@ -172,6 +175,15 @@ class Plugin
             $localisation['language'] = get_locale();
             $localisation['button_cancel'] = __('Cancel', $this::TEXT_DOMAIN);
             $localisation['button_ok'] = __('OK', $this::TEXT_DOMAIN);
+        }
+
+        global $post;
+        if (
+            strpos($post->post_content, $this::SHORTCODE_ONLINE_BOOKING) !== false ||
+            strpos($post->post_content, $this::SHORTCODE_VOUCHERS)
+        ) {
+            wp_enqueue_script('polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise', [], null, false);
+            wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.js', [], $this::LIBRARY_VERSION, false);
         }
 
         wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '1.13.0', true);

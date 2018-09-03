@@ -35,8 +35,6 @@ class OnlineBooking
 
     private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl)
     {
-        global $recrasPlugin;
-
         $generatedDivID = uniqid('V');
 
         $packageText = '';
@@ -52,7 +50,7 @@ class OnlineBooking
         return "
 <div id='" . $generatedDivID . "'></div>
 <script>
-var initOnlineBooking = function() {
+document.addEventListener('DOMContentLoaded', function() {
     var bookingOptions = new RecrasOptions({
         recras_hostname: '" . $subdomain . ".recras.nl',
         element: document.getElementById('" . $generatedDivID . "'),
@@ -61,33 +59,7 @@ var initOnlineBooking = function() {
         " . $redirect . "
     });
     new RecrasBooking(bookingOptions);
-};
-var loadRecrasBookingScript = function() {
-    var scriptEl = document.createElement('script');
-    scriptEl.src = '" . $recrasPlugin->baseUrl . '/js/onlinebooking.js?v=' . $recrasPlugin::LIBRARY_VERSION . "';
-    scriptEl.onload = initOnlineBooking;
-    document.head.appendChild(scriptEl);
-};
-
-if (self.fetch) {
-    loadRecrasBookingScript();
-} else {
-    var loadRecrasFetchPolyfill = function() {
-        var scriptEl = document.createElement('script');
-        scriptEl.src = 'https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js';
-        scriptEl.onload = loadRecrasBookingScript;
-        document.head.appendChild(scriptEl);
-    };
-
-    if (window.Promise) {
-        loadRecrasFetchPolyfill();
-    } else {
-        var scriptEl = document.createElement('script');
-        scriptEl.src = 'https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js';
-        scriptEl.onload = loadRecrasFetchPolyfill;
-        document.head.appendChild(scriptEl);
-    }
-}
+});
 </script>";
     }
 
