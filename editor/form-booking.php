@@ -22,7 +22,7 @@
                 <?php } ?>
             </select>
         <?php } ?>
-    <dt><label for="use_new_library"><?php _e('Try new method?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="use_new_library"><?php _e('Use new method?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="use_new_library">
     <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="redirect_page" disabled>
