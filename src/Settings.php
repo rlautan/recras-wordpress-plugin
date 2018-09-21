@@ -68,6 +68,29 @@ class Settings
     }
 
 
+    public static function addInputTheme($args)
+    {
+        $themes = self::getThemes();
+
+        $field = $args['field'];
+        $value = get_option($field);
+        if (!$value) {
+            $value = 'none';
+        }
+
+        $html = '<select name="' . $field . '" id="' . $field . '">';
+        foreach ($themes as $key => $theme) {
+            $selText = '';
+            if ($value === $key) {
+                $selText = ' selected';
+            }
+            $html .= '<option value="' . $key . '"' . $selText . '>' . $theme['name'];
+        }
+        $html .= '</select>';
+        echo $html;
+    }
+
+
     public static function clearCache()
     {
         if (!current_user_can('edit_pages')) {
@@ -126,6 +149,21 @@ class Settings
     }
 
 
+    public static function getThemes()
+    {
+        return [
+            'none' => [
+                'name' => __('No theme', Plugin::TEXT_DOMAIN),
+                'version' => null,
+            ],
+            'basic' => [
+                'name' => __('Basic theme', Plugin::TEXT_DOMAIN),
+                'version' => '1.15.0',
+            ],
+        ];
+    }
+
+
     /**
      * Parse a boolean value
      *
@@ -159,11 +197,13 @@ class Settings
         register_setting('recras', 'recras_currency', '');
         register_setting('recras', 'recras_decimal', '');
         register_setting('recras', 'recras_datetimepicker', '');
+        register_setting('recras', 'recras_theme', '');
 
         add_settings_field('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
         add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
         add_settings_field('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal'], 'recras', 'recras', ['field' => 'recras_decimal']);
         add_settings_field('recras_datetimepicker', __('Use date/time picker script', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDateTimePicker'], 'recras', 'recras', ['field' => 'recras_datetimepicker']);
+        add_settings_field('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputTheme'], 'recras', 'recras', ['field' => 'recras_theme']);
     }
 
 

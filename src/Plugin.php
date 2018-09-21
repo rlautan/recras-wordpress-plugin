@@ -150,7 +150,7 @@ class Plugin
             'vouchers' => __('Vouchers', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
-        wp_enqueue_style('recras-admin-style', $this->baseUrl . '/admin-style.css', [], '1.10.1');
+        wp_enqueue_style('recras-admin-style', $this->baseUrl . '/css/admin-style.css', [], '1.10.1');
     }
 
 
@@ -184,6 +184,15 @@ class Plugin
         ) {
             wp_enqueue_script('polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise', [], null, false);
             wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.js', [], $this::LIBRARY_VERSION, false);
+
+            $theme = get_option('recras_theme');
+            if (!$theme) {
+                $theme = 'none';
+            }
+            $allowedThemes = Settings::getThemes();
+            if ($theme !== 'none' && array_key_exists($theme, $allowedThemes)) {
+                wp_enqueue_style('theme_' . $theme, $this->baseUrl . '/css/themes/' . $theme . '.css', $allowedThemes[$theme]['version']);
+            }
         }
 
         wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '1.13.0', true);

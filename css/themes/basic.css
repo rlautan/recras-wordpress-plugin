@@ -1,0 +1,30 @@
+body {
+    background: transparent;
+}
+main {
+    margin: 0 auto;
+    max-width: 800px;
+}
+@media all and (max-width: 800px) {
+    main {
+        padding: 2em;
+    }
+}
+img {
+    height: auto;
+    max-height: 50vh;
+    max-width: 100%;
+}
+
+.recras-datetime {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 30% 70%;
+    grid-template-columns: 30% 70%;
+}
+.recras-datetime > * {
+    margin: 0.25em 0;
+}
+.recras-onlinebooking ul {
+    margin-top: 0.5em;
+}
