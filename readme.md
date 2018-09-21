@@ -95,7 +95,9 @@ Add the `[recras-vouchers]` shortcode anywhere on your site. The following param
 This will a voucher sales module to your website.
 
 ### Date/Time picker
-By default, date and time pickers use whatever the browser has available. Currently (March 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
+By default, date and time pickers in contact forms use whatever the browser has available. Currently (September 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
+
+**Note**: this setting only applies to contact forms, not to "new style" online booking.
 
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
