@@ -29,6 +29,8 @@ class Plugin
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
         add_action('admin_init', ['Recras\Editor', 'addButtons']);
 
+        add_action('init', [&$this, 'addGutenbergButtons']);
+
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
@@ -42,6 +44,20 @@ class Plugin
         if (version_compare(get_bloginfo('version'), '5.0', '>=')) {
             add_action('tgmpa_register', [$this, 'registerRequiredPlugins']);
         }
+    }
+
+
+    public static function addGutenbergButtons()
+    {
+        $gutenbergName = 'gutenberg-recras-buttons';
+        wp_register_script($gutenbergName, plugins_url('js/gutenberg.js', __DIR__), ['wp-blocks', 'wp-element']);
+
+        wp_register_style($gutenbergName, plugins_url('css/gutenberg.css', __DIR__), ['wp-edit-blocks'], filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css'));
+
+        register_block_type('recras/gutenberg-availability', [
+            'editor_script' => $gutenbergName,
+            'editor_style' => $gutenbergName,
+        ]);
     }
 
 
