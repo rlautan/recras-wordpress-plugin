@@ -18,6 +18,9 @@ Setting your Recras name is the most important step here. Other settings are:
 * Currency symbol - set to € (Euro) by default.
 * Decimal separator - set to , (comma) by default. Used in prices such as 100,00.
 * Use date/time picker script - please see the Date/Time picker section for details.
+* Theme for online booking - which theme the new online booking method will use.
+  - "No theme" leaves it up to you to properly style it.
+  - "Basic theme" sets some default styling to make it look a bit nicer. You can still override everything with your own CSS.
 
 ### Packages
 
