@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-09-21 14:45+0200\n"
-"PO-Revision-Date: 2018-09-21 14:45+0200\n"
+"POT-Creation-Date: 2018-09-25 11:49+0200\n"
+"PO-Revision-Date: 2018-09-25 11:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -400,31 +400,47 @@ msgstr "Fout: product bestaat niet"
 msgid "Error: external data does not contain any results"
 msgstr "Fout: externe data bevat geen resultaten"
 
-#: src/Settings.php:74 src/Settings.php:86
+#: src/Settings.php:97 src/Settings.php:109
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet genoeg rechten om deze pagina te bekijken."
 
-#: src/Settings.php:153 src/admin/settings.php:1
+#: src/Settings.php:156
+msgid "No theme"
+msgstr "Geen thema"
+
+#: src/Settings.php:160
+msgid "Basic theme"
+msgstr "Basisthema"
+
+#: src/Settings.php:164
+msgid "Recras Blue"
+msgstr "Recras Blauw"
+
+#: src/Settings.php:195 src/admin/settings.php:1
 msgid "Recras settings"
 msgstr "Recras-instellingen"
 
-#: src/Settings.php:163
+#: src/Settings.php:206
 msgid "Recras name"
 msgstr "Recrasnaam"
 
-#: src/Settings.php:164
+#: src/Settings.php:207
 msgid "Currency symbol"
 msgstr "Valutasymbool"
 
-#: src/Settings.php:165
+#: src/Settings.php:208
 msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
-#: src/Settings.php:166
+#: src/Settings.php:209
 msgid "Use date/time picker script"
 msgstr "Gebruik datum-/tijdselectiescript"
 
-#: src/Settings.php:195
+#: src/Settings.php:210
+msgid "Theme for online booking"
+msgstr "Thema voor online boeken"
+
+#: src/Settings.php:239
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 

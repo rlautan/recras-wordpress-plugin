@@ -160,6 +160,10 @@ class Settings
                 'name' => __('Basic theme', Plugin::TEXT_DOMAIN),
                 'version' => '1.15.0',
             ],
+            'recrasblue' => [
+                'name' => __('Recras Blue', Plugin::TEXT_DOMAIN),
+                'version' => '1.15.0',
+            ],
         ];
     }
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-09-21 14:45+0200\n"
-"PO-Revision-Date: 2018-09-21 14:45+0200\n"
+"POT-Creation-Date: 2018-09-25 11:49+0200\n"
+"PO-Revision-Date: 2018-09-25 11:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -386,31 +386,47 @@ msgstr ""
 msgid "Error: external data does not contain any results"
 msgstr ""
 
-#: src/Settings.php:74 src/Settings.php:86
+#: src/Settings.php:97 src/Settings.php:109
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: src/Settings.php:153 src/admin/settings.php:1
-msgid "Recras settings"
+#: src/Settings.php:156
+msgid "No theme"
 msgstr ""
 
-#: src/Settings.php:163
-msgid "Recras name"
+#: src/Settings.php:160
+msgid "Basic theme"
 msgstr ""
 
 #: src/Settings.php:164
+msgid "Recras Blue"
+msgstr ""
+
+#: src/Settings.php:195 src/admin/settings.php:1
+msgid "Recras settings"
+msgstr ""
+
+#: src/Settings.php:206
+msgid "Recras name"
+msgstr ""
+
+#: src/Settings.php:207
 msgid "Currency symbol"
 msgstr ""
 
-#: src/Settings.php:165
+#: src/Settings.php:208
 msgid "Decimal separator"
 msgstr ""
 
-#: src/Settings.php:166
+#: src/Settings.php:209
 msgid "Use date/time picker script"
 msgstr ""
 
-#: src/Settings.php:195
+#: src/Settings.php:210
+msgid "Theme for online booking"
+msgstr ""
+
+#: src/Settings.php:239
 msgid "Enter your Recras details here"
 msgstr ""
 

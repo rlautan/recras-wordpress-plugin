@@ -1,0 +1,183 @@
+.recras-onlinebooking input, .recras-onlinebooking select, .recras-onlinebooking button, .recras-onlinebooking textarea {
+    font: inherit;
+    height: auto;
+    padding: 0.5em;
+}
+.recras-onlinebooking input, .recras-onlinebooking select, .recras-onlinebooking button {
+    line-height: 1;
+}
+.recras-onlinebooking textarea {
+    line-height: 1.25;
+}
+
+.recras-onlinebooking input, .recras-onlinebooking select, .recras-onlinebooking textarea {
+    background: #fff;
+    border: 1px solid hsl(205, 63%, 56%);
+    max-width: 100%;
+}
+.recras-onlinebooking button {
+    background: hsl(205, 63%, 56%);
+    border: 1px solid hsl(205, 63%, 56%);
+    color: white;
+    text-transform: uppercase;
+}
+.recras-onlinebooking button:hover, .recras-onlinebooking button:active {
+    background-color: hsl(205, 63%, 68%);
+}
+.recras-onlinebooking button[type="submit"] {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+}
+
+.recras-onlinebooking h3 {
+    background: hsl(205, 63%, 56%);
+    color: white;
+    font-size: 1.5em;
+    font-weight: 400;
+    letter-spacing: normal;
+    margin: 0;
+    padding: 1rem;
+}
+.recras-amountsform, .recras-datetime, .recras-contactform, .recras-discountcode, .recras-vouchers {
+
+}
+.recras-amountsform > div:first-of-type {
+    margin-top: 1rem;
+}
+
+.recras-onlinebooking > *:not(.recrasLoadingIndicator) {
+    border-top: none !important;
+    /*padding: 0 !important;*/
+}
+.recras-onlinebooking > * + * {
+    margin-top: 2em;
+}
+p:empty {
+    margin: 0;
+}
+.recras-contactform input, .recras-contactform select, .recras-contactform textarea {
+    width: 22em;
+}
+
+.recras-amountsform {
+    padding: 0 0 1.5rem 0 !important;
+}
+.recras-amountsform > div > div:first-child {
+    padding-left: 1rem;
+}
+.recras-amountsform > div > div:last-child {
+    padding-right: 1rem;
+}
+.recras-amountsform input {
+    width: 8em;
+}
+.recras-amountsform p {
+    padding: 0 1rem;
+}
+.priceLine {
+    font-weight: bold;
+}
+.recras-onlinebooking > div.recras-datetime {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 1rem !important;
+}
+.recras-onlinebooking > form.recras-contactform {
+    padding: 1rem !important;
+}
+.recras-discountcode, .recras-vouchers > div {
+    align-items: baseline;
+    display: flex;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+.recras-discountcode label, .recras-vouchers label {
+    flex: 0 0 30%;
+}
+.recras-discountcode input, .recras-vouchers input {
+    flex: 0 0 35%;
+}
+@media all and (min-width: 641px) {
+    .recras-discountcode button, .recras-vouchers button {
+        margin-left: 0.5em;
+    }
+}
+.recras-onlinebooking-date, .recras-onlinebooking-time {
+    width: 200px;
+}
+.recras-datetime .recrasLoadingIndicator {
+    height: 1em;
+    margin-left: 0.5em;
+    width: 1em;
+}
+
+.recras-discountcode {
+    padding-bottom: 0 !important;
+}
+.recras-vouchers {
+    margin-top: 0;
+    padding-top: 0 !important;
+}
+.standard-attachments [type="checkbox"] {
+    margin-right: 0.5em;
+}
+.standard-attachments p {
+    margin-bottom: 0.5em;
+}
+
+
+.recras-onlinebooking button:not(:disabled) {
+    cursor: pointer;
+}
+.recras-onlinebooking button:disabled {
+    cursor: not-allowed;
+}
+.recras-amountsform > div > div:first-child {
+    flex-basis: calc(100% - 15em);
+}
+.recras-price, .priceSubtotal {
+    flex-basis: 6em;
+    text-align: right;
+}
+.recras-contactform-required::after {
+    content: '*';
+}
+.recras-product-dependency, .maximum-amount, .minimum-amount {
+    color: #a00;
+}
+
+@media (max-width: 640px) {
+    .recras-amountsform > div {
+        flex-wrap: wrap;
+    }
+    .recras-amountsform > div > div:first-child {
+        flex-basis: 100%;
+        padding-right: 1rem;
+    }
+    .recras-amountsform .priceLine > * {
+        flex-basis: 50% !important;
+    }
+    .recras-discountcode, .recras-vouchers > div {
+        flex-wrap: wrap;
+    }
+    .recras-amountsform input {
+        flex-basis: 50%;
+        margin-left: 1rem;
+    }
+    .recras-contactform > div {
+        flex-direction: column;
+    }
+    .recras-price, .priceSubtotal {
+        flex-basis: 1em;
+    }
+}
+
+
+/* Chrome/Safari Mac fixes */
+.recras-onlinebooking input[disabled] {
+    background: white !important;
+}
+.recras-onlinebooking select {
+    border-radius: 0;
+}
