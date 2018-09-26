@@ -34,6 +34,9 @@ class ContactForm
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
+            if (isset($json->error, $json->message)) {
+                return sprintf(__('Error: %s', Plugin::TEXT_DOMAIN), $json->message);
+            }
             set_transient('recras_' . $subdomain . '_contactform_' . $attributes['id'], $json, 86400);
         }
 
