@@ -4,8 +4,8 @@ var el = wp.element.createElement,
 
 registerBlockType('recras/gutenberg-availability', {
     title: 'Availability calendar',
-    icon: 'dashicons-calendar-alt',
-    category: 'embeds',
+    icon: 'calendar-alt',
+    category: 'recras',
 
     attributes: {
         content: {

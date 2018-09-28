@@ -30,6 +30,7 @@ class Plugin
         add_action('admin_init', ['Recras\Editor', 'addButtons']);
 
         add_action('init', [&$this, 'addGutenbergButtons']);
+        add_filter('block_categories', [$this, 'addGutenbergRecrasCategory']);
 
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
@@ -58,6 +59,15 @@ class Plugin
             'editor_script' => $gutenbergName,
             'editor_style' => $gutenbergName,
         ]);
+    }
+
+    public static function addGutenbergRecrasCategory($categories)
+    {
+        $categories[] = [
+            'slug' => 'recras',
+            'title' => 'Recras',
+        ];
+        return $categories;
     }
 
 
