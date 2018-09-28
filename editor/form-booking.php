@@ -23,9 +23,9 @@
             </select>
         <?php } ?>
     <dt><label for="use_new_library"><?php _e('Use new method?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="checkbox" id="use_new_library">
+        <dd><input type="checkbox" id="use_new_library" checked>
     <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><select id="redirect_page" disabled>
+        <dd><select id="redirect_page">
             <option value=""><?php _e("Don't redirect", \Recras\Plugin::TEXT_DOMAIN); ?>
             <optgroup label="<?php _e('Pages', \Recras\Plugin::TEXT_DOMAIN); ?>">
                 <?php foreach (get_pages() as $page) { ?>
@@ -39,7 +39,7 @@
             </optgroup>
         </select>
     <dt><label for="auto_resize"><?php _e('Automatic resize?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="checkbox" id="auto_resize" checked>
+        <dd><input type="checkbox" id="auto_resize" disabled>
 
 </dl>
 <button class="button button-primary" id="booking_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>

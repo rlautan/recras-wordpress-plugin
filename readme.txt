@@ -140,6 +140,10 @@ None yet!
 
 == Changelog ==
 
+= master (unreleased) =
+* Update online booking library version (Show reasons why 'Book now' button is disabled; fix disabled 'Book now' button after changing date/time)
+* Enable "Use new library" by default
+
 = 1.14.6 =
 * Better loading of polyfill
 * Update online booking library version (fixes minimum amount of booking size row)
