@@ -21,6 +21,7 @@ Setting your Recras name is the most important step here. Other settings are:
 * Theme for online booking - which theme the new online booking method will use.
   - "No theme" leaves it up to you to properly style it.
   - "Basic theme" sets some default styling to make it look a bit nicer. You can still override everything with your own CSS.
+  - "Recras Blue" is a theme with blue accents
 
 ### Packages
 

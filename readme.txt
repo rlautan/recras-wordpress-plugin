@@ -26,6 +26,7 @@ Setting your Recras name is the most important step here. Other settings are:
 * Theme for online booking - which theme the new online booking method will use.
   - "No theme" leaves it up to you to properly style it.
   - "Basic theme" sets some default styling to make it look a bit nicer. You can still override everything with your own CSS.
+  - "Recras Blue" is a theme with blue accents
 
 = Packages =
 Add the `[recras-package]` shortcode anywhere on your site. The following parameters are supported:
@@ -145,11 +146,11 @@ None yet!
 
 = master (unreleased) =
 * Add themes for new online booking method
+* Enable "Use new library" by default
 * Update online booking library version:
   - Show reasons why 'Book now' button is disabled
   - Fix disabled 'Book now' button after changing date/time
   - Fixes potential race condition
-* Enable "Use new library" by default
 
 = 1.14.6 =
 * Better loading of polyfill
