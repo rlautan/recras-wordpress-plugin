@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 1.14.6
+Stable tag: 1.15.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,7 +144,7 @@ None yet!
 
 == Changelog ==
 
-= master (unreleased) =
+= 1.15.0 =
 * Add themes for new online booking method
 * Enable "Use new library" by default
 * Update online booking library version:
