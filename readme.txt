@@ -141,7 +141,10 @@ None yet!
 == Changelog ==
 
 = master (unreleased) =
-* Update online booking library version (Show reasons why 'Book now' button is disabled; fix disabled 'Book now' button after changing date/time)
+* Update online booking library version:
+  - Show reasons why 'Book now' button is disabled
+  - Fix disabled 'Book now' button after changing date/time
+  - Fixes potential race condition
 * Enable "Use new library" by default
 
 = 1.14.6 =
