@@ -22,8 +22,6 @@
                 <?php } ?>
             </select>
         <?php } ?>
-    <dt><label for="use_new_library"><?php _e('Use new method?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="checkbox" id="use_new_library" checked>
     <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="redirect_page">
             <option value=""><?php _e("Don't redirect", \Recras\Plugin::TEXT_DOMAIN); ?>
@@ -38,34 +36,18 @@
                     <?php } ?>
             </optgroup>
         </select>
-    <dt><label for="auto_resize"><?php _e('Automatic resize?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="checkbox" id="auto_resize" disabled>
-
 </dl>
 <button class="button button-primary" id="booking_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
 <script>
-    document.getElementById('use_new_library').addEventListener('change', function(){
-        document.getElementById('auto_resize').disabled = document.getElementById('use_new_library').checked;
-        document.getElementById('redirect_page').disabled = !document.getElementById('use_new_library').checked;
-    });
-
     document.getElementById('booking_submit').addEventListener('click', function(){
         var arrangementID = document.getElementById('arrangement_id').value;
         var shortcode = '[<?= \Recras\Plugin::SHORTCODE_ONLINE_BOOKING; ?>';
         if (arrangementID !== '0') {
             shortcode += ' id="' + arrangementID + '"';
         }
-
-        if (document.getElementById('use_new_library').checked) {
-            shortcode += ' use_new_library=1';
-            if (document.getElementById('redirect_page').value !== '') {
-                shortcode += ' redirect="' + document.getElementById('redirect_page').value + '"';
-            }
-        } else {
-            if (!document.getElementById('auto_resize').checked) {
-                shortcode += ' autoresize=0';
-            }
+        if (document.getElementById('redirect_page').value !== '') {
+            shortcode += ' redirect="' + document.getElementById('redirect_page').value + '"';
         }
         shortcode += ']';
 

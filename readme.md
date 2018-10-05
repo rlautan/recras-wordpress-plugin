@@ -61,9 +61,7 @@ Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` wi
 ### Online booking
 Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
 * id - corresponds to the package ID in Recras
-* use_new_library - whether or not you want to use the new online booking method. This may have bugs, so use with care! Since this is a per-shortcode setting, you can create a new page to try this out.
-* redirect - a URL that the user is redirected to, after booking successfully. Note: this is only available for the new online booking method.
-* autoresize - enabled by default. Disable this if you have more than one Recras iframe on your page. Note: this is only available for the old online booking method.
+* redirect - a URL that the user is redirected to, after booking successfully.
 
 Example: `[recras-booking id=17]` will show the booking form with package ID 17.
 
