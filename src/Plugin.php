@@ -58,6 +58,7 @@ class Plugin
         register_block_type('recras/gutenberg-availability', [
             'editor_script' => $gutenbergName,
             'editor_style' => $gutenbergName,
+            'render_callback' => ['Recras\Availability', 'addAvailabilityShortcode'],
         ]);
     }
 

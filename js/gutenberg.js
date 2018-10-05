@@ -1,6 +1,8 @@
-var el = wp.element.createElement,
-    registerBlockType = wp.blocks.registerBlockType,
-    RichText = wp.editor.RichText;
+const el = wp.element.createElement;
+const registerBlockType = wp.blocks.registerBlockType;
+const TextControl = wp.components.TextControl;
+const __ = wp.i18n.__;
+const sprintf = wp.i18n.sprintf;
 
 registerBlockType('recras/gutenberg-availability', {
     title: 'Availability calendar',
@@ -8,38 +10,61 @@ registerBlockType('recras/gutenberg-availability', {
     category: 'recras',
 
     attributes: {
-        content: {
-            type: 'array',
-            source: 'children',
-            selector: 'p',
+        id: {
+            type: 'number',
+            //source: 'attribute',
+        },
+        autoresize: {
+            type: 'boolean',
+            default: true,
+            //source: 'attribute',
         }
     },
 
-    edit: function( props ) {
-        var content = props.attributes.content;
-
-        function onChangeContent( newContent ) {
-            props.setAttributes( { content: newContent } );
+    edit: function(props) {
+        let id = props.attributes.id;
+        let autoresize = props.attributes.autoresize;
+        let retval = [];
+        if (!id) {
+            var controlOptions = {
+                // Existing 'url' value for the block.
+                value: id,
+                // When the text input value is changed, we need to
+                // update the 'url' attribute to propagate the change.
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        id: newVal
+                    });
+                },
+                placeholder: __('Enter the ID'),
+            };
+            retval.push(
+                // el() is a function to instantiate a new element
+                el( TextControl, controlOptions )
+            );
+        } else {
+            retval.push(el(
+                'div',
+                null,
+                sprintf(__('Recras Availability calendar for package %s'), id)
+            ));
         }
-
-        return el(
-            RichText,
-            {
-                tagName: 'p',
-                className: props.className,
-                onChange: onChangeContent,
-                value: content,
-            }
-        );
+        return retval;
     },
 
-    save: function( props ) {
-        var content = props.attributes.content;
-
-        return el( RichText.Content, {
-            tagName: 'p',
-            className: props.className,
-            value: content
-        } );
+    save: function(props) {
+        let id = props.attributes.id || false;
+        let autoresize = props.attributes.autoresize || true;
+        // If the attributes ID is missing, don't save any inline HTML.
+        if (!id) {
+            return null;
+        }
+        // Include a fallback link for non-JS contexts and for when the plugin is not activated.
+        let html = '[recras-availability id=' + id;
+        if (!autoresize) {
+            html += ' autoresize=false';
+        }
+        html += ']';
+        return html;
     },
 } );
