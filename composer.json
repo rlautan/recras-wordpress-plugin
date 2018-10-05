@@ -5,7 +5,7 @@
     "license": "MIT",
     "support": {
         "email": "sander@recras.nl",
-        "wiki": "http://wiki.recras.nl/wiki/WordPress-plugin"
+        "wiki": "https://www.recras.nl/wordpress-plugin/"
     },
     "require": {
         "php": ">=5.4",

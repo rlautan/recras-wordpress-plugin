@@ -19,7 +19,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**********************************
  *  Recras Online Booking library  *
- *  v 0.7.2                        *
+ *  v 0.7.3                        *
  **********************************/
 
 var RecrasBooking = function () {
@@ -553,6 +553,9 @@ var RecrasBooking = function () {
     }, {
         key: 'loadingIndicatorShow',
         value: function loadingIndicatorShow(afterEl) {
+            if (!afterEl) {
+                return;
+            }
             afterEl.insertAdjacentHTML('beforeend', '<span class="recrasLoadingIndicator">' + this.languageHelper.translate('LOADING') + '</span>');
         }
     }, {
@@ -1016,7 +1019,7 @@ var RecrasBooking = function () {
                 return false;
             }
 
-            var paymentMethod = this.PAYMENT_DIRECT;
+            var paymentMethod = this.paymentMethods(this.selectedPackage)[0];
             var paymentMethodEl = this.findElement('[name="paymentMethod"]:checked');
             if (paymentMethodEl && this.validPaymentMethod(this.selectedPackage, paymentMethodEl.value)) {
                 paymentMethod = paymentMethodEl.value;
@@ -1024,7 +1027,10 @@ var RecrasBooking = function () {
 
             this.loadingIndicatorHide();
             this.loadingIndicatorShow(this.findElement('.bookPackage'));
-            this.findElement('.bookPackage').setAttribute('disabled', 'disabled');
+            var elem = void 0;
+            if (null !== (elem = this.findElement('.bookPackage'))) {
+                elem.setAttribute('disabled', 'disabled');
+            }
 
             var vouchers = Object.keys(this.appliedVouchers).length > 0 ? Object.keys(this.appliedVouchers) : null;
             var bookingParams = {
@@ -1455,6 +1461,7 @@ var RecrasLanguageHelper = function () {
     function RecrasLanguageHelper() {
         _classCallCheck(this, RecrasLanguageHelper);
 
+        this.defaultLocale = 'nl_NL';
         this.locale = this.defaultLocale;
         this.options = null;
 
@@ -1510,6 +1517,7 @@ var RecrasLanguageHelper = function () {
                 ERR_INVALID_REDIRECT_URL: 'Ungültige redirect URL. Stellen Sie sicher, dass es mit http:// or https:// beginnt',
                 ERR_NO_ELEMENT: 'Option "element" nicht eingestellt.',
                 ERR_NO_HOSTNAME: 'Option "recras_hostname" nicht eingestellt.',
+                ERR_OPTIONS_INVALID: 'Options is not a "RecrasOptions" object',
                 GENDER_UNKNOWN: 'Unbekannte',
                 GENDER_MALE: 'Mann',
                 GENDER_FEMALE: 'Frau',
@@ -1579,6 +1587,7 @@ var RecrasLanguageHelper = function () {
                 ERR_INVALID_REDIRECT_URL: 'Invalid redirect URL. Make sure you it starts with http:// or https://',
                 ERR_NO_ELEMENT: 'Option "element" not set.',
                 ERR_NO_HOSTNAME: 'Option "recras_hostname" not set.',
+                ERR_OPTIONS_INVALID: 'Options is not a "RecrasOptions" object',
                 GENDER_UNKNOWN: 'Unknown',
                 GENDER_MALE: 'Male',
                 GENDER_FEMALE: 'Female',
@@ -1648,6 +1657,7 @@ var RecrasLanguageHelper = function () {
                 ERR_INVALID_REDIRECT_URL: 'Ongeldige redirect-URL. Zorg ervoor dat deze begint met http:// of https://',
                 ERR_NO_ELEMENT: 'Optie "element" niet ingesteld.',
                 ERR_NO_HOSTNAME: 'Optie "recras_hostname" niet ingesteld.',
+                ERR_OPTIONS_INVALID: 'Opties is geen "RecrasOptions"-object',
                 GENDER_UNKNOWN: 'Onbekend',
                 GENDER_MALE: 'Man',
                 GENDER_FEMALE: 'Vrouw',
@@ -1785,7 +1795,6 @@ var RecrasLanguageHelper = function () {
     return RecrasLanguageHelper;
 }();
 
-RecrasLanguageHelper.defaultLocale = 'nl_NL';
 RecrasLanguageHelper.validLocales = ['de_DE', 'en_GB', 'nl_NL'];
 
 var RecrasOptions = function () {
@@ -1870,7 +1879,7 @@ var RecrasOptions = function () {
 }();
 /****************************
  *  Recras voucher library  *
- *  v 0.7.2                 *
+ *  v 0.7.3                 *
  ***************************/
 
 RecrasOptions.hostnameDebug = '172.16.0.2';
