@@ -1,6 +1,7 @@
 const el = wp.element.createElement;
 const registerBlockType = wp.blocks.registerBlockType;
 const TextControl = wp.components.TextControl;
+const CheckboxControl = wp.components.CheckboxControl;
 const __ = wp.i18n.__;
 const sprintf = wp.i18n.sprintf;
 
@@ -12,12 +13,10 @@ registerBlockType('recras/gutenberg-availability', {
     attributes: {
         id: {
             type: 'number',
-            //source: 'attribute',
         },
         autoresize: {
             type: 'boolean',
             default: true,
-            //source: 'attribute',
         }
     },
 
@@ -25,36 +24,47 @@ registerBlockType('recras/gutenberg-availability', {
         let id = props.attributes.id;
         let autoresize = props.attributes.autoresize;
         let retval = [];
-        if (!id) {
-            var controlOptions = {
-                // Existing 'url' value for the block.
-                value: id,
-                // When the text input value is changed, we need to
-                // update the 'url' attribute to propagate the change.
-                onChange: function(newVal) {
-                    props.setAttributes({
-                        id: newVal
-                    });
-                },
-                placeholder: __('Enter the ID'),
-            };
-            retval.push(
-                // el() is a function to instantiate a new element
-                el( TextControl, controlOptions )
-            );
-        } else {
+        var optionsIDControl = {
+            value: id, // Existing 'id' value for the block.
+            // When the text input value is changed, we need to
+            // update the 'id' attribute to propagate the change.
+            onChange: function(newVal) {
+                props.setAttributes({
+                    id: newVal
+                });
+            },
+            placeholder: __('ID of the package'),
+            label: 'ID of the package',
+        };
+        var optionsAutoresizeControl = {
+            checked: autoresize, // Existing 'id' value for the block.
+            // When the text input value is changed, we need to
+            // update the 'id' attribute to propagate the change.
+            onChange: function(newVal) {
+                props.setAttributes({
+                    autoresize: newVal
+                });
+            },
+            label: 'Auto resize iframe',
+        };
+        if (id) {
             retval.push(el(
                 'div',
                 null,
                 sprintf(__('Recras Availability calendar for package %s'), id)
             ));
         }
+        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(CheckboxControl, optionsAutoresizeControl));
         return retval;
     },
 
     save: function(props) {
         let id = props.attributes.id || false;
-        let autoresize = props.attributes.autoresize || true;
+        let autoresize = props.attributes.autoresize;
+        if (autoresize === undefined) {
+            autoresize = true;
+        }
         // If the attributes ID is missing, don't save any inline HTML.
         if (!id) {
             return null;
