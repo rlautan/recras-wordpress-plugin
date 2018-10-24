@@ -5,7 +5,7 @@ const CheckboxControl = wp.components.CheckboxControl;
 const __ = wp.i18n.__;
 const sprintf = wp.i18n.sprintf;
 
-registerBlockType('recras/gutenberg-availability', {
+registerBlockType('recras/availability', {
     title: 'Availability calendar',
     icon: 'calendar-alt',
     category: 'recras',
@@ -77,4 +77,79 @@ registerBlockType('recras/gutenberg-availability', {
         html += ']';
         return html;
     },
-} );
+});
+
+registerBlockType('recras/contactform', {
+    title: 'Contact form',
+    icon: 'email',
+    category: 'recras',
+
+    attributes: {
+    },
+
+    edit: function(props) {
+    },
+
+    save: function(props) {
+    },
+});
+
+registerBlockType('recras/onlinebooking', {
+    title: 'Online booking',
+    icon: 'admin-site',
+    category: 'recras',
+
+    attributes: {
+    },
+
+    edit: function(props) {
+    },
+
+    save: function(props) {
+    },
+});
+
+registerBlockType('recras/package', {
+    title: 'Package',
+    icon: 'clipboard',
+    category: 'recras',
+
+    attributes: {
+    },
+
+    edit: function(props) {
+    },
+
+    save: function(props) {
+    },
+});
+
+registerBlockType('recras/product', {
+    title: 'Product',
+    icon: 'cart',
+    category: 'recras',
+
+    attributes: {
+    },
+
+    edit: function(props) {
+    },
+
+    save: function(props) {
+    },
+});
+
+registerBlockType('recras/voucher', {
+    title: 'Voucher',
+    icon: 'money',
+    category: 'recras',
+
+    attributes: {
+    },
+
+    edit: function(props) {
+    },
+
+    save: function(props) {
+    },
+});

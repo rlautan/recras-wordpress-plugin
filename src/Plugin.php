@@ -55,11 +55,21 @@ class Plugin
 
         wp_register_style($gutenbergName, plugins_url('css/gutenberg.css', __DIR__), ['wp-edit-blocks'], filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css'));
 
-        register_block_type('recras/gutenberg-availability', [
-            'editor_script' => $gutenbergName,
-            'editor_style' => $gutenbergName,
-            'render_callback' => ['Recras\Availability', 'addAvailabilityShortcode'],
-        ]);
+        $gutenbergBlocks = [
+            'availability' => ['Recras\Availability', 'addAvailabilityShortcode'],
+            'contactform' => ['Recras\ContactForm', 'addContactShortcode'],
+            'onlinebooking' => ['Recras\OnlineBooking', 'addBookingShortcode'],
+            'package' => ['Recras\Arrangement', 'addArrangementShortcode'],
+            'product' => ['Recras\Products', 'addProductShortcode'],
+            'voucher' => ['Recras\Vouchers', 'addVoucherShortcode'],
+        ];
+        foreach ($gutenbergBlocks as $key => $callback) {
+            register_block_type('recras/' . $key, [
+                'editor_script' => $gutenbergName,
+                'editor_style' => $gutenbergName,
+                'render_callback' => $callback,
+            ]);
+        }
     }
 
     public static function addGutenbergRecrasCategory($categories)
