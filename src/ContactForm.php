@@ -27,7 +27,7 @@ class ContactForm
 
         // Get basic info for the form
         $baseUrl = 'contactformulieren/' . $attributes['id'];
-        $json = get_transient('recras_' . $subdomain . '_contactform_' . $attributes['id']);
+        $json = Transient::get($subdomain . '_contactform_' . $attributes['id']);
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, $baseUrl);
@@ -37,7 +37,7 @@ class ContactForm
             if (isset($json->error, $json->message)) {
                 return sprintf(__('Error: %s', Plugin::TEXT_DOMAIN), $json->message);
             }
-            set_transient('recras_' . $subdomain . '_contactform_' . $attributes['id'], $json, 86400);
+            Transient::set($subdomain . '_contactform_' . $attributes['id'], $json);
         }
 
         $formTitle = $json->naam;
@@ -56,14 +56,14 @@ class ContactForm
 
 
         // Get fields for the form
-        $json = get_transient('recras_' . $subdomain . '_contactform_' . $attributes['id'] . '_fields');
+        $json = Transient::get($subdomain . '_contactform_' . $attributes['id'] . '_fields');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, $baseUrl . '/velden');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            set_transient('recras_' . $subdomain . '_contactform_' . $attributes['id'] . '_fields', $json, 86400);
+            Transient::set($subdomain . '_contactform_' . $attributes['id'] . '_fields', $json);
         }
         $formFields = $json;
 
@@ -118,7 +118,7 @@ class ContactForm
         foreach ($forms as $id) {
             $errors += self::deleteTransients($subdomain, $id);
         }
-        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactforms');
+        $errors += Transient::delete($subdomain . '_contactforms');
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
         exit;
@@ -137,9 +137,9 @@ class ContactForm
     {
         $errors = 0;
 
-        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactform_' . $formID);
-        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactform_' . $formID . '_fields');
-        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_contactform_' . $formID . '_arrangements');
+        $errors += Transient::delete($subdomain . '_contactform_' . $formID);
+        $errors += Transient::delete($subdomain . '_contactform_' . $formID . '_fields');
+        $errors += Transient::delete($subdomain . '_contactform_' . $formID . '_arrangements');
 
         return $errors;
     }
@@ -466,14 +466,14 @@ class ContactForm
      */
     public static function getForms($subdomain)
     {
-        $json = get_transient('recras_' . $subdomain . '_contactforms');
+        $json = Transient::get($subdomain . '_contactforms');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'contactformulieren');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            set_transient('recras_' . $subdomain . '_contactforms', $json, 86400);
+            Transient::set($subdomain . '_contactforms', $json);
         }
 
         $forms = [];

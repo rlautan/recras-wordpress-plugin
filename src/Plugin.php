@@ -97,19 +97,6 @@ class Plugin
 
 
     /**
-     * Delete a transient. Returns 0 for success, 1 for error for easy error counting
-     *
-     * @param $name
-     *
-     * @return int
-     */
-    public static function deleteTransient($name)
-    {
-        return (delete_transient($name) ? 0 : 1);
-    }
-
-
-    /**
      * Get error message if no subdomain has been entered yet
      * @return string
      */

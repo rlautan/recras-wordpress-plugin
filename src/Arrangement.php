@@ -33,14 +33,14 @@ class Arrangement
         }
 
 
-        $json = get_transient('recras_' . $subdomain . '_arrangement_' . $attributes['id']);
+        $json = Transient::get($subdomain . '_arrangement_' . $attributes['id']);
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'arrangementen/' . $attributes['id']);
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            set_transient('recras_' . $subdomain . '_arrangement_' . $attributes['id'], $json, 86400);
+            Transient::set($subdomain . '_arrangement_' . $attributes['id'], $json);
         }
 
 
@@ -100,9 +100,9 @@ class Arrangement
 
         $arrangements = array_keys(self::getArrangements($subdomain));
         foreach ($arrangements as $id) {
-            $errors += Plugin::deleteTransient('recras_' . $subdomain . '_arrangement_' . $id);
+            $errors += Transient::delete($subdomain . '_arrangement_' . $id);
         }
-        $errors += Plugin::deleteTransient('recras_' . $subdomain . '_arrangements');
+        $errors += Transient::delete($subdomain . '_arrangements');
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
         exit;
@@ -175,14 +175,14 @@ class Arrangement
      */
     public static function getArrangements($subdomain, $onlyOnline = false)
     {
-        $json = get_transient('recras_' . $subdomain . '_arrangements');
+        $json = Transient::get($subdomain . '_arrangements');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'arrangementen');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            set_transient('recras_' . $subdomain . '_arrangements', $json, 86400);
+            Transient::set($subdomain . '_arrangements', $json);
         }
 
         $arrangements = [
@@ -210,14 +210,14 @@ class Arrangement
      */
     public function getArrangementsForContactForm($subdomain, $contactformID)
     {
-        $json = get_transient('recras_' . $subdomain . '_contactform_' . $contactformID . '_arrangements');
+        $json = Transient::get($subdomain . '_contactform_' . $contactformID . '_arrangements');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'contactformulieren/' . $contactformID . '/arrangementen');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            set_transient('recras_' . $subdomain . '_contactform_' . $contactformID . '_arrangements', $json, 86400);
+            Transient::set($subdomain . '_contactform_' . $contactformID . '_arrangements', $json);
         }
         if ($json === []) {
             return [];

@@ -73,7 +73,7 @@ class Products
     public static function clearCache()
     {
         $subdomain = get_option('recras_subdomain');
-        $error = Plugin::deleteTransient('recras_' . $subdomain . '_products');
+        $error = Transient::delete($subdomain . '_products');
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
         exit;
@@ -108,7 +108,7 @@ class Products
      */
     public static function getProducts($subdomain)
     {
-        $json = get_transient('recras_' . $subdomain . '_products');
+        $json = Transient::get($subdomain . '_products');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'producten', 'api/json');
@@ -116,7 +116,7 @@ class Products
                 return $e->getMessage();
             }
 
-            set_transient('recras_' . $subdomain . '_products', $json, 86400);
+            Transient::set($subdomain . '_products', $json);
         }
         if (!isset($json->results)) {
             return __('Error: external data does not contain any results', Plugin::TEXT_DOMAIN);

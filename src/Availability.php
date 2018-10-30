@@ -28,14 +28,14 @@ class Availability
         $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
 
 
-        $json = get_transient('recras_' . $subdomain . '_arrangement_' . $attributes['id']);
+        $json = Transient::get($subdomain . '_arrangement_' . $attributes['id']);
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'arrangementen/' . $attributes['id']);
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            set_transient('recras_' . $subdomain . '_arrangement_' . $attributes['id'], $json, 86400);
+            Transient::set($subdomain . '_arrangement_' . $attributes['id'], $json);
         }
 
 
