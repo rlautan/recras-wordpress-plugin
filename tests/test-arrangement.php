@@ -68,7 +68,16 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertEquals('<span class="recras-duration">6:15</span>' . "\n", $content, 'Should show duration');
 	}
 
-    function testShortcodeImage()
+    function testShortcodeImageTag()
+    {
+        $post = $this->factory->post->create_and_get([
+            'post_content' => '[recras-package id=7 show=image_tag]'
+        ]);
+        $content = apply_filters('the_content', $post->post_content);
+        $this->assertEquals('<img src="https://demo.recras.nl/api2.php/arrangementen/7/afbeelding" alt="Actieve Familiedag">' . "\n", $content, 'Should return image tag');
+    }
+
+    function testShortcodeImageUrl()
     {
         $post = $this->factory->post->create_and_get([
             'post_content' => '[recras-package id=7 show=image_url]'
@@ -194,6 +203,7 @@ class ArrangementTest extends \WP_UnitTestCase
     {
         $plugin = new Arrangement;
         $packages = $plugin->getArrangements('demo', true);
+        $this->assertTrue(is_array($packages));
         $packagesOnline = array_filter($packages, function($p) {
             return $p->mag_online;
         });

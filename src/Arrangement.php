@@ -49,6 +49,11 @@ class Arrangement
                 return $json->uitgebreide_omschrijving;
             case 'duration':
                 return self::getDuration($json);
+            case 'image_tag':
+                if (!$json->image_filename) {
+                    return '';
+                }
+                return '<img src="https://' . $subdomain . '.recras.nl' . $json->image_filename . '" alt="' . htmlspecialchars(self::displayname($json)) . '">';
             case 'image_url':
                 return $json->image_filename;
             case 'location':
@@ -72,11 +77,7 @@ class Arrangement
                 $showHeader = !isset($attributes['showheader']) || Settings::parseBoolean($attributes['showheader']);
                 return self::generateProgramme($json->programma, $startTime, $showHeader);
             case 'title':
-                $title = $json->weergavenaam;
-                if ($title === '') {
-                    $title = $json->arrangement;
-                }
-                return '<span class="recras-title">' . $title . '</span>';
+                return '<span class="recras-title">' . self::displayname($json) . '</span>';
             default:
                 return __('Error: unknown option', Plugin::TEXT_DOMAIN);
         }
@@ -106,6 +107,15 @@ class Arrangement
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
         exit;
+    }
+
+
+    private static function displayname($json)
+    {
+        if ($json->weergavenaam) {
+            return $json->weergavenaam;
+        }
+        return $json->arrangement;
     }
 
 
@@ -303,7 +313,7 @@ class Arrangement
      */
     public static function getValidOptions()
     {
-        return ['description', 'duration', 'image_url', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
+        return ['description', 'duration', 'image_tag', 'image_url', 'location', 'persons', 'price_pp_excl_vat', 'price_pp_incl_vat', 'price_total_excl_vat', 'price_total_incl_vat', 'program', 'programme', 'title'];
     }
 
 

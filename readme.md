@@ -30,7 +30,8 @@ Add the `[recras-package]` shortcode anywhere on your site. The following parame
 * show (required) - can be any of the following:
   * description - shows the long description of this package
   * duration - shows the duration of this package (i.e. time between start of first activity and end of last activity)
-  * image_url - gives the package image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
+  * image_tag - outputs the package image, if present.
+  * image_url - gives the package image URL, if present. Any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. If you just want to output the image, use `image_tag` instead. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * location - shows the starting location of this package
   * persons - shows the minimum number of persons needed for this package
   * price_pp_excl_vat - shows the price per person, excluding VAT
@@ -82,7 +83,8 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
 * id (required) - corresponds to the product ID in Recras
 * show (required) - can be any of the following:
   * duration - shows duration of this product, if product has a duration
-  * image_url - gives the product image URL, if present. Note: any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
+  * image_tag - outputs the product image, if present.
+  * image_url - gives the product image URL, if present. Any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. If you just want to output the image, use `image_tag` instead. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * minimum_amount - shows the minimum amount of this product
   * title - shows the title (display name) of the product
   * price_excl_vat - shows the price of the product, excluding VAT
@@ -99,7 +101,7 @@ Add the `[recras-vouchers]` shortcode anywhere on your site. The following param
 This will a voucher sales module to your website.
 
 ### Date/Time picker
-By default, date and time pickers in contact forms use whatever the browser has available. Currently (September 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
+By default, date and time pickers in contact forms use whatever the browser has available. Currently (November 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
 
 **Note**: this setting only applies to contact forms, not to "new style" online booking.
 

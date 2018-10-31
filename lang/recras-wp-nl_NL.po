@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-09-25 11:49+0200\n"
-"PO-Revision-Date: 2018-09-25 11:49+0200\n"
+"POT-Creation-Date: 2018-10-31 15:17+0100\n"
+"PO-Revision-Date: 2018-10-31 15:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
 #: editor/form-contact.php:32 editor/form-package-availability.php:11
-#: src/Plugin.php:72 src/Plugin.php:147
+#: src/Plugin.php:72 src/Plugin.php:134
 msgid "Package"
 msgstr "Arrangement"
 
@@ -78,32 +78,36 @@ msgid "Programme"
 msgstr "Programma"
 
 #: editor/form-arrangement.php:38 editor/form-product.php:28
-msgid "Image URL"
-msgstr "Afbeelding-URL"
+msgid "Image tag"
+msgstr "Afbeelding-tag"
 
-#: editor/form-arrangement.php:40
+#: editor/form-arrangement.php:39 editor/form-product.php:29
+msgid "Relative image URL"
+msgstr "Relatieve afbeelding-URL"
+
+#: editor/form-arrangement.php:41
 msgid "Start time"
 msgstr "Starttijd"
 
-#: editor/form-arrangement.php:41
+#: editor/form-arrangement.php:42
 msgid "hh:mm"
 msgstr "uu:mm"
 
-#: editor/form-arrangement.php:42
+#: editor/form-arrangement.php:43
 msgid "Show header?"
 msgstr "Toon header?"
 
-#: editor/form-arrangement.php:44
+#: editor/form-arrangement.php:45
 msgid "Yes"
 msgstr "Ja"
 
-#: editor/form-arrangement.php:45
+#: editor/form-arrangement.php:46
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:47 editor/form-booking.php:45
+#: editor/form-arrangement.php:48 editor/form-booking.php:45
 #: editor/form-contact.php:70 editor/form-package-availability.php:32
-#: editor/form-product.php:34 editor/form-vouchers.php:40
+#: editor/form-product.php:35 editor/form-vouchers.php:40
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
@@ -139,7 +143,7 @@ msgstr "Berichten"
 msgid "Automatic resize?"
 msgstr "Automatisch schalen?"
 
-#: editor/form-contact.php:15 src/Plugin.php:74 src/Plugin.php:144
+#: editor/form-contact.php:15 src/Plugin.php:74 src/Plugin.php:131
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -193,11 +197,11 @@ msgstr "Tabel"
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:54 editor/form-contact.php:95 src/ContactForm.php:84
+#: editor/form-contact.php:54 editor/form-contact.php:95 src/ContactForm.php:87
 msgid "Send"
 msgstr "Versturen"
 
-#: editor/form-product.php:11 src/Plugin.php:76 src/Plugin.php:149
+#: editor/form-product.php:11 src/Plugin.php:76 src/Plugin.php:136
 msgid "Product"
 msgstr "Product"
 
@@ -209,21 +213,21 @@ msgstr "Beschrijving (kort)"
 msgid "Description (long)"
 msgstr "Beschrijving (lang)"
 
-#: editor/form-product.php:29
+#: editor/form-product.php:30
 msgid "Minimum amount"
 msgstr "Minimumaantal"
 
-#: editor/form-product.php:30
+#: editor/form-product.php:31
 msgid "Price excl. VAT"
 msgstr "Prijs excl. btw"
 
-#: editor/form-product.php:31
+#: editor/form-product.php:32
 msgid "Price incl. VAT"
 msgstr "Prijs incl. btw"
 
 #: editor/form-vouchers.php:13
 msgid "Template"
-msgstr ""
+msgstr "Template"
 
 #: editor/form-vouchers.php:19
 msgid "No pre-filled template"
@@ -247,54 +251,59 @@ msgstr "Fout: optie \"show\" niet ingesteld"
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: src/Arrangement.php:69
+#: src/Arrangement.php:71
 msgid "Error: programme is empty"
 msgstr "Fout: programma is leeg"
 
-#: src/Arrangement.php:81 src/Products.php:65
+#: src/Arrangement.php:79 src/Products.php:63
 msgid "Error: unknown option"
 msgstr "Fout: onbekende optie"
 
-#: src/Arrangement.php:127
+#: src/Arrangement.php:134
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:127
+#: src/Arrangement.php:134
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:127
+#: src/Arrangement.php:134
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:153
+#: src/Arrangement.php:160
 #, php-format
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:271
+#: src/Arrangement.php:278
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:293
+#: src/Arrangement.php:300
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
-#: src/ContactForm.php:80
+#: src/ContactForm.php:38
+#, php-format
+msgid "Error: %s"
+msgstr "Fout: %s"
+
+#: src/ContactForm.php:83
 msgid "Error: package is set, but contact form does not support packages"
 msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
 
-#: src/ContactForm.php:255
+#: src/ContactForm.php:258
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/ContactForm.php:256
+#: src/ContactForm.php:259
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:257
+#: src/ContactForm.php:260
 msgid "Female"
 msgstr "Vrouw"
 
@@ -343,23 +352,23 @@ msgstr "Instellingen"
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:73 src/Plugin.php:148
+#: src/Plugin.php:73 src/Plugin.php:135
 msgid "Package availability"
 msgstr "Arrangement-beschikbaarheid"
 
-#: src/Plugin.php:75 src/Plugin.php:146
+#: src/Plugin.php:75 src/Plugin.php:133
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:77 src/Plugin.php:150
+#: src/Plugin.php:77 src/Plugin.php:137
 msgid "Vouchers"
 msgstr "Tegoedbonnen"
 
-#: src/Plugin.php:119
+#: src/Plugin.php:106
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Plugin.php:121
+#: src/Plugin.php:108
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
@@ -368,27 +377,27 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:145
+#: src/Plugin.php:132
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:163
+#: src/Plugin.php:150
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:164
+#: src/Plugin.php:151
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:165
+#: src/Plugin.php:152
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:176
+#: src/Plugin.php:163
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:177
+#: src/Plugin.php:164
 msgid "OK"
 msgstr "OK"
 
@@ -396,7 +405,7 @@ msgstr "OK"
 msgid "Error: product does not exist"
 msgstr "Fout: product bestaat niet"
 
-#: src/Products.php:122
+#: src/Products.php:129
 msgid "Error: external data does not contain any results"
 msgstr "Fout: externe data bevat geen resultaten"
 
@@ -512,6 +521,9 @@ msgstr "Wis productencache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Image URL"
+#~ msgstr "Afbeelding-URL"
 
 #~ msgid "Try new method?"
 #~ msgstr "Nieuwe methode proberen?"

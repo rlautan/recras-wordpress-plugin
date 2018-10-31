@@ -47,6 +47,11 @@ class Products
                 }
             case 'duration':
                 return self::getDuration($product);
+            case 'image_tag':
+                if (!$product->image_url) {
+                    return '';
+                }
+                return '<img src="' . $product->image_url . '" alt="' . htmlspecialchars(self::displayname($product)) . '">';
             case 'image_url':
                 return $product->image_url;
             case 'minimum_amount':
@@ -56,11 +61,7 @@ class Products
             case 'price_incl_vat':
                 return Price::format($product->prijs_inc);
             case 'title':
-                $title = $product->weergavenaam;
-                if ($title === '') {
-                    $title = $product->naam;
-                }
-                return '<span class="recras-title">' . $title . '</span>';
+                return '<span class="recras-title">' . self::displayname($product) . '</span>';
             default:
                 return __('Error: unknown option', Plugin::TEXT_DOMAIN);
         }
@@ -77,6 +78,15 @@ class Products
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
         exit;
+    }
+
+
+    private static function displayname($json)
+    {
+        if ($json->weergavenaam) {
+            return $json->weergavenaam;
+        }
+        return $json->naam;
     }
 
 
@@ -141,7 +151,7 @@ class Products
      */
     public static function getValidOptions()
     {
-        return ['description', 'description_long', 'duration', 'image_url', 'minimum_amount', 'price_excl_vat', 'price_incl_vat', 'title'];
+        return ['description', 'description_long', 'duration', 'image_tag', 'image_url', 'minimum_amount', 'price_excl_vat', 'price_incl_vat', 'title'];
     }
 
 
