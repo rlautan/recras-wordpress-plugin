@@ -148,6 +148,9 @@ None yet!
 
 = master =
 * Add ability to show package/product image tag (instead of bare URL and having to add `<img>` tag manually)
+* Update online booking library version. This version combines the discount and voucher fields and make changes to the CSS.
+    If you are **not** using an online booking theme, you might need to make some changes to your CSS when installing this version.
+    Details on these changes can be found in the [changelog for the library](https://github.com/Recras/online-booking-js/blob/master/changelog.md#080-2018-10-29)
 
 = 1.15.2 =
 * Update online booking library version (fixes prices sometimes being shown incorrectly)

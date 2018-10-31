@@ -67,7 +67,7 @@ p:empty {
 .recras-amountsform p {
     padding: 0;
 }
-.priceLine {
+.priceWithoutDiscount {
     font-weight: bold;
 }
 .recras-onlinebooking > div.recras-datetime,
@@ -77,18 +77,18 @@ p:empty {
     -ms-grid-columns: 30% 70%;
     grid-template-columns: 30% 70%;
 }
-.recras-discountcode, .recras-vouchers > div {
+.recras-discounts, .recras-vouchers > div {
     align-items: baseline;
     display: flex;
 }
-.recras-discountcode label, .recras-vouchers label {
+.recras-discounts label, .recras-vouchers label {
     flex: 0 0 30%;
 }
-.recras-discountcode input, .recras-vouchers input {
+.recras-discounts input, .recras-vouchers input {
     flex: 0 0 35%;
 }
 @media all and (min-width: 641px) {
-    .recras-discountcode button, .recras-vouchers button {
+    .recras-discounts button, .recras-vouchers button {
         margin-left: 0.5em;
     }
 }
@@ -101,7 +101,7 @@ p:empty {
     width: 1em;
 }
 
-.recras-discountcode {
+.recras-discounts {
     padding-bottom: 0 !important;
 }
 .recras-vouchers {
@@ -143,10 +143,10 @@ p:empty {
     .recras-amountsform > div > div:first-child {
         flex-basis: 100%;
     }
-    .recras-amountsform .priceLine > * {
+    .recras-amountsform .priceWithoutDiscount > * {
         flex-basis: 50% !important;
     }
-    .recras-discountcode, .recras-vouchers > div {
+    .recras-discounts, .recras-vouchers > div {
         flex-wrap: wrap;
     }
     .recras-amountsform input {

@@ -3,7 +3,7 @@ namespace Recras;
 
 class Plugin
 {
-    const LIBRARY_VERSION = '0.7.4';
+    const LIBRARY_VERSION = '0.8.0';
     const TEXT_DOMAIN = 'recras-wp';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
@@ -170,7 +170,7 @@ class Plugin
             strpos($post->post_content, $this::SHORTCODE_VOUCHERS)
         ) {
             wp_enqueue_script('polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise', [], null, false);
-            wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.js', [], $this::LIBRARY_VERSION, false);
+            wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.min.js', [], $this::LIBRARY_VERSION, false);
 
             $theme = get_option('recras_theme');
             if (!$theme) {

@@ -158,11 +158,11 @@ class Settings
             ],
             'basic' => [
                 'name' => __('Basic theme', Plugin::TEXT_DOMAIN),
-                'version' => '1.15.0',
+                'version' => '2.0.0',
             ],
             'recrasblue' => [
                 'name' => __('Recras Blue', Plugin::TEXT_DOMAIN),
-                'version' => '1.15.0',
+                'version' => '2.0.0',
             ],
         ];
     }

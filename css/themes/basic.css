@@ -38,7 +38,7 @@
     font: inherit;
     width: 300px;
 }
-.priceLine, .discountLine {
+.priceWithoutDiscount, .priceWithDiscount {
     font-weight: bold;
 }
 .recras-contactform-required::after {
