@@ -26,21 +26,22 @@ class ContactForm
 
 
         // Get basic info for the form
-        $baseUrl = 'contactformulieren/' . $attributes['id'];
-        $json = Transient::get($subdomain . '_contactform_' . $attributes['id']);
-        if ($json === false) {
+        $baseUrl = 'contactformulieren/' . $attributes['id'] . '?embed=Velden';
+        $form = Transient::get($subdomain . '_contactform_' . $attributes['id'] . '_v2');
+        if ($form === false) {
             try {
-                $json = Http::get($subdomain, $baseUrl);
+                $form = Http::get($subdomain, $baseUrl);
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            if (isset($json->error, $json->message)) {
-                return sprintf(__('Error: %s', Plugin::TEXT_DOMAIN), $json->message);
+            if (isset($form->error, $form->message)) {
+                return sprintf(__('Error: %s', Plugin::TEXT_DOMAIN), $form->message);
             }
-            Transient::set($subdomain . '_contactform_' . $attributes['id'], $json);
+            Transient::set($subdomain . '_contactform_' . $attributes['id'] . '_v2', $form);
         }
 
-        $formTitle = $json->naam;
+        $formTitle = $form->naam;
+        $formFields = $form->Velden;
 
         if (isset($attributes['showtitle']) && !Settings::parseBoolean($attributes['showtitle'])) {
             $formTitle = false;
@@ -53,20 +54,6 @@ class ContactForm
         if (isset($attributes['element']) && in_array($attributes['element'], self::getValidElements())) {
             $element = $attributes['element'];
         }
-
-
-        // Get fields for the form
-        $json = Transient::get($subdomain . '_contactform_' . $attributes['id'] . '_fields');
-        if ($json === false) {
-            try {
-                $json = Http::get($subdomain, $baseUrl . '/velden');
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
-            Transient::set($subdomain . '_contactform_' . $attributes['id'] . '_fields', $json);
-        }
-        $formFields = $json;
-
 
         $arrangementID = null;
         if (isset($attributes['arrangement'])) {
@@ -137,7 +124,7 @@ class ContactForm
     {
         $errors = 0;
 
-        $errors += Transient::delete($subdomain . '_contactform_' . $formID);
+        $errors += Transient::delete($subdomain . '_contactform_' . $formID . '_v2');
         $errors += Transient::delete($subdomain . '_contactform_' . $formID . '_fields');
         $errors += Transient::delete($subdomain . '_contactform_' . $formID . '_arrangements');
 
@@ -252,6 +239,13 @@ class ContactForm
                             'placeholder' => 'hh:mm',
                             'type' => 'time',
                         ]);
+                    break;
+                case 'contact.soort_klant':
+                    $keuzes = array_combine($field->mogelijke_keuzes, $field->mogelijke_keuzes);
+                    $html .= self::generateSubTag($options['element']) . self::generateRadio(
+                        $field,
+                        $keuzes
+                    );
                     break;
                 case 'contactpersoon.geslacht':
                     $html .= self::generateSubTag($options['element']) . self::generateSelect($field, [
@@ -377,6 +371,24 @@ class ContactForm
         }
         if ($showLabel) {
             $html .= '<label for="field' . $field->id . '">' . $field->naam . '</label>';
+        }
+        return $html;
+    }
+
+
+    /**
+     * Generate a set of radio buttons
+     *
+     * @param object $field
+     * @param array $selectItems
+     *
+     * @return string
+     */
+    public static function generateRadio($field, $selectItems)
+    {
+        $html = '';
+        foreach ($selectItems as $value => $name) {
+            $html .= '<label><input type="radio" name="' . $field->field_identifier . '" value="' . $value . '">' . $name . '</label>';
         }
         return $html;
     }
