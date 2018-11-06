@@ -84,13 +84,6 @@ class Arrangement
     }
 
 
-    public static function addArrangementShortcodeOld($attributes)
-    {
-        error_log('Notice: [recras-arrangement] is deprecated, please use [recras-package] instead!');
-        return self::addArrangementShortcode($attributes);
-    }
-
-
     /**
      * Clear arrangement cache (transients)
      */

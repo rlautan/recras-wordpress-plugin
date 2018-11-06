@@ -89,10 +89,6 @@ class Plugin
         add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']);
         add_shortcode('recras-product', ['Recras\Products', 'addProductShortcode']);
         add_shortcode($this::SHORTCODE_VOUCHERS, ['Recras\Vouchers', 'addVoucherShortcode']);
-
-        // DEPRECATED
-        add_shortcode('arrangement', ['Recras\Arrangement', 'addArrangementShortcodeOld']); // DEPRECATED IN v1.0.0 - use recras-package
-        add_shortcode('recras-arrangement', ['Recras\Arrangement', 'addArrangementShortcode']); // DEPRECATED IN v1.11.0 - use recras-package
     }
 
 
