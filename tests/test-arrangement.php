@@ -245,19 +245,4 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertEquals('<span class="recras-price">¥ 336.13</span>' . "\n", $content, 'Should respect currency setting');
         update_option('recras_currency', '€');
     }
-
-    function testOldShortcodes()
-    {
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[arrangement id=7 show=title]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Old shortcode (< 1.0.0) should still work');
-
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-arrangement id=7 show=title]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Old shortcode (< 1.11.0) should still work');
-    }
 }
