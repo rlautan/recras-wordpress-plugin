@@ -242,10 +242,7 @@ class ContactForm
                     break;
                 case 'contact.soort_klant':
                     $keuzes = array_combine($field->mogelijke_keuzes, $field->mogelijke_keuzes);
-                    $html .= self::generateSubTag($options['element']) . self::generateRadio(
-                        $field,
-                        $keuzes
-                    );
+                    $html .= self::generateSubTag($options['element']) . self::generateRadio($field, $keuzes);
                     break;
                 case 'contactpersoon.geslacht':
                     $html .= self::generateSubTag($options['element']) . self::generateSelect($field, [
@@ -273,11 +270,12 @@ class ContactForm
                     }
                     break;
                 case 'keuze':
-                    $keuzes = [];
-                    foreach ($field->mogelijke_keuzes as $keuze) {
-                        $keuzes[$keuze] = $keuze;
-                    }
+                    $keuzes = array_combine($field->mogelijke_keuzes, $field->mogelijke_keuzes);
                     $html .= self::generateSubTag($options['element']) . self::generateChoices($field, $keuzes);
+                    break;
+                case 'keuze_enkel':
+                    $keuzes = array_combine($field->mogelijke_keuzes, $field->mogelijke_keuzes);
+                    $html .= self::generateSubTag($options['element']) . self::generateRadio($field, $keuzes);
                     break;
                 case 'veel_tekst':
                     $html .= self::generateSubTag($options['element']) . self::generateTextarea($field, [
@@ -387,8 +385,9 @@ class ContactForm
     public static function generateRadio($field, $selectItems)
     {
         $html = '';
+        $required = ($field->verplicht ? ' required' : '');
         foreach ($selectItems as $value => $name) {
-            $html .= '<label><input type="radio" name="' . $field->field_identifier . '" value="' . $value . '">' . $name . '</label>';
+            $html .= '<label><input type="radio" name="' . $field->field_identifier . '" value="' . $value . '"' . $required . '>' . $name . '</label>';
         }
         return $html;
     }

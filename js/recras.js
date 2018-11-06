@@ -18,7 +18,10 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
             if (formElements[i].value === '' && formElements[i].required === false) {
                 formElements[i].value = null;
             }
-            if (formElements[i].type === 'checkbox') {
+            if (formElements[i].type === 'radio') {
+                var selected = document.querySelector('input[name="' + formElements[i].name + '"]:checked');
+                elements[formElements[i].name] = selected.value;
+            } else if (formElements[i].type === 'checkbox') {
                 elements[formElements[i].name] = [];
                 var checked = document.querySelectorAll('input[name="' + formElements[i].name + '"]:checked');
                 for (var j = 0; j < checked.length; j++) {
@@ -47,12 +50,7 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
                 if (redirect) {
                     window.location = redirect;
                 } else {
-                    var inputs = formEl.querySelectorAll('input, select, textarea');
-                    for (var i = 0; i < inputs.length; i++) {
-                        if (inputs[i] !== submitEl) {
-                            inputs[i].value = '';
-                        }
-                    }
+                    formEl.reset();
                     formEl.querySelector('[type="submit"]').parentNode.insertAdjacentHTML('beforeend', '<p class="recras-success">' + recras_l10n.sent_success + '</p>');
                 }
             } else if (response.error) {
