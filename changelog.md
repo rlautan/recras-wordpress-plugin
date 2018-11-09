@@ -1,6 +1,9 @@
 # Changelog
 
-## 2.0.0 (2018-11-06)
+## 2.0.1 (2018-11-09)
+Fixed a problem with the previous release
+
+## 2.0.0 (2018-11-09)
 **Major release** This version might break things. Please read the following carefully:
 
 * Added:
