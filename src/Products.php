@@ -38,7 +38,7 @@ class Products
 
         switch ($attributes['show']) {
             case 'description':
-                return '<span class="recras-description">' . $product->beschrijving . '</span>';
+                return '<span class="recras-description">' . $product->beschrijving_klant . '</span>';
             case 'description_long':
                 if ($product->uitgebreide_omschrijving) {
                     return '<span class="recras-description">' . $product->uitgebreide_omschrijving . '</span>';
@@ -48,18 +48,18 @@ class Products
             case 'duration':
                 return self::getDuration($product);
             case 'image_tag':
-                if (!$product->image_url) {
+                if (!$product->afbeelding_href) {
                     return '';
                 }
-                return '<img src="' . $product->image_url . '" alt="' . htmlspecialchars(self::displayname($product)) . '">';
+                return '<img src="https://' . $subdomain . '.recras.nl' . $product->afbeelding_href . '" alt="' . htmlspecialchars(self::displayname($product)) . '">';
             case 'image_url':
-                return $product->image_url;
+                return $product->afbeelding_href;
             case 'minimum_amount':
                 return '<span class="recras-amount">' . $product->minimum_aantal . '</span>';
             case 'price_excl_vat':
-                return Price::format($product->prijs_exc);
+                return Price::format($product->verkoop); //TODO: new API does not have price excl VAT
             case 'price_incl_vat':
-                return Price::format($product->prijs_inc);
+                return Price::format($product->verkoop);
             case 'title':
                 return '<span class="recras-title">' . self::displayname($product) . '</span>';
             default:
@@ -74,7 +74,7 @@ class Products
     public static function clearCache()
     {
         $subdomain = get_option('recras_subdomain');
-        $error = Transient::delete($subdomain . '_products');
+        $error = Transient::delete($subdomain . '_products_v2');
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
         exit;
@@ -103,9 +103,13 @@ class Products
             return '';
         }
 
-        list($h, $m) = explode(':', $product->duur); // Discard seconds
-        $h = (int) $h;
-        return '<span class="recras-duration">' . $h . ':' . $m . '</span>';
+        try {
+            $duration = new \DateInterval($product->duur);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return '<span class="recras-duration">' . $duration->format('%h:%I') . '</span>';
     }
 
 
@@ -118,22 +122,19 @@ class Products
      */
     public static function getProducts($subdomain)
     {
-        $json = Transient::get($subdomain . '_products');
+        $json = Transient::get($subdomain . '_products_v2');
         if ($json === false) {
             try {
-                $json = Http::get($subdomain, 'producten', 'api/json');
+                $json = Http::get($subdomain, 'producten');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
 
-            Transient::set($subdomain . '_products', $json);
-        }
-        if (!isset($json->results)) {
-            return __('Error: external data does not contain any results', Plugin::TEXT_DOMAIN);
+            Transient::set($subdomain . '_products_v2', $json);
         }
 
         $products = [];
-        foreach ($json->results as $product) {
+        foreach ($json as $product) {
             $products[$product->id] = $product;
         }
         // Sort alphabetically

@@ -24,16 +24,15 @@ class Http
     /**
      * @param string $subdomain
      * @param string $uri
-     * @param string $api
      *
      * @return array|object|string
      *
      * @throws Exception\JsonParseException
      * @throws Exception\UrlException
      */
-    public static function get($subdomain, $uri, $api = 'api2.php')
+    public static function get($subdomain, $uri)
     {
-        $ch = curl_init('https://' . $subdomain . '.recras.nl/' . $api . '/' . $uri);
+        $ch = curl_init('https://' . $subdomain . '.recras.nl/api2/' . $uri);
         curl_setopt($ch, \CURLOPT_RETURNTRANSFER, 1);
         $json = curl_exec($ch);
 

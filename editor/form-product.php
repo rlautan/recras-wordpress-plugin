@@ -15,7 +15,7 @@
         <?php } elseif(is_array($products)) { ?>
             <select id="product_id" required>
             <?php foreach ($products as $ID => $product) { ?>
-                <option value="<?= $ID; ?>"><?= $product->weergavenaam; ?>
+                <option value="<?= $ID; ?>"><?= $product->weergavenaam ? $product->weergavenaam : $product->naam; ?>
             <?php } ?>
             </select>
         <?php } ?>

@@ -26,11 +26,10 @@ class ContactForm
 
 
         // Get basic info for the form
-        $baseUrl = 'contactformulieren/' . $attributes['id'] . '?embed=Velden';
         $form = Transient::get($subdomain . '_contactform_' . $attributes['id'] . '_v2');
         if ($form === false) {
             try {
-                $form = Http::get($subdomain, $baseUrl);
+                $form = Http::get($subdomain, 'contactformulieren/' . $attributes['id'] . '?embed=Velden');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
