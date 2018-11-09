@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 1.15.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,11 +146,17 @@ None yet!
 
 == Changelog ==
 
-= master =
-* Add ability to show package/product image tag (instead of bare URL and having to add `<img>` tag manually)
-* Update online booking library version. This version combines the discount and voucher fields and make changes to the CSS.
-    If you are **not** using an online booking theme, you might need to make some changes to your CSS when installing this version.
-    Details on these changes can be found in the [changelog for the library](https://github.com/Recras/online-booking-js/blob/master/changelog.md#080-2018-10-29)
+= 2.0.0 =
+**Major release** This version might break things. Please read the following carefully:
+
+* Added:
+  - Ability to show package/product image tag (instead of bare URL and having to add `<img>` tag manually)
+  - Add "Choice - single" field to contact forms
+* Fixed:
+  - Position of datepicker popup on mobile
+  - "Customer type" selection in contact forms
+* Changed: the discount and voucher fields for online bookings are now combined. This means there are some backward incompatible CSS changes. If you are **not** using an online booking theme, you might need to make some changes to your CSS when installing this version. Details on these changes can be found in the [changelog for the library](https://github.com/Recras/online-booking-js/blob/master/changelog.md#080-2018-10-29)
+* Removed: `[arrangement]` and `[recras-arrangement]` shortcodes. These have been replaced by `[recras-package]` over 1.5 years ago.
 
 = 1.15.2 =
 * Update online booking library version (fixes prices sometimes being shown incorrectly)

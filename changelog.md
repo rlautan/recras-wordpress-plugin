@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.0 (2018-11-06)
+**Major release** This version might break things. Please read the following carefully:
+
+* Added:
+  - Ability to show package/product image tag (instead of bare URL and having to add `<img>` tag manually)
+  - Add "Choice - single" field to contact forms
+* Fixed:
+  - Position of datepicker popup on mobile
+  - "Customer type" selection in contact forms
+* Changed: the discount and voucher fields for online bookings are now combined. This means there are some backward incompatible CSS changes. If you are **not** using an online booking theme, you might need to make some changes to your CSS when installing this version. Details on these changes can be found in the [changelog for the library](https://github.com/Recras/online-booking-js/blob/master/changelog.md#080-2018-10-29)
+* Removed: `[arrangement]` and `[recras-arrangement]` shortcodes. These have been replaced by `[recras-package]` over 1.5 years ago.
+
 ## 1.15.2 (2018-10-19)
 * Update online booking library version (fixes prices sometimes being shown incorrectly)
 
