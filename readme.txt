@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,9 @@ None yet!
 1. Example of a programme with the Twenty Fifteen theme
 
 == Changelog ==
+
+= 2.0.2 =
+* Update online booking library version (check booking size lines for minimum amount)
 
 = 2.0.1 =
 Fixed a problem with the previous release

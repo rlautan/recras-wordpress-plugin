@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.2
+Update online booking library version (check booking size lines for minimum amount)
+
 ## 2.0.1 (2018-11-09)
 Fixed a problem with the previous release
 
