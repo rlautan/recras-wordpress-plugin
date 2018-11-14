@@ -4,6 +4,7 @@ namespace Recras;
 class Plugin
 {
     const LIBRARY_VERSION = '0.15.1';
+    const PLUGIN_VERSION = '2.0.2';
     const TEXT_DOMAIN = 'recras-wp';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
@@ -44,6 +45,9 @@ class Plugin
         add_action('admin_post_clear_contactform_cache', ['Recras\ContactForm', 'clearCache']);
         add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
         add_action('admin_post_clear_voucher_template_cache', ['Recras\Vouchers', 'clearCache']);
+
+        add_action('wp', ['Recras\Statistics', 'scheduleReport']);
+        add_action(Statistics::EVENT_NAME, ['Recras\Statistics', 'sendReport']);
 
         $this->addShortcodes();
     }
