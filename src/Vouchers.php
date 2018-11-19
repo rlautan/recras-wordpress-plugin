@@ -12,9 +12,6 @@ class Vouchers
      */
     public static function addVoucherShortcode($attributes)
     {
-        if (!isset($attributes['id'])) {
-            return __('Error: no ID set', Plugin::TEXT_DOMAIN);
-        }
         if (isset($attributes['id']) && !ctype_digit($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
@@ -25,7 +22,7 @@ class Vouchers
         }
 
         $templateText = '';
-        if ($attributes['id']) {
+        if (isset($attributes['id'])) {
             $templateText = "voucher_template_id: " . $attributes['id'] . ",";
         }
 

@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,6 +146,14 @@ None yet!
 
 == Changelog ==
 
+= 2.0.3 =
+* Voucher sales module without pre-selected template wasn't working - fixed
+* Update online booking library version:
+  * Implement `keuze_enkel` fields in contact form
+  * Fix "NaN" price when amount input field was cleared
+  * Fix "Programme amounts are invalid" error in some cases
+  * Voucher sales showed templates without contact form when logged in - fixed
+
 = 2.0.2 =
 * Update online booking library version (check booking size lines for minimum amount)
 
@@ -214,30 +222,6 @@ Fixed a problem with the previous release
 
 = 1.12.0 =
 * Add option to disable automatic resizing of online booking & availability iframes
-
-= 1.11.5 =
-* Fix selection of newsletters in a contact form
-
-= 1.11.4 =
-* Fix 500 error, sorry about that :(
-
-= 1.11.3 =
-* Add explanation why sometimes packages are not available
-
-= 1.11.2 =
-* Revert iframe change from previous version - did more harm than good
-
-= 1.11.1 =
-* Show more helpful errors if something goes wrong
-* Fix iframe heights if there is more than one iframe on a page
-
-= 1.11.0 =
-* Added `[recras-availability]` shortcode to show availability calendar
-* Rename "arrangement" to "package" to reflect text change in Recras
-* Deprecated `[recras-arrangement]` shortcode in favour of `[recras-package]`
-* New icons for TinyMCE buttons
-* Fix loading icon when submitting a contact form
-* Fix empty text on submit button after submitting a contact form
 
 = Older versions =
 See `changelog.md` for the full changelog.

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.3 (2018-11-20)
+* Voucher sales module without pre-selected template wasn't working - fixed
+* Update online booking library version:
+  * Implement `keuze_enkel` fields in contact form
+  * Fix "NaN" price when amount input field was cleared
+  * Fix "Programme amounts are invalid" error in some cases
+  * Voucher sales showed templates without contact form when logged in - fixed
+
 ## 2.0.2 (2018-11-12)
 Update online booking library version (check booking size lines for minimum amount)
 
