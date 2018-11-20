@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.4 (2018-11-20)
+Update online booking library version
+
 ## 2.0.3 (2018-11-20)
 * Voucher sales module without pre-selected template wasn't working - fixed
 * Update online booking library version:
