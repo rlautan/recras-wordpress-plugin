@@ -54,8 +54,11 @@
 p:empty {
     margin: 0;
 }
-.recras-contactform input, .recras-contactform select, .recras-contactform textarea {
+.recras-contactform input:not([type="checkbox"]):not([type="radio"]), .recras-contactform select, .recras-contactform textarea {
     width: 22em;
+}
+.recras-onlinebooking input[type="checkbox"], .recras-onlinebooking input[type="radio"] {
+    margin-right: 0.5em;
 }
 
 .recras-amountsform {
@@ -108,9 +111,6 @@ p:empty {
     margin-top: 0;
     padding-top: 0 !important;
 }
-.standard-attachments [type="checkbox"] {
-    margin-right: 0.5em;
-}
 .standard-attachments p {
     margin-bottom: 0.5em;
 }
@@ -130,7 +130,10 @@ p:empty {
     text-align: right;
 }
 .recras-contactform-required::after {
+    color: hsl(205, 63%, 56%);
     content: '*';
+    cursor: help;
+    margin-left: 0.125em;
 }
 .recras-product-dependency, .maximum-amount, .minimum-amount {
     color: #a00;

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.5 (2018-11-28)
+Update online booking library version:
+  * Fixed a bunch of minor bugs and inconsistencies
+  * Show line price based on amount selected
+
 ## 2.0.4 (2018-11-20)
 Update online booking library version
 
