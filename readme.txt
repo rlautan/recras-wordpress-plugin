@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,10 +146,16 @@ None yet!
 
 == Changelog ==
 
+= 2.0.6 =
+Update online booking library version:
+* Don't scroll to amounts form when package is pre-selected
+* Fixed attachments being shown even when "Send standard attachments" was disabled for a package
+* Show console warning when you are logged in to the Recras being used
+
 = 2.0.5 =
 Update online booking library version:
-  * Fixed a bunch of minor bugs and inconsistencies
-  * Show line price based on amount selected
+* Fixed a bunch of minor bugs and inconsistencies
+* Show line price based on amount selected
 
 = 2.0.4 =
 * Update online booking library version

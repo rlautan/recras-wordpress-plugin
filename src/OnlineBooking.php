@@ -39,7 +39,8 @@ class OnlineBooking
 
         $packageText = '';
         if ($arrangementID) {
-            $packageText = "package_id: " . $arrangementID . ",";
+            $packageText = "package_id: " . $arrangementID . ",\n";
+            $packageText .= "autoScroll: false,";
         }
 
         $redirect = '';

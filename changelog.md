@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.6 (2018-11-30)
+Update online booking library version:
+* Don't scroll to amounts form when package is pre-selected
+* Fixed attachments being shown even when "Send standard attachments" was disabled for a package
+* Show console warning when you are logged in to the Recras being used
+
 ## 2.0.5 (2018-11-28)
 Update online booking library version:
   * Fixed a bunch of minor bugs and inconsistencies
