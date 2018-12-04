@@ -19,6 +19,7 @@ if (WP_DEBUG) {
 
 try {
     require_once('vendor/autoload.php');
+    require_once __DIR__ . '/class-tgm-plugin-activation.php';
     $recrasPlugin = new \Recras\Plugin;
 } catch (Exception $e) {
     if (version_compare(phpversion(), '5.4', '<')) {
