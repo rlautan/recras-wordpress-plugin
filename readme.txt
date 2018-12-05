@@ -109,7 +109,7 @@ Add the `[recras-vouchers]` shortcode anywhere on your site. The following param
 This will a voucher sales module to your website.
 
 = Date/Time picker =
-By default, date and time pickers in contact forms use whatever the browser has available. Currently (November 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
+By default, date and time pickers in contact forms use whatever the browser has available. Currently (December 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
 
 **Note**: this setting only applies to contact forms, not to "new style" online booking.
 
@@ -139,7 +139,11 @@ All data from your Recras is cached for up to 24 hours. If you make important ch
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
-None yet!
+=== Do you support Gutenberg? ===
+Not right now. We will keep an eye on it, but we feel it is a rushed decision by the WordPress developers and should not have been released just yet.
+
+=== Do you support Visual Composer, Brizy, etc. ? ===
+We do not support page builders at this time and have no plans to do so.
 
 == Screenshots ==
 1. Example of a programme with the Twenty Fifteen theme
