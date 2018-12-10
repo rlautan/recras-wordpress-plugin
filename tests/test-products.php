@@ -67,12 +67,6 @@ class ProductsTest extends \WP_UnitTestCase
     function testShortcodeShowPrices()
     {
         $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-product id=8 show=price_excl_vat]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-price">€ 16.53</span>' . "\n", $content, 'Should show price excl. vat');
-
-        $post = $this->factory->post->create_and_get([
             'post_content' => '[recras-product id=8 show=price_incl_vat]'
         ]);
         $content = apply_filters('the_content', $post->post_content);

@@ -87,7 +87,6 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
   * image_url - gives the product image URL, if present. Any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. If you just want to output the image, use `image_tag` instead. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
   * minimum_amount - shows the minimum amount of this product
   * title - shows the title (display name) of the product
-  * price_excl_vat - shows the price of the product, excluding VAT
   * price_incl_vat - same as above, but including VAT
   * description - shows the short description of the product
   * description_long - shows the long description of the product, if present.

@@ -57,7 +57,7 @@ class Products
             case 'minimum_amount':
                 return '<span class="recras-amount">' . $product->minimum_aantal . '</span>';
             case 'price_excl_vat':
-                return Price::format($product->verkoop); //TODO: new API does not have price excl VAT
+                return 'Price excl. VAT is not supported anymore. Price incl. VAT is ' . Price::format($product->verkoop);
             case 'price_incl_vat':
                 return Price::format($product->verkoop);
             case 'title':
