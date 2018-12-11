@@ -51,7 +51,7 @@ class Products
                 if (!$product->afbeelding_href) {
                     return '';
                 }
-                return '<img src="https://' . $subdomain . '.recras.nl' . $product->afbeelding_href . '" alt="' . htmlspecialchars(self::displayname($product)) . '">';
+                return '<img src="' . $product->afbeelding_href . '" alt="' . htmlspecialchars(self::displayname($product)) . '">';
             case 'image_url':
                 return $product->afbeelding_href;
             case 'minimum_amount':

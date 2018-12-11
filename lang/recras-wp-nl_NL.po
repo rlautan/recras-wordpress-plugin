@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-10-31 15:17+0100\n"
-"PO-Revision-Date: 2018-10-31 15:17+0100\n"
+"POT-Creation-Date: 2018-12-11 16:01+0100\n"
+"PO-Revision-Date: 2018-12-11 16:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -17,10 +17,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: tests\n"
+"X-Poedit-SearchPathExcluded-2: class-tgm-plugin-activation.php\n"
 
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
 #: editor/form-contact.php:32 editor/form-package-availability.php:11
-#: src/Plugin.php:72 src/Plugin.php:134
+#: src/Plugin.php:77 src/Plugin.php:135
 msgid "Package"
 msgstr "Arrangement"
 
@@ -81,7 +82,7 @@ msgstr "Programma"
 msgid "Image tag"
 msgstr "Afbeelding-tag"
 
-#: editor/form-arrangement.php:39 editor/form-product.php:29
+#: editor/form-arrangement.php:39
 msgid "Relative image URL"
 msgstr "Relatieve afbeelding-URL"
 
@@ -107,7 +108,7 @@ msgstr "Nee"
 
 #: editor/form-arrangement.php:48 editor/form-booking.php:45
 #: editor/form-contact.php:70 editor/form-package-availability.php:32
-#: editor/form-product.php:35 editor/form-vouchers.php:40
+#: editor/form-product.php:34 editor/form-vouchers.php:40
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
 
@@ -143,7 +144,7 @@ msgstr "Berichten"
 msgid "Automatic resize?"
 msgstr "Automatisch schalen?"
 
-#: editor/form-contact.php:15 src/Plugin.php:74 src/Plugin.php:131
+#: editor/form-contact.php:15 src/Plugin.php:79 src/Plugin.php:132
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -197,11 +198,11 @@ msgstr "Tabel"
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:54 editor/form-contact.php:95 src/ContactForm.php:87
+#: editor/form-contact.php:54 editor/form-contact.php:95 src/ContactForm.php:73
 msgid "Send"
 msgstr "Versturen"
 
-#: editor/form-product.php:11 src/Plugin.php:76 src/Plugin.php:136
+#: editor/form-product.php:11 src/Plugin.php:81 src/Plugin.php:137
 msgid "Product"
 msgstr "Product"
 
@@ -213,15 +214,15 @@ msgstr "Beschrijving (kort)"
 msgid "Description (long)"
 msgstr "Beschrijving (lang)"
 
+#: editor/form-product.php:29
+msgid "Image URL"
+msgstr "Afbeelding-URL"
+
 #: editor/form-product.php:30
 msgid "Minimum amount"
 msgstr "Minimumaantal"
 
 #: editor/form-product.php:31
-msgid "Price excl. VAT"
-msgstr "Prijs excl. btw"
-
-#: editor/form-product.php:32
 msgid "Price incl. VAT"
 msgstr "Prijs incl. btw"
 
@@ -234,12 +235,12 @@ msgid "No pre-filled template"
 msgstr "Geen vooraf ingevuld template"
 
 #: src/Arrangement.php:17 src/Availability.php:17 src/ContactForm.php:16
-#: src/Products.php:16 src/Vouchers.php:16
+#: src/Products.php:16
 msgid "Error: no ID set"
 msgstr "Fout: geen ID ingesteld"
 
 #: src/Arrangement.php:20 src/Availability.php:20 src/ContactForm.php:19
-#: src/OnlineBooking.php:16 src/Products.php:19 src/Vouchers.php:19
+#: src/OnlineBooking.php:16 src/Products.php:19 src/Vouchers.php:16
 msgid "Error: ID is not a number"
 msgstr "Fout: ID is geen getal"
 
@@ -251,59 +252,59 @@ msgstr "Fout: optie \"show\" niet ingesteld"
 msgid "Error: invalid \"show\" option"
 msgstr "Fout: ongeldige \"show\"-optie"
 
-#: src/Arrangement.php:71
+#: src/Arrangement.php:74
 msgid "Error: programme is empty"
 msgstr "Fout: programma is leeg"
 
-#: src/Arrangement.php:79 src/Products.php:63
+#: src/Arrangement.php:82 src/Products.php:66
 msgid "Error: unknown option"
 msgstr "Fout: onbekende optie"
 
-#: src/Arrangement.php:134
+#: src/Arrangement.php:130
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:134
+#: src/Arrangement.php:130
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:134
+#: src/Arrangement.php:130
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:160
+#: src/Arrangement.php:156
 #, php-format
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:278
+#: src/Arrangement.php:274
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:300
+#: src/Arrangement.php:296
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
-#: src/ContactForm.php:38
+#: src/ContactForm.php:37
 #, php-format
 msgid "Error: %s"
 msgstr "Fout: %s"
 
-#: src/ContactForm.php:83
+#: src/ContactForm.php:69
 msgid "Error: package is set, but contact form does not support packages"
 msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
 
-#: src/ContactForm.php:258
+#: src/ContactForm.php:248
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/ContactForm.php:259
+#: src/ContactForm.php:249
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:260
+#: src/ContactForm.php:250
 msgid "Female"
 msgstr "Vrouw"
 
@@ -331,7 +332,7 @@ msgstr "Misvormde UTF-8-tekens, mogelijk incorrect geëncodeerd"
 msgid "Unknown JSON error"
 msgstr "Onbekende JSON-fout"
 
-#: src/Http.php:46
+#: src/Http.php:45
 #, php-format
 msgid ""
 "Error: could not retrieve data from Recras. The error message received was: "
@@ -339,36 +340,36 @@ msgid ""
 msgstr ""
 "Fout: kon data niet ophalen uit Recras. De ontvangen foutmelding was: %s"
 
-#: src/Http.php:55
+#: src/Http.php:54
 #, php-format
 msgid "Error: could not parse data from Recras. The error message was: %s"
 msgstr "Fout: kon data uit Recras niet verwerken. De foutmelding was: %s"
 
-#: src/Plugin.php:55 src/Plugin.php:56
+#: src/Plugin.php:60 src/Plugin.php:61
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Plugin.php:65 src/Plugin.php:66
+#: src/Plugin.php:70 src/Plugin.php:71
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:73 src/Plugin.php:135
+#: src/Plugin.php:78 src/Plugin.php:136
 msgid "Package availability"
 msgstr "Arrangement-beschikbaarheid"
 
-#: src/Plugin.php:75 src/Plugin.php:133
+#: src/Plugin.php:80 src/Plugin.php:134
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: src/Plugin.php:77 src/Plugin.php:137
+#: src/Plugin.php:82 src/Plugin.php:138
 msgid "Vouchers"
 msgstr "Tegoedbonnen"
 
-#: src/Plugin.php:106
+#: src/Plugin.php:107
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Plugin.php:108
+#: src/Plugin.php:109
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
@@ -377,37 +378,33 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:132
+#: src/Plugin.php:133
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:150
+#: src/Plugin.php:151
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:151
+#: src/Plugin.php:152
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:152
+#: src/Plugin.php:153
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:163
+#: src/Plugin.php:164
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:164
+#: src/Plugin.php:165
 msgid "OK"
 msgstr "OK"
 
 #: src/Products.php:35
 msgid "Error: product does not exist"
 msgstr "Fout: product bestaat niet"
-
-#: src/Products.php:129
-msgid "Error: external data does not contain any results"
-msgstr "Fout: externe data bevat geen resultaten"
 
 #: src/Settings.php:97 src/Settings.php:109
 msgid "You do not have sufficient permissions to access this page."
@@ -522,8 +519,11 @@ msgstr "Wis productencache"
 msgid "Save"
 msgstr "Opslaan"
 
-#~ msgid "Image URL"
-#~ msgstr "Afbeelding-URL"
+#~ msgid "Price excl. VAT"
+#~ msgstr "Prijs excl. btw"
+
+#~ msgid "Error: external data does not contain any results"
+#~ msgstr "Fout: externe data bevat geen resultaten"
 
 #~ msgid "Try new method?"
 #~ msgstr "Nieuwe methode proberen?"
