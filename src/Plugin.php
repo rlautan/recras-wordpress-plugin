@@ -179,7 +179,6 @@ class Plugin
     {
         wp_register_script('recras-admin', $this->baseUrl . '/js/admin.js', [], '1.10.1', true);
         wp_localize_script('recras-admin', 'recras_l10n', [
-            'api_url' => get_rest_url(),
             'contact_form' => __('Contact form', $this::TEXT_DOMAIN),
             'no_connection' => __('Could not connect to your Recras', $this::TEXT_DOMAIN),
             'online_booking' => __('Online booking', $this::TEXT_DOMAIN),

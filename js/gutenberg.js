@@ -184,26 +184,29 @@ registerBlockType('recras/voucher', {
             label: 'Redirect',
         };
 
-        const addOptions = function(response, prefix) {
-            return response.json().then(posts => {
-                let options = [];
-                posts.forEach(post => {
-                    options.push({
-                        label: prefix + post.title.rendered, //SelectControl does not support optgroups :(
-                        value: post.id,
-                    });
+        const addOptions = function(posts, prefix) {
+            let options = [];
+            posts.forEach(post => {
+                options.push({
+                    label: prefix + post.title.rendered, //SelectControl does not support optgroups :(
+                    value: post.id,
                 });
-                return options;
-            })
+            });
+            return options;
         };
 
-        var pagesPromise = fetch(recras_l10n.api_url + 'wp/v2/pages')
-            .then(response => addOptions(response, __('Page: ')))
+        let pagesPromise = wp.apiFetch({
+            path: 'wp/v2/pages',
+        })
+            .then(pages => addOptions(pages, __('Page: ')))
             .then(options => {
                 optionsRedirectControl.options = optionsRedirectControl.options.concat(options);
             });
-        var postsPromise = fetch(recras_l10n.api_url + 'wp/v2/posts')
-            .then(response => addOptions(response, __('Post: ')))
+
+        let postsPromise = wp.apiFetch({
+            path: 'wp/v2/posts',
+        })
+            .then(posts => addOptions(posts, __('Post: ')))
             .then(options => {
                 optionsRedirectControl.options = optionsRedirectControl.options.concat(options);
             });
@@ -230,12 +233,13 @@ registerBlockType('recras/voucher', {
         retval.push(el(TextControl, optionsIDControl));
 
         Promise.all([pagesPromise, postsPromise]).then(() => {
-            console.log(optionsRedirectControl.options);
+            console.log('promises resolved', optionsRedirectControl.options);
             retval.push(el(SelectControl, optionsRedirectControl));
-            return retval;
+            /*setState({
+                posts: optionsRedirectControl.options,
+            });*/
         });
-
-        return retval;
+        return '';
     },
 
     save: function() {
