@@ -29,8 +29,10 @@ class Plugin
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
         add_action('admin_init', ['Recras\Editor', 'addButtons']);
 
-        add_action('init', [&$this, 'addGutenbergButtons']);
-        add_filter('block_categories', [$this, 'addGutenbergRecrasCategory']);
+        if (function_exists('register_block_type')) {
+            add_action('init', [&$this, 'addGutenbergButtons']);
+            add_filter('block_categories', [$this, 'addGutenbergRecrasCategory']);
+        }
 
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
@@ -51,9 +53,21 @@ class Plugin
     public static function addGutenbergButtons()
     {
         $gutenbergName = 'gutenberg-recras-buttons';
-        wp_register_script($gutenbergName, plugins_url('js/gutenberg.js', __DIR__), ['wp-blocks', 'wp-element']);
+        wp_register_script(
+            $gutenbergName,
+            plugins_url('js/gutenberg.js', __DIR__), [
+                'wp-blocks',
+                'wp-components',
+                'wp-element'
+            ]
+        );
 
-        wp_register_style($gutenbergName, plugins_url('css/gutenberg.css', __DIR__), ['wp-edit-blocks'], filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css'));
+        wp_register_style(
+            $gutenbergName,
+            plugins_url('css/gutenberg.css', __DIR__),
+            ['wp-edit-blocks'],
+            filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css')
+        );
 
         $gutenbergBlocks = [
             'availability' => ['Recras\Availability', 'addAvailabilityShortcode'],
@@ -64,7 +78,7 @@ class Plugin
             'voucher' => ['Recras\Vouchers', 'addVoucherShortcode'],
         ];
         foreach ($gutenbergBlocks as $key => $callback) {
-            register_block_type('recras/' . $key, [
+            \register_block_type('recras/' . $key, [
                 'editor_script' => $gutenbergName,
                 'editor_style' => $gutenbergName,
                 'render_callback' => $callback,
@@ -165,16 +179,19 @@ class Plugin
     {
         wp_register_script('recras-admin', $this->baseUrl . '/js/admin.js', [], '1.10.1', true);
         wp_localize_script('recras-admin', 'recras_l10n', [
+            'api_url' => get_rest_url(),
             'contact_form' => __('Contact form', $this::TEXT_DOMAIN),
             'no_connection' => __('Could not connect to your Recras', $this::TEXT_DOMAIN),
             'online_booking' => __('Online booking', $this::TEXT_DOMAIN),
             'package' => __('Package', $this::TEXT_DOMAIN),
             'package_availability' => __('Package availability', $this::TEXT_DOMAIN),
             'product' => __('Product', $this::TEXT_DOMAIN),
+            'subdomain' => get_option('recras_subdomain'),
             'vouchers' => __('Vouchers', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
         wp_enqueue_style('recras-admin-style', $this->baseUrl . '/css/admin-style.css', [], '1.10.1');
+        wp_enqueue_script('wp-api');
     }
 
 
