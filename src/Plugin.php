@@ -4,7 +4,7 @@ namespace Recras;
 class Plugin
 {
     const LIBRARY_VERSION = '0.15.1';
-    const PLUGIN_VERSION = '2.0.2';
+    const PLUGIN_VERSION = '2.0.7';
     const TEXT_DOMAIN = 'recras-wp';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
@@ -46,8 +46,7 @@ class Plugin
         add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
         add_action('admin_post_clear_voucher_template_cache', ['Recras\Vouchers', 'clearCache']);
 
-        add_action('wp', ['Recras\Statistics', 'scheduleReport']);
-        add_action(Statistics::EVENT_NAME, ['Recras\Statistics', 'sendReport']);
+        $this->initStatistics();
 
         $this->addShortcodes();
     }
@@ -126,6 +125,26 @@ class Plugin
     public static function getStatusMessage($errors)
     {
         return ($errors === 0 ? 'success' : 'error');
+    }
+
+
+    private function initStatistics()
+    {
+        $optIn = get_option('recras_statistics_optin');
+        if ($optIn) {
+            add_action('wp', ['Recras\Statistics', 'scheduleReport']);
+            add_action(Statistics::EVENT_NAME, ['Recras\Statistics', 'sendReport']);
+        } else {
+            add_action('admin_notices', ['Recras\Statistics', 'adminNoticeOptIn']);
+            if (function_exists('random_bytes')) { // PHP 7+ though WP should include a polyfill
+                $salt = bin2hex(random_bytes(8));
+            } else {
+                $salt = substr(sha1(rand(0, time())), rand(0, 30), 8);
+            }
+            add_option('recras_uuid', sha1($salt . get_option('recras_subdomain')));
+        }
+
+        add_action('admin_post_optin_statistics', ['Recras\Statistics', 'enableOptIn']);
     }
 
 
