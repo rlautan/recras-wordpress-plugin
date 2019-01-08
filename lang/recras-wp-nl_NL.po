@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-12-11 16:01+0100\n"
-"PO-Revision-Date: 2018-12-11 16:01+0100\n"
+"POT-Creation-Date: 2019-01-08 14:30+0100\n"
+"PO-Revision-Date: 2019-01-08 14:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -106,7 +106,7 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: editor/form-arrangement.php:48 editor/form-booking.php:45
+#: editor/form-arrangement.php:48 editor/form-booking.php:47
 #: editor/form-contact.php:70 editor/form-package-availability.php:32
 #: editor/form-product.php:34 editor/form-vouchers.php:40
 msgid "Insert shortcode"
@@ -120,27 +120,31 @@ msgstr "Geen vooraf ingevuld arrangement"
 msgid "Use new method?"
 msgstr "Nieuwe methode gebruiken?"
 
-#: editor/form-booking.php:27 editor/form-contact.php:55
+#: editor/form-booking.php:27
+msgid "Preview times in programme"
+msgstr "Toon voorbeeldtijden in programma"
+
+#: editor/form-booking.php:29 editor/form-contact.php:55
 #: editor/form-vouchers.php:25
 msgid "Redirect after submission"
 msgstr "Doorsturen na versturen"
 
-#: editor/form-booking.php:29 editor/form-contact.php:57
+#: editor/form-booking.php:31 editor/form-contact.php:57
 #: editor/form-vouchers.php:27
 msgid "Don't redirect"
 msgstr "Niet doorsturen"
 
-#: editor/form-booking.php:30 editor/form-contact.php:58
+#: editor/form-booking.php:32 editor/form-contact.php:58
 #: editor/form-vouchers.php:28
 msgid "Pages"
 msgstr "Pagina's"
 
-#: editor/form-booking.php:35 editor/form-contact.php:63
+#: editor/form-booking.php:37 editor/form-contact.php:63
 #: editor/form-vouchers.php:33
 msgid "Posts"
 msgstr "Berichten"
 
-#: editor/form-booking.php:41 editor/form-package-availability.php:29
+#: editor/form-booking.php:43 editor/form-package-availability.php:29
 msgid "Automatic resize?"
 msgstr "Automatisch schalen?"
 
@@ -223,8 +227,8 @@ msgid "Minimum amount"
 msgstr "Minimumaantal"
 
 #: editor/form-product.php:31
-msgid "Price incl. VAT"
-msgstr "Prijs incl. btw"
+msgid "Price (incl. VAT)"
+msgstr "Prijs (incl. btw)"
 
 #: editor/form-vouchers.php:13
 msgid "Template"
@@ -518,6 +522,9 @@ msgstr "Wis productencache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Price incl. VAT"
+#~ msgstr "Prijs incl. btw"
 
 #~ msgid "Price excl. VAT"
 #~ msgstr "Prijs excl. btw"

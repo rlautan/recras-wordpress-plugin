@@ -24,28 +24,28 @@ class OnlineBooking
         $arrangementID = isset($attributes['id']) ? $attributes['id'] : null;
         $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
         $useNewLibrary = isset($attributes['use_new_library']) ? (!!$attributes['use_new_library']) : false;
+        $previewTimes = isset($attributes['show_times']) ? (!!$attributes['show_times']) : false;
         $redirect = isset($attributes['redirect']) ? $attributes['redirect'] : null;
 
         if ($useNewLibrary) {
-            return self::generateBookingForm($subdomain, $arrangementID, $redirect);
+            return self::generateBookingForm($subdomain, $arrangementID, $redirect, $previewTimes);
         }
         return self::generateIframe($subdomain, $arrangementID, $enableResize);
     }
 
 
-    private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl)
+    private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl, $previewTimes)
     {
         $generatedDivID = uniqid('V');
+        $extraOptions = '';
 
-        $packageText = '';
         if ($arrangementID) {
-            $packageText = "package_id: " . $arrangementID . ",\n";
-            $packageText .= "autoScroll: false,";
+            $extraOptions .= "package_id: " . $arrangementID . ",\n";
+            $extraOptions .= "autoScroll: false,\n";
         }
 
-        $redirect = '';
         if ($redirectUrl) {
-            $redirect = "redirect_url: '" . $redirectUrl . "',";
+            $extraOptions .= "redirect_url: '" . $redirectUrl . "',\n";
         }
 
         return "
@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
         recras_hostname: '" . $subdomain . ".recras.nl',
         element: document.getElementById('" . $generatedDivID . "'),
         locale: '" . Settings::externalLocale() . "',
-        " . $packageText . "
-        " . $redirect . "
+        previewTimes: " . ($previewTimes ? 'true' : 'false') . ",
+        " . $extraOptions . "
     });
     new RecrasBooking(bookingOptions);
 });

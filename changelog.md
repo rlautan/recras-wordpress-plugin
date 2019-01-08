@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.7 (2019-01-08)
+* "Price excl. VAT" for products is not supported anymore due to API change
+* Update online booking library version:
+  - Disable date selection if there are min/max amount or dependency errors
+  - Fix "NaN" price when booking size input field was cleared
+  - Add option to show/hide programme times preview for online bookings (hidden by default)
+  - Add loading indicator when loading available time slots
+
 ## 2.0.6 (2018-11-30)
 Update online booking library version:
 * Don't scroll to amounts form when package is pre-selected

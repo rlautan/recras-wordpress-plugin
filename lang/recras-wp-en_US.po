@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2018-12-11 16:01+0100\n"
-"PO-Revision-Date: 2018-12-11 16:01+0100\n"
+"POT-Creation-Date: 2019-01-08 14:30+0100\n"
+"PO-Revision-Date: 2019-01-08 14:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -103,7 +103,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: editor/form-arrangement.php:48 editor/form-booking.php:45
+#: editor/form-arrangement.php:48 editor/form-booking.php:47
 #: editor/form-contact.php:70 editor/form-package-availability.php:32
 #: editor/form-product.php:34 editor/form-vouchers.php:40
 msgid "Insert shortcode"
@@ -117,27 +117,31 @@ msgstr ""
 msgid "Use new method?"
 msgstr ""
 
-#: editor/form-booking.php:27 editor/form-contact.php:55
+#: editor/form-booking.php:27
+msgid "Preview times in programme"
+msgstr ""
+
+#: editor/form-booking.php:29 editor/form-contact.php:55
 #: editor/form-vouchers.php:25
 msgid "Redirect after submission"
 msgstr ""
 
-#: editor/form-booking.php:29 editor/form-contact.php:57
+#: editor/form-booking.php:31 editor/form-contact.php:57
 #: editor/form-vouchers.php:27
 msgid "Don't redirect"
 msgstr ""
 
-#: editor/form-booking.php:30 editor/form-contact.php:58
+#: editor/form-booking.php:32 editor/form-contact.php:58
 #: editor/form-vouchers.php:28
 msgid "Pages"
 msgstr ""
 
-#: editor/form-booking.php:35 editor/form-contact.php:63
+#: editor/form-booking.php:37 editor/form-contact.php:63
 #: editor/form-vouchers.php:33
 msgid "Posts"
 msgstr ""
 
-#: editor/form-booking.php:41 editor/form-package-availability.php:29
+#: editor/form-booking.php:43 editor/form-package-availability.php:29
 msgid "Automatic resize?"
 msgstr ""
 
@@ -214,7 +218,7 @@ msgid "Minimum amount"
 msgstr ""
 
 #: editor/form-product.php:31
-msgid "Price incl. VAT"
+msgid "Price (incl. VAT)"
 msgstr ""
 
 #: editor/form-vouchers.php:13

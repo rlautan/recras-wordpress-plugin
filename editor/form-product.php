@@ -28,7 +28,7 @@
             <option value="image_tag"><?php _e('Image tag', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="image_url"><?php _e('Image URL', \Recras\Plugin::TEXT_DOMAIN); ?>
             <option value="minimum_amount"><?php _e('Minimum amount', \Recras\Plugin::TEXT_DOMAIN); ?>
-            <option value="price_incl_vat"><?php _e('Price incl. VAT', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <option value="price_incl_vat"><?php _e('Price (incl. VAT)', \Recras\Plugin::TEXT_DOMAIN); ?>
         </select>
 </dl>
 <button class="button button-primary" id="product_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>

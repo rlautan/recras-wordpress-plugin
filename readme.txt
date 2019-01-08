@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.3
 Requires PHP: 5.4.0
 Tested up to: 4.9
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -149,8 +149,13 @@ We do not support page builders at this time and have no plans to do so.
 
 == Changelog ==
 
-= master =
+= 2.0.7 =
 * "Price excl. VAT" for products is not supported anymore due to API change
+* Update online booking library version:
+  - Disable date selection if there are min/max amount or dependency errors
+  - Fix "NaN" price when booking size input field was cleared
+  - Add option to show/hide programme times preview for online bookings (hidden by default)
+  - Add loading indicator when loading available time slots
 
 = 2.0.6 =
 Update online booking library version:
@@ -205,43 +210,6 @@ Fixed a problem with the previous release
   - Show reasons why 'Book now' button is disabled
   - Fix disabled 'Book now' button after changing date/time
   - Fixes potential race condition
-
-= 1.14.6 =
-* Better loading of polyfill
-* Update online booking library version (fixes minimum amount of booking size row)
-
-= 1.14.5 =
-* No changes. Releasing previous version failed, trying to re-release.
-
-= 1.14.4 =
-* Update online booking library version
-
-= 1.14.3 =
-* Update online booking library version
-
-= 1.14.2 =
-* Fix online booking library not loading properly
-
-= 1.14.1 =
-* Update online booking library version
-
-= 1.14.0 =
-* Add option to try out the new online booking library
-
-= 1.13.0 =
-* Add voucher sales module
-
-= 1.12.3 =
-* Fix contact form submission when jQuery is loaded too late
-
-= 1.12.2 =
-* Show error instead of crashing when package programme is empty
-
-= 1.12.1 =
-* Enable automatic resizing initially for availability calendar
-
-= 1.12.0 =
-* Add option to disable automatic resizing of online booking & availability iframes
 
 = Older versions =
 See `changelog.md` for the full changelog.

@@ -24,6 +24,8 @@
         <?php } ?>
     <dt><label for="use_new_library"><?php _e('Use new method?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="use_new_library" checked>
+    <dt><label for="show_times"><?php _e('Preview times in programme', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><input type="checkbox" id="show_times">
     <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="redirect_page">
             <option value=""><?php _e("Don't redirect", \Recras\Plugin::TEXT_DOMAIN); ?>
@@ -48,6 +50,7 @@
     document.getElementById('use_new_library').addEventListener('change', function(){
         document.getElementById('auto_resize').disabled = document.getElementById('use_new_library').checked;
         document.getElementById('redirect_page').disabled = !document.getElementById('use_new_library').checked;
+        document.getElementById('show_times').disabled = !document.getElementById('use_new_library').checked;
     });
 
     document.getElementById('booking_submit').addEventListener('click', function(){
@@ -61,6 +64,9 @@
             shortcode += ' use_new_library=1';
             if (document.getElementById('redirect_page').value !== '') {
                 shortcode += ' redirect="' + document.getElementById('redirect_page').value + '"';
+            }
+            if (document.getElementById('show_times').checked) {
+                shortcode += ' show_times=1';
             }
         } else {
             if (!document.getElementById('auto_resize').checked) {
