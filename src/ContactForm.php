@@ -188,9 +188,11 @@ class ContactForm
         $html .= self::generateStartTag($options['element']);
         foreach ($formFields as $field) {
             if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($options['arrangement']))) { //TODO: this fails when arrangement is set but invalid
-                $html .= self::generateLabel($options['element'], $field, $options['showLabels']);
-                if ($field->verplicht && $options['showLabels']) {
-                    $html .= '<span class="recras-required">*</span>';
+                if ($options['showLabels']) {
+                    $html .= self::generateLabel($options['element'], $field);
+                    if ($field->verplicht) {
+                        $html .= '<span class="recras-required">*</span>';
+                    }
                 }
             }
             switch ($field->soort_invoer) {
@@ -347,28 +349,26 @@ class ContactForm
      *
      * @param string $mainElement
      * @param object $field
-     * @param bool $showLabel
      *
      * @return string
      */
-    private static function generateLabel($mainElement, $field, $showLabel)
+    private static function generateLabel($mainElement, $field)
     {
         $html = '';
         switch ($mainElement) {
             case 'dl':
-                $html .= ($showLabel ? '<dt>' : '');
+                $html .= '<dt>';
                 break;
             case 'ol':
-                $html .= ($showLabel ? '<li>' : '');
+                $html .= '<li>';
                 break;
             case 'table':
                 $html .= '<tr>';
-                $html .= ($showLabel ? '<td>' : '');
+                $html .= '<td>';
                 break;
         }
-        if ($showLabel) {
-            $html .= '<label for="field' . $field->id . '">' . $field->naam . '</label>';
-        }
+        $html .= '<label for="field' . $field->id . '">' . $field->naam . '</label>';
+
         return $html;
     }
 
