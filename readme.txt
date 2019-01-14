@@ -146,6 +146,7 @@ We do not support page builders at this time and have no plans to do so.
 
 == Screenshots ==
 1. Example of a programme with the Twenty Fifteen theme
+2. Example of package information, generated from Recras data
 
 == Changelog ==
 
