@@ -50,6 +50,14 @@
                 <option value="ol"><?php _e('Ordered list', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;ol&gt;)
                 <option value="table"><?php _e('Table', \Recras\Plugin::TEXT_DOMAIN); ?> (&lt;table&gt;)
             </select>
+    <dt><label for="single_choice_element"><?php _e('Element for single choices', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><select id="single_choice_element">
+                <option value="select" selected><?php _e('Drop-down list (Select)', \Recras\Plugin::TEXT_DOMAIN); ?>
+                <option value="radio"><?php _e('Radio buttons', \Recras\Plugin::TEXT_DOMAIN); ?>
+            </select>
+        <p class="recras-notice">
+            <?php _e('This relates to: customer type, package selection, gender, and single choice', \Recras\Plugin::TEXT_DOMAIN); ?><br>
+        </p>
     <dt><label for="submit_text"><?php _e('Submit button text', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="text" id="submit_text" value="<?php _e('Send', \Recras\Plugin::TEXT_DOMAIN); ?>">
     <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
@@ -70,6 +78,9 @@
 <button class="button button-primary" id="contact_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
 <script>
+    var DEFAULT_ELEMENT = 'dl';
+    var DEFAULT_SINGLE_CHOICE_ELEMENT = 'select';
+
     // Check which arrangements are available
     getContactFormArrangements(document.getElementById('contactform_id').value, '<?php echo $subdomain; ?>');
     document.getElementById('contactform_id').addEventListener('change', function(){
@@ -89,8 +100,11 @@
         if (document.getElementById('arrangement_id').value > 0) {
             shortcode += ' arrangement="' + document.getElementById('arrangement_id').value + '"';
         }
-        if (document.getElementById('container_element').value !== 'dl') {
+        if (document.getElementById('container_element').value !== DEFAULT_ELEMENT) {
             shortcode += ' element="' + document.getElementById('container_element').value + '"';
+        }
+        if (document.getElementById('single_choice_element').value !== DEFAULT_SINGLE_CHOICE_ELEMENT) {
+            shortcode += ' single_choice_element="' + document.getElementById('single_choice_element').value + '"';
         }
         if (document.getElementById('submit_text').value !== '<?php _e('Send', \Recras\Plugin::TEXT_DOMAIN); ?>') {
             shortcode += ' submittext="' + document.getElementById('submit_text').value + '"';

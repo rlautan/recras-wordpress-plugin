@@ -54,6 +54,11 @@ class ContactForm
             $element = $attributes['element'];
         }
 
+        $singleChoiceElement = 'select';
+        if (isset($attributes['single_choice_element']) && in_array($attributes['single_choice_element'], self::getValidSingleChoiceElements())) {
+            $singleChoiceElement = $attributes['single_choice_element'];
+        }
+
         $arrangementID = null;
         if (isset($attributes['arrangement'])) {
             $arrangementID = (int) $attributes['arrangement'];
@@ -84,6 +89,7 @@ class ContactForm
             'placeholders' => $showPlaceholders,
             'redirect' => $redirect,
             'showLabels' => $showLabels,
+            'singleChoiceElement' => $singleChoiceElement,
             'subdomain' => $subdomain,
             'submitText' => $submitText,
         ];
@@ -205,7 +211,8 @@ class ContactForm
                     }
                     // The  isset()  is in case a package is set, but it is not valid
                     if (is_null($options['arrangement']) || !isset($arrangementen[$options['arrangement']])) {
-                        $html .= self::generateSubTag($options['element']) . self::generateSelect($field, $arrangementen, [
+                        $html .= self::generateSubTag($options['element']) . self::generateSingleChoice($field, $arrangementen, [
+                            'element' => $options['singleChoiceElement'],
                             'placeholder' => $options['placeholders'],
                         ]);
                     } else {
@@ -243,14 +250,18 @@ class ContactForm
                     break;
                 case 'contact.soort_klant':
                     $keuzes = array_combine($field->mogelijke_keuzes, $field->mogelijke_keuzes);
-                    $html .= self::generateSubTag($options['element']) . self::generateRadio($field, $keuzes);
+                    $html .= self::generateSubTag($options['element']) . self::generateSingleChoice($field, $keuzes, [
+                            'element' => $options['singleChoiceElement'],
+                            'placeholder' => $options['placeholders'],
+                        ]);
                     break;
                 case 'contactpersoon.geslacht':
-                    $html .= self::generateSubTag($options['element']) . self::generateSelect($field, [
+                    $html .= self::generateSubTag($options['element']) . self::generateSingleChoice($field, [
                         'onbekend' => __('Unknown', Plugin::TEXT_DOMAIN),
                         'man' => __('Male', Plugin::TEXT_DOMAIN),
                         'vrouw' => __('Female', Plugin::TEXT_DOMAIN),
                     ], [
+                        'element' => $options['singleChoiceElement'],
                         'placeholder' => $options['placeholders'],
                     ]);
                     break;
@@ -276,7 +287,10 @@ class ContactForm
                     break;
                 case 'keuze_enkel':
                     $keuzes = array_combine($field->mogelijke_keuzes, $field->mogelijke_keuzes);
-                    $html .= self::generateSubTag($options['element']) . self::generateRadio($field, $keuzes);
+                    $html .= self::generateSubTag($options['element']) . self::generateSingleChoice($field, $keuzes, [
+                        'element' => $options['singleChoiceElement'],
+                        'placeholder' => $options['placeholders'],
+                    ]);
                     break;
                 case 'veel_tekst':
                     $html .= self::generateSubTag($options['element']) . self::generateTextarea($field, [
@@ -413,6 +427,25 @@ class ContactForm
         return $html;
     }
 
+    /**
+     * Generate a dropdown field or radio buttons, depending on the element of choice
+     *
+     * @param object $field
+     * @param array $selectItems
+     * @param array $options
+     *
+     * @return string
+     */
+    public static function generateSingleChoice($field, $selectItems, $options = [])
+    {
+        if (isset($options['element']) && $options['element'] === 'radio') {
+            unset($selectItems[0]);
+            return self::generateRadio($field, $selectItems);
+        } else {
+            return self::generateSelect($field, $selectItems, $options);
+        }
+    }
+
 
     /**
      * Generate an HTML start tag
@@ -546,6 +579,17 @@ class ContactForm
     public static function getValidElements()
     {
         return ['dl', 'table', 'ol'];
+    }
+
+
+    /**
+     * Get a list of all valid single choice elements
+     *
+     * @return array
+     */
+    public static function getValidSingleChoiceElements()
+    {
+        return ['select', 'radio'];
     }
 
 

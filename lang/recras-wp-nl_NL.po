@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-01-08 14:30+0100\n"
-"PO-Revision-Date: 2019-01-08 14:30+0100\n"
+"POT-Creation-Date: 2019-01-14 14:19+0100\n"
+"PO-Revision-Date: 2019-01-14 14:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -107,7 +107,7 @@ msgid "No"
 msgstr "Nee"
 
 #: editor/form-arrangement.php:48 editor/form-booking.php:47
-#: editor/form-contact.php:70 editor/form-package-availability.php:32
+#: editor/form-contact.php:78 editor/form-package-availability.php:32
 #: editor/form-product.php:34 editor/form-vouchers.php:40
 msgid "Insert shortcode"
 msgstr "Voeg shortcode in"
@@ -124,22 +124,22 @@ msgstr "Nieuwe methode gebruiken?"
 msgid "Preview times in programme"
 msgstr "Toon voorbeeldtijden in programma"
 
-#: editor/form-booking.php:29 editor/form-contact.php:55
+#: editor/form-booking.php:29 editor/form-contact.php:63
 #: editor/form-vouchers.php:25
 msgid "Redirect after submission"
 msgstr "Doorsturen na versturen"
 
-#: editor/form-booking.php:31 editor/form-contact.php:57
+#: editor/form-booking.php:31 editor/form-contact.php:65
 #: editor/form-vouchers.php:27
 msgid "Don't redirect"
 msgstr "Niet doorsturen"
 
-#: editor/form-booking.php:32 editor/form-contact.php:58
+#: editor/form-booking.php:32 editor/form-contact.php:66
 #: editor/form-vouchers.php:28
 msgid "Pages"
 msgstr "Pagina's"
 
-#: editor/form-booking.php:37 editor/form-contact.php:63
+#: editor/form-booking.php:37 editor/form-contact.php:71
 #: editor/form-vouchers.php:33
 msgid "Posts"
 msgstr "Berichten"
@@ -199,10 +199,30 @@ msgid "Table"
 msgstr "Tabel"
 
 #: editor/form-contact.php:53
+msgid "Element for single choices"
+msgstr "Element voor \"enkele keuze\""
+
+#: editor/form-contact.php:55
+msgid "Drop-down list (Select)"
+msgstr "Dropdownlijst (select)"
+
+#: editor/form-contact.php:56
+msgid "Radio buttons"
+msgstr "Keuzerondjes (radioknoppen)"
+
+#: editor/form-contact.php:59
+msgid ""
+"This relates to: customer type, package selection, gender, and single choice"
+msgstr ""
+"Dit heet betrekking op: klanttype, arrangementkeuze, geslacht en \"enkele "
+"keuze\""
+
+#: editor/form-contact.php:61
 msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
-#: editor/form-contact.php:54 editor/form-contact.php:95 src/ContactForm.php:73
+#: editor/form-contact.php:62 editor/form-contact.php:109
+#: src/ContactForm.php:78
 msgid "Send"
 msgstr "Versturen"
 
@@ -294,21 +314,21 @@ msgstr "Geen locatie opgegeven"
 msgid "Error: %s"
 msgstr "Fout: %s"
 
-#: src/ContactForm.php:69
+#: src/ContactForm.php:74
 msgid "Error: package is set, but contact form does not support packages"
 msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
 
-#: src/ContactForm.php:248
+#: src/ContactForm.php:260
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/ContactForm.php:249
+#: src/ContactForm.php:261
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:250
+#: src/ContactForm.php:262
 msgid "Female"
 msgstr "Vrouw"
 

@@ -150,6 +150,9 @@ We do not support page builders at this time and have no plans to do so.
 
 == Changelog ==
 
+= branch 10-radiobuttons-select =
+Choose between drop-down or radio buttons for single-choice fields (customer type, package selection, gender, and single choice) in contact forms
+
 = 2.0.7 =
 * "Price excl. VAT" for products is not supported anymore due to API change
 * Update online booking library version:
