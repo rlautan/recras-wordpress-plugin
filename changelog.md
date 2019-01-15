@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.0 (2019-01-15)
+Choose between drop-down or radio buttons for single-choice fields (customer type, package selection, gender, and single choice) in contact forms
+
 ## 2.0.7 (2019-01-08)
 * "Price excl. VAT" for products is not supported anymore due to API change
 * Update online booking library version:
