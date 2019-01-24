@@ -17,7 +17,6 @@ class Plugin
      */
     public function __construct()
     {
-        global $wp_version;
         $this->setBaseUrl();
 
         // Init Localisation
@@ -40,7 +39,7 @@ class Plugin
 
         $this->addShortcodes();
 
-        if (version_compare($wp_version, '5.0', '>=')) {
+        if (version_compare(get_bloginfo('version'), '5.0', '>=')) {
             add_action('tgmpa_register', [$this, 'registerRequiredPlugins']);
         }
     }
