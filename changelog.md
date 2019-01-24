@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 2.1.1 (2019-01-24)
 Update online booking library version. This fixes a few things with the new online booking method when you are logged in to your own Recras.
 
 ## 2.1.0 (2019-01-15)

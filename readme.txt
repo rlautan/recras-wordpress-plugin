@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.7
 Requires PHP: 5.4.0
 Tested up to: 5.1
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -149,6 +149,9 @@ We do not support page builders at this time and have no plans to do so.
 2. Example of package information, generated from Recras data
 
 == Changelog ==
+
+= 2.1.1 =
+Update online booking library version. This fixes a few things with the new online booking method when you are logged in to your own Recras.
 
 = 2.1.0 =
 Choose between drop-down or radio buttons for single-choice fields (customer type, package selection, gender, and single choice) in contact forms
