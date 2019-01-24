@@ -138,13 +138,15 @@ All data from your Recras is cached for up to 24 hours. If you make important ch
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
-=== Do you support Gutenberg? ===
+
+= Do you support Gutenberg? =
 Not right now. We will keep an eye on it, but we feel it is a rushed decision by the WordPress developers and should not have been released just yet.
 
-=== Do you support Visual Composer, Brizy, etc. ? ===
+= Do you support Visual Composer, Brizy, etc. ? =
 We do not support page builders at this time and have no plans to do so.
 
 == Screenshots ==
+
 1. Example of a programme with the Twenty Fifteen theme
 2. Example of package information, generated from Recras data
 
@@ -204,25 +206,11 @@ Fixed a problem with the previous release
 * Changed: the discount and voucher fields for online bookings are now combined. This means there are some backward incompatible CSS changes. If you are **not** using an online booking theme, you might need to make some changes to your CSS when installing this version. Details on these changes can be found in the [changelog for the library](https://github.com/Recras/online-booking-js/blob/master/changelog.md#080-2018-10-29)
 * Removed: `[arrangement]` and `[recras-arrangement]` shortcodes. These have been replaced by `[recras-package]` over 1.5 years ago.
 
-= 1.15.2 =
-* Update online booking library version (fixes prices sometimes being shown incorrectly)
-
-= 1.15.1 =
-* Update online booking library version (fixes online bookings that can only be paid afterwards)
-
-= 1.15.0 =
-* Add themes for new online booking method
-* Enable "Use new library" by default
-* Update online booking library version:
-  - Show reasons why 'Book now' button is disabled
-  - Fix disabled 'Book now' button after changing date/time
-  - Fixes potential race condition
-
 = Older versions =
 See `changelog.md` for the full changelog.
 
 == Upgrade Notice ==
-Nothing to report.
+See changelog. We use semantic versioning for the plugin.
 
 == Support ==
 We would appreciate it if you use [our GitHub page](https://github.com/Recras/recras-wordpress-plugin/issues) for bug reports, pull requests and general questions. If you do not have a GitHub account, you can use the Support forum on wordpress.org.
