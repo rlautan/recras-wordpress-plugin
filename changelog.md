@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.2 (2019-01-30)
+Update online booking library version. This fixes the minimum amount of "fixed programme" input fields.
+
 ## 2.1.1 (2019-01-24)
 Update online booking library version. This fixes a few things with the new online booking method when you are logged in to your own Recras.
 
