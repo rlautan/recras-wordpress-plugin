@@ -11,19 +11,25 @@ const {
     sprintf
 } = wp.i18n;
 
+const recrasHelper = {
+    typeBoolean: (defVal) => ({
+        default: (defVal !== undefined) ? defVal : true,
+        type: 'boolean',
+    }),
+    typeString: (defVal) => ({
+        default: (defVal !== undefined) ? defVal : '',
+        type: 'string',
+    }),
+};
+
 registerBlockType('recras/availability', {
     title: __('Availability calendar'),
     icon: 'calendar-alt',
     category: 'recras',
 
     attributes: {
-        id: {
-            type: 'string',
-        },
-        autoresize: {
-            type: 'boolean',
-            default: true,
-        }
+        id: recrasHelper.typeString(),
+        autoresize: recrasHelper.typeBoolean(true),
     },
 
     edit: function(props) {
@@ -92,40 +98,15 @@ registerBlockType('recras/contactform', {
     category: 'recras',
 
     attributes: {
-        id: {
-            type: 'string',
-        },
-        showtitle: {
-            type: 'boolean',
-            default: true,
-        },
-        showlabels: {
-            type: 'boolean',
-            default: true,
-        },
-        showplaceholders: {
-            type: 'boolean',
-            default: true,
-        },
-        arrangement: {
-            type: 'string',
-        },
-        element: {
-            type: 'string',
-            default: 'dl',
-        },
-        single_choice_element: {
-            type: 'string',
-            default: 'select',
-        },
-        submittext: {
-            type: 'string',
-            default: __('Send'),
-        },
-        redirect: {
-            type: 'string',
-            default: '',
-        },
+        id: recrasHelper.typeString(),
+        showtitle: recrasHelper.typeBoolean(true),
+        showlabels: recrasHelper.typeBoolean(true),
+        showplaceholders: recrasHelper.typeBoolean(true),
+        arrangement: recrasHelper.typeString(),
+        element: recrasHelper.typeString('dl'),
+        single_choice_element: recrasHelper.typeString('select'),
+        submittext: recrasHelper.typeString(__('Send')),
+        redirect: recrasHelper.typeString(),
     },
 
     edit: function(props) {
@@ -318,13 +299,8 @@ registerBlockType('recras/package', {
     category: 'recras',
 
     attributes: {
-        id: {
-            type: 'string',
-        },
-        show: {
-            type: 'string',
-            default: 'title',
-        }
+        id: recrasHelper.typeString(),
+        show: recrasHelper.typeString('title'),
     },
 
     edit: function(props) {
@@ -428,13 +404,8 @@ registerBlockType('recras/product', {
     category: 'recras',
 
     attributes: {
-        id: {
-            type: 'string',
-        },
-        show: {
-            type: 'string',
-            default: 'title',
-        }
+        id: recrasHelper.typeString(),
+        show: recrasHelper.typeString('title'),
     },
 
     edit: function(props) {
