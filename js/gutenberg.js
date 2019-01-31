@@ -12,6 +12,7 @@ const {
 } = wp.i18n;
 
 const recrasHelper = {
+    serverSideRender: () => null,
     typeBoolean: (defVal) => ({
         default: (defVal !== undefined) ? defVal : true,
         type: 'boolean',
@@ -45,7 +46,7 @@ registerBlockType('recras/availability', {
             // update the 'id' attribute to propagate the change.
             onChange: function(newVal) {
                 props.setAttributes({
-                    id: newVal
+                    id: Number(newVal),
                 });
             },
             placeholder: __('ID of the package'),
@@ -54,9 +55,7 @@ registerBlockType('recras/availability', {
             min: 1,
         };
         var optionsAutoresizeControl = {
-            checked: autoresize, // Existing 'id' value for the block.
-            // When the text input value is changed, we need to
-            // update the 'id' attribute to propagate the change.
+            checked: autoresize,
             onChange: function(newVal) {
                 props.setAttributes({
                     autoresize: newVal
@@ -87,9 +86,7 @@ registerBlockType('recras/availability', {
         return retval;
     },
 
-    save: function() {
-        return null; // Server-side render
-    },
+    save: recrasHelper.serverSideRender,
 });
 
 registerBlockType('recras/contactform', {
@@ -127,7 +124,7 @@ registerBlockType('recras/contactform', {
             value: id,
             onChange: function(newVal) {
                 props.setAttributes({
-                    id: newVal
+                    id: Number(newVal),
                 });
             },
             placeholder: __('ID of the form'),
@@ -136,9 +133,7 @@ registerBlockType('recras/contactform', {
             min: 1,
         };
         var optionsShowTitleControl = {
-            checked: showtitle, // Existing 'id' value for the block.
-            // When the text input value is changed, we need to
-            // update the 'id' attribute to propagate the change.
+            checked: showtitle,
             onChange: function(newVal) {
                 props.setAttributes({
                     showtitle: newVal
@@ -168,7 +163,7 @@ registerBlockType('recras/contactform', {
             value: arrangement,
             onChange: function(newVal) {
                 props.setAttributes({
-                    arrangement: newVal
+                    arrangement: newVal ? Number(newVal) : '',
                 });
             },
             placeholder: __('ID of the package (optional)'),
@@ -272,9 +267,7 @@ registerBlockType('recras/contactform', {
         return retval;
     },
 
-    save: function() {
-        return null; // Server-side render
-    },
+    save: recrasHelper.serverSideRender,
 });
 
 //TODO: online booking
@@ -314,7 +307,7 @@ registerBlockType('recras/package', {
             value: id,
             onChange: function(newVal) {
                 props.setAttributes({
-                    id: newVal
+                    id: Number(newVal),
                 });
             },
             placeholder: __('ID of the package'),
@@ -393,9 +386,7 @@ registerBlockType('recras/package', {
         return retval;
     },
 
-    save: function() {
-        return null; // Server-side render
-    },
+    save: recrasHelper.serverSideRender,
 });
 
 registerBlockType('recras/product', {
@@ -419,7 +410,7 @@ registerBlockType('recras/product', {
             value: id,
             onChange: function(newVal) {
                 props.setAttributes({
-                    id: newVal
+                    id: Number(newVal),
                 });
             },
             placeholder: __('ID of the product'),
@@ -482,9 +473,7 @@ registerBlockType('recras/product', {
         return retval;
     },
 
-    save: function() {
-        return null; // Server-side render
-    },
+    save: recrasHelper.serverSideRender,
 });
 
 //TODO: voucher sales
@@ -503,9 +492,7 @@ registerBlockType('recras/voucher', {
 
         let retval = [];
         var optionsIDControl = {
-            value: template, // Existing 'template' value for the block.
-            // When the text input value is changed, we need to
-            // update the 'template' attribute to propagate the change.
+            value: template,
             onChange: function(newVal) {
                 props.setAttributes({
                     template: newVal
@@ -516,9 +503,7 @@ registerBlockType('recras/voucher', {
         };
 
         var optionsRedirectControl = {
-            selected: redirect, // Existing 'template' value for the block.
-            // When the text input value is changed, we need to
-            // update the 'template' attribute to propagate the change.
+            selected: redirect,
             onChange: function(newVal) {
                 props.setAttributes({
                     redirect: newVal
@@ -586,7 +571,5 @@ registerBlockType('recras/voucher', {
         return '';
     },
 
-    save: function() {
-        return null; // Server-side render
-    },
+    save: recrasHelper.serverSideRender,
 });
