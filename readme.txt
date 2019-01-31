@@ -59,7 +59,7 @@ Add the `[recras-contact]` shortcode anywhere on your site. The following parame
 * arrangement - for forms where the user can select a package, setting this parameter will select the package automatically and hide the field for the user.
 * element - show the contact form as definition list (dl - default), ordered list (ol), or table (table).
 * showlabels - show the label for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
-* showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value. Placeholders are [not supported](http://caniuse.com/#search=placeholder) in Internet Explorer versions 9 and lower.
+* showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
 * submittext - the text for the form submission button. Defaults to "Send"
 * redirect - a URL that the user is redirected to, after submitting the form successfully.
 
@@ -108,7 +108,7 @@ Add the `[recras-vouchers]` shortcode anywhere on your site. The following param
 This will a voucher sales module to your website.
 
 = Date/Time picker =
-By default, date and time pickers in contact forms use whatever the browser has available. Currently (December 2018) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
+By default, date and time pickers in contact forms use whatever the browser has available. Currently (February 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
 
 **Note**: this setting only applies to contact forms, not to "new style" online booking.
 
@@ -140,7 +140,7 @@ All data from your Recras is cached for up to 24 hours. If you make important ch
 == Frequently Asked Questions ==
 
 = Do you support Gutenberg? =
-Not right now. We will keep an eye on it, but we feel it is a rushed decision by the WordPress developers and should not have been released just yet.
+We are working on it. If you are tech-savvy, you can check out the `gutenberg` branch on GitHub.
 
 = Do you support Visual Composer, Brizy, etc. ? =
 We do not support page builders at this time and have no plans to do so.
