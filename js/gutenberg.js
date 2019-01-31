@@ -62,7 +62,7 @@ registerBlockType('recras/availability', {
         retval.push(el(
             'div',
             null,
-            __('Recras Availability calendar')
+            __('Recras - Availability calendar')
         ));
         /*if (id) {
             retval.push(el(
@@ -92,15 +92,211 @@ registerBlockType('recras/contactform', {
     category: 'recras',
 
     attributes: {
+        id: {
+            type: 'string',
+        },
+        showtitle: {
+            type: 'boolean',
+            default: true,
+        },
+        showlabels: {
+            type: 'boolean',
+            default: true,
+        },
+        showplaceholders: {
+            type: 'boolean',
+            default: true,
+        },
+        arrangement: {
+            type: 'string',
+        },
+        element: {
+            type: 'string',
+            default: 'dl',
+        },
+        single_choice_element: {
+            type: 'string',
+            default: 'select',
+        },
+        submittext: {
+            type: 'string',
+            default: __('Send'),
+        },
+        redirect: {
+            type: 'string',
+            default: '',
+        },
     },
 
     edit: function(props) {
+        const {
+            id,
+            showtitle,
+            showlabels,
+            showplaceholders,
+            arrangement,
+            element,
+            single_choice_element,
+            submittext,
+            redirect,
+        } = props.attributes;
+
+        let retval = [];
+        var optionsIDControl = {
+            value: id,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    id: newVal
+                });
+            },
+            placeholder: __('ID of the form'),
+            label: __('ID of the form'),
+            type: 'number',
+            min: 1,
+        };
+        var optionsShowTitleControl = {
+            checked: showtitle, // Existing 'id' value for the block.
+            // When the text input value is changed, we need to
+            // update the 'id' attribute to propagate the change.
+            onChange: function(newVal) {
+                props.setAttributes({
+                    showtitle: newVal
+                });
+            },
+            label: __('Show title?'),
+        };
+        var optionsShowLabelsControl = {
+            checked: showlabels,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    showlabels: newVal
+                });
+            },
+            label: __('Show labels?'),
+        };
+        var optionsShowPlaceholdersControl = {
+            checked: showplaceholders,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    showplaceholders: newVal
+                });
+            },
+            label: __('Show placeholders?'),
+        };
+        var optionsPackageControl = {
+            value: arrangement,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    arrangement: newVal
+                });
+            },
+            placeholder: __('ID of the package (optional)'),
+            label: __('ID of the package (optional)'),
+            type: 'number',
+            min: 0,
+        };
+        var optionsElementControl = {
+            value: element,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    element: newVal
+                });
+            },
+            options: [
+                {
+                    value: 'dl',
+                    label: __('Definition list'),
+                },
+                {
+                    value: 'ol',
+                    label: __('Ordered list'),
+                },
+                {
+                    value: 'table',
+                    label: __('Table'),
+                },
+            ],
+            label: __('HTML element'),
+        };
+        var optionsSingleChoiceControl = {
+            value: single_choice_element,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    single_choice_element: newVal
+                });
+            },
+            options: [
+                {
+                    value: 'select',
+                    label: __('Drop-down list (Select)'),
+                },
+                {
+                    value: 'radio',
+                    label: __('Radio buttons'),
+                },
+            ],
+            label: __('Element for single choices'),
+        };
+        var optionsSubmitTextControl = {
+            value: submittext,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    submittext: newVal
+                });
+            },
+            placeholder: __('Submit button text'),
+            label: __('Submit button text'),
+        };
+        var optionsRedirectControl = {
+            value: redirect,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    redirect: newVal
+                });
+            },
+            placeholder: __('i.e. https://www.recras.com/thanks/'),
+            label: __('URL to redirect to (optional, leave empty to not redirect)'),
+            type: 'url',
+        };
+
+        retval.push(el(
+            'div',
+            null,
+            __('Recras - Contact form')
+        ));
+
+        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(CheckboxControl, optionsShowTitleControl));
+        retval.push(el(CheckboxControl, optionsShowLabelsControl));
+        retval.push(el(CheckboxControl, optionsShowPlaceholdersControl));
+        retval.push(el(TextControl, optionsPackageControl));
+        retval.push(el(
+            'p',
+            {
+                class: 'recrasInfoText',
+            },
+            __('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')
+        ));
+        retval.push(el(
+            'p',
+            {
+                class: 'recrasInfoText',
+            },
+            __('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')
+        ));
+        retval.push(el(SelectControl, optionsElementControl));
+        retval.push(el(SelectControl, optionsSingleChoiceControl));
+        retval.push(el(TextControl, optionsSubmitTextControl));
+        retval.push(el(TextControl, optionsRedirectControl));
+        return retval;
     },
 
-    save: function(props) {
+    save: function() {
+        return null; // Server-side render
     },
 });
 
+//TODO: online booking
 registerBlockType('recras/onlinebooking', {
     title: __('Online booking'),
     icon: 'admin-site',
@@ -213,7 +409,7 @@ registerBlockType('recras/package', {
         retval.push(el(
             'div',
             null,
-            __('Recras Package')
+            __('Recras - Package')
         ));
 
         retval.push(el(TextControl, optionsIDControl));
@@ -307,7 +503,7 @@ registerBlockType('recras/product', {
         retval.push(el(
             'div',
             null,
-            __('Recras Product')
+            __('Recras - Product')
         ));
 
         retval.push(el(TextControl, optionsIDControl));
@@ -320,6 +516,7 @@ registerBlockType('recras/product', {
     },
 });
 
+//TODO: voucher sales
 registerBlockType('recras/voucher', {
     title: __('Voucher'),
     icon: 'money',
@@ -390,7 +587,7 @@ registerBlockType('recras/voucher', {
         retval.push(el(
             'div',
             null,
-            __('Recras Voucher sales module')
+            __('Recras - Voucher sales module')
         ));
         if (template) {
             retval.push(el(
