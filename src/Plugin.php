@@ -185,7 +185,6 @@ class Plugin
             'package' => __('Package', $this::TEXT_DOMAIN),
             'package_availability' => __('Package availability', $this::TEXT_DOMAIN),
             'product' => __('Product', $this::TEXT_DOMAIN),
-            'subdomain' => get_option('recras_subdomain'),
             'vouchers' => __('Vouchers', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');

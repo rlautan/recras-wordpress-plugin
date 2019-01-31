@@ -12,7 +12,7 @@ const {
 } = wp.i18n;
 
 registerBlockType('recras/availability', {
-    title: 'Availability calendar',
+    title: __('Availability calendar'),
     icon: 'calendar-alt',
     category: 'recras',
 
@@ -43,7 +43,9 @@ registerBlockType('recras/availability', {
                 });
             },
             placeholder: __('ID of the package'),
-            label: 'ID of the package',
+            label: __('ID of the package'),
+            type: 'number',
+            min: 1,
         };
         var optionsAutoresizeControl = {
             checked: autoresize, // Existing 'id' value for the block.
@@ -54,7 +56,7 @@ registerBlockType('recras/availability', {
                     autoresize: newVal
                 });
             },
-            label: 'Auto resize iframe',
+            label: __('Auto resize iframe'),
         };
 
         retval.push(el(
@@ -62,7 +64,7 @@ registerBlockType('recras/availability', {
             null,
             __('Recras Availability calendar')
         ));
-        if (id) {
+        /*if (id) {
             retval.push(el(
                 'div',
                 null,
@@ -73,7 +75,7 @@ registerBlockType('recras/availability', {
             'div',
             null,
             sprintf(__('Auto resize?: %s'), autoresize ? __('yes') : __('no'))
-        ));
+        ));*/
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(CheckboxControl, optionsAutoresizeControl));
         return retval;
@@ -85,7 +87,7 @@ registerBlockType('recras/availability', {
 });
 
 registerBlockType('recras/contactform', {
-    title: 'Contact form',
+    title: __('Contact form'),
     icon: 'email',
     category: 'recras',
 
@@ -100,7 +102,7 @@ registerBlockType('recras/contactform', {
 });
 
 registerBlockType('recras/onlinebooking', {
-    title: 'Online booking',
+    title: __('Online booking'),
     icon: 'admin-site',
     category: 'recras',
 
@@ -115,7 +117,7 @@ registerBlockType('recras/onlinebooking', {
 });
 
 registerBlockType('recras/package', {
-    title: 'Package',
+    title: __('Package'),
     icon: 'clipboard',
     category: 'recras',
 
@@ -130,22 +132,101 @@ registerBlockType('recras/package', {
 });
 
 registerBlockType('recras/product', {
-    title: 'Product',
+    title: __('Product'),
     icon: 'cart',
     category: 'recras',
 
     attributes: {
+        id: {
+            type: 'string',
+        },
+        show: {
+            type: 'string',
+            default: 'title',
+        }
     },
 
     edit: function(props) {
+        const {
+            id,
+            show,
+        } = props.attributes;
+
+        let retval = [];
+        var optionsIDControl = {
+            value: id,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    id: newVal
+                });
+            },
+            placeholder: __('ID of the product'),
+            label: __('ID of the product'),
+            type: 'number',
+            min: 1,
+        };
+        var optionsShowWhatControl = {
+            value: show,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    show: newVal
+                });
+            },
+            options: [
+                {
+                    value: 'description_long',
+                    label: __('Description (long)'),
+                },
+                {
+                    value: 'description',
+                    label: __('Description (short)'),
+                },
+                {
+                    value: 'duration',
+                    label: __('Duration'),
+                },
+                {
+                    value: 'image_tag',
+                    label: __('Image tag'),
+                },
+                {
+                    value: 'image_url',
+                    label: __('Image URL'),
+                },
+                {
+                    value: 'minimum_amount',
+                    label: __('Minimum amount'),
+                },
+                {
+                    value: 'price_incl_vat',
+                    label: __('Price (incl. VAT)'),
+                },
+                {
+                    value: 'title',
+                    label: __('Title'),
+                },
+            ],
+            label: __('Show what'),
+        };
+
+        retval.push(el(
+            'div',
+            null,
+            __('Recras Product')
+        ));
+
+        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(SelectControl, optionsShowWhatControl));
+        return retval;
     },
 
-    save: function(props) {
+    save: function() {
+        return null; // Server-side render
     },
 });
 
 registerBlockType('recras/voucher', {
-    title: 'Voucher',
+    title: __('Voucher'),
     icon: 'money',
     category: 'recras',
 
