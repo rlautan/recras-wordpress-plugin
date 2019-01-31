@@ -13,6 +13,24 @@ const {
 
 const recrasHelper = {
     serverSideRender: () => null,
+
+    elementInfo: (text) => {
+        return el(
+            'p',
+            {
+                class: 'recrasInfoText',
+            },
+            text
+        );
+    },
+    elementText: (text) => {
+        return el(
+            'div',
+            null,
+            text
+        );
+    },
+
     typeBoolean: (defVal) => ({
         default: (defVal !== undefined) ? defVal : true,
         type: 'boolean',
@@ -64,11 +82,7 @@ registerBlockType('recras/availability', {
             label: __('Auto resize iframe'),
         };
 
-        retval.push(el(
-            'div',
-            null,
-            __('Recras - Availability calendar')
-        ));
+        retval.push(recrasHelper.elementText(__('Recras - Availability calendar')));
         /*if (id) {
             retval.push(el(
                 'div',
@@ -235,31 +249,17 @@ registerBlockType('recras/contactform', {
             type: 'url',
         };
 
-        retval.push(el(
-            'div',
-            null,
-            __('Recras - Contact form')
-        ));
+        retval.push(recrasHelper.elementText(__('Recras - Contact form')));
 
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(CheckboxControl, optionsShowTitleControl));
         retval.push(el(CheckboxControl, optionsShowLabelsControl));
         retval.push(el(CheckboxControl, optionsShowPlaceholdersControl));
         retval.push(el(TextControl, optionsPackageControl));
-        retval.push(el(
-            'p',
-            {
-                class: 'recrasInfoText',
-            },
-            __('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')
-        ));
-        retval.push(el(
-            'p',
-            {
-                class: 'recrasInfoText',
-            },
-            __('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')
-        ));
+
+        retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')));
+        retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')));
+
         retval.push(el(SelectControl, optionsElementControl));
         retval.push(el(SelectControl, optionsSingleChoiceControl));
         retval.push(el(TextControl, optionsSubmitTextControl));
@@ -375,11 +375,7 @@ registerBlockType('recras/package', {
             label: __('Show what'),
         };
 
-        retval.push(el(
-            'div',
-            null,
-            __('Recras - Package')
-        ));
+        retval.push(recrasHelper.elementText(__('Recras - Package')));
 
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(SelectControl, optionsShowWhatControl));
@@ -462,11 +458,7 @@ registerBlockType('recras/product', {
             label: __('Show what'),
         };
 
-        retval.push(el(
-            'div',
-            null,
-            __('Recras - Product')
-        ));
+        retval.push(recrasHelper.elementText(__('Recras - Product')));
 
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(SelectControl, optionsShowWhatControl));
@@ -540,11 +532,8 @@ registerBlockType('recras/voucher', {
                 optionsRedirectControl.options = optionsRedirectControl.options.concat(options);
             });
 
-        retval.push(el(
-            'div',
-            null,
-            __('Recras - Voucher sales module')
-        ));
+        retval.push(recrasHelper.elementText(__('Recras - Voucher sales module')));
+        
         if (template) {
             retval.push(el(
                 'div',
