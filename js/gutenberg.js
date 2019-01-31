@@ -58,7 +58,7 @@ registerBlockType('recras/availability', {
         } = props.attributes;
 
         let retval = [];
-        var optionsIDControl = {
+        const optionsIDControl = {
             value: id, // Existing 'id' value for the block.
             // When the text input value is changed, we need to
             // update the 'id' attribute to propagate the change.
@@ -72,7 +72,7 @@ registerBlockType('recras/availability', {
             type: 'number',
             min: 1,
         };
-        var optionsAutoresizeControl = {
+        const optionsAutoresizeControl = {
             checked: autoresize,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -134,7 +134,7 @@ registerBlockType('recras/contactform', {
         } = props.attributes;
 
         let retval = [];
-        var optionsIDControl = {
+        const optionsIDControl = {
             value: id,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -146,7 +146,7 @@ registerBlockType('recras/contactform', {
             type: 'number',
             min: 1,
         };
-        var optionsShowTitleControl = {
+        const optionsShowTitleControl = {
             checked: showtitle,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -155,7 +155,7 @@ registerBlockType('recras/contactform', {
             },
             label: __('Show title?'),
         };
-        var optionsShowLabelsControl = {
+        const optionsShowLabelsControl = {
             checked: showlabels,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -164,7 +164,7 @@ registerBlockType('recras/contactform', {
             },
             label: __('Show labels?'),
         };
-        var optionsShowPlaceholdersControl = {
+        const optionsShowPlaceholdersControl = {
             checked: showplaceholders,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -173,7 +173,7 @@ registerBlockType('recras/contactform', {
             },
             label: __('Show placeholders?'),
         };
-        var optionsPackageControl = {
+        const optionsPackageControl = {
             value: arrangement,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -185,7 +185,7 @@ registerBlockType('recras/contactform', {
             type: 'number',
             min: 0,
         };
-        var optionsElementControl = {
+        const optionsElementControl = {
             value: element,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -208,7 +208,7 @@ registerBlockType('recras/contactform', {
             ],
             label: __('HTML element'),
         };
-        var optionsSingleChoiceControl = {
+        const optionsSingleChoiceControl = {
             value: single_choice_element,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -227,7 +227,7 @@ registerBlockType('recras/contactform', {
             ],
             label: __('Element for single choices'),
         };
-        var optionsSubmitTextControl = {
+        const optionsSubmitTextControl = {
             value: submittext,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -237,7 +237,7 @@ registerBlockType('recras/contactform', {
             placeholder: __('Submit button text'),
             label: __('Submit button text'),
         };
-        var optionsRedirectControl = {
+        const optionsRedirectControl = {
             value: redirect,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -303,7 +303,7 @@ registerBlockType('recras/package', {
         } = props.attributes;
 
         let retval = [];
-        var optionsIDControl = {
+        const optionsIDControl = {
             value: id,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -315,7 +315,7 @@ registerBlockType('recras/package', {
             type: 'number',
             min: 1,
         };
-        var optionsShowWhatControl = {
+        const optionsShowWhatControl = {
             value: show,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -402,7 +402,7 @@ registerBlockType('recras/product', {
         } = props.attributes;
 
         let retval = [];
-        var optionsIDControl = {
+        const optionsIDControl = {
             value: id,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -414,7 +414,7 @@ registerBlockType('recras/product', {
             type: 'number',
             min: 1,
         };
-        var optionsShowWhatControl = {
+        const optionsShowWhatControl = {
             value: show,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -483,7 +483,7 @@ registerBlockType('recras/voucher', {
         let pagesPosts = [];
 
         let retval = [];
-        var optionsIDControl = {
+        const optionsIDControl = {
             value: template,
             onChange: function(newVal) {
                 props.setAttributes({
@@ -494,7 +494,7 @@ registerBlockType('recras/voucher', {
             label: 'ID of the template',
         };
 
-        var optionsRedirectControl = {
+        const optionsRedirectControl = {
             selected: redirect,
             onChange: function(newVal) {
                 props.setAttributes({
