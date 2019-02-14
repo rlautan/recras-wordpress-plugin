@@ -257,8 +257,8 @@ registerBlockType('recras/contactform', {
         retval.push(el(CheckboxControl, optionsShowPlaceholdersControl));
         retval.push(el(TextControl, optionsPackageControl));
 
-        retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')));
-        retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')));
+        //retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')));
+        //retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')));
 
         retval.push(el(SelectControl, optionsElementControl));
         retval.push(el(SelectControl, optionsSingleChoiceControl));
@@ -277,9 +277,89 @@ registerBlockType('recras/onlinebooking', {
     category: 'recras',
 
     attributes: {
+        autoresize: recrasHelper.typeBoolean(true),
+        id: recrasHelper.typeString(),
+        redirect: recrasHelper.typeString(),
+        show_times: recrasHelper.typeBoolean(false),
+        use_new_library: recrasHelper.typeBoolean(true),
     },
 
     edit: function(props) {
+        const {
+            id,
+            use_new_library,
+            redirect,
+            show_times,
+            autoresize,
+        } = props.attributes;
+
+        let retval = [];
+        const optionsIDControl = {
+            value: id,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    id: Number(newVal),
+                });
+            },
+            placeholder: __('ID of the pre-filled package'),
+            label: __('ID of the pre-filled package (optional)'),
+            type: 'number',
+            min: 1,
+        };
+        const optionsNewLibraryControl = {
+            checked: use_new_library,
+            onChange: function(newVal) {
+                props.setAttributes({
+                    use_new_library: newVal
+                });
+            },
+            label: __('Use new method?'),
+        };
+        let optionsShowTimesControl;
+        let optionsRedirectControl;
+        let optionsAutoresizeControl;
+        if (use_new_library) {
+            optionsShowTimesControl = {
+                checked: show_times,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        show_times: newVal
+                    });
+                },
+                label: __('Preview times in programme'),
+            };
+            optionsRedirectControl = {
+                value: redirect,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        redirect: newVal
+                    });
+                },
+                placeholder: __('i.e. https://www.recras.com/thanks/'),
+                label: __('URL to redirect to (optional, leave empty to not redirect)'),
+                type: 'url',
+            };
+        } else {
+            optionsAutoresizeControl = {
+                checked: autoresize,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        autoresize: newVal
+                    });
+                },
+                label: __('Auto resize iframe'),
+            };
+        }
+
+        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(CheckboxControl, optionsNewLibraryControl));
+        if (use_new_library) {
+            retval.push(el(CheckboxControl, optionsShowTimesControl));
+            retval.push(el(CheckboxControl, optionsRedirectControl));
+        } else {
+            retval.push(el(CheckboxControl, optionsAutoresizeControl));
+        }
+        return retval;
     },
 
     save: function(props) {
@@ -533,7 +613,7 @@ registerBlockType('recras/voucher', {
             });
 
         retval.push(recrasHelper.elementText(__('Recras - Voucher sales module')));
-        
+
         if (template) {
             retval.push(el(
                 'div',
