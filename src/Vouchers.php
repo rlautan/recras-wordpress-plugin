@@ -12,7 +12,7 @@ class Vouchers
      */
     public static function addVoucherShortcode($attributes)
     {
-        if (isset($attributes['id']) && !ctype_digit($attributes['id'])) {
+        if (isset($attributes['id']) && !ctype_digit($attributes['id']) && !is_int($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
 

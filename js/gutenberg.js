@@ -355,7 +355,7 @@ registerBlockType('recras/onlinebooking', {
         retval.push(el(CheckboxControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(el(CheckboxControl, optionsShowTimesControl));
-            retval.push(el(CheckboxControl, optionsRedirectControl));
+            retval.push(el(TextControl, optionsRedirectControl));
         } else {
             retval.push(el(CheckboxControl, optionsAutoresizeControl));
         }
@@ -572,6 +572,8 @@ registerBlockType('recras/voucher', {
             },
             placeholder: __('ID of the template'),
             label: 'ID of the template',
+            type: 'number',
+            min: 1,
         };
 
         const optionsRedirectControl = {
