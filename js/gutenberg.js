@@ -270,7 +270,6 @@ registerBlockType('recras/contactform', {
     save: recrasHelper.serverSideRender,
 });
 
-//TODO: online booking
 registerBlockType('recras/onlinebooking', {
     title: __('Online booking'),
     icon: 'admin-site',
@@ -548,98 +547,50 @@ registerBlockType('recras/product', {
     save: recrasHelper.serverSideRender,
 });
 
-//TODO: voucher sales
 registerBlockType('recras/voucher', {
     title: __('Voucher'),
     icon: 'money',
     category: 'recras',
 
     attributes: {
+        id: recrasHelper.typeString(),
+        redirect: recrasHelper.typeString(),
     },
 
     edit: function(props) {
-        let template = props.attributes.template;
-        let redirect = props.attributes.redirect;
-        let pagesPosts = [];
+        const {
+            id,
+            redirect,
+        } = props.attributes;
 
         let retval = [];
         const optionsIDControl = {
-            value: template,
+            value: id,
             onChange: function(newVal) {
                 props.setAttributes({
-                    template: newVal
+                    id: Number(newVal),
                 });
             },
-            placeholder: __('ID of the template'),
-            label: 'ID of the template',
+            placeholder: __('ID of the voucher template'),
+            label: __('ID of the voucher template'),
             type: 'number',
             min: 1,
         };
-
         const optionsRedirectControl = {
-            selected: redirect,
+            value: redirect,
             onChange: function(newVal) {
                 props.setAttributes({
                     redirect: newVal
                 });
             },
-            options: [],
-            label: 'Redirect',
+            placeholder: __('i.e. https://www.recras.com/thanks/'),
+            label: __('URL to redirect to (optional, leave empty to not redirect)'),
+            type: 'url',
         };
 
-        const addOptions = function(posts, prefix) {
-            let options = [];
-            posts.forEach(post => {
-                options.push({
-                    label: prefix + post.title.rendered, //SelectControl does not support optgroups :(
-                    value: post.id,
-                });
-            });
-            return options;
-        };
-
-        let pagesPromise = wp.apiFetch({
-            path: 'wp/v2/pages',
-        })
-            .then(pages => addOptions(pages, __('Page: ')))
-            .then(options => {
-                optionsRedirectControl.options = optionsRedirectControl.options.concat(options);
-            });
-
-        let postsPromise = wp.apiFetch({
-            path: 'wp/v2/posts',
-        })
-            .then(posts => addOptions(posts, __('Post: ')))
-            .then(options => {
-                optionsRedirectControl.options = optionsRedirectControl.options.concat(options);
-            });
-
-        retval.push(recrasHelper.elementText(__('Recras - Voucher sales module')));
-
-        if (template) {
-            retval.push(el(
-                'div',
-                null,
-                sprintf(__('Template: %s'), template)
-            ));
-        }
-        if (redirect) {
-            retval.push(el(
-                'div',
-                null,
-                sprintf(__('Redirecting to %s after submitting'), redirect)
-            ));
-        }
         retval.push(el(TextControl, optionsIDControl));
-
-        Promise.all([pagesPromise, postsPromise]).then(() => {
-            console.log('promises resolved', optionsRedirectControl.options);
-            retval.push(el(SelectControl, optionsRedirectControl));
-            /*setState({
-                posts: optionsRedirectControl.options,
-            });*/
-        });
-        return '';
+        retval.push(el(TextControl, optionsRedirectControl));
+        return retval;
     },
 
     save: recrasHelper.serverSideRender,

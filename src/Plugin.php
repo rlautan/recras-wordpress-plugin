@@ -217,10 +217,7 @@ class Plugin
         }
 
         global $post;
-        if (
-            strpos($post->post_content, $this::SHORTCODE_ONLINE_BOOKING) !== false ||
-            strpos($post->post_content, $this::SHORTCODE_VOUCHERS)
-        ) {
+        if ($this->shouldIncludeLibrary($post->post_content)) {
             wp_enqueue_script('polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise', [], null, false);
             wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.min.js', [], $this::LIBRARY_VERSION, false);
 
@@ -271,5 +268,27 @@ class Plugin
     public function setBaseUrl()
     {
         $this->baseUrl = rtrim(plugins_url('', dirname(__FILE__)), '/');
-    }    
+    }
+
+    private function shouldIncludeLibrary($content)
+    {
+        if (strpos($content, $this::SHORTCODE_ONLINE_BOOKING) !== false) {
+            // Online booking shortcode
+            return true;
+        }
+        if (strpos($content, $this::SHORTCODE_VOUCHERS) !== false) {
+            // Voucher shortcode
+            return true;
+        }
+        if (strpos($content, 'wp:recras/onlinebooking') !== false) {
+            // Online booking Gutenberg
+            return true;
+        }
+        if (strpos($content, 'wp:recras/voucher') !== false) {
+            // Voucher Gutenberg
+            return true;
+        }
+        return false;
+    }
+
 }
