@@ -79,12 +79,12 @@ registerBlockType('recras/onlinebooking', {
         }
 
         retval.push(el(TextControl, optionsIDControl));
-        retval.push(el(CheckboxControl, optionsNewLibraryControl));
+        retval.push(el(ToggleControl, optionsNewLibraryControl));
         if (use_new_library) {
-            retval.push(el(CheckboxControl, optionsShowTimesControl));
+            retval.push(el(ToggleControl, optionsShowTimesControl));
             retval.push(el(TextControl, optionsRedirectControl));
         } else {
-            retval.push(el(CheckboxControl, optionsAutoresizeControl));
+            retval.push(el(ToggleControl, optionsAutoresizeControl));
         }
         return retval;
     },

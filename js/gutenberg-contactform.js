@@ -147,9 +147,9 @@ registerBlockType('recras/contactform', {
         retval.push(recrasHelper.elementText(__('Recras - Contact form')));
 
         retval.push(el(TextControl, optionsIDControl));
-        retval.push(el(CheckboxControl, optionsShowTitleControl));
-        retval.push(el(CheckboxControl, optionsShowLabelsControl));
-        retval.push(el(CheckboxControl, optionsShowPlaceholdersControl));
+        retval.push(el(ToggleControl, optionsShowTitleControl));
+        retval.push(el(ToggleControl, optionsShowLabelsControl));
+        retval.push(el(ToggleControl, optionsShowPlaceholdersControl));
         retval.push(el(TextControl, optionsPackageControl));
 
         //retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')));

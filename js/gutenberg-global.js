@@ -1,9 +1,9 @@
 const el = wp.element.createElement;
 const { registerBlockType } = wp.blocks;
 const {
+    SelectControl,
     TextControl,
-    CheckboxControl,
-    SelectControl
+    ToggleControl,
 } = wp.components;
 
 const {
