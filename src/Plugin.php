@@ -44,10 +44,6 @@ class Plugin
         add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
 
         $this->addShortcodes();
-
-        if (version_compare(get_bloginfo('version'), '5.0', '>=')) {
-            add_action('tgmpa_register', [$this, 'registerRequiredPlugins']);
-        }
     }
 
 
@@ -265,31 +261,6 @@ class Plugin
         wp_enqueue_script('recras');
     }
 
-
-    public static function registerRequiredPlugins()
-    {
-        $plugins = [
-            [
-                'name' => 'Classic Editor',
-                'slug' => 'classic-editor',
-                'required' => false,
-            ],
-        ];
-
-        $config = [
-            'id' => 'recras-wp',
-            'default_path' => '',
-            'menu' => 'tgmpa-install-plugins',
-            'parent_slug' => 'plugins.php',
-            'capability' => 'manage_options',
-            'has_notices' => true,
-            'dismissable' => true,
-            'dismiss_msg' => '',
-            'is_automatic' => true, // Automatically activate plugins after installation
-            'message' => '',
-        ];
-        tgmpa($plugins, $config);
-    }
 
     /**
      * Set plugin base dir
