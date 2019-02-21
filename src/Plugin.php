@@ -4,6 +4,7 @@ namespace Recras;
 class Plugin
 {
     const LIBRARY_VERSION = '0.13.4';
+    const GUTENBERG_SCRIPT_VERSION = '2.1.2';
     const TEXT_DOMAIN = 'recras-wp';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
@@ -59,7 +60,9 @@ class Plugin
                 'wp-blocks',
                 'wp-components',
                 'wp-element'
-            ]
+            ],
+            self::GUTENBERG_SCRIPT_VERSION,
+            true
         );
 
         wp_register_style(

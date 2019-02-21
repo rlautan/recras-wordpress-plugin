@@ -7,9 +7,11 @@ const {
 } = wp.components;
 
 const {
-    __,
-    sprintf
-} = wp.i18n;
+    registerStore,
+    withSelect,
+} = wp.data;
+
+const { __ } = wp.i18n;
 
 const recrasHelper = {
     serverSideRender: () => null,
@@ -83,18 +85,6 @@ registerBlockType('recras/availability', {
         };
 
         retval.push(recrasHelper.elementText(__('Recras - Availability calendar')));
-        /*if (id) {
-            retval.push(el(
-                'div',
-                null,
-                sprintf(__('Package: %s'), id)
-            ));
-        }
-        retval.push(el(
-            'div',
-            null,
-            sprintf(__('Auto resize?: %s'), autoresize ? __('yes') : __('no'))
-        ));*/
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(CheckboxControl, optionsAutoresizeControl));
         return retval;
@@ -547,6 +537,77 @@ registerBlockType('recras/product', {
     save: recrasHelper.serverSideRender,
 });
 
+const mapPagesPosts = function(pagePost, prefix) {
+    // SelectControl does not support optgroups :(
+    // https://github.com/WordPress/gutenberg/issues/8426
+    return {
+        label: prefix + pagePost.title.rendered,
+        value: pagePost.link,
+    };
+};
+
+const actions = {
+    setPagesPosts(pagesPosts) {
+        return {
+            type: 'SET_PAGES_POSTS',
+            pagesPosts,
+        }
+    },
+    fetchPagesPosts(path) {
+        return {
+            type: 'FETCH_PAGES_POSTS',
+            path,
+        }
+    },
+};
+const store = registerStore('recras/voucher', {
+    reducer(state = { pagesPosts: {} }, action) {
+        switch (action.type) {
+            case 'SET_PAGES_POSTS':
+                return {
+                    ...state,
+                    pagesPosts: action.pagesPosts,
+                };
+        }
+
+        return state;
+    },
+    actions,
+    selectors: {
+        fetchPagesPosts(state) {
+            const { pagesPosts } = state;
+            return pagesPosts;
+        }
+    },
+    controls: {
+        FETCH_PAGES_POSTS(action) {
+            return wp.apiFetch({
+                path: action.path,
+            });
+        }
+    },
+    resolvers: {
+        // * makes it a generator function
+        * fetchPagesPosts(state) {
+            let pagesPosts = [];
+
+            let pages = yield actions.fetchPagesPosts('wp/v2/pages');
+            pages = pages.map(p => {
+                return mapPagesPosts(p, __('Page: '));
+            });
+            pagesPosts = pagesPosts.concat(pages);
+
+            let posts = yield actions.fetchPagesPosts('wp/v2/posts');
+            posts = posts.map(p => {
+                return mapPagesPosts(p, __('Post: '));
+            });
+            pagesPosts = pagesPosts.concat(posts);
+
+            return actions.setPagesPosts(pagesPosts);
+        }
+    }
+});
+
 registerBlockType('recras/voucher', {
     title: __('Voucher'),
     icon: 'money',
@@ -557,11 +618,24 @@ registerBlockType('recras/voucher', {
         redirect: recrasHelper.typeString(),
     },
 
-    edit: function(props) {
+    edit: withSelect((select) => {
+        return {
+            pagesPosts: select('recras/voucher').fetchPagesPosts(),
+        }
+    })(props => {
         const {
             id,
             redirect,
         } = props.attributes;
+        const {
+            pagesPosts
+        } = props;
+
+        if (pagesPosts === undefined || !pagesPosts.length) {
+            return [
+                recrasHelper.elementText(__('Loading data...'))
+            ];
+        }
 
         let retval = [];
         const optionsIDControl = {
@@ -576,22 +650,24 @@ registerBlockType('recras/voucher', {
             type: 'number',
             min: 1,
         };
+
         const optionsRedirectControl = {
-            value: redirect,
+            selected: redirect,
             onChange: function(newVal) {
                 props.setAttributes({
                     redirect: newVal
                 });
             },
+            options: pagesPosts,
             placeholder: __('i.e. https://www.recras.com/thanks/'),
             label: __('URL to redirect to (optional, leave empty to not redirect)'),
-            type: 'url',
         };
 
         retval.push(el(TextControl, optionsIDControl));
-        retval.push(el(TextControl, optionsRedirectControl));
+        retval.push(el(SelectControl, optionsRedirectControl));
+
         return retval;
-    },
+    }),
 
     save: recrasHelper.serverSideRender,
 });
