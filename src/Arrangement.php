@@ -191,6 +191,7 @@ class Arrangement
         $arrangements = [
             0 => (object) [
                 'arrangement' => '',
+                'id' => null,
                 'mag_online' => false,
             ],
         ];

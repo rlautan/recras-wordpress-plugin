@@ -10,7 +10,7 @@ registerBlockType('recras/voucher', {
 
     edit: withSelect((select) => {
         return {
-            pagesPosts: select('recras/pages-posts').fetchPagesPosts(),
+            pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {
         const {

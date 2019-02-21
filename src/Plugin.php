@@ -4,7 +4,6 @@ namespace Recras;
 class Plugin
 {
     const LIBRARY_VERSION = '0.13.4';
-    const GUTENBERG_SCRIPT_VERSION = '2.1.2';
     const TEXT_DOMAIN = 'recras-wp';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
@@ -31,8 +30,9 @@ class Plugin
         add_action('admin_init', ['Recras\Editor', 'addButtons']);
 
         if (function_exists('register_block_type')) {
-            add_action('init', [&$this, 'addGutenbergButtons']);
-            add_filter('block_categories', [$this, 'addGutenbergRecrasCategory']);
+            add_action('init', ['Recras\Gutenberg', 'addBlocks']);
+            add_action('rest_api_init', ['Recras\Gutenberg', 'addEndpoints']);
+            add_filter('block_categories', ['Recras\Gutenberg', 'addCategory']);
         }
 
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
@@ -44,80 +44,6 @@ class Plugin
         add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
 
         $this->addShortcodes();
-    }
-
-
-    public static function addGutenbergButtons()
-    {
-        $gutenbergName = 'gutenberg-recras-global';
-        wp_register_script(
-            $gutenbergName,
-            plugins_url('js/gutenberg-global.js', __DIR__), [
-                'wp-blocks',
-                'wp-components',
-                'wp-element'
-            ],
-            self::GUTENBERG_SCRIPT_VERSION,
-            true
-        );
-
-        wp_register_style(
-            'recras-gutenberg',
-            plugins_url('css/gutenberg.css', __DIR__),
-            ['wp-edit-blocks'],
-            filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css')
-        );
-
-        $gutenbergBlocks = [
-            'availability' => [
-                'callback' => ['Recras\Availability', 'addAvailabilityShortcode'],
-                'version' => '2.1.2',
-            ],
-            'contactform' => [
-                'callback' => ['Recras\ContactForm', 'addContactShortcode'],
-                'version' => '2.1.2',
-            ],
-            'onlinebooking' => [
-                'callback' => ['Recras\OnlineBooking', 'addBookingShortcode'],
-                'version' => '2.1.2',
-            ],
-            'package' => [
-                'callback' => ['Recras\Arrangement', 'addArrangementShortcode'],
-                'version' => '2.1.2',
-            ],
-            'product' => [
-                'callback' => ['Recras\Products', 'addProductShortcode'],
-                'version' => '2.1.2',
-            ],
-            'voucher' => [
-                'callback' => ['Recras\Vouchers', 'addVoucherShortcode'],
-                'version' => '2.1.2',
-            ],
-        ];
-        foreach ($gutenbergBlocks as $key => $block) {
-            wp_register_script(
-                'recras-gutenberg-' . $key,
-                plugins_url('js/gutenberg-' . $key . '.js', __DIR__),
-                [$gutenbergName],
-                $block['version'],
-                true
-            );
-
-            \register_block_type('recras/' . $key, [
-                'editor_script' => 'recras-gutenberg-' . $key,
-                'editor_style' => $gutenbergName,
-                'render_callback' => $block['callback'],
-            ]);
-        }
-    }
-
-    public static function addGutenbergRecrasCategory($categories)
-    {
-        $categories[] = [
-            'slug' => 'recras',
-            'title' => 'Recras',
-        ];
-        return $categories;
     }
 
 
@@ -242,7 +168,7 @@ class Plugin
         }
 
         global $post;
-        if ($this->shouldIncludeLibrary($post->post_content)) {
+        if ($post && $this->shouldIncludeLibrary($post->post_content)) {
             wp_enqueue_script('polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise', [], null, false);
             wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.min.js', [], $this::LIBRARY_VERSION, false);
 

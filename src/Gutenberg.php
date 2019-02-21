@@ -1,0 +1,108 @@
+<?php
+namespace Recras;
+
+class Gutenberg
+{
+    const ENDPOINT_NAMESPACE = 'recras';
+    const GUTENBERG_SCRIPT_VERSION = '2.1.2';
+
+
+    public static function addBlocks()
+    {
+        $gutenbergName = 'gutenberg-recras-global';
+        wp_register_script(
+            $gutenbergName,
+            plugins_url('js/gutenberg-global.js', __DIR__), [
+            'wp-blocks',
+            'wp-components',
+            'wp-element'
+        ],
+            self::GUTENBERG_SCRIPT_VERSION,
+            true
+        );
+
+        wp_register_style(
+            'recras-gutenberg',
+            plugins_url('css/gutenberg.css', __DIR__),
+            ['wp-edit-blocks'],
+            filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css')
+        );
+
+        $gutenbergBlocks = [
+            'availability' => [
+                'callback' => ['Recras\Availability', 'addAvailabilityShortcode'],
+                'version' => '2.1.2',
+            ],
+            'contactform' => [
+                'callback' => ['Recras\ContactForm', 'addContactShortcode'],
+                'version' => '2.1.2',
+            ],
+            'onlinebooking' => [
+                'callback' => ['Recras\OnlineBooking', 'addBookingShortcode'],
+                'version' => '2.1.2',
+            ],
+            'package' => [
+                'callback' => ['Recras\Arrangement', 'addArrangementShortcode'],
+                'version' => '2.1.2',
+            ],
+            'product' => [
+                'callback' => ['Recras\Products', 'addProductShortcode'],
+                'version' => '2.1.2',
+            ],
+            'voucher' => [
+                'callback' => ['Recras\Vouchers', 'addVoucherShortcode'],
+                'version' => '2.1.2',
+            ],
+        ];
+        foreach ($gutenbergBlocks as $key => $block) {
+            wp_register_script(
+                'recras-gutenberg-' . $key,
+                plugins_url('js/gutenberg-' . $key . '.js', __DIR__),
+                [$gutenbergName],
+                $block['version'],
+                true
+            );
+
+            \register_block_type('recras/' . $key, [
+                'editor_script' => 'recras-gutenberg-' . $key,
+                'editor_style' => $gutenbergName,
+                'render_callback' => $block['callback'],
+            ]);
+        }
+    }
+
+    public static function addCategory($categories)
+    {
+        $categories[] = [
+            'slug' => 'recras',
+            'title' => 'Recras',
+        ];
+        return $categories;
+    }
+
+    public static function addEndpoints()
+    {
+        $routes = [
+            'packages' => 'getPackages',
+        ];
+        foreach ($routes as $uri => $callback) {
+            register_rest_route(
+                self::ENDPOINT_NAMESPACE,
+                '/' . $uri,
+                [
+                    'methods' => 'GET',
+                    'callback' => ['Recras\Gutenberg', $callback],
+                    'permission_callback' => function () {
+                        return current_user_can('edit_posts');
+                    },
+                ]
+            );
+        }
+    }
+
+    public static function getPackages()
+    {
+        $model = new Arrangement;
+        return $model->getArrangements(get_option('recras_subdomain'), true);
+    }
+}

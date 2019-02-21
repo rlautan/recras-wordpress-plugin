@@ -13,7 +13,8 @@ registerBlockType('recras/onlinebooking', {
 
     edit: withSelect((select) => {
         return {
-            pagesPosts: select('recras/pages-posts').fetchPagesPosts(),
+            packages: select('recras/store').fetchPackages(),
+            pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {
         const {
@@ -24,21 +25,21 @@ registerBlockType('recras/onlinebooking', {
             autoresize,
         } = props.attributes;
         const {
-            pagesPosts
+            packages,
+            pagesPosts,
         } = props;
 
         let retval = [];
-        const optionsIDControl = {
-            value: id,
+        const optionsPackageControl = {
+            selected: id,
             onChange: function(newVal) {
                 props.setAttributes({
                     id: newVal,
                 });
             },
+            options: packages,
             placeholder: __('ID of the pre-filled package'),
             label: __('ID of the pre-filled package (optional)'),
-            type: 'number',
-            min: 1,
         };
         const optionsNewLibraryControl = {
             checked: use_new_library,
@@ -85,7 +86,7 @@ registerBlockType('recras/onlinebooking', {
             };
         }
 
-        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(SelectControl, optionsPackageControl));
         retval.push(el(ToggleControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(el(ToggleControl, optionsShowTimesControl));
