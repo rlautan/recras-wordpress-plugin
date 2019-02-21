@@ -32,6 +32,9 @@ const recrasHelper = {
             text
         );
     },
+    parseBoolean: (value) => {
+        return value ? 1 : 0;
+    },
 
     typeBoolean: (defVal) => ({
         default: (defVal !== undefined) ? defVal : true,

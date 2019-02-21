@@ -11,7 +11,11 @@ registerBlockType('recras/onlinebooking', {
         use_new_library: recrasHelper.typeBoolean(true),
     },
 
-    edit: function(props) {
+    edit: withSelect((select) => {
+        return {
+            pagesPosts: select('recras/pages-posts').fetchPagesPosts(),
+        }
+    })(props => {
         const {
             id,
             use_new_library,
@@ -19,6 +23,9 @@ registerBlockType('recras/onlinebooking', {
             show_times,
             autoresize,
         } = props.attributes;
+        const {
+            pagesPosts
+        } = props;
 
         let retval = [];
         const optionsIDControl = {
@@ -37,7 +44,7 @@ registerBlockType('recras/onlinebooking', {
             checked: use_new_library,
             onChange: function(newVal) {
                 props.setAttributes({
-                    use_new_library: newVal
+                    use_new_library: recrasHelper.parseBoolean(newVal),
                 });
             },
             label: __('Use new method?'),
@@ -50,28 +57,28 @@ registerBlockType('recras/onlinebooking', {
                 checked: show_times,
                 onChange: function(newVal) {
                     props.setAttributes({
-                        show_times: newVal
+                        show_times: recrasHelper.parseBoolean(newVal),
                     });
                 },
                 label: __('Preview times in programme'),
             };
             optionsRedirectControl = {
-                value: redirect,
+                selected: redirect,
                 onChange: function(newVal) {
                     props.setAttributes({
                         redirect: newVal
                     });
                 },
+                options: pagesPosts,
                 placeholder: __('i.e. https://www.recras.com/thanks/'),
                 label: __('URL to redirect to (optional, leave empty to not redirect)'),
-                type: 'url',
             };
         } else {
             optionsAutoresizeControl = {
                 checked: autoresize,
                 onChange: function(newVal) {
                     props.setAttributes({
-                        autoresize: newVal
+                        autoresize: recrasHelper.parseBoolean(newVal),
                     });
                 },
                 label: __('Auto resize iframe'),
@@ -82,12 +89,12 @@ registerBlockType('recras/onlinebooking', {
         retval.push(el(ToggleControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(el(ToggleControl, optionsShowTimesControl));
-            retval.push(el(TextControl, optionsRedirectControl));
+            retval.push(el(SelectControl, optionsRedirectControl));
         } else {
             retval.push(el(ToggleControl, optionsAutoresizeControl));
         }
         return retval;
-    },
+    }),
 
     save: function(props) {
     },
