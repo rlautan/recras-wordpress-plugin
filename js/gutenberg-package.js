@@ -84,10 +84,10 @@ registerBlockType('recras/package', {
                     label: __('Relative image URL'),
                 },
             ],
-            label: __('Show what'),
+            label: __('Property to show'),
         };
 
-        retval.push(recrasHelper.elementText(__('Recras - Package')));
+        retval.push(recrasHelper.elementText('Recras - ' + __('Package')));
 
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(SelectControl, optionsShowWhatControl));

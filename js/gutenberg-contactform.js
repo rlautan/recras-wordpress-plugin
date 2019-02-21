@@ -152,7 +152,7 @@ registerBlockType('recras/contactform', {
             type: 'url',
         };
 
-        retval.push(recrasHelper.elementText(__('Recras - Contact form')));
+        retval.push(recrasHelper.elementText('Recras - ' + __('Contact form')));
 
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(ToggleControl, optionsShowTitleControl));

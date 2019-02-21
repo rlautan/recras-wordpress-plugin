@@ -68,10 +68,10 @@ registerBlockType('recras/product', {
                     label: __('Title'),
                 },
             ],
-            label: __('Show what'),
+            label: __('Property to show'),
         };
 
-        retval.push(recrasHelper.elementText(__('Recras - Product')));
+        retval.push(recrasHelper.elementText('Recras - ' + __('Product')));
 
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(SelectControl, optionsShowWhatControl));

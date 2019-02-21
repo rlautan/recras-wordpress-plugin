@@ -39,7 +39,7 @@ registerBlockType('recras/availability', {
             label: __('Auto resize iframe'),
         };
 
-        retval.push(recrasHelper.elementText(__('Recras - Availability calendar')));
+        retval.push(recrasHelper.elementText('Recras - ' + __('Availability calendar')));
         retval.push(el(TextControl, optionsIDControl));
         retval.push(el(ToggleControl, optionsAutoresizeControl));
         return retval;
