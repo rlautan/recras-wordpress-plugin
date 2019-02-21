@@ -53,10 +53,10 @@ class Plugin
 
     public static function addGutenbergButtons()
     {
-        $gutenbergName = 'gutenberg-recras-buttons';
+        $gutenbergName = 'gutenberg-recras-global';
         wp_register_script(
             $gutenbergName,
-            plugins_url('js/gutenberg.js', __DIR__), [
+            plugins_url('js/gutenberg-global.js', __DIR__), [
                 'wp-blocks',
                 'wp-components',
                 'wp-element'
@@ -66,25 +66,51 @@ class Plugin
         );
 
         wp_register_style(
-            $gutenbergName,
+            'recras-gutenberg',
             plugins_url('css/gutenberg.css', __DIR__),
             ['wp-edit-blocks'],
             filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css')
         );
 
         $gutenbergBlocks = [
-            'availability' => ['Recras\Availability', 'addAvailabilityShortcode'],
-            'contactform' => ['Recras\ContactForm', 'addContactShortcode'],
-            'onlinebooking' => ['Recras\OnlineBooking', 'addBookingShortcode'],
-            'package' => ['Recras\Arrangement', 'addArrangementShortcode'],
-            'product' => ['Recras\Products', 'addProductShortcode'],
-            'voucher' => ['Recras\Vouchers', 'addVoucherShortcode'],
+            'availability' => [
+                'callback' => ['Recras\Availability', 'addAvailabilityShortcode'],
+                'version' => '2.1.2',
+            ],
+            'contactform' => [
+                'callback' => ['Recras\ContactForm', 'addContactShortcode'],
+                'version' => '2.1.2',
+            ],
+            'onlinebooking' => [
+                'callback' => ['Recras\OnlineBooking', 'addBookingShortcode'],
+                'version' => '2.1.2',
+            ],
+            'package' => [
+                'callback' => ['Recras\Arrangement', 'addArrangementShortcode'],
+                'version' => '2.1.2',
+            ],
+            'product' => [
+                'callback' => ['Recras\Products', 'addProductShortcode'],
+                'version' => '2.1.2',
+            ],
+            'voucher' => [
+                'callback' => ['Recras\Vouchers', 'addVoucherShortcode'],
+                'version' => '2.1.2',
+            ],
         ];
-        foreach ($gutenbergBlocks as $key => $callback) {
+        foreach ($gutenbergBlocks as $key => $block) {
+            wp_register_script(
+                'recras-gutenberg-' . $key,
+                plugins_url('js/gutenberg-' . $key . '.js', __DIR__),
+                [$gutenbergName],
+                $block['version'],
+                true
+            );
+
             \register_block_type('recras/' . $key, [
-                'editor_script' => $gutenbergName,
+                'editor_script' => 'recras-gutenberg-' . $key,
                 'editor_style' => $gutenbergName,
-                'render_callback' => $callback,
+                'render_callback' => $block['callback'],
             ]);
         }
     }
