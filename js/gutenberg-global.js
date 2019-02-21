@@ -98,7 +98,10 @@ const store = registerStore('recras/pages-posts', {
     resolvers: {
         // * makes it a generator function
         * fetchPagesPosts(state) {
-            let pagesPosts = [];
+            let pagesPosts = [{
+                label: '',
+                value: '',
+            }];
 
             let pages = yield actions.fetchPagesPosts('wp/v2/pages');
             pages = pages.map(p => {

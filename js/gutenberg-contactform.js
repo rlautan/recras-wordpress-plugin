@@ -15,7 +15,11 @@ registerBlockType('recras/contactform', {
         redirect: recrasHelper.typeString(),
     },
 
-    edit: function(props) {
+    edit: withSelect((select) => {
+        return {
+            pagesPosts: select('recras/pages-posts').fetchPagesPosts(),
+        }
+    })(props => {
         const {
             id,
             showtitle,
@@ -27,6 +31,9 @@ registerBlockType('recras/contactform', {
             submittext,
             redirect,
         } = props.attributes;
+        const {
+            pagesPosts
+        } = props;
 
         let retval = [];
         const optionsIDControl = {
@@ -133,12 +140,13 @@ registerBlockType('recras/contactform', {
             label: __('Submit button text'),
         };
         const optionsRedirectControl = {
-            value: redirect,
+            selected: redirect,
             onChange: function(newVal) {
                 props.setAttributes({
                     redirect: newVal
                 });
             },
+            options: pagesPosts,
             placeholder: __('i.e. https://www.recras.com/thanks/'),
             label: __('URL to redirect to (optional, leave empty to not redirect)'),
             type: 'url',
@@ -158,9 +166,9 @@ registerBlockType('recras/contactform', {
         retval.push(el(SelectControl, optionsElementControl));
         retval.push(el(SelectControl, optionsSingleChoiceControl));
         retval.push(el(TextControl, optionsSubmitTextControl));
-        retval.push(el(TextControl, optionsRedirectControl));
+        retval.push(el(SelectControl, optionsRedirectControl));
         return retval;
-    },
+    }),
 
     save: recrasHelper.serverSideRender,
 });
