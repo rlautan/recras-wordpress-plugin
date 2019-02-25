@@ -38,8 +38,8 @@ registerBlockType('recras/onlinebooking', {
                 });
             },
             options: packages,
-            placeholder: __('ID of the pre-filled package'),
-            label: __('ID of the pre-filled package (optional)'),
+            placeholder: __('Pre-filled package'),
+            label: __('Pre-filled package (optional)'),
         };
         const optionsNewLibraryControl = {
             checked: use_new_library,

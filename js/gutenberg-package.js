@@ -8,24 +8,29 @@ registerBlockType('recras/package', {
         show: recrasHelper.typeString('title'),
     },
 
-    edit: function(props) {
+    edit: withSelect((select) => {
+        return {
+            packages: select('recras/store').fetchPackages(),
+        }
+    })(props => {
         const {
             id,
             show,
         } = props.attributes;
+        const {
+            packages,
+        } = props;
 
         let retval = [];
         const optionsIDControl = {
-            value: id,
+            selected: id,
             onChange: function(newVal) {
                 props.setAttributes({
                     id: newVal,
                 });
             },
-            placeholder: __('ID of the package'),
-            label: __('ID of the package'),
-            type: 'number',
-            min: 1,
+            options: packages,
+            label: __('Package'),
         };
         const optionsShowWhatControl = {
             value: show,
@@ -89,10 +94,10 @@ registerBlockType('recras/package', {
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Package')));
 
-        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(SelectControl, optionsIDControl));
         retval.push(el(SelectControl, optionsShowWhatControl));
         return retval;
-    },
+    }),
 
     save: recrasHelper.serverSideRender,
 });
