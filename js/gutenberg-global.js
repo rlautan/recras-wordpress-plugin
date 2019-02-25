@@ -73,6 +73,9 @@ const mapPagesPosts = function(pagePost, prefix) {
 const mapProduct = function(product) {
     return mapSelect(product.naam, product.id);
 };
+const mapVoucherTemplate = function(template) {
+    return mapSelect(template.name, template.id);
+};
 
 const recrasActions = {
     fetchAPI(path) {
@@ -109,6 +112,13 @@ const recrasActions = {
             products,
         }
     },
+
+    setVoucherTemplates(voucherTemplates) {
+        return {
+            type: 'SET_VOUCHERS',
+            voucherTemplates,
+        }
+    },
 };
 const recrasStore = registerStore('recras/store', {
     reducer(state = {
@@ -116,6 +126,7 @@ const recrasStore = registerStore('recras/store', {
         packages: {},
         pagesPosts: {},
         products: {},
+        voucherTemplates: {},
     }, action) {
         switch (action.type) {
             case 'SET_FORMS':
@@ -138,6 +149,11 @@ const recrasStore = registerStore('recras/store', {
                     ...state,
                     products: action.products,
                 };
+            case 'SET_VOUCHERS':
+                return {
+                    ...state,
+                    voucherTemplates: action.voucherTemplates,
+                };
         }
 
         return state;
@@ -159,6 +175,10 @@ const recrasStore = registerStore('recras/store', {
         fetchProducts(state) {
             const { products } = state;
             return products;
+        },
+        fetchVoucherTemplates(state) {
+            const { voucherTemplates } = state;
+            return voucherTemplates;
         },
     },
     controls: {
@@ -207,6 +227,12 @@ const recrasStore = registerStore('recras/store', {
             products = Object.values(products).map(mapProduct);
 
             return recrasActions.setProducts(products);
+        },
+        * fetchVoucherTemplates(state) {
+            let vouchers = yield recrasActions.fetchAPI('recras/vouchers');
+            vouchers = Object.values(vouchers).map(mapVoucherTemplate);
+
+            return recrasActions.setVoucherTemplates(vouchers);
         },
     }
 });

@@ -11,6 +11,7 @@ registerBlockType('recras/voucher', {
     edit: withSelect((select) => {
         return {
             pagesPosts: select('recras/store').fetchPagesPosts(),
+            voucherTemplates: select('recras/store').fetchVoucherTemplates(),
         }
     })(props => {
         const {
@@ -18,7 +19,8 @@ registerBlockType('recras/voucher', {
             redirect,
         } = props.attributes;
         const {
-            pagesPosts
+            pagesPosts,
+            voucherTemplates,
         } = props;
 
         if (pagesPosts === undefined || !pagesPosts.length) {
@@ -29,16 +31,14 @@ registerBlockType('recras/voucher', {
 
         let retval = [];
         const optionsIDControl = {
-            value: id,
+            selected: id,
             onChange: function(newVal) {
                 props.setAttributes({
                     id: newVal,
                 });
             },
-            placeholder: __('ID of the voucher template'),
-            label: __('ID of the voucher template'),
-            type: 'number',
-            min: 1,
+            options: voucherTemplates,
+            label: __('Voucher template'),
         };
 
         const optionsRedirectControl = {
@@ -53,7 +53,7 @@ registerBlockType('recras/voucher', {
             label: __('URL to redirect to (optional, leave empty to not redirect)'),
         };
 
-        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(SelectControl, optionsIDControl));
         retval.push(el(SelectControl, optionsRedirectControl));
 
         return retval;

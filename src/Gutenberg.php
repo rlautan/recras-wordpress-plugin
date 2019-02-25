@@ -87,6 +87,7 @@ class Gutenberg
             'contactforms' => 'getContactForms',
             'packages' => 'getPackages',
             'products' => 'getProducts',
+            'vouchers' => 'getVouchers',
         ];
         foreach ($routes as $uri => $callback) {
             register_rest_route(
@@ -119,5 +120,11 @@ class Gutenberg
     {
         $model = new Products;
         return $model->getProducts(get_option('recras_subdomain'));
+    }
+
+    public static function getVouchers()
+    {
+        $model = new Vouchers;
+        return $model->getTemplates(get_option('recras_subdomain'));
     }
 }
