@@ -67,6 +67,9 @@ const mapPagesPosts = function(pagePost, prefix) {
     // https://github.com/WordPress/gutenberg/issues/8426
     return mapSelect(prefix + pagePost.title.rendered, pagePost.link);
 };
+const mapProduct = function(product) {
+    return mapSelect(product.naam, product.id);
+};
 
 const recrasActions = {
     fetchAPI(path) {
@@ -89,11 +92,19 @@ const recrasActions = {
             pagesPosts,
         }
     },
+
+    setProducts(products) {
+        return {
+            type: 'SET_PRODUCTS',
+            products,
+        }
+    },
 };
 const recrasStore = registerStore('recras/store', {
     reducer(state = {
         packages: {},
         pagesPosts: {},
+        products: {},
     }, action) {
         switch (action.type) {
             case 'SET_PACKAGES':
@@ -105,6 +116,11 @@ const recrasStore = registerStore('recras/store', {
                 return {
                     ...state,
                     pagesPosts: action.pagesPosts,
+                };
+            case 'SET_PRODUCTS':
+                return {
+                    ...state,
+                    products: action.products,
                 };
         }
 
@@ -120,6 +136,10 @@ const recrasStore = registerStore('recras/store', {
             const { pagesPosts } = state;
             return pagesPosts;
         },
+        fetchProducts(state) {
+            const { products } = state;
+            return products;
+        },
     },
     controls: {
         FETCH_API(action) {
@@ -133,7 +153,6 @@ const recrasStore = registerStore('recras/store', {
         * fetchPackages(state) {
             let packages = yield recrasActions.fetchAPI('recras/packages');
             packages = Object.values(packages).map(mapPackage);
-            console.log(packages);
 
             return recrasActions.setPackages(packages);
         },
@@ -156,6 +175,13 @@ const recrasStore = registerStore('recras/store', {
             pagesPosts = pagesPosts.concat(posts);
 
             return recrasActions.setPagesPosts(pagesPosts);
+        },
+        * fetchProducts(state) {
+            let products = yield recrasActions.fetchAPI('recras/products');
+            products = Object.values(products).map(mapProduct);
+            console.log(products);
+
+            return recrasActions.setProducts(products);
         },
     }
 });
