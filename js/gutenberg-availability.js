@@ -8,26 +8,30 @@ registerBlockType('recras/availability', {
         autoresize: recrasHelper.typeBoolean(true),
     },
 
-    edit: function(props) {
+    edit: withSelect((select) => {
+        return {
+            packages: select('recras/store').fetchPackages(),
+            pagesPosts: select('recras/store').fetchPagesPosts(),
+        }
+    })(props => {
         const {
             id,
             autoresize,
         } = props.attributes;
+        const {
+            packages,
+        } = props;
 
         let retval = [];
-        const optionsIDControl = {
-            value: id, // Existing 'id' value for the block.
-            // When the text input value is changed, we need to
-            // update the 'id' attribute to propagate the change.
+        const optionsPackageControl = {
+            selected: id,
             onChange: function(newVal) {
                 props.setAttributes({
                     id: newVal,
                 });
             },
-            placeholder: __('ID of the package'),
-            label: __('ID of the package'),
-            type: 'number',
-            min: 1,
+            options: packages,
+            label: __('Package'),
         };
         const optionsAutoresizeControl = {
             checked: autoresize,
@@ -40,10 +44,10 @@ registerBlockType('recras/availability', {
         };
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Availability calendar')));
-        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(SelectControl, optionsPackageControl));
         retval.push(el(ToggleControl, optionsAutoresizeControl));
         return retval;
-    },
+    }),
 
     save: recrasHelper.serverSideRender,
 });
