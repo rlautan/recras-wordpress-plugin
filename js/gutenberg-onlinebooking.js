@@ -1,5 +1,5 @@
 registerBlockType('recras/onlinebooking', {
-    title: __('Online booking'),
+    title: __('Online booking', TEXT_DOMAIN),
     icon: 'admin-site',
     category: 'recras',
 
@@ -38,8 +38,8 @@ registerBlockType('recras/onlinebooking', {
                 });
             },
             options: packages,
-            placeholder: __('Pre-filled package'),
-            label: __('Pre-filled package (optional)'),
+            placeholder: __('Pre-filled package', TEXT_DOMAIN),
+            label: __('Pre-filled package (optional)', TEXT_DOMAIN),
         };
         const optionsNewLibraryControl = {
             checked: use_new_library,
@@ -48,7 +48,7 @@ registerBlockType('recras/onlinebooking', {
                     use_new_library: recrasHelper.parseBoolean(newVal),
                 });
             },
-            label: __('Use new method?'),
+            label: __('Use new method?', TEXT_DOMAIN),
         };
         let optionsShowTimesControl;
         let optionsRedirectControl;
@@ -61,7 +61,7 @@ registerBlockType('recras/onlinebooking', {
                         show_times: recrasHelper.parseBoolean(newVal),
                     });
                 },
-                label: __('Preview times in programme'),
+                label: __('Preview times in programme', TEXT_DOMAIN),
             };
             optionsRedirectControl = {
                 selected: redirect,
@@ -71,8 +71,8 @@ registerBlockType('recras/onlinebooking', {
                     });
                 },
                 options: pagesPosts,
-                placeholder: __('i.e. https://www.recras.com/thanks/'),
-                label: __('URL to redirect to (optional, leave empty to not redirect)'),
+                placeholder: __('i.e. https://www.recras.com/thanks/', TEXT_DOMAIN),
+                label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
             };
         } else {
             optionsAutoresizeControl = {
@@ -82,7 +82,7 @@ registerBlockType('recras/onlinebooking', {
                         autoresize: recrasHelper.parseBoolean(newVal),
                     });
                 },
-                label: __('Auto resize iframe'),
+                label: __('Auto resize iframe', TEXT_DOMAIN),
             };
         }
 

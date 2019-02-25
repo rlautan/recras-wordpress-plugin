@@ -1,5 +1,5 @@
 registerBlockType('recras/contactform', {
-    title: __('Contact form'),
+    title: __('Contact form', TEXT_DOMAIN),
     icon: 'email',
     category: 'recras',
 
@@ -11,7 +11,7 @@ registerBlockType('recras/contactform', {
         arrangement: recrasHelper.typeString(),
         element: recrasHelper.typeString('dl'),
         single_choice_element: recrasHelper.typeString('select'),
-        submittext: recrasHelper.typeString(__('Send')),
+        submittext: recrasHelper.typeString(__('Send', TEXT_DOMAIN)),
         redirect: recrasHelper.typeString(),
     },
 
@@ -48,7 +48,7 @@ registerBlockType('recras/contactform', {
                 });
             },
             options: contactForms,
-            label: __('Contact form'),
+            label: __('Contact form', TEXT_DOMAIN),
         };
         const optionsShowTitleControl = {
             checked: showtitle,
@@ -57,7 +57,7 @@ registerBlockType('recras/contactform', {
                     showtitle: recrasHelper.parseBoolean(newVal),
                 });
             },
-            label: __('Show title?'),
+            label: __('Show title?', TEXT_DOMAIN),
         };
         const optionsShowLabelsControl = {
             checked: showlabels,
@@ -66,7 +66,7 @@ registerBlockType('recras/contactform', {
                     showlabels: recrasHelper.parseBoolean(newVal),
                 });
             },
-            label: __('Show labels?'),
+            label: __('Show labels?', TEXT_DOMAIN),
         };
         const optionsShowPlaceholdersControl = {
             checked: showplaceholders,
@@ -75,7 +75,7 @@ registerBlockType('recras/contactform', {
                     showplaceholders: recrasHelper.parseBoolean(newVal),
                 });
             },
-            label: __('Show placeholders?'),
+            label: __('Show placeholders?', TEXT_DOMAIN),
         };
         const optionsPackageControl = {
             selected: arrangement,
@@ -85,7 +85,7 @@ registerBlockType('recras/contactform', {
                 });
             },
             options: packages,
-            label: __('Package (optional)'),
+            label: __('Package (optional)', TEXT_DOMAIN),
         };
         const optionsElementControl = {
             value: element,
@@ -97,18 +97,18 @@ registerBlockType('recras/contactform', {
             options: [
                 {
                     value: 'dl',
-                    label: __('Definition list'),
+                    label: __('Definition list', TEXT_DOMAIN),
                 },
                 {
                     value: 'ol',
-                    label: __('Ordered list'),
+                    label: __('Ordered list', TEXT_DOMAIN),
                 },
                 {
                     value: 'table',
-                    label: __('Table'),
+                    label: __('Table', TEXT_DOMAIN),
                 },
             ],
-            label: __('HTML element'),
+            label: __('HTML element', TEXT_DOMAIN),
         };
         const optionsSingleChoiceControl = {
             value: single_choice_element,
@@ -120,14 +120,14 @@ registerBlockType('recras/contactform', {
             options: [
                 {
                     value: 'select',
-                    label: __('Drop-down list (Select)'),
+                    label: __('Drop-down list (Select)', TEXT_DOMAIN),
                 },
                 {
                     value: 'radio',
-                    label: __('Radio buttons'),
+                    label: __('Radio buttons', TEXT_DOMAIN),
                 },
             ],
-            label: __('Element for single choices'),
+            label: __('Element for single choices', TEXT_DOMAIN),
         };
         const optionsSubmitTextControl = {
             value: submittext,
@@ -136,8 +136,8 @@ registerBlockType('recras/contactform', {
                     submittext: newVal
                 });
             },
-            placeholder: __('Submit button text'),
-            label: __('Submit button text'),
+            placeholder: __('Submit button text', TEXT_DOMAIN),
+            label: __('Submit button text', TEXT_DOMAIN),
         };
         const optionsRedirectControl = {
             selected: redirect,
@@ -147,12 +147,12 @@ registerBlockType('recras/contactform', {
                 });
             },
             options: pagesPosts,
-            placeholder: __('i.e. https://www.recras.com/thanks/'),
-            label: __('URL to redirect to (optional, leave empty to not redirect)'),
+            placeholder: __('i.e. https://www.recras.com/thanks/', TEXT_DOMAIN),
+            label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
             type: 'url',
         };
 
-        retval.push(recrasHelper.elementText('Recras - ' + __('Contact form')));
+        retval.push(recrasHelper.elementText('Recras - ' + __('Contact form', TEXT_DOMAIN)));
 
         retval.push(el(SelectControl, optionsIDControl));
         retval.push(el(ToggleControl, optionsShowTitleControl));
@@ -160,8 +160,8 @@ registerBlockType('recras/contactform', {
         retval.push(el(ToggleControl, optionsShowPlaceholdersControl));
         retval.push(el(SelectControl, optionsPackageControl));
 
-        retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')));
-        retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')));
+        retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.', TEXT_DOMAIN)));
+        retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
 
         retval.push(el(SelectControl, optionsElementControl));
         retval.push(el(SelectControl, optionsSingleChoiceControl));

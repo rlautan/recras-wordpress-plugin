@@ -1,5 +1,5 @@
 registerBlockType('recras/availability', {
-    title: __('Availability calendar'),
+    title: __('Availability calendar', TEXT_DOMAIN),
     icon: 'calendar-alt',
     category: 'recras',
 
@@ -31,7 +31,7 @@ registerBlockType('recras/availability', {
                 });
             },
             options: packages,
-            label: __('Package'),
+            label: __('Package', TEXT_DOMAIN),
         };
         const optionsAutoresizeControl = {
             checked: autoresize,
@@ -40,10 +40,10 @@ registerBlockType('recras/availability', {
                     autoresize: recrasHelper.parseBoolean(newVal),
                 });
             },
-            label: __('Auto resize iframe'),
+            label: __('Auto resize iframe', TEXT_DOMAIN),
         };
 
-        retval.push(recrasHelper.elementText('Recras - ' + __('Availability calendar')));
+        retval.push(recrasHelper.elementText('Recras - ' + __('Availability calendar', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsPackageControl));
         retval.push(el(ToggleControl, optionsAutoresizeControl));
         return retval;

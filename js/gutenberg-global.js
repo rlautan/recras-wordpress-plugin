@@ -11,6 +11,7 @@ const {
     withSelect,
 } = wp.data;
 
+const TEXT_DOMAIN = 'recras-wp';
 const { __ } = wp.i18n;
 
 const recrasHelper = {
@@ -210,13 +211,13 @@ const recrasStore = registerStore('recras/store', {
 
             let pages = yield recrasActions.fetchAPI('wp/v2/pages');
             pages = pages.map(p => {
-                return mapPagesPosts(p, __('Page: '));
+                return mapPagesPosts(p, __('Page: ', TEXT_DOMAIN));
             });
             pagesPosts = pagesPosts.concat(pages);
 
             let posts = yield recrasActions.fetchAPI('wp/v2/posts');
             posts = posts.map(p => {
-                return mapPagesPosts(p, __('Post: '));
+                return mapPagesPosts(p, __('Post: ', TEXT_DOMAIN));
             });
             pagesPosts = pagesPosts.concat(posts);
 

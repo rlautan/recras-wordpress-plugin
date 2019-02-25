@@ -16,11 +16,13 @@ class Gutenberg
             plugins_url('js/gutenberg-global.js', __DIR__), [
             'wp-blocks',
             'wp-components',
-            'wp-element'
+            'wp-element',
+            'wp-i18n',
         ],
             self::GUTENBERG_SCRIPT_VERSION,
             true
         );
+        wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN);
 
         wp_register_style(
             $globalStyleName,
@@ -56,13 +58,15 @@ class Gutenberg
             ],
         ];
         foreach ($gutenbergBlocks as $key => $block) {
+            $handle = 'recras-gutenberg-' . $key;
             wp_register_script(
-                'recras-gutenberg-' . $key,
+                $handle,
                 plugins_url('js/gutenberg-' . $key . '.js', __DIR__),
                 [$globalScriptName],
                 $block['version'],
                 true
             );
+            wp_set_script_translations($handle, Plugin::TEXT_DOMAIN);
 
             \register_block_type('recras/' . $key, [
                 'editor_script' => 'recras-gutenberg-' . $key,

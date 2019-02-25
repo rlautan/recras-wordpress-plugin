@@ -1,5 +1,5 @@
 registerBlockType('recras/voucher', {
-    title: __('Voucher'),
+    title: __('Voucher', TEXT_DOMAIN),
     icon: 'money',
     category: 'recras',
 
@@ -25,7 +25,7 @@ registerBlockType('recras/voucher', {
 
         if (pagesPosts === undefined || !pagesPosts.length) {
             return [
-                recrasHelper.elementText(__('Loading data...'))
+                recrasHelper.elementText(__('Loading data...', TEXT_DOMAIN))
             ];
         }
 
@@ -38,7 +38,7 @@ registerBlockType('recras/voucher', {
                 });
             },
             options: voucherTemplates,
-            label: __('Voucher template'),
+            label: __('Voucher template', TEXT_DOMAIN),
         };
 
         const optionsRedirectControl = {
@@ -49,8 +49,8 @@ registerBlockType('recras/voucher', {
                 });
             },
             options: pagesPosts,
-            placeholder: __('i.e. https://www.recras.com/thanks/'),
-            label: __('URL to redirect to (optional, leave empty to not redirect)'),
+            placeholder: __('i.e. https://www.recras.com/thanks/', TEXT_DOMAIN),
+            label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
         };
 
         retval.push(el(SelectControl, optionsIDControl));

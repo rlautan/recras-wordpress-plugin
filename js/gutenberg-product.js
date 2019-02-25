@@ -1,5 +1,5 @@
 registerBlockType('recras/product', {
-    title: __('Product'),
+    title: __('Product', TEXT_DOMAIN),
     icon: 'cart',
     category: 'recras',
 
@@ -30,7 +30,7 @@ registerBlockType('recras/product', {
                 });
             },
             options: products,
-            label: __('Product'),
+            label: __('Product', TEXT_DOMAIN),
         };
         const optionsShowWhatControl = {
             value: show,
@@ -42,41 +42,41 @@ registerBlockType('recras/product', {
             options: [
                 {
                     value: 'description_long',
-                    label: __('Description (long)'),
+                    label: __('Description (long)', TEXT_DOMAIN),
                 },
                 {
                     value: 'description',
-                    label: __('Description (short)'),
+                    label: __('Description (short)', TEXT_DOMAIN),
                 },
                 {
                     value: 'duration',
-                    label: __('Duration'),
+                    label: __('Duration', TEXT_DOMAIN),
                 },
                 {
                     value: 'image_tag',
-                    label: __('Image tag'),
+                    label: __('Image tag', TEXT_DOMAIN),
                 },
                 {
                     value: 'image_url',
-                    label: __('Image URL'),
+                    label: __('Image URL', TEXT_DOMAIN),
                 },
                 {
                     value: 'minimum_amount',
-                    label: __('Minimum amount'),
+                    label: __('Minimum amount', TEXT_DOMAIN),
                 },
                 {
                     value: 'price_incl_vat',
-                    label: __('Price (incl. VAT)'),
+                    label: __('Price (incl. VAT)', TEXT_DOMAIN),
                 },
                 {
                     value: 'title',
-                    label: __('Title'),
+                    label: __('Title', TEXT_DOMAIN),
                 },
             ],
-            label: __('Property to show'),
+            label: __('Property to show', TEXT_DOMAIN),
         };
 
-        retval.push(recrasHelper.elementText('Recras - ' + __('Product')));
+        retval.push(recrasHelper.elementText('Recras - ' + __('Product', TEXT_DOMAIN)));
 
         retval.push(el(SelectControl, optionsIDControl));
         retval.push(el(SelectControl, optionsShowWhatControl));
