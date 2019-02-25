@@ -17,6 +17,7 @@ registerBlockType('recras/contactform', {
 
     edit: withSelect((select) => {
         return {
+            packages: select('recras/store').fetchPackages(),
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {
@@ -32,7 +33,8 @@ registerBlockType('recras/contactform', {
             redirect,
         } = props.attributes;
         const {
-            pagesPosts
+            packages,
+            pagesPosts,
         } = props;
 
         let retval = [];
@@ -76,16 +78,14 @@ registerBlockType('recras/contactform', {
             label: __('Show placeholders?'),
         };
         const optionsPackageControl = {
-            value: arrangement,
+            selected: arrangement,
             onChange: function(newVal) {
                 props.setAttributes({
                     arrangement: newVal,
                 });
             },
-            placeholder: __('ID of the package (optional)'),
-            label: __('ID of the package (optional)'),
-            type: 'number',
-            min: 0,
+            options: packages,
+            label: __('Package (optional)'),
         };
         const optionsElementControl = {
             value: element,
@@ -158,10 +158,10 @@ registerBlockType('recras/contactform', {
         retval.push(el(ToggleControl, optionsShowTitleControl));
         retval.push(el(ToggleControl, optionsShowLabelsControl));
         retval.push(el(ToggleControl, optionsShowPlaceholdersControl));
-        retval.push(el(TextControl, optionsPackageControl));
+        retval.push(el(SelectControl, optionsPackageControl));
 
-        //retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')));
-        //retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')));
+        retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.')));
+        retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.')));
 
         retval.push(el(SelectControl, optionsElementControl));
         retval.push(el(SelectControl, optionsSingleChoiceControl));
