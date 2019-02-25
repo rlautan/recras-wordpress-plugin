@@ -84,6 +84,7 @@ class Gutenberg
     public static function addEndpoints()
     {
         $routes = [
+            'contactforms' => 'getContactForms',
             'packages' => 'getPackages',
             'products' => 'getProducts',
         ];
@@ -100,6 +101,12 @@ class Gutenberg
                 ]
             );
         }
+    }
+
+    public static function getContactForms()
+    {
+        $model = new ContactForm;
+        return $model->getForms(get_option('recras_subdomain'));
     }
 
     public static function getPackages()

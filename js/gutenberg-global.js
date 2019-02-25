@@ -59,6 +59,9 @@ const mapSelect = function(label, value) {
         value: value,
     };
 };
+const mapContactForm = function(idName) {
+    return mapSelect(idName[1], idName[0]);
+};
 const mapPackage = function(pack) {
     return mapSelect(pack.arrangement, pack.id);
 };
@@ -76,6 +79,13 @@ const recrasActions = {
         return {
             type: 'FETCH_API',
             path,
+        }
+    },
+
+    setContactForms(contactForms) {
+        return {
+            type: 'SET_FORMS',
+            contactForms,
         }
     },
 
@@ -102,11 +112,17 @@ const recrasActions = {
 };
 const recrasStore = registerStore('recras/store', {
     reducer(state = {
+        contactForms: {},
         packages: {},
         pagesPosts: {},
         products: {},
     }, action) {
         switch (action.type) {
+            case 'SET_FORMS':
+                return {
+                    ...state,
+                    contactForms: action.contactForms,
+                };
             case 'SET_PACKAGES':
                 return {
                     ...state,
@@ -128,6 +144,10 @@ const recrasStore = registerStore('recras/store', {
     },
     recrasActions,
     selectors: {
+        fetchContactForms(state) {
+            const { contactForms } = state;
+            return contactForms;
+        },
         fetchPackages(state) {
             const { packages } = state;
             return packages;
@@ -150,6 +170,12 @@ const recrasStore = registerStore('recras/store', {
     },
     resolvers: {
         // * makes it a generator function
+        * fetchContactForms(state) {
+            let forms = yield recrasActions.fetchAPI('recras/contactforms');
+            forms = Object.entries(forms).map(mapContactForm);
+
+            return recrasActions.setContactForms(forms);
+        },
         * fetchPackages(state) {
             let packages = yield recrasActions.fetchAPI('recras/packages');
             packages = Object.values(packages).map(mapPackage);
@@ -179,7 +205,6 @@ const recrasStore = registerStore('recras/store', {
         * fetchProducts(state) {
             let products = yield recrasActions.fetchAPI('recras/products');
             products = Object.values(products).map(mapProduct);
-            console.log(products);
 
             return recrasActions.setProducts(products);
         },

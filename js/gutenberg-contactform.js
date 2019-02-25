@@ -17,6 +17,7 @@ registerBlockType('recras/contactform', {
 
     edit: withSelect((select) => {
         return {
+            contactForms: select('recras/store').fetchContactForms(),
             packages: select('recras/store').fetchPackages(),
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
@@ -33,22 +34,21 @@ registerBlockType('recras/contactform', {
             redirect,
         } = props.attributes;
         const {
+            contactForms,
             packages,
             pagesPosts,
         } = props;
 
         let retval = [];
         const optionsIDControl = {
-            value: id,
+            selected: id,
             onChange: function(newVal) {
                 props.setAttributes({
                     id: newVal,
                 });
             },
-            placeholder: __('ID of the form'),
-            label: __('ID of the form'),
-            type: 'number',
-            min: 1,
+            options: contactForms,
+            label: __('Contact form'),
         };
         const optionsShowTitleControl = {
             checked: showtitle,
@@ -154,7 +154,7 @@ registerBlockType('recras/contactform', {
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Contact form')));
 
-        retval.push(el(TextControl, optionsIDControl));
+        retval.push(el(SelectControl, optionsIDControl));
         retval.push(el(ToggleControl, optionsShowTitleControl));
         retval.push(el(ToggleControl, optionsShowLabelsControl));
         retval.push(el(ToggleControl, optionsShowPlaceholdersControl));
