@@ -43,6 +43,7 @@ registerBlockType('recras/contactform', {
         const optionsIDControl = {
             selected: id,
             onChange: function(newVal) {
+                recrasHelper.lockSave('contactFormID', !newVal);
                 props.setAttributes({
                     id: newVal,
                 });

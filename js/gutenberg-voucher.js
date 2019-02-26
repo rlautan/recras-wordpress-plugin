@@ -33,6 +33,7 @@ registerBlockType('recras/voucher', {
         const optionsIDControl = {
             selected: id,
             onChange: function(newVal) {
+                recrasHelper.lockSave('voucherID', !newVal);
                 props.setAttributes({
                     id: newVal,
                 });

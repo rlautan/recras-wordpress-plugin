@@ -25,6 +25,7 @@ registerBlockType('recras/product', {
         const optionsIDControl = {
             selected: id,
             onChange: function(newVal) {
+                recrasHelper.lockSave('productID', !newVal);
                 props.setAttributes({
                     id: newVal,
                 });
