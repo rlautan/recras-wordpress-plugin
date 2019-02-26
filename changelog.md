@@ -1,7 +1,8 @@
 # Changelog
 
 ## Branch `gutenberg`
-Make plugin compatible with Gutenberg/WordPress 5+
+* Make plugin compatible with Gutenberg/WordPress 5+
+* Update "classic editor" icons to reflect the icons used for Gutenberg blocks
 
 ## 2.1.2 (2019-01-30)
 Update online booking library version. This fixes the minimum amount of "fixed programme" input fields.

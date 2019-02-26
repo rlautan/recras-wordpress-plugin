@@ -160,6 +160,10 @@ We do not support page builders at this time and have no plans to do so.
 
 == Changelog ==
 
+= branch `gutenberg` =
+* Make plugin compatible with Gutenberg/WordPress 5+
+* Update "classic editor" icons to reflect the icons used for Gutenberg blocks
+
 = 2.1.2 =
 Update online booking library version. This fixes the minimum amount of "fixed programme" input fields.
 
@@ -229,5 +233,5 @@ We would appreciate it if you use [our GitHub page](https://github.com/Recras/re
 We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
 
 == Credits ==
-* Icons from [Ionicons](https://ionicons.com/) by Ionic, released under the MIT licence.
+* Icons from [Dashicons](https://github.com/WordPress/dashicons) by WordPress, released under the GPLv2 licence.
 * Date/Time picker by [T00rk](https://github.com/T00rk/bootstrap-material-datetimepicker), released under the MIT licence.
