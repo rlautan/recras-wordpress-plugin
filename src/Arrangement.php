@@ -4,6 +4,8 @@ namespace Recras;
 
 class Arrangement
 {
+    const SHOW_DEFAULT = 'title';
+
     /**
      * Add the [recras-package] shortcode
      *
@@ -16,14 +18,12 @@ class Arrangement
         if (!isset($attributes['id'])) {
             return __('Error: no ID set', Plugin::TEXT_DOMAIN);
         }
-        if (!ctype_digit($attributes['id'])) {
+        if (!ctype_digit($attributes['id']) && !is_int($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
-        if (!isset($attributes['show'])) {
-            return __('Error: "show" option not set', Plugin::TEXT_DOMAIN);
-        }
-        if (!in_array($attributes['show'], self::getValidOptions())) {
-            return __('Error: invalid "show" option', Plugin::TEXT_DOMAIN);
+        $showProperty = self::SHOW_DEFAULT;
+        if (isset($attributes['show']) && in_array($attributes['show'], self::getValidOptions())) {
+            $showProperty = $attributes['show'];
         }
 
 
@@ -44,7 +44,7 @@ class Arrangement
         }
 
 
-        switch ($attributes['show']) {
+        switch ($showProperty) {
             case 'description':
                 return $json->uitgebreide_omschrijving;
             case 'duration':
@@ -191,6 +191,7 @@ class Arrangement
         $arrangements = [
             0 => (object) [
                 'arrangement' => '',
+                'id' => null,
                 'mag_online' => false,
             ],
         ];

@@ -15,7 +15,15 @@ With this plugin, you can easily integrate data from your [Recras](https://recra
 
 To get started, go to the Recras → Settings page and enter your Recras name. For example, if you log in to Recras at `https://mysite.recras.nl/` then your Recras name is `mysite`. Since currently only publicly available data can be used in this plugin, that's all there is to it! You can now use shortcodes to retrieve data. All data is retrieved via a secured connection (HTTPS) to ensure data integrity. Other than the request parameters, no data is sent to the Recras servers.
 
-This plugin consists of five shortcodes. To use them, you first need to set your Recras name on the Recras → Settings page.
+This plugin consists of six "widgets". To use them, you first need to set your Recras name (see paragraph above).
+- Availability calendar
+- Contact forms
+- Online booking
+- Packages
+- Products
+- Voucher sales
+
+Widgets can be added to your site in three ways. Using Gutenberg blocks (since WordPress 5.0 or using the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/)), using the buttons in the "classic editor", or by entering the shortcode manually.
 
 = Settings =
 Setting your Recras name is the most important step here. Other settings are:
@@ -101,7 +109,7 @@ Add the `[recras-product]` shortcode anywhere on your site. The following parame
 
 Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
 
-= Vouchers =
+= Voucher sales =
 Add the `[recras-vouchers]` shortcode anywhere on your site. The following parameter is supported:
 * redirect - a URL that the user is redirected to, after submitting the form successfully.
 
@@ -140,7 +148,7 @@ All data from your Recras is cached for up to 24 hours. If you make important ch
 == Frequently Asked Questions ==
 
 = Do you support Gutenberg? =
-We are working on it. If you are tech-savvy, you can check out the `gutenberg` branch on GitHub.
+Yes, since version `branch gutenberg`! Please make sure you use the latest version of the plugin and please report any bugs you encounter.
 
 = Do you support Visual Composer, Brizy, etc. ? =
 We do not support page builders at this time and have no plans to do so.
@@ -151,6 +159,10 @@ We do not support page builders at this time and have no plans to do so.
 2. Example of package information, generated from Recras data
 
 == Changelog ==
+
+= branch `gutenberg` =
+* Make plugin compatible with Gutenberg/WordPress 5+
+* Update "classic editor" icons to reflect the icons used for Gutenberg blocks
 
 = 2.1.2 =
 Update online booking library version. This fixes the minimum amount of "fixed programme" input fields.
@@ -221,5 +233,5 @@ We would appreciate it if you use [our GitHub page](https://github.com/Recras/re
 We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](php.net/supported-versions.php).
 
 == Credits ==
-* Icons from [Ionicons](https://ionicons.com/) by Ionic, released under the MIT licence.
+* Icons from [Dashicons](https://github.com/WordPress/dashicons) by WordPress, released under the GPLv2 licence.
 * Date/Time picker by [T00rk](https://github.com/T00rk/bootstrap-material-datetimepicker), released under the MIT licence.

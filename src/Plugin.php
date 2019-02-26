@@ -29,6 +29,12 @@ class Plugin
         add_action('admin_init', ['Recras\Settings', 'registerSettings']);
         add_action('admin_init', ['Recras\Editor', 'addButtons']);
 
+        if (function_exists('register_block_type')) {
+            add_action('init', ['Recras\Gutenberg', 'addBlocks']);
+            add_action('rest_api_init', ['Recras\Gutenberg', 'addEndpoints']);
+            add_filter('block_categories', ['Recras\Gutenberg', 'addCategory']);
+        }
+
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
@@ -38,10 +44,6 @@ class Plugin
         add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
 
         $this->addShortcodes();
-
-        if (version_compare(get_bloginfo('version'), '5.0', '>=')) {
-            add_action('tgmpa_register', [$this, 'registerRequiredPlugins']);
-        }
     }
 
 
@@ -138,6 +140,7 @@ class Plugin
         ]);
         wp_enqueue_script('recras-admin');
         wp_enqueue_style('recras-admin-style', $this->baseUrl . '/css/admin-style.css', [], '1.10.1');
+        wp_enqueue_script('wp-api');
     }
 
 
@@ -165,10 +168,7 @@ class Plugin
         }
 
         global $post;
-        if (
-            strpos($post->post_content, $this::SHORTCODE_ONLINE_BOOKING) !== false ||
-            strpos($post->post_content, $this::SHORTCODE_VOUCHERS)
-        ) {
+        if ($post && $this->shouldIncludeLibrary($post->post_content)) {
             wp_enqueue_script('polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise', [], null, false);
             wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.min.js', [], $this::LIBRARY_VERSION, false);
 
@@ -188,36 +188,33 @@ class Plugin
     }
 
 
-    public static function registerRequiredPlugins()
-    {
-        $plugins = [
-            [
-                'name' => 'Classic Editor',
-                'slug' => 'classic-editor',
-                'required' => false,
-            ],
-        ];
-
-        $config = [
-            'id' => 'recras-wp',
-            'default_path' => '',
-            'menu' => 'tgmpa-install-plugins',
-            'parent_slug' => 'plugins.php',
-            'capability' => 'manage_options',
-            'has_notices' => true,
-            'dismissable' => true,
-            'dismiss_msg' => '',
-            'is_automatic' => true, // Automatically activate plugins after installation
-            'message' => '',
-        ];
-        tgmpa($plugins, $config);
-    }
-
     /**
      * Set plugin base dir
      */
     public function setBaseUrl()
     {
         $this->baseUrl = rtrim(plugins_url('', dirname(__FILE__)), '/');
-    }    
+    }
+
+    private function shouldIncludeLibrary($content)
+    {
+        if (strpos($content, $this::SHORTCODE_ONLINE_BOOKING) !== false) {
+            // Online booking shortcode
+            return true;
+        }
+        if (strpos($content, $this::SHORTCODE_VOUCHERS) !== false) {
+            // Voucher shortcode
+            return true;
+        }
+        if (strpos($content, 'wp:recras/onlinebooking') !== false) {
+            // Online booking Gutenberg
+            return true;
+        }
+        if (strpos($content, 'wp:recras/voucher') !== false) {
+            // Voucher Gutenberg
+            return true;
+        }
+        return false;
+    }
+
 }

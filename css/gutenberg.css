@@ -1,0 +1,7 @@
+.editor-styles-wrapper p.recrasInfoText {
+     border-left: 5px solid hsl(196, 67%, 49%);
+     font-family: sans-serif;
+     font-size: 1rem;
+     line-height: 1.6;
+     padding-left: 0.5em;
+}
