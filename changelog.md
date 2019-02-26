@@ -1,6 +1,6 @@
 # Changelog
 
-## Branch `gutenberg`
+## 2.2.0 (2019-02-26)
 * Make plugin compatible with Gutenberg/WordPress 5+
 * Update "classic editor" icons to reflect the icons used for Gutenberg blocks
 
