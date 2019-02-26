@@ -3,6 +3,8 @@ namespace Recras;
 
 class Products
 {
+    const SHOW_DEFAULT = 'title';
+
     /**
      * Add the [recras-product] shortcode
      *
@@ -18,11 +20,9 @@ class Products
         if (!ctype_digit($attributes['id']) && !is_int($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
-        if (!isset($attributes['show'])) {
-            return __('Error: "show" option not set', Plugin::TEXT_DOMAIN);
-        }
-        if (!in_array($attributes['show'], self::getValidOptions())) {
-            return __('Error: invalid "show" option', Plugin::TEXT_DOMAIN);
+        $showProperty = self::SHOW_DEFAULT;
+        if (isset($attributes['show']) && in_array($attributes['show'], self::getValidOptions())) {
+            $showProperty = $attributes['show'];
         }
 
         $subdomain = Settings::getSubdomain($attributes);
@@ -36,7 +36,7 @@ class Products
         }
         $product = $products[$attributes['id']];
 
-        switch ($attributes['show']) {
+        switch ($showProperty) {
             case 'description':
                 return '<span class="recras-description">' . $product->beschrijving_klant . '</span>';
             case 'description_long':
