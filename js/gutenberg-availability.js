@@ -10,7 +10,7 @@ registerBlockType('recras/availability', {
 
     edit: withSelect((select) => {
         return {
-            packages: select('recras/store').fetchPackages(),
+            packages: select('recras/store').fetchPackages(true),
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {

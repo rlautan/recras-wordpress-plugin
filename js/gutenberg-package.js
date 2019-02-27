@@ -10,7 +10,7 @@ registerBlockType('recras/package', {
 
     edit: withSelect((select) => {
         return {
-            packages: select('recras/store').fetchPackages(),
+            packages: select('recras/store').fetchPackages(true),
         }
     })(props => {
         const {

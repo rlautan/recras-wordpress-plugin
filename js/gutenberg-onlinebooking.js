@@ -13,21 +13,25 @@ registerBlockType('recras/onlinebooking', {
 
     edit: withSelect((select) => {
         return {
-            packages: select('recras/store').fetchPackages(),
+            packages: select('recras/store').fetchPackages(false),
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {
         const {
             id,
             use_new_library,
+            prefill_enabled,
             redirect,
             show_times,
             autoresize,
+            product_amounts,
         } = props.attributes;
         const {
             packages,
             pagesPosts,
         } = props;
+        const packagesMapped = Object.values(packages).map(mapPackage);
+        console.log(packagesMapped);
 
         let retval = [];
         const optionsPackageControl = {
@@ -37,7 +41,7 @@ registerBlockType('recras/onlinebooking', {
                     id: newVal,
                 });
             },
-            options: packages,
+            options: packagesMapped,
             placeholder: __('Pre-filled package', TEXT_DOMAIN),
             label: __('Pre-filled package (optional)', TEXT_DOMAIN),
         };
@@ -51,6 +55,8 @@ registerBlockType('recras/onlinebooking', {
             label: __('Use new method?', TEXT_DOMAIN),
         };
         let optionsShowTimesControl;
+        let optionsPreFillControl;
+        let preFillControls = [];
         let optionsRedirectControl;
         let optionsAutoresizeControl;
         if (use_new_library) {
@@ -63,6 +69,15 @@ registerBlockType('recras/onlinebooking', {
                 },
                 label: __('Preview times in programme', TEXT_DOMAIN),
             };
+            optionsPreFillControl = {
+                checked: prefill_enabled,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        prefill_enabled: recrasHelper.parseBoolean(newVal),
+                    });
+                },
+                label: __('Pre-fill amounts (requires pre-filled package)', TEXT_DOMAIN),
+            };
             optionsRedirectControl = {
                 value: redirect,
                 onChange: function(newVal) {
@@ -74,6 +89,27 @@ registerBlockType('recras/onlinebooking', {
                 placeholder: __('i.e. https://www.recras.com/thanks/', TEXT_DOMAIN),
                 label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
             };
+
+            if (prefill_enabled && id) {
+                //TODO: bookingsize
+                packages[id].regels.forEach(line => {
+                    let ctrl = {
+                        value: product_amounts[line.id],
+                        onChange: function(newVal) {
+                            const attrs = {
+                                product_amounts: {},
+                            };
+                            attrs.product_amounts[line.id] = newVal;
+
+                            props.setAttributes(attrs);
+                        },
+                        label: line.beschrijving_templated,
+                        type: 'number',
+                        min: 0,
+                    };
+                    preFillControls.push(ctrl);
+                });
+            }
         } else {
             optionsAutoresizeControl = {
                 checked: autoresize,
@@ -91,6 +127,12 @@ registerBlockType('recras/onlinebooking', {
         retval.push(el(ToggleControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(el(ToggleControl, optionsShowTimesControl));
+            retval.push(el(ToggleControl, optionsPreFillControl));
+            if (preFillControls.length) {
+                preFillControls.forEach(ctrl => {
+                    retval.push(el(TextControl, ctrl));
+                });
+            }
             retval.push(el(SelectControl, optionsRedirectControl));
         } else {
             retval.push(el(ToggleControl, optionsAutoresizeControl));
