@@ -28,15 +28,9 @@ class Availability
         $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
 
 
-        $json = Transient::get($subdomain . '_arrangement_' . $attributes['id']);
-        if ($json === false) {
-            try {
-                $json = Http::get($subdomain, 'arrangementen/' . $attributes['id']);
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
-            Transient::set($subdomain . '_arrangement_' . $attributes['id'], $json);
-        }
+        // We don't need this data, but it's useful to check if the package actually exists
+        $packageModel = new Arrangement;
+        $packageModel->getPackage($subdomain, $attributes['id']);
 
 
         $url = 'https://' . $subdomain . '.recras.nl/api/arrangementbeschikbaarheid/id/' . $attributes['id'];

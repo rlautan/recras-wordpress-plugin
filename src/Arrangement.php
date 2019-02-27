@@ -32,17 +32,7 @@ class Arrangement
             return Plugin::getNoSubdomainError();
         }
 
-
-        $json = Transient::get($subdomain . '_arrangement_' . $attributes['id']);
-        if ($json === false) {
-            try {
-                $json = Http::get($subdomain, 'arrangementen/' . $attributes['id']);
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
-            Transient::set($subdomain . '_arrangement_' . $attributes['id'], $json);
-        }
-
+        $json = self::getPackage($subdomain, $attributes['id']);
 
         switch ($showProperty) {
             case 'description':
@@ -297,6 +287,21 @@ class Arrangement
             $location = __('No location specified', Plugin::TEXT_DOMAIN);
         }
         return '<span class="recras-location">' . $location . '</span>';
+    }
+
+
+    public static function getPackage($subdomain, $id)
+    {
+        $json = Transient::get($subdomain . '_arrangement_' . $id);
+        if ($json === false) {
+            try {
+                $json = Http::get($subdomain, 'arrangementen/' . $id);
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+            Transient::set($subdomain . '_arrangement_' . $id, $json);
+        }
+        return $json;
     }
 
 
