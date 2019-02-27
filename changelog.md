@@ -1,5 +1,8 @@
 # Changelog
 
+## branch `analytics`
+* Add Google Analytics integration
+
 ## 2.2.1 (2019-02-28)
 * Fix values not being set properly after opening a saved page (Gutenberg only)
 
