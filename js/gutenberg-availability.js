@@ -24,7 +24,7 @@ registerBlockType('recras/availability', {
 
         let retval = [];
         const optionsPackageControl = {
-            selected: id,
+            value: id,
             onChange: function(newVal) {
                 recrasHelper.lockSave('availabilityPackage', !newVal);
                 props.setAttributes({

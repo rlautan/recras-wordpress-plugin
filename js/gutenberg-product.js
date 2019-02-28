@@ -17,13 +17,13 @@ registerBlockType('recras/product', {
             id,
             show,
         } = props.attributes;
-            const {
-                products,
-            } = props;
+        const {
+            products,
+        } = props;
 
         let retval = [];
         const optionsIDControl = {
-            selected: id,
+            value: id,
             onChange: function(newVal) {
                 recrasHelper.lockSave('productID', !newVal);
                 props.setAttributes({

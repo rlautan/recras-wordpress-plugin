@@ -31,7 +31,7 @@ registerBlockType('recras/onlinebooking', {
 
         let retval = [];
         const optionsPackageControl = {
-            selected: id,
+            value: id,
             onChange: function(newVal) {
                 props.setAttributes({
                     id: newVal,
@@ -64,7 +64,7 @@ registerBlockType('recras/onlinebooking', {
                 label: __('Preview times in programme', TEXT_DOMAIN),
             };
             optionsRedirectControl = {
-                selected: redirect,
+                value: redirect,
                 onChange: function(newVal) {
                     props.setAttributes({
                         redirect: newVal

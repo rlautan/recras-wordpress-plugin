@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.1 (2019-02-28)
+* Fix values not being set properly after opening a saved page (Gutenberg only)
+
 ## 2.2.0 (2019-02-26)
 * Make plugin compatible with Gutenberg/WordPress 5+
 * Update "classic editor" icons to reflect the icons used for Gutenberg blocks

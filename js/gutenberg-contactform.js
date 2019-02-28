@@ -41,7 +41,7 @@ registerBlockType('recras/contactform', {
 
         let retval = [];
         const optionsIDControl = {
-            selected: id,
+            value: id,
             onChange: function(newVal) {
                 recrasHelper.lockSave('contactFormID', !newVal);
                 props.setAttributes({
@@ -79,7 +79,7 @@ registerBlockType('recras/contactform', {
             label: __('Show placeholders?', TEXT_DOMAIN),
         };
         const optionsPackageControl = {
-            selected: arrangement,
+            value: arrangement,
             onChange: function(newVal) {
                 props.setAttributes({
                     arrangement: newVal,
@@ -141,7 +141,7 @@ registerBlockType('recras/contactform', {
             label: __('Submit button text', TEXT_DOMAIN),
         };
         const optionsRedirectControl = {
-            selected: redirect,
+            value: redirect,
             onChange: function(newVal) {
                 props.setAttributes({
                     redirect: newVal

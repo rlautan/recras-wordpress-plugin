@@ -23,7 +23,7 @@ registerBlockType('recras/package', {
 
         let retval = [];
         const optionsIDControl = {
-            selected: id,
+            value: id,
             onChange: function(newVal) {
                 recrasHelper.lockSave('packageID', !newVal);
                 props.setAttributes({
