@@ -148,7 +148,7 @@ All data from your Recras is cached for up to 24 hours. If you make important ch
 == Frequently Asked Questions ==
 
 = Do you support Gutenberg? =
-Yes, since version `branch gutenberg`! Please make sure you use the latest version of the plugin and please report any bugs you encounter.
+Yes, since version 2.2.0! Please make sure you use the latest version of the plugin and please report any bugs you encounter.
 
 = Do you support Visual Composer, Brizy, etc. ? =
 We do not support page builders at this time and have no plans to do so.
