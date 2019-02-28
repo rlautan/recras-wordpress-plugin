@@ -22,7 +22,9 @@ class Gutenberg
             self::GUTENBERG_SCRIPT_VERSION,
             true
         );
-        wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN);
+        if (function_exists('wp_set_script_translations')) {
+            wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN);
+        }
 
         wp_register_style(
             $globalStyleName,
@@ -66,7 +68,9 @@ class Gutenberg
                 $block['version'],
                 true
             );
-            wp_set_script_translations($handle, Plugin::TEXT_DOMAIN); //TODO: this generates an empty JS object
+            if (function_exists('wp_set_script_translations')) {
+                wp_set_script_translations($handle, Plugin::TEXT_DOMAIN); //TODO: this generates an empty JS object
+            }
 
             \register_block_type('recras/' . $key, [
                 'editor_script' => 'recras-gutenberg-' . $key,

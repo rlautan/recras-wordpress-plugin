@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.2 (2019-02-28)
+* Fix plugin on WordPress 4
+
 ## 2.2.1 (2019-02-28)
 * Fix values not being set properly after opening a saved page (Gutenberg only)
 

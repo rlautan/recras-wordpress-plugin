@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.7
 Requires PHP: 5.4.0
 Tested up to: 5.1
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,6 +159,9 @@ We do not support page builders at this time and have no plans to do so.
 2. Example of package information, generated from Recras data
 
 == Changelog ==
+
+= 2.2.2 =
+* Fix plugin on WordPress 4
 
 = 2.2.1 =
 * Fix values not being set properly after opening a saved page (Gutenberg only)
