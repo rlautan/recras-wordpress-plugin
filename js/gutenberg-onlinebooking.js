@@ -9,6 +9,8 @@ registerBlockType('recras/onlinebooking', {
         redirect: recrasHelper.typeString(),
         show_times: recrasHelper.typeBoolean(false),
         use_new_library: recrasHelper.typeBoolean(true),
+        prefill_enabled: recrasHelper.typeBoolean(false),
+        product_amounts: recrasHelper.typeString(), // stored as JSON string
     },
 
     edit: withSelect((select) => {
@@ -20,18 +22,22 @@ registerBlockType('recras/onlinebooking', {
         const {
             id,
             use_new_library,
-            prefill_enabled,
             redirect,
             show_times,
             autoresize,
-            product_amounts,
         } = props.attributes;
         const {
             packages,
             pagesPosts,
         } = props;
         const packagesMapped = Object.values(packages).map(mapPackage);
-        console.log(packagesMapped);
+        let product_amounts;
+        try {
+            product_amounts = JSON.parse(props.attributes.product_amounts);
+        } catch (e) {
+            product_amounts = {};
+        }
+        let prefill_enabled = props.attributes.prefill_enabled || Object.keys(product_amounts).length > 0;
 
         let retval = [];
         const optionsPackageControl = {
@@ -90,18 +96,37 @@ registerBlockType('recras/onlinebooking', {
                 label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
             };
 
-            if (prefill_enabled && id) {
-                //TODO: bookingsize
-                packages[id].regels.forEach(line => {
+            if (prefill_enabled && id && packages[id]) {
+                let linesNoBookingSize = packages[id].regels.filter(function(line) {
+                    return line.onlineboeking_aantalbepalingsmethode !== 'boekingsgrootte';
+                });
+                let linesBookingSize = packages[id].regels.filter(function(line) {
+                    return line.onlineboeking_aantalbepalingsmethode === 'boekingsgrootte';
+                });
+                if (linesBookingSize.length > 0) {
+                    preFillControls.push({
+                        value: product_amounts.bookingsize,
+                        onChange: function(newVal) {
+                            product_amounts.bookingsize = newVal;
+
+                            props.setAttributes({
+                                product_amounts: JSON.stringify(product_amounts)
+                            });
+                        },
+                        label: packages[id].weergavenaam || packages[id].arrangement,
+                        type: 'number',
+                        min: 0,
+                    });
+                }
+                linesNoBookingSize.forEach(line => {
                     let ctrl = {
                         value: product_amounts[line.id],
                         onChange: function(newVal) {
-                            const attrs = {
-                                product_amounts: {},
-                            };
-                            attrs.product_amounts[line.id] = newVal;
+                            product_amounts[line.id] = newVal;
 
-                            props.setAttributes(attrs);
+                            props.setAttributes({
+                                product_amounts: JSON.stringify(product_amounts)
+                            });
                         },
                         label: line.beschrijving_templated,
                         type: 'number',
