@@ -26,6 +26,8 @@
         <dd><input type="checkbox" id="use_new_library" checked>
     <dt><label for="show_times"><?php _e('Preview times in programme', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="show_times">
+    <dt><label><?php _e('Pre-fill amounts (requires pre-filled package)', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><strong><?php _e('Sorry, this is only available using the Gutenberg editor.', \Recras\Plugin::TEXT_DOMAIN); ?></strong>
     <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="redirect_page">
             <option value=""><?php _e("Don't redirect", \Recras\Plugin::TEXT_DOMAIN); ?>
@@ -48,9 +50,10 @@
 
 <script>
     document.getElementById('use_new_library').addEventListener('change', function(){
-        document.getElementById('auto_resize').disabled = document.getElementById('use_new_library').checked;
-        document.getElementById('redirect_page').disabled = !document.getElementById('use_new_library').checked;
-        document.getElementById('show_times').disabled = !document.getElementById('use_new_library').checked;
+        var useLibrary = document.getElementById('use_new_library').checked;
+        document.getElementById('auto_resize').disabled = useLibrary;
+        document.getElementById('redirect_page').disabled = !useLibrary;
+        document.getElementById('show_times').disabled = !useLibrary;
     });
 
     document.getElementById('booking_submit').addEventListener('click', function(){
