@@ -54,6 +54,7 @@ registerBlockType('recras/voucher', {
             label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
         };
 
+        retval.push(recrasHelper.elementText('Recras - ' + __('Voucher sales', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsIDControl));
         retval.push(el(SelectControl, optionsRedirectControl));
 

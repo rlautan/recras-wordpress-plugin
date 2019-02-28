@@ -86,6 +86,7 @@ registerBlockType('recras/onlinebooking', {
             };
         }
 
+        retval.push(recrasHelper.elementText('Recras - ' + __('Online booking', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsPackageControl));
         retval.push(el(ToggleControl, optionsNewLibraryControl));
         if (use_new_library) {
