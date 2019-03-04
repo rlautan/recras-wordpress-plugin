@@ -1,6 +1,6 @@
 # Changelog
 
-## branch `analytics`
+## `master`
 * Add Google Analytics integration
 
 ## 2.2.2 (2019-02-28)
