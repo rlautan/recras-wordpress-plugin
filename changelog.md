@@ -1,5 +1,8 @@
 # Changelog
 
+## branch `analytics`
+* Add Google Analytics integration
+
 ## 2.2.2 (2019-02-28)
 * Fix plugin on WordPress 4
 

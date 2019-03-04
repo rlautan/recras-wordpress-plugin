@@ -21,14 +21,17 @@ class Vouchers
             return Plugin::getNoSubdomainError();
         }
 
-        $templateText = '';
+        $extraOptions = '';
         if (isset($attributes['id'])) {
-            $templateText = "voucher_template_id: " . $attributes['id'] . ",";
+            $extraOptions .= "voucher_template_id: " . $attributes['id'] . ",\n";
         }
 
-        $redirect = '';
         if (isset($attributes['redirect'])) {
-            $redirect = "redirect_url: '" . $attributes['redirect'] . "',";
+            $extraOptions .= "redirect_url: '" . $attributes['redirect'] . "',\n";
+        }
+
+        if (Analytics::useAnalytics()) {
+            $extraOptions .= "analytics: true,\n";
         }
 
         $generatedDivID = uniqid('V');
@@ -41,8 +44,7 @@ class Vouchers
             recras_hostname: '" . $subdomain . ".recras.nl',
             element: document.getElementById('" . $generatedDivID . "'),
             locale: '" . Settings::externalLocale() . "',
-            " . $templateText . "
-            " . $redirect . "
+            " . $extraOptions . "
         });
         new RecrasVoucher(voucherOptions);
     });

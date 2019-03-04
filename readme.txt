@@ -127,6 +127,9 @@ Styling for the date/time picker can be based off of `datetimepicker/bootstrap-m
 = Cache =
 All data from your Recras is cached for up to 24 hours. If you make important changes, such as increasing the price of a product, you can clear the cache to reflect those changes on your site immediately.
 
+= Google Analytics integration =
+You can enable Google Analytics integration by checking "Enable Google Analytics integration?" on the Recras Settings page. This will only work if there is a global `gtag` JavaScript object. This should almost always be the case, but if you find out it doesn't work, please contact us!
+
 == Installation ==
 
 **Easy installation (preferred)**

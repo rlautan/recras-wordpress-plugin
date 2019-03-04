@@ -48,6 +48,10 @@ class OnlineBooking
             $extraOptions .= "redirect_url: '" . $redirectUrl . "',\n";
         }
 
+        if (Analytics::useAnalytics()) {
+            $extraOptions .= "analytics: true,\n";
+        }
+
         return "
 <div id='" . $generatedDivID . "'></div>
 <script>
