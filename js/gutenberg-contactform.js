@@ -18,7 +18,7 @@ registerBlockType('recras/contactform', {
     edit: withSelect((select) => {
         return {
             contactForms: select('recras/store').fetchContactForms(),
-            packages: select('recras/store').fetchPackages(),
+            packages: select('recras/store').fetchPackages(true),
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {

@@ -2,6 +2,7 @@
 
 ## `master`
 * Add Google Analytics integration
+* Add ability to pre-fill amounts form
 
 ## 2.2.2 (2019-02-28)
 * Fix plugin on WordPress 4

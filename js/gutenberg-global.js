@@ -197,9 +197,11 @@ const recrasStore = registerStore('recras/store', {
 
             return recrasActions.setContactForms(forms);
         },
-        * fetchPackages(state) {
+        * fetchPackages(mapSelect) {
             let packages = yield recrasActions.fetchAPI('recras/packages');
-            packages = Object.values(packages).map(mapPackage);
+            if (mapSelect) {
+                packages = Object.values(packages).map(mapPackage);
+            }
 
             return recrasActions.setPackages(packages);
         },

@@ -27,14 +27,22 @@ class OnlineBooking
         $previewTimes = isset($attributes['show_times']) ? (!!$attributes['show_times']) : false;
         $redirect = isset($attributes['redirect']) ? $attributes['redirect'] : null;
 
+        $preFillAmounts = [];
+        if ($arrangementID && isset($attributes['product_amounts'])) {
+            $preFillAmounts = json_decode($attributes['product_amounts'], true);
+            if (!$preFillAmounts) {
+                return __('Error: "product_amounts" is invalid', Plugin::TEXT_DOMAIN);
+            }
+        }
+
         if ($useNewLibrary) {
-            return self::generateBookingForm($subdomain, $arrangementID, $redirect, $previewTimes);
+            return self::generateBookingForm($subdomain, $arrangementID, $redirect, $previewTimes, $preFillAmounts);
         }
         return self::generateIframe($subdomain, $arrangementID, $enableResize);
     }
 
 
-    private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl, $previewTimes)
+    private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl, $previewTimes, $preFillAmounts)
     {
         $generatedDivID = uniqid('V');
         $extraOptions = '';
@@ -46,6 +54,10 @@ class OnlineBooking
 
         if ($redirectUrl) {
             $extraOptions .= "redirect_url: '" . $redirectUrl . "',\n";
+        }
+
+        if (count($preFillAmounts)) {
+            $extraOptions .= "productAmounts: " . json_encode($preFillAmounts) . ",\n";
         }
 
         if (Analytics::useAnalytics()) {

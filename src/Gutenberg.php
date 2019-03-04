@@ -4,7 +4,7 @@ namespace Recras;
 class Gutenberg
 {
     const ENDPOINT_NAMESPACE = 'recras';
-    const GUTENBERG_SCRIPT_VERSION = '2.2.0';
+    const GUTENBERG_SCRIPT_VERSION = '2.3.0';
 
 
     public static function addBlocks()
@@ -36,19 +36,19 @@ class Gutenberg
         $gutenbergBlocks = [
             'availability' => [
                 'callback' => ['Recras\Availability', 'addAvailabilityShortcode'],
-                'version' => '2.2.1',
+                'version' => '2.3.0',
             ],
             'contactform' => [
                 'callback' => ['Recras\ContactForm', 'addContactShortcode'],
-                'version' => '2.2.1',
+                'version' => '2.3.0',
             ],
             'onlinebooking' => [
                 'callback' => ['Recras\OnlineBooking', 'addBookingShortcode'],
-                'version' => '2.2.1',
+                'version' => '2.3.0',
             ],
             'package' => [
                 'callback' => ['Recras\Arrangement', 'addArrangementShortcode'],
-                'version' => '2.2.1',
+                'version' => '2.3.0',
             ],
             'product' => [
                 'callback' => ['Recras\Products', 'addProductShortcode'],
