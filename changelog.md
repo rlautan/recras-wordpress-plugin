@@ -1,6 +1,6 @@
 # Changelog
 
-## `master`
+## 2.3.0 (2019-03-04)
 * Add Google Analytics integration
 * Add ability to pre-fill amounts form
 

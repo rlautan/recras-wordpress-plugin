@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.7
 Requires PHP: 5.4.0
 Tested up to: 5.1
-Stable tag: 2.2.2
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,8 +163,9 @@ We do not support page builders at this time and have no plans to do so.
 
 == Changelog ==
 
-## `master`
+= 2.3.0 =
 * Add Google Analytics integration
+* Add ability to pre-fill amounts form
 
 = 2.2.2 =
 * Fix plugin on WordPress 4
