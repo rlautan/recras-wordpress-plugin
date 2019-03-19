@@ -197,12 +197,29 @@ class Settings
             'recras'
         );
 
-        register_setting('recras', 'recras_subdomain', ['Recras\Settings', 'sanitizeSubdomain']);
-        register_setting('recras', 'recras_currency', '');
-        register_setting('recras', 'recras_decimal', '');
-        register_setting('recras', 'recras_datetimepicker', '');
-        register_setting('recras', 'recras_theme', '');
-        register_setting('recras', 'recras_enable_analytics', '');
+        register_setting('recras', 'recras_subdomain', [
+            'sanitize_callback' => ['Recras\Settings', 'sanitizeSubdomain'],
+        ]);
+        register_setting('recras', 'recras_currency', [
+            'default' => '€',
+            'type' => 'string',
+        ]);
+        register_setting('recras', 'recras_decimal', [
+            'default' => ',',
+            'type' => 'string',
+        ]);
+        register_setting('recras', 'recras_datetimepicker', [
+            'default' => false,
+            'type' => 'boolean',
+        ]);
+        register_setting('recras', 'recras_theme', [
+            'default' => 'none',
+            'type' => 'string',
+        ]);
+        register_setting('recras', 'recras_enable_analytics', [
+            'default' => false,
+            'type' => 'boolean',
+        ]);
 
         add_settings_field('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
         add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
