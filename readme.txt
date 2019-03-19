@@ -37,83 +37,79 @@ Setting your Recras name is the most important step here. Other settings are:
   - "Recras Blue" is a theme with blue accents
 
 = Packages =
-Add the `[recras-package]` shortcode anywhere on your site. The following parameters are supported:
+Packages can be added using the Recras/Package block (Gutenberg) or using the ![packages](editor/package.svg) icon in the Classic Editor. You can also manually add the `[recras-package]` shortcode.
 
-* id (required) - corresponds to the package ID in Recras
-* show (required) - can be any of the following:
-  * description - shows the long description of this package
-  * duration - shows the duration of this package (i.e. time between start of first activity and end of last activity)
-  * image_tag - outputs the package image, if present.
-  * image_url - gives the package image URL, if present. Any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. If you just want to output the image, use `image_tag` instead. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
-  * location - shows the starting location of this package
-  * persons - shows the minimum number of persons needed for this package
-  * price_pp_excl_vat - shows the price per person, excluding VAT
-  * price_pp_incl_vat - same as above, but including VAT
-  * price_total_excl_vat - shows the total price, excluding VAT
-  * price_total_incl_vat - same as above, but including VAT
-  * programme - shows the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
-  * program - alias of `programme`
-  * title - shows the title (display name) of the package
-* starttime - only used for `programme`, determines the starting time of a package. If not set, it will default to 12:00
-* showheader - only used for `programme`, determines if the header should be shown. Enabled by default, to disable use `false`, `0`, or `no` as value.
-
-Example: `[recras-package id="1" show="title"]` (quotation marks around parameters are optional) will show the title of the package with ID 1.
+The following options are available:
+* Package - **required** what package to use
+* Property to show - **required** what property to show. This can be any of the following:
+  * Description - the long description of this package
+  * Duration - the duration of this package (i.e. time between start of first activity and end of last activity)
+  * Image tag - the package image, if present.
+  * Minimum number of persons - the minimum number of persons needed for this package
+  * Price p.p. excl. VAT - the price per person, excluding VAT
+  * Price p.p. incl. VAT - same as above, but including VAT
+  * Programme - the programme as an HTML table. For styling purposes, the table has a `recras-programme` class. For multi-day programmes every `tr` starting on a new day has a `new-day` class
+  * Starting location - the starting location name of this package
+  * Title - the title (display name) of the package
+  * Total price excl. VAT - shows the total price, excluding VAT
+  * Total price incl. VAT - same as above, but including VAT
+  * Relative image URL - gives the package image URL, if present. Any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. If you just want to output the image, use "Image tag" instead. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
+* Start time - only visible when "Programme" is selected - determines the starting time of a package. If not set, it will default to 00:00
+* Show header? - only visible when "Programme" is selected - determines if the header should be shown. Enabled by default
 
 = Contact forms =
-Add the `[recras-contact]` shortcode anywhere on your site. The following parameters are supported:
+Contact forms can be added using the Recras/Contact form block (Gutenberg) or using the ![contact form](editor/contact.svg) icon in the Classic Editor. You can also manually add the `[recras-contact]` shortcode.
 
-* id (required) - corresponds to the contact form ID in Recras
-* showtitle - show the title of the contact form or not. Enabled by default, to disable use `false`, `0`, or `no` as value.
-* arrangement - for forms where the user can select a package, setting this parameter will select the package automatically and hide the field for the user.
-* element - show the contact form as definition list (dl - default), ordered list (ol), or table (table).
-* showlabels - show the label for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
-* showplaceholders - show the placeholder for each element. Enabled by default, to disable use `false`, `0`, or `no` as value.
-* submittext - the text for the form submission button. Defaults to "Send"
-* redirect - a URL that the user is redirected to, after submitting the form successfully.
-
-Example: `[recras-contact id=42 showtitle=false element="ol" showlabels="0"]` will show the contact form with ID 42, in an ordered list, without title and without label.
+The following options are available:
+* Contact form - **required** what form to use
+* Show title? - show the title of the contact form or not. Enabled by default
+* Show labels? - show the label for each element. Enabled by default. **Note** showing labels is highly recommended. It is good for accessibility, and when they are not used it can lead to confusing results with radio buttons.
+* Show placeholders? - show the placeholder for each element. Enabled by default
+* Package - for forms where the user can select a package, setting this parameter will select the package automatically and hide the field for the user.
+* HTML element - show the contact form as definition list (default), ordered list, or table (not recommended for accessibility reasons).
+* Element for single choices - show fields where a single choice is made (i.e. Customer type) as drop-down list (default) or radio buttons.
+* Submit button text - the text for the form submission button. Defaults to "Send"
+* Redirect after submission - a page/post that the user is redirected to, after submitting the form successfully.
 
 = Online booking =
-Add the `[recras-booking]` shortcode anywhere on your site. The following parameters are supported:
+Online booking can be integrated using the Recras/Online booking block (Gutenberg) or using the ![online booking](editor/online-booking.svg) icon in the Classic Editor. You can also manually add the `[recras-booking]` shortcode.
 
-* id - corresponds to the package ID in Recras
-* use_new_library - whether or not you want to use the new online booking method. This may have bugs, so use with care! Since this is a per-shortcode setting, you can create a new page to try this out.
-* redirect - a URL that the user is redirected to, after booking successfully. Note: this is only available for the new online booking method.
-* autoresize - enabled by default. Disable this if you have more than one Recras iframe on your page. Note: this is only available for the old online booking method.
-
-Example: `[recras-booking id=17]` will show the booking form with package ID 17.
-
-The online booking shortcode adds an iframe to your site, which automatically adjusts its height to fit the content, unless the option "autoresize" is disabled.
+The following options are available:
+* Pre-filled package - entering a package here will skip the package selection step
+* Use new method? - whether or not you want to use the new online booking method.
+* Preview times in programme - whether or not you want to preview times in the programme. Note: this is only available for the new online booking method.
+* Pre-fill amounts - **Note** this is only available for the new online booking method, and required a pre-filled package. When enabled, this gives you the ability to pre-fill the amounts form. This can be useful, for example, for packages where you always have a fixed amount.
+* Redirect after submission - a page/post that the user is redirected to, after booking successfully. Note: this is only available for the new online booking method.
+* Auto resize iframe - enabled by default. Disable this if you have more than one Recras iframe on your page. Note: this is only available for the old online booking method.
 
 = Availability =
-Add the `[recras-availability]` shortcode anywhere on your site. The following parameters are supported:
+Availability calendars can be added using the Recras/Availability calendar block (Gutenberg) or using the ![availability calendar](editor/availability.svg) icon in the Classic Editor. You can also manually add the `[recras-availability]` shortcode.
 
-* id - corresponds to the package ID in Recras
-* autoresize - disabled by default. Should not be necessary to use. Keep this disabled if you have more than one Recras iframe on your page
-
-The availability shortcode adds an iframe with availability calendar to your site.
+The following options are available:
+* Package - what package to use for the availability calendar
+* Auto resize iframe - enabled by default. Disable this if you have more than one Recras iframe on your page
 
 = Products =
-Add the `[recras-product]` shortcode anywhere on your site. The following parameters are supported:
+Products can be added using the Recras/Product block (Gutenberg) or using the ![product](editor/product.svg) icon in the Classic Editor. You can also manually add the `[recras-product]` shortcode.
 
-* id (required) - corresponds to the product ID in Recras
-* show (required) - can be any of the following:
-  * duration - shows duration of this product, if product has a duration
-  * image_tag - outputs the product image, if present.
-  * image_url - gives the product image URL, if present. Any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. If you just want to output the image, use `image_tag` instead. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
-  * minimum_amount - shows the minimum amount of this product
-  * title - shows the title (display name) of the product
-  * price_incl_vat - same as above, but including VAT
-  * description - shows the short description of the product
-  * description_long - shows the long description of the product, if present.
-
-Example: `[recras-product id="9" show="title"]` will show the title of the product with ID 9.
+The following options are available:
+* Product - **required** what product to use
+* Property to show - **required** what property to show. This can be any of the following:
+  * Description (long) - the long description of the product, if present.
+  * Description (short) - the short description of the product
+  * Duration - the duration of this product, if product has a duration
+  * Image tag - outputs the product image, if present.
+  * Image URL - gives the product image URL, if present. Any surrounding HTML/CSS, such as an `<img>` tag or `background-image` attribute will have to be written manually for maximum flexibility. If you just want to output the image, use "Image tag" instead. When using quotation marks, be sure to use different marks in the shortcode and the surrounding code, or the image will not show.
+  * Minimum amount - the minimum amount of this product
+  * Price (incl. VAT) - the price of the product, including VAT
+  * Title - the title (display name) of the product
 
 = Voucher sales =
-Add the `[recras-vouchers]` shortcode anywhere on your site. The following parameter is supported:
-* redirect - a URL that the user is redirected to, after submitting the form successfully.
+Voucher sales can be integrated using the Recras/Vouchers block (Gutenberg) or using the ![voucher sales](editor/vouchers.svg) icon in the Classic Editor. You can also manually add the `[recras-vouchers]` shortcode.
 
-This will a voucher sales module to your website.
+The following options are available:
+* Voucher template - when selected, this will skip the template selection step
+* Redirect after submission - a page/post that the user is redirected to, after submitting the form successfully.
 
 = Date/Time picker =
 By default, date and time pickers in contact forms use whatever the browser has available. Currently (March 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
