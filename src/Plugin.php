@@ -4,7 +4,7 @@ namespace Recras;
 class Plugin
 {
     const LIBRARY_VERSION = '0.15.1';
-    const PLUGIN_VERSION = '2.0.7';
+    const PLUGIN_VERSION = '2.3.0';
     const TEXT_DOMAIN = 'recras-wp';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
@@ -130,21 +130,20 @@ class Plugin
 
     private function initStatistics()
     {
-        $optIn = get_option('recras_statistics_optin');
-        if ($optIn) {
-            add_action('wp', ['Recras\Statistics', 'scheduleReport']);
-            add_action(Statistics::EVENT_NAME, ['Recras\Statistics', 'sendReport']);
-        } else {
+        $optIn = get_option(Statistics::OPTION_NAME, 'noaction');
+        switch ($optIn) {
+            case Statistics::ALLOWED:
+                add_action('wp', ['Recras\Statistics', 'scheduleReport']);
+                add_action(Statistics::EVENT_NAME, ['Recras\Statistics', 'sendReport']);
+                break;
+            case Statistics::DENIED:
+                // Do not ask for consent if user explicitly denied consent
+                break;
+            default:
             add_action('admin_notices', ['Recras\Statistics', 'adminNoticeOptIn']);
-            if (function_exists('random_bytes')) { // PHP 7+ though WP should include a polyfill
-                $salt = bin2hex(random_bytes(8));
-            } else {
-                $salt = substr(sha1(rand(0, time())), rand(0, 30), 8);
-            }
-            add_option('recras_uuid', sha1($salt . get_option('recras_subdomain')));
         }
 
-        add_action('admin_post_optin_statistics', ['Recras\Statistics', 'enableOptIn']);
+        add_action('admin_post_recras_statistics', ['Recras\Statistics', 'storeConsent']);
     }
 
 
