@@ -8,6 +8,7 @@ class Statistics
 
     const ALLOWED = 'allow';
     const DENIED = 'deny';
+    const UNDECIDED = 'undecided';
 
     public static function adminNoticeOptIn()
     {

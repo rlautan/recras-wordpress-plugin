@@ -35,6 +35,20 @@ class Settings
 
 
     /**
+     * Add a checkbox option
+     *
+     * @param array $args
+     */
+    public static function addInputCheckboxStatistics($args)
+    {
+        $field = $args['field'];
+        $isEnabled = (get_option($field) === Statistics::ALLOWED);
+
+        printf('<input type="checkbox" name="%s" id="%s" value="1"%s>', $field, $field, ($isEnabled ? ' checked' : ''));
+    }
+
+
+    /**
      * Add a decimal separator input field
      *
      * @param array $args
@@ -220,6 +234,10 @@ class Settings
             'default' => false,
             'type' => 'boolean',
         ]);
+        register_setting('recras', Statistics::OPTION_NAME, [
+            'sanitize_callback' => ['Recras\Settings', 'saveStatistics'],
+            'default' => Statistics::UNDECIDED,
+        ]);
 
         add_settings_field('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
         add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
@@ -227,6 +245,7 @@ class Settings
         add_settings_field('recras_datetimepicker', __('Use date/time picker script', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox'], 'recras', 'recras', ['field' => 'recras_datetimepicker']);
         add_settings_field('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputTheme'], 'recras', 'recras', ['field' => 'recras_theme']);
         add_settings_field('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox'], 'recras', 'recras', ['field' => 'recras_enable_analytics']);
+        add_settings_field(Statistics::OPTION_NAME, __('Share statistics with the Recras developers?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckboxStatistics'], 'recras', 'recras', ['field' => Statistics::OPTION_NAME]);
     }
 
 
@@ -247,6 +266,20 @@ class Settings
             return false;
         }
         return $subdomain;
+    }
+
+    public static function saveStatistics($value)
+    {
+        switch ($value) {
+            case 1:
+            case Statistics::ALLOWED:
+                return Statistics::ALLOWED;
+            case 0:
+            case Statistics::DENIED:
+                return Statistics::DENIED;
+            default:
+                return Statistics::UNDECIDED;
+        }
     }
 
 

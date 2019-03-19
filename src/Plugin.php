@@ -130,7 +130,7 @@ class Plugin
 
     private function initStatistics()
     {
-        $optIn = get_option(Statistics::OPTION_NAME, 'noaction');
+        $optIn = get_option(Statistics::OPTION_NAME, Statistics::UNDECIDED);
         switch ($optIn) {
             case Statistics::ALLOWED:
                 add_action('wp', ['Recras\Statistics', 'scheduleReport']);
