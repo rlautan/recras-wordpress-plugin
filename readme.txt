@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.7
 Requires PHP: 5.4.0
 Tested up to: 5.1
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,7 +159,7 @@ We do not support page builders at this time and have no plans to do so.
 
 == Changelog ==
 
-= branch `master` =
+= 2.3.1 =
 * Fix missing "Start time" and "Show header" options in Package block
 
 = 2.3.0 =

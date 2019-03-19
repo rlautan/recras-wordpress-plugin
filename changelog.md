@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.1 (2019-03-19)
+* Fix missing "Start time" and "Show header" options in Package block
+
 ## 2.3.0 (2019-03-04)
 * Add Google Analytics integration
 * Add ability to pre-fill amounts form
