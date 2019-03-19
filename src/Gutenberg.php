@@ -48,7 +48,7 @@ class Gutenberg
             ],
             'package' => [
                 'callback' => ['Recras\Arrangement', 'addArrangementShortcode'],
-                'version' => '2.3.0',
+                'version' => '2.3.1',
             ],
             'product' => [
                 'callback' => ['Recras\Products', 'addProductShortcode'],

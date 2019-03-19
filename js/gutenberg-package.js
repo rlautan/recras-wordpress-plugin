@@ -6,6 +6,8 @@ registerBlockType('recras/package', {
     attributes: {
         id: recrasHelper.typeString(),
         show: recrasHelper.typeString('title'),
+        starttime: recrasHelper.typeString('00:00'),
+        showheader: recrasHelper.typeBoolean(true),
     },
 
     edit: withSelect((select) => {
@@ -16,6 +18,8 @@ registerBlockType('recras/package', {
         const {
             id,
             show,
+            showheader,
+            starttime,
         } = props.attributes;
         const {
             packages,
@@ -92,11 +96,40 @@ registerBlockType('recras/package', {
             ],
             label: __('Property to show', TEXT_DOMAIN),
         };
+        let optionsStartTimeControl;
+        let optionsShowHeaderControl;
+
+        if (show === 'programme') {
+            optionsStartTimeControl = {
+                value: starttime,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        starttime: newVal,
+                    });
+                },
+                placeholder: __('hh:mm', TEXT_DOMAIN),
+                label: __('Start time', TEXT_DOMAIN),
+            };
+            optionsShowHeaderControl = {
+                checked: showheader,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        showheader: recrasHelper.parseBoolean(newVal),
+                    });
+                },
+                label: __('Show header?', TEXT_DOMAIN),
+            };
+        }
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Package', TEXT_DOMAIN)));
 
         retval.push(el(SelectControl, optionsIDControl));
         retval.push(el(SelectControl, optionsShowWhatControl));
+        if (show === 'programme') {
+            retval.push(el(TextControl, optionsStartTimeControl));
+            retval.push(el(ToggleControl, optionsShowHeaderControl));
+
+        }
         return retval;
     }),
 

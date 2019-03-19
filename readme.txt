@@ -163,6 +163,9 @@ We do not support page builders at this time and have no plans to do so.
 
 == Changelog ==
 
+= branch `master` =
+* Fix missing "Start time" and "Show header" options in Package block
+
 = 2.3.0 =
 * Add Google Analytics integration
 * Add ability to pre-fill amounts form
