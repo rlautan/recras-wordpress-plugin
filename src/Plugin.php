@@ -40,6 +40,8 @@ class Plugin
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
+        register_uninstall_hook(__FILE__, [__CLASS__, 'uninstall']);
+
         // Clear caches
         add_action('admin_post_clear_arrangement_cache', ['Recras\Arrangement', 'clearCache']);
         add_action('admin_post_clear_contactform_cache', ['Recras\ContactForm', 'clearCache']);
@@ -241,4 +243,14 @@ class Plugin
         return false;
     }
 
+    public static function uninstall()
+    {
+        delete_option('recras_currency');
+        delete_option('recras_datetimepicker');
+        delete_option('recras_decimal');
+        delete_option('recras_enable_analytics');
+        delete_option('recras_subdomain');
+        delete_option('recras_theme');
+        delete_option(Statistics::OPTION_NAME);
+    }
 }
