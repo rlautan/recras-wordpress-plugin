@@ -116,7 +116,7 @@ Add the `[recras-vouchers]` shortcode anywhere on your site. The following param
 This will a voucher sales module to your website.
 
 = Date/Time picker =
-By default, date and time pickers in contact forms use whatever the browser has available. Currently (February 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
+By default, date and time pickers in contact forms use whatever the browser has available. Currently (March 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
 
 **Note**: this setting only applies to contact forms, not to "new style" online booking.
 
@@ -185,54 +185,6 @@ Update online booking library version. This fixes a few things with the new onli
 
 = 2.1.0 =
 Choose between drop-down or radio buttons for single-choice fields (customer type, package selection, gender, and single choice) in contact forms
-
-= 2.0.7 =
-* "Price excl. VAT" for products is not supported anymore due to API change
-* Update online booking library version:
-  - Disable date selection if there are min/max amount or dependency errors
-  - Fix "NaN" price when booking size input field was cleared
-  - Add option to show/hide programme times preview for online bookings (hidden by default)
-  - Add loading indicator when loading available time slots
-
-= 2.0.6 =
-Update online booking library version:
-* Don't scroll to amounts form when package is pre-selected
-* Fixed attachments being shown even when "Send standard attachments" was disabled for a package
-* Show console warning when you are logged in to the Recras being used
-
-= 2.0.5 =
-Update online booking library version:
-* Fixed a bunch of minor bugs and inconsistencies
-* Show line price based on amount selected
-
-= 2.0.4 =
-* Update online booking library version
-
-= 2.0.3 =
-* Voucher sales module without pre-selected template wasn't working - fixed
-* Update online booking library version:
-  * Implement `keuze_enkel` fields in contact form
-  * Fix "NaN" price when amount input field was cleared
-  * Fix "Programme amounts are invalid" error in some cases
-  * Voucher sales showed templates without contact form when logged in - fixed
-
-= 2.0.2 =
-* Update online booking library version (check booking size lines for minimum amount)
-
-= 2.0.1 =
-Fixed a problem with the previous release
-
-= 2.0.0 =
-**Major release** This version might break things. Please read the following carefully:
-
-* Added:
-  - Ability to show package/product image tag (instead of bare URL and having to add `<img>` tag manually)
-  - Add "Choice - single" field to contact forms
-* Fixed:
-  - Position of datepicker popup on mobile
-  - "Customer type" selection in contact forms
-* Changed: the discount and voucher fields for online bookings are now combined. This means there are some backward incompatible CSS changes. If you are **not** using an online booking theme, you might need to make some changes to your CSS when installing this version. Details on these changes can be found in the [changelog for the library](https://github.com/Recras/online-booking-js/blob/master/changelog.md#080-2018-10-29)
-* Removed: `[arrangement]` and `[recras-arrangement]` shortcodes. These have been replaced by `[recras-package]` over 1.5 years ago.
 
 = Older versions =
 See `changelog.md` for the full changelog.
