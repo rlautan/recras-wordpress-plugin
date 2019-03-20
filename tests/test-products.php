@@ -1,7 +1,7 @@
 <?php
 namespace Recras;
 
-class ProductsTest extends \WP_UnitTestCase
+class ProductsTest extends WordPressUnitTestCase
 {
     function testShortcodeWithoutID()
     {

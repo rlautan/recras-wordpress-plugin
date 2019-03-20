@@ -1,7 +1,7 @@
 <?php
 namespace Recras;
 
-class ContactFormTest extends \WP_UnitTestCase
+class ContactFormTest extends WordPressUnitTestCase
 {
 	function testShortcodeWithoutID()
 	{

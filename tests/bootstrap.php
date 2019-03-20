@@ -6,13 +6,14 @@ if (!$_tests_dir) {
 }
 
 require_once $_tests_dir . '/includes/functions.php';
+//require_once $_tests_dir . '/includes/testcase.php';
+require_once $_tests_dir . '/includes/bootstrap.php';
+require_once dirname(__FILE__) . '/WordPressUnitTestCase.php';
 
 function _manually_load_plugin() {
 	require dirname(__DIR__) . '/recras-wordpress-plugin.php';
 }
 tests_add_filter('muplugins_loaded', '_manually_load_plugin');
-
-require $_tests_dir . '/includes/bootstrap.php';
 
 update_option('recras_currency', '€');
 update_option('recras_subdomain', 'demo');

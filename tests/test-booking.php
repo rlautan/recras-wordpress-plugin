@@ -1,7 +1,7 @@
 <?php
 namespace Recras;
 
-class OnlineBookingTest extends \WP_UnitTestCase
+class OnlineBookingTest extends WordPressUnitTestCase
 {
 	function testShortcodeWithoutID()
 	{

@@ -1,7 +1,7 @@
 <?php
 namespace Recras;
 
-class ArrangementTest extends \WP_UnitTestCase
+class ArrangementTest extends WordPressUnitTestCase
 {
 	function testShortcodeWithoutID()
 	{
@@ -16,100 +16,67 @@ class ArrangementTest extends \WP_UnitTestCase
 
 	function testInvalidIDinShortcode()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=foobar]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+	    $content = $this->createPostAndGetContent('[recras-package id=foobar]');
         $this->assertEquals('Error: ID is not a number' . "\n", $content, 'Non-numeric ID should fail');
 	}
 
 	function testShortcodeWithValidIDWithoutShow()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package id=7]');
         $this->assertEquals('Error: "show" option not set' . "\n", $content, 'Not setting "show" option should fail');
 	}
 
 	function testShortcodeWithInvalidShow()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7 show=invalid]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('Error: invalid "show" option' . "\n", $content, '...');
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=invalid]');
+        $this->assertEquals('Error: invalid "show" option' . "\n", $content, 'Invalid "show" option should fail');
 	}
 
 	function testShortcodeShowTitle()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7 show=title]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=title]');
         $this->assertEquals('<span class="recras-title">Actieve Familiedag</span>' . "\n", $content, 'Should show title');
 	}
 
 	function testShortcodeDescription()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7 show=description]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
-        $this->assertTrue(strpos($content, '<p><strong>Ontvangst:') !== false, 'Should show description');
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=description]');
+        $this->assertTrue(strpos($content, 'Uitgebreide omschrijving van dit arrangement') !== false, 'Should show description');
 	}
 
 	function testShortcodeDuration()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7 show=duration]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
-        $this->assertEquals('<span class="recras-duration">6:15</span>' . "\n", $content, 'Should show duration');
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=duration]');
+        $this->assertEquals('<span class="recras-duration">2:15</span>' . "\n", $content, 'Should show duration');
 	}
 
     function testShortcodeImageTag()
     {
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7 show=image_tag]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=image_tag]');
         $this->assertEquals('<img src="https://demo.recras.nl/api2.php/arrangementen/7/afbeelding" alt="Actieve Familiedag">' . "\n", $content, 'Should return image tag');
     }
 
     function testShortcodeImageUrl()
     {
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7 show=image_url]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=image_url]');
         $this->assertEquals('/api2.php/arrangementen/7/afbeelding' . "\n", $content, 'Should return image URL');
     }
 
     function testShortcodeImageInTag()
     {
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '<img src="[recras-package id=7 show=image_url]">'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=image_url]');
         $this->assertEquals('<p><img src="/api2.php/arrangementen/7/afbeelding"></p>' . "\n", $content, 'Should return image URL');
     }
 
 	function testShortcodeLocation()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=6 show=location]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=location]');
         $this->assertEquals('<span class="recras-location">No location specified</span>' . "\n", $content, 'Should show location');
 	}
 
 	function testShortcodeShowPersons()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package id=7 show=persons]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=persons]');
         $this->assertEquals('<span class="recras-persons">10</span>' . "\n", $content, 'Should show number of persons');
 	}
 
@@ -190,14 +157,14 @@ class ArrangementTest extends \WP_UnitTestCase
         $this->assertGreaterThan(0, count($arrangements), 'getArrangements should return a non-empty array');
     }
 
-    function testGetArrangementsInvalidDomain()
+    /*function testGetArrangementsInvalidDomain()
     {
         $plugin = new Arrangement;
         $arrangements = $plugin->getArrangements('ObviouslyFakeSubdomainThatDoesNotExist');
         $this->assertTrue(is_string($arrangements), 'getArrangements on a non-existing subdomain should return an error message');
         $this->assertTrue(isset($arrangements[8]), 'Should include arrangements that are not bookable online');
         $this->assertTrue(isset($arrangements[18]), 'Should include arrangements that are bookable online');
-    }
+    }*/
 
     function testGetOnlineArrangements()
     {

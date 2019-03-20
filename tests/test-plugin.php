@@ -1,7 +1,7 @@
 <?php
 namespace Recras;
 
-class PluginTest extends \WP_UnitTestCase
+class PluginTest extends WordPressUnitTestCase
 {
     function testTooLongSubdomain()
     {

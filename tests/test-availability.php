@@ -1,7 +1,7 @@
 <?php
 namespace Recras;
 
-class AvailabilityTest extends \WP_UnitTestCase
+class AvailabilityTest extends WordPressUnitTestCase
 {
 	function testShortcodeWithoutID()
 	{
