@@ -9,9 +9,10 @@ notifications:
 
 php:
 - 7.1
-- 7.2 # Travis uses PHPUnit 8 for PHP 7.2 and 7.3, but WordPress is not compatible - https://core.trac.wordpress.org/ticket/46149
+- 7.2
 - 7.3
-- nightly
+- 7.4
+- nightly # PHP 8.0
 
 matrix:
   allow_failures:
@@ -24,7 +25,7 @@ install:
 - composer install --dev
 
 before_script:
-- travis_retry composer global require "phpunit/phpunit:^6"
+- travis_retry composer global require "phpunit/phpunit:^6" # Travis uses PHPUnit 8 for PHP 7.2+, but WordPress is not compatible - https://core.trac.wordpress.org/ticket/46149
 - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 
 script: vendor/bin/phpunit
