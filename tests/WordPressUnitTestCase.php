@@ -64,6 +64,30 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
         ];
     }
 
+    private function products()
+    {
+        return [
+            17 => (object) [
+                'id' => 17,
+                'weergavenaam' => 'Cola',
+                'verkoop' => 2.5,
+                'beschrijving_klant' => 'De echte cola',
+                'uitgebreide_omschrijving' => '',
+                'minimum_aantal' => 0,
+                'duur' => null,
+            ],
+            42 => (object) [
+                'id' => 42,
+                'weergavenaam' => '2 uur klimmen',
+                'verkoop' => 17.5,
+                'beschrijving_klant' => 'Twee uur klimmen in ons bos',
+                'uitgebreide_omschrijving' => 'Twee uur klimmen in ons klimbos, met de langste zipline van Nederland',
+                'minimum_aantal' => 1,
+                'duur' => 'PT2H00M00S',
+            ],
+        ];
+    }
+
     public function transientGetCallback(string $name)
     {
         if (preg_match('~^([a-z]+)_arrangements$~', $name)) {
@@ -96,8 +120,7 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
             ];
         }
         if (preg_match('~^([a-z]+)_products_v2$~', $name)) {
-            //TODO
-            return (object) [];
+            return $this->products();
         }
         if (preg_match('~^([a-z]+)_voucher_templates$~', $name)) {
             //TODO

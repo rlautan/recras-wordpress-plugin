@@ -23,5 +23,4 @@ class PluginTest extends WordPressUnitTestCase
         $result = $plugin->sanitizeSubdomain('demo');
         $this->assertEquals('demo', $result, 'Valid subdomain should be valid');
     }
-
 }
