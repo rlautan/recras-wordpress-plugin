@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-02-28 16:06+0100\n"
-"PO-Revision-Date: 2019-02-28 16:07+0100\n"
+"POT-Creation-Date: 2019-03-22 15:02+0100\n"
+"PO-Revision-Date: 2019-03-22 15:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -21,8 +21,8 @@ msgstr ""
 #: editor/form-arrangement.php:14 editor/form-booking.php:12
 #: editor/form-contact.php:32 editor/form-package-availability.php:11
 #: js/gutenberg-availability.js:35 js/gutenberg-package.js:2
-#: js/gutenberg-package.js:34 js/gutenberg-package.js:96 src/Plugin.php:78
-#: src/Plugin.php:136
+#: js/gutenberg-package.js:38 js/gutenberg-package.js:124 src/Plugin.php:80
+#: src/Plugin.php:138
 msgid "Package"
 msgstr "Arrangement"
 
@@ -40,65 +40,65 @@ msgid "Show what?"
 msgstr "Toon wat?"
 
 #: editor/form-arrangement.php:28 editor/form-product.php:24
-#: js/gutenberg-package.js:78 js/gutenberg-product.js:74
+#: js/gutenberg-package.js:82 js/gutenberg-product.js:74
 msgid "Title"
 msgstr "Titel"
 
-#: editor/form-arrangement.php:29 js/gutenberg-package.js:46
+#: editor/form-arrangement.php:29 js/gutenberg-package.js:50
 msgid "Description"
 msgstr "Beschrijving"
 
 #: editor/form-arrangement.php:30 editor/form-product.php:27
-#: js/gutenberg-package.js:50 js/gutenberg-product.js:54
+#: js/gutenberg-package.js:54 js/gutenberg-product.js:54
 msgid "Duration"
 msgstr "Duur"
 
-#: editor/form-arrangement.php:31 js/gutenberg-package.js:74
+#: editor/form-arrangement.php:31 js/gutenberg-package.js:78
 msgid "Starting location"
 msgstr "Startlocatie"
 
-#: editor/form-arrangement.php:32 js/gutenberg-package.js:58
+#: editor/form-arrangement.php:32 js/gutenberg-package.js:62
 msgid "Minimum number of persons"
 msgstr "Minimum aantal personen"
 
-#: editor/form-arrangement.php:33 js/gutenberg-package.js:62
+#: editor/form-arrangement.php:33 js/gutenberg-package.js:66
 msgid "Price p.p. excl. VAT"
 msgstr "Prijs p.p. excl. btw"
 
-#: editor/form-arrangement.php:34 js/gutenberg-package.js:66
+#: editor/form-arrangement.php:34 js/gutenberg-package.js:70
 msgid "Price p.p. incl. VAT"
 msgstr "Prijs p.p. incl. btw"
 
-#: editor/form-arrangement.php:35 js/gutenberg-package.js:82
+#: editor/form-arrangement.php:35 js/gutenberg-package.js:86
 msgid "Total price excl. VAT"
 msgstr "Totaalprijs excl. btw"
 
-#: editor/form-arrangement.php:36 js/gutenberg-package.js:86
+#: editor/form-arrangement.php:36 js/gutenberg-package.js:90
 msgid "Total price incl. VAT"
 msgstr "Totaalprijs incl. btw"
 
-#: editor/form-arrangement.php:37 js/gutenberg-package.js:70
+#: editor/form-arrangement.php:37 js/gutenberg-package.js:74
 msgid "Programme"
 msgstr "Programma"
 
 #: editor/form-arrangement.php:38 editor/form-product.php:28
-#: js/gutenberg-package.js:54 js/gutenberg-product.js:58
+#: js/gutenberg-package.js:58 js/gutenberg-product.js:58
 msgid "Image tag"
 msgstr "Afbeelding-tag"
 
-#: editor/form-arrangement.php:39 js/gutenberg-package.js:90
+#: editor/form-arrangement.php:39 js/gutenberg-package.js:94
 msgid "Relative image URL"
 msgstr "Relatieve afbeelding-URL"
 
-#: editor/form-arrangement.php:41
+#: editor/form-arrangement.php:41 js/gutenberg-package.js:111
 msgid "Start time"
 msgstr "Starttijd"
 
-#: editor/form-arrangement.php:42
+#: editor/form-arrangement.php:42 js/gutenberg-package.js:110
 msgid "hh:mm"
 msgstr "uu:mm"
 
-#: editor/form-arrangement.php:43
+#: editor/form-arrangement.php:43 js/gutenberg-package.js:120
 msgid "Show header?"
 msgstr "Toon header?"
 
@@ -120,15 +120,15 @@ msgstr "Voeg shortcode in"
 msgid "No pre-filled package"
 msgstr "Geen vooraf ingevuld arrangement"
 
-#: editor/form-booking.php:25 js/gutenberg-onlinebooking.js:61
+#: editor/form-booking.php:25 js/gutenberg-onlinebooking.js:65
 msgid "Use new method?"
 msgstr "Nieuwe methode gebruiken?"
 
-#: editor/form-booking.php:27 js/gutenberg-onlinebooking.js:76
+#: editor/form-booking.php:27 js/gutenberg-onlinebooking.js:80
 msgid "Preview times in programme"
 msgstr "Toon voorbeeldtijden in programma"
 
-#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:85
+#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:89
 msgid "Pre-fill amounts (requires pre-filled package)"
 msgstr "Aantallen vooraf invullen (vereist een vooraf ingevuld arrangement)"
 
@@ -162,7 +162,7 @@ msgstr "Automatisch schalen?"
 
 #: editor/form-contact.php:15 js/gutenberg-contactform.js:2
 #: js/gutenberg-contactform.js:52 js/gutenberg-contactform.js:156
-#: src/Plugin.php:80 src/Plugin.php:133
+#: src/Plugin.php:82 src/Plugin.php:135
 msgid "Contact form"
 msgstr "Contactformulier"
 
@@ -237,13 +237,13 @@ msgid "Submit button text"
 msgstr "Tekst op knop Versturen"
 
 #: editor/form-contact.php:62 editor/form-contact.php:109
-#: js/gutenberg-contactform.js:14 src/ContactForm.php:78
+#: js/gutenberg-contactform.js:14 src/ContactForm.php:79
 msgid "Send"
 msgstr "Versturen"
 
 #: editor/form-product.php:11 js/gutenberg-product.js:2
-#: js/gutenberg-product.js:34 js/gutenberg-product.js:80 src/Plugin.php:82
-#: src/Plugin.php:138
+#: js/gutenberg-product.js:34 js/gutenberg-product.js:80 src/Plugin.php:84
+#: src/Plugin.php:140
 msgid "Product"
 msgstr "Product"
 
@@ -279,7 +279,7 @@ msgstr "Geen vooraf ingevuld template"
 msgid "Availability calendar"
 msgstr "Beschikbaarheidskalender"
 
-#: js/gutenberg-availability.js:44 js/gutenberg-onlinebooking.js:146
+#: js/gutenberg-availability.js:44 js/gutenberg-onlinebooking.js:150
 msgid "Auto resize iframe"
 msgstr "iframe automatisch schalen"
 
@@ -287,12 +287,12 @@ msgstr "iframe automatisch schalen"
 msgid "Package (optional)"
 msgstr "Arrangement (optioneel)"
 
-#: js/gutenberg-contactform.js:151 js/gutenberg-onlinebooking.js:95
+#: js/gutenberg-contactform.js:151 js/gutenberg-onlinebooking.js:99
 #: js/gutenberg-voucher.js:53
 msgid "i.e. https://www.recras.com/thanks/"
 msgstr "bijv. https://www.recras.nl/bedankt/"
 
-#: js/gutenberg-contactform.js:152 js/gutenberg-onlinebooking.js:96
+#: js/gutenberg-contactform.js:152 js/gutenberg-onlinebooking.js:100
 #: js/gutenberg-voucher.js:54
 msgid "Redirect after submission (optional, leave empty to not redirect)"
 msgstr "Doorsturen na versturen (optioneel, laat leeg om niet door te sturen)"
@@ -305,20 +305,20 @@ msgstr "Pagina: "
 msgid "Post: "
 msgstr "Bericht: "
 
-#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:150
-#: src/Plugin.php:81 src/Plugin.php:135
+#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:154
+#: src/Plugin.php:83 src/Plugin.php:137
 msgid "Online booking"
 msgstr "Online boeking"
 
-#: js/gutenberg-onlinebooking.js:51
+#: js/gutenberg-onlinebooking.js:55
 msgid "Pre-filled package"
 msgstr "Vooraf ingevuld arrangement"
 
-#: js/gutenberg-onlinebooking.js:52
+#: js/gutenberg-onlinebooking.js:56
 msgid "Pre-filled package (optional)"
 msgstr "Vooraf ingevuld arrangement (optioneel)"
 
-#: js/gutenberg-package.js:93 js/gutenberg-product.js:77
+#: js/gutenberg-package.js:97 js/gutenberg-product.js:77
 msgid "Property to show"
 msgstr "Eigenschap om te tonen"
 
@@ -356,51 +356,51 @@ msgstr "Fout: programma is leeg"
 msgid "Error: unknown option"
 msgstr "Fout: onbekende optie"
 
-#: src/Arrangement.php:120
+#: src/Arrangement.php:122
 msgid "From"
 msgstr "Van"
 
-#: src/Arrangement.php:120
+#: src/Arrangement.php:122
 msgid "Until"
 msgstr "Tot"
 
-#: src/Arrangement.php:120
+#: src/Arrangement.php:122
 msgid "Activity"
 msgstr "Activiteit"
 
-#: src/Arrangement.php:146
+#: src/Arrangement.php:148
 #, php-format
 msgid "Day %d"
 msgstr "Dag %d"
 
-#: src/Arrangement.php:265
+#: src/Arrangement.php:271
 msgid "No duration specified"
 msgstr "Geen duur opgegeven"
 
-#: src/Arrangement.php:287
+#: src/Arrangement.php:293
 msgid "No location specified"
 msgstr "Geen locatie opgegeven"
 
-#: src/ContactForm.php:37
+#: src/ContactForm.php:38
 #, php-format
 msgid "Error: %s"
 msgstr "Fout: %s"
 
-#: src/ContactForm.php:74
+#: src/ContactForm.php:75
 msgid "Error: package is set, but contact form does not support packages"
 msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
 
-#: src/ContactForm.php:260
+#: src/ContactForm.php:265
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/ContactForm.php:261
+#: src/ContactForm.php:266
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:262
+#: src/ContactForm.php:267
 msgid "Female"
 msgstr "Vrouw"
 
@@ -445,27 +445,27 @@ msgstr "Fout: kon data uit Recras niet verwerken. De foutmelding was: %s"
 msgid "Error: \"product_amounts\" is invalid"
 msgstr "Fout: \"product_amounts\" is ongeldig"
 
-#: src/Plugin.php:61 src/Plugin.php:62
+#: src/Plugin.php:63 src/Plugin.php:64
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Plugin.php:71 src/Plugin.php:72
+#: src/Plugin.php:73 src/Plugin.php:74
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Plugin.php:79 src/Plugin.php:137
+#: src/Plugin.php:81 src/Plugin.php:139
 msgid "Package availability"
 msgstr "Arrangement-beschikbaarheid"
 
-#: src/Plugin.php:83 src/Plugin.php:139
+#: src/Plugin.php:85 src/Plugin.php:141
 msgid "Vouchers"
 msgstr "Tegoedbonnen"
 
-#: src/Plugin.php:108
+#: src/Plugin.php:110
 msgid "Error: you have not set your Recras name yet"
 msgstr "Fout: je hebt je Recras-naam nog niet ingesteld"
 
-#: src/Plugin.php:110
+#: src/Plugin.php:112
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
@@ -474,27 +474,27 @@ msgstr ""
 "Fout: je Recras-naam is nog niet ingesteld, maar je hebt niet de rechten om "
 "dit zelf in te stellen. Vraag aan je websitebeheerder om dit voor je te doen."
 
-#: src/Plugin.php:134
+#: src/Plugin.php:136
 msgid "Could not connect to your Recras"
 msgstr "Kon geen verbinding maken met je Recras"
 
-#: src/Plugin.php:153
+#: src/Plugin.php:155
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:154
+#: src/Plugin.php:156
 msgid "Your message was sent successfully"
 msgstr "Uw bericht is succesvol verzonden"
 
-#: src/Plugin.php:155
+#: src/Plugin.php:157
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
-#: src/Plugin.php:166
+#: src/Plugin.php:168
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Plugin.php:167
+#: src/Plugin.php:169
 msgid "OK"
 msgstr "OK"
 
@@ -522,27 +522,31 @@ msgstr "Recras Blauw"
 msgid "Recras settings"
 msgstr "Recras-instellingen"
 
-#: src/Settings.php:206
+#: src/Settings.php:207
 msgid "Recras name"
 msgstr "Recrasnaam"
 
-#: src/Settings.php:207
+#: src/Settings.php:208
 msgid "Currency symbol"
 msgstr "Valutasymbool"
 
-#: src/Settings.php:208
+#: src/Settings.php:209
 msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
-#: src/Settings.php:209
+#: src/Settings.php:210
 msgid "Use date/time picker script"
 msgstr "Gebruik datum-/tijdselectiescript"
 
-#: src/Settings.php:210
+#: src/Settings.php:211
 msgid "Theme for online booking"
 msgstr "Thema voor online boeken"
 
-#: src/Settings.php:239
+#: src/Settings.php:212
+msgid "Enable Google Analytics integration?"
+msgstr "Google Analytics-integratie inschakelen?"
+
+#: src/Settings.php:241
 msgid "Enter your Recras details here"
 msgstr "Voer je Recras-gegevens hier in"
 
@@ -556,25 +560,26 @@ msgstr "Leeg Recras-cache"
 
 #: src/admin/cache.php:24
 msgid ""
-"Data coming from your Recras (contact forms, packages, products) is cached "
-"for up to 24 hours. If you make important changes (i.e. a price increase) it "
-"is recommended you clear the corresponding cache."
+"Data coming from your Recras (contact forms, packages, products, voucher "
+"templates) is cached for up to 24 hours. If you make important changes (i.e. "
+"a price increase) it is recommended you clear the corresponding cache."
 msgstr ""
-"Data die uit Recras komt (contactformulieren, arrangementen, producten) "
-"wordt tot 24 uur bewaard. Als je belangrijke wijzigingen maakt (bijv. een "
-"prijsverhoging) dan is het aan te raden om de bijbehorende cache te wissen."
+"Data die uit Recras komt (contactformulieren, arrangementen, producten, "
+"tegoedbontemplates) wordt tot 24 uur bewaard. Als je belangrijke wijzigingen "
+"maakt (bijv. een prijsverhoging) dan is het aan te raden om de bijbehorende "
+"cache te wissen."
 
 #: src/admin/cache.php:27
 msgid "Packages"
 msgstr "Arrangementen"
 
 #: src/admin/cache.php:28
-#, php-format
 msgid ""
-"This clears the cache for all packages, used in the %s and %s shortcodes."
+"This clears the cache for all packages, also used for the availability "
+"calendar."
 msgstr ""
-"Dit wist de cache voor alle arrangementen, gebruikt in de shortcodes %s en "
-"%s."
+"Dit wist de cache voor alle arrangementen, ook gebruikt voor de "
+"beschikbaarheidskalender."
 
 #: src/admin/cache.php:30
 msgid "Clear packages cache"
@@ -585,14 +590,12 @@ msgid "Contact forms"
 msgstr "Contactformulieren"
 
 #: src/admin/cache.php:35
-#, php-format
 msgid ""
 "This clears the cache for all contact forms, including fields and list of "
-"packages for each form. These are used in the %s shortcode."
+"packages for each form."
 msgstr ""
 "Dit wist de cache voor alle contactformulieren, inclusief velden en lijst "
-"met arrangementen voor elk formulier. Deze worden gebruikt in de shortcode "
-"%s."
+"met arrangementen voor elk formulier."
 
 #: src/admin/cache.php:37
 msgid "Clear contact form cache"
@@ -603,17 +606,55 @@ msgid "Products"
 msgstr "Producten"
 
 #: src/admin/cache.php:42
-#, php-format
-msgid "This clears the cache for all products, used in the %s shortcode."
-msgstr "Dit wist de cache voor alle producten, gebruikt in de shortcode %s."
+msgid "This clears the cache for all products"
+msgstr "Dit wist de cache voor alle producten."
 
 #: src/admin/cache.php:44
 msgid "Clear product cache"
 msgstr "Wis productencache"
 
+#: src/admin/cache.php:48
+msgid "Voucher templates"
+msgstr "Tegoedbontemplates"
+
+#: src/admin/cache.php:49
+msgid "This clears the cache for all voucher templates"
+msgstr "Dit wist de cache voor alle tegoedbontemplates"
+
+#: src/admin/cache.php:51
+msgid "Clear voucher templates cache"
+msgstr "Wis tegoedbontemplatescache"
+
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid ""
+#~ "Data coming from your Recras (contact forms, packages, products) is "
+#~ "cached for up to 24 hours. If you make important changes (i.e. a price "
+#~ "increase) it is recommended you clear the corresponding cache."
+#~ msgstr ""
+#~ "Data die uit Recras komt (contactformulieren, arrangementen, producten) "
+#~ "wordt tot 24 uur bewaard. Als je belangrijke wijzigingen maakt (bijv. een "
+#~ "prijsverhoging) dan is het aan te raden om de bijbehorende cache te "
+#~ "wissen."
+
+#~ msgid ""
+#~ "This clears the cache for all packages, used in the %s and %s shortcodes."
+#~ msgstr ""
+#~ "Dit wist de cache voor alle arrangementen, gebruikt in de shortcodes %s "
+#~ "en %s."
+
+#~ msgid ""
+#~ "This clears the cache for all contact forms, including fields and list of "
+#~ "packages for each form. These are used in the %s shortcode."
+#~ msgstr ""
+#~ "Dit wist de cache voor alle contactformulieren, inclusief velden en lijst "
+#~ "met arrangementen voor elk formulier. Deze worden gebruikt in de "
+#~ "shortcode %s."
+
+#~ msgid "This clears the cache for all products, used in the %s shortcode."
+#~ msgstr "Dit wist de cache voor alle producten, gebruikt in de shortcode %s."
 
 #~ msgid "Error: \"show\" option not set"
 #~ msgstr "Fout: optie \"show\" niet ingesteld"
