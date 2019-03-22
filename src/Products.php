@@ -73,8 +73,10 @@ class Products
      */
     public static function clearCache()
     {
+        global $recrasPlugin;
+
         $subdomain = get_option('recras_subdomain');
-        $error = Transient::delete($subdomain . '_products_v2');
+        $error = $recrasPlugin->transients->delete($subdomain . '_products_v2');
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
         exit;
@@ -122,7 +124,9 @@ class Products
      */
     public static function getProducts($subdomain)
     {
-        $json = Transient::get($subdomain . '_products_v2');
+        global $recrasPlugin;
+
+        $json = $recrasPlugin->transients->get($subdomain . '_products_v2');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'producten');
@@ -130,7 +134,7 @@ class Products
                 return $e->getMessage();
             }
 
-            Transient::set($subdomain . '_products_v2', $json);
+            $recrasPlugin->transients->set($subdomain . '_products_v2', $json);
         }
 
         $products = [];

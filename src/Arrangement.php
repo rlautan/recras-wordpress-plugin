@@ -79,14 +79,16 @@ class Arrangement
      */
     public static function clearCache()
     {
+        global $recrasPlugin;
+
         $subdomain = get_option('recras_subdomain');
         $errors = 0;
 
         $arrangements = array_keys(self::getArrangements($subdomain));
         foreach ($arrangements as $id) {
-            $errors += Transient::delete($subdomain . '_arrangement_' . $id);
+            $errors += $recrasPlugin->transients->delete($subdomain . '_arrangement_' . $id);
         }
-        $errors += Transient::delete($subdomain . '_arrangements');
+        $errors += $recrasPlugin->transients->delete($subdomain . '_arrangements');
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
         exit;
@@ -168,14 +170,16 @@ class Arrangement
      */
     public static function getArrangements($subdomain, $onlyOnline = false)
     {
-        $json = Transient::get($subdomain . '_arrangements');
+        global $recrasPlugin;
+
+        $json = $recrasPlugin->transients->get($subdomain . '_arrangements');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'arrangementen');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            Transient::set($subdomain . '_arrangements', $json);
+            $recrasPlugin->transients->set($subdomain . '_arrangements', $json);
         }
 
         $arrangements = [
@@ -204,14 +208,16 @@ class Arrangement
      */
     public function getArrangementsForContactForm($subdomain, $contactformID)
     {
-        $json = Transient::get($subdomain . '_contactform_' . $contactformID . '_arrangements');
+        global $recrasPlugin;
+
+        $json = $recrasPlugin->transients->get($subdomain . '_contactform_' . $contactformID . '_arrangements');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'contactformulieren/' . $contactformID . '/arrangementen');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            Transient::set($subdomain . '_contactform_' . $contactformID . '_arrangements', $json);
+            $recrasPlugin->transients->set($subdomain . '_contactform_' . $contactformID . '_arrangements', $json);
         }
         if ($json === []) {
             return [];
@@ -292,14 +298,16 @@ class Arrangement
 
     public static function getPackage($subdomain, $id)
     {
-        $json = Transient::get($subdomain . '_arrangement_' . $id);
+        global $recrasPlugin;
+
+        $json = $recrasPlugin->transients->get($subdomain . '_arrangement_' . $id);
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'arrangementen/' . $id);
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            Transient::set($subdomain . '_arrangement_' . $id, $json);
+            $recrasPlugin->transients->set($subdomain . '_arrangement_' . $id, $json);
         }
         return $json;
     }

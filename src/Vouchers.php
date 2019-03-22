@@ -57,8 +57,10 @@ class Vouchers
      */
     public static function clearCache()
     {
+        global $recrasPlugin;
+
         $subdomain = get_option('recras_subdomain');
-        $error = Transient::delete($subdomain . '_voucher_templates');
+        $error = $recrasPlugin->transients->delete($subdomain . '_voucher_templates');
 
         header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
         exit;
@@ -67,14 +69,16 @@ class Vouchers
 
     public function getTemplates($subdomain)
     {
-        $json = Transient::get($subdomain . '_voucher_templates');
+        global $recrasPlugin;
+
+        $json = $recrasPlugin->transients->get($subdomain . '_voucher_templates');
         if ($json === false) {
             try {
                 $json = Http::get($subdomain, 'voucher_templates');
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            Transient::set($subdomain . '_voucher_templates', $json);
+            $recrasPlugin->transients->set($subdomain . '_voucher_templates', $json);
         }
 
         $templates = [];

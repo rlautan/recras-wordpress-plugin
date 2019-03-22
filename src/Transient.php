@@ -12,7 +12,7 @@ class Transient
      *
      * @return int
      */
-    public static function delete($name)
+    public function delete($name)
     {
         return (delete_transient(self::BASE . $name) ? 0 : 1);
     }
@@ -22,7 +22,7 @@ class Transient
      *
      * @return mixed
      */
-    public static function get($name)
+    public function get($name)
     {
         return get_transient(self::BASE . $name);
     }
@@ -33,7 +33,7 @@ class Transient
      *
      * @return bool
      */
-    public static function set($name, $value)
+    public function set($name, $value)
     {
         return set_transient(self::BASE . $name, $value, DAY_IN_SECONDS);
     }
