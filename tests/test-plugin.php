@@ -3,13 +3,6 @@ namespace Recras;
 
 class PluginTest extends \WP_UnitTestCase
 {
-    function __construct()
-    {
-        update_option('recras_currency', '€');
-        update_option('recras_subdomain', 'demo');
-        update_option('recras_decimal', '.');
-    }
-
     function testTooLongSubdomain()
     {
         $plugin = new Settings;
