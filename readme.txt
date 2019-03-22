@@ -162,6 +162,7 @@ We do not support page builders at this time and have no plans to do so.
 = master =
 * Package block only showed packages that were bookable online - fixed
 * Voucher templates are now cached along with everything else
+* Fixed headings of programmes that span multiple days
 
 = 2.3.1 =
 * Fix missing "Start time" and "Show header" options in Package block

@@ -92,7 +92,7 @@ class ArrangementTest extends WordPressUnitTestCase
 
     function testSingleDayProgramme()
     {
-        $content = $this->createPostAndGetContent('[recras-package id=5 show=programme]');
+        $content = $this->createPostAndGetContent('[recras-package id=7 show=programme]');
         $this->assertNotFalse(strpos($content, '<table'), 'Should return an HTML table');
         $this->assertNotFalse(strpos($content, '<thead'), 'Should contain a table header');
         $this->assertEquals(0, substr_count($content, '<tr class="recras-new-day'), 'Should stay on one day');
@@ -100,17 +100,13 @@ class ArrangementTest extends WordPressUnitTestCase
 
     function testProgrammeWithTimeOffset()
     {
-        $this->markTestSkipped('TODO: implement proper time offset'); //TODO
-
-        $content = $this->createPostAndGetContent('[recras-package id=7 starttime="22:00" show=programme]');
-        $this->assertEquals(2, substr_count($content, '<tr class="recras-new-day'), 'Should span two days');
+        $content = $this->createPostAndGetContent('[recras-package id=7 starttime="14:00" show=programme]');
+        $this->assertNotFalse(strpos($content, '<td>14:00<td>18:15'), 'Should move start and end times');
     }
 
     function testMultiDayProgramme()
     {
-        $this->markTestSkipped('TODO: add multi-day programme'); //TODO
-
-        $content = $this->createPostAndGetContent('[recras-package id=7 show=programme]');
+        $content = $this->createPostAndGetContent('[recras-package id=5 show=programme]');
         $this->assertEquals(2, substr_count($content, '<tr class="recras-new-day'), 'Should span two days');
     }
 
@@ -130,12 +126,11 @@ class ArrangementTest extends WordPressUnitTestCase
 
     function testGetOnlineArrangements()
     {
-        $this->markTestSkipped('TODO: check how this is used'); //TODO
         $plugin = new Arrangement;
         $packages = $plugin->getArrangements('demo', true);
         $this->assertTrue(is_array($packages));
         $packagesOnline = array_filter($packages, function($p) {
-            return $p->mag_online;
+            return $p->mag_online || $p->id === null; // An empty package is always added to the list
         });
         $this->assertEquals($packages, $packagesOnline, 'All packages should be bookable online');
     }

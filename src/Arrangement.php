@@ -124,14 +124,14 @@ class Arrangement
         }
 
         // Calculate how many days this programme spans - begin and eind are ISO8601 periods/intervals
-        $startDatetime = new \DateTime('00:00');
+        $startDatetime = new \DateTime($startTime);
         $startDatetime->add(new \DateInterval($programme[0]->begin));
-        $endDatetime = new \DateTime('00:00');
+        $endDatetime = new \DateTime($startTime);
         $endDatetime->add(new \DateInterval($programme[count($programme) - 1]->eind));
-        $isMultiDay = ($endDatetime->diff($startDatetime)->d > 0);
+        $isMultiDay = ($endDatetime->format('Ymd') > $startDatetime->format('Ymd'));
 
         $html .= '<tbody>';
-        $lastTime = null;
+        $lastDate = null;
         $day = 0;
 
         foreach ($programme as $activity) {
@@ -142,8 +142,9 @@ class Arrangement
             $endDate = new \DateTime($startTime);
             $timeBegin = new \DateInterval($activity->begin);
             $timeEnd = new \DateInterval($activity->eind);
-            $startFormatted = $startDate->add($timeBegin)->format('H:i');
-            if ($isMultiDay && (is_null($lastTime) || $startFormatted < $lastTime)) {
+            $lineDate = $startDate->add($timeBegin);
+            $startFormatted = $lineDate->format('H:i');
+            if ($isMultiDay && (is_null($lastDate) || $lineDate > $lastDate)) {
                 ++$day;
                 $html .= '<tr class="recras-new-day"><th colspan="3">' . sprintf(__('Day %d', Plugin::TEXT_DOMAIN), $day);
             }
@@ -151,7 +152,7 @@ class Arrangement
             $html .= '<tr><td>' . $startFormatted;
             $html .= '<td>' . $endDate->add($timeEnd)->format('H:i');
             $html .= '<td>' . $activity->omschrijving;
-            $lastTime = $startFormatted;
+            $lastDate = $lineDate;
         }
         $html .= '</tbody>';
         $html .= '</table>';

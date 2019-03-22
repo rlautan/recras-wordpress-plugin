@@ -63,6 +63,34 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
             'prijs_pp_inc' => 41.5,
         ];
     }
+    private function packageMultiday()
+    {
+        return (object) [
+            'id' => 5,
+            'weergavenaam' => 'Meerdaags programma',
+            'arrangement' => 'Meerdaags programma',
+            'uitgebreide_omschrijving' => 'Uitgebreide omschrijving van dit arrangement',
+            'programma' => [
+                (object) [
+                    'begin' => 'PT0H0M0S',
+                    'eind' => 'PT2H0M0S',
+                    'omschrijving' => 'Eerste activiteit',
+                ],
+                (object) [
+                    'begin' => 'P1DT0H0M0S',
+                    'eind' => 'P1DT2H0M0S',
+                    'omschrijving' => 'Activiteit op dag 2',
+                ],
+            ],
+            'image_filename' => '/api2/arrangementen/5/afbeelding',
+            'aantal_personen' => 4,
+            'mag_online' => true,
+            'prijs_totaal_exc' => 75.471698113,
+            'prijs_totaal_inc' => 80,
+            'prijs_pp_exc' => 18.867924528,
+            'prijs_pp_inc' => 20,
+        ];
+    }
 
     private function products()
     {
@@ -92,8 +120,12 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
     {
         if (preg_match('~^([a-z]+)_arrangements$~', $name)) {
             return [
+                5 => $this->packageMultiday(),
                 7 => $this->package(),
             ];
+        }
+        if (preg_match('~^([a-z]+)_arrangement_5$~', $name)) {
+            return $this->packageMultiday();
         }
         if (preg_match('~^([a-z]+)_arrangement_([\d]+)$~', $name)) {
             return $this->package();
