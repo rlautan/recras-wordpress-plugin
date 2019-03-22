@@ -5,12 +5,7 @@ class ArrangementTest extends WordPressUnitTestCase
 {
     function testShortcodeWithoutID()
     {
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-package]'
-        ]);
-        $this->assertTrue(is_object($post), 'Creating a post should not fail');
-
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-package]');
         $this->assertEquals('Error: no ID set' . "\n", $content, 'Not setting ID should fail');
     }
 

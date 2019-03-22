@@ -5,30 +5,35 @@ class OnlineBookingTest extends WordPressUnitTestCase
 {
 	function testShortcodeWithoutID()
 	{
-		$post = $this->factory->post->create_and_get([
-			'post_content' => '[recras-booking]'
-		]);
-        $this->assertTrue(is_object($post), 'Creating a post should not fail');
-
-        $content = apply_filters('the_content', $post->post_content);
+	    $content = $this->createPostAndGetContent('[recras-booking]');
         $this->assertNotFalse(strpos($content, '<iframe'), 'Booking without ID should work');
 	}
 
 	function testInvalidIDinShortcode()
 	{
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-booking id=foobar]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+	    $content = $this->createPostAndGetContent('[recras-booking id=foobar]');
         $this->assertEquals('Error: ID is not a number' . "\n", $content, 'Non-numeric ID should fail');
 	}
 
     function testRegularBooking()
     {
-        $post = $this->factory->post->create_and_get([
-            'post_content' => '[recras-booking id=3]'
-        ]);
-        $content = apply_filters('the_content', $post->post_content);
+        $content = $this->createPostAndGetContent('[recras-booking id=3]');
         $this->assertNotFalse(strpos($content, '<iframe'), 'Regular booking should include an iframe');
+    }
+
+    function testAutoresize()
+    {
+        $content = $this->createPostAndGetContent('[recras-booking id=3]');
+        $this->assertNotFalse(strpos($content, "window.addEventListener('message'"), 'Should include event listener by default');
+
+        $content = $this->createPostAndGetContent('[recras-booking id=3 autoresize=0]');
+        $this->assertFalse(strpos($content, "window.addEventListener('message'"), 'Should not include event listener when autoresize is off');
+    }
+
+    function testNewMethod()
+    {
+        $content = $this->createPostAndGetContent('[recras-booking id=3 use_new_library=1]');
+        $this->assertNotFalse(strpos($content, "document.addEventListener('DOMContentLoaded'"), 'Using new method should include an event listener');
+        $this->assertNotFalse(strpos($content, 'new RecrasBooking(bookingOptions);'), 'Using new method should init the form');
     }
 }
