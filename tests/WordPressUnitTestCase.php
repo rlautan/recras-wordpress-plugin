@@ -23,6 +23,23 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
         return apply_filters('the_content', $post->post_content);
     }
 
+    private function contactForm()
+    {
+        return (object) [
+            'id' => 17,
+            'naam' => 'Standaard formulier',
+            'Velden' => [
+                (object) [
+                    'id' => 42,
+                    'naam' => 'Voornaam',
+                    'verplicht' => true,
+                    'field_identifier' => 'contactpersoon.voornaam',
+                    'soort_invoer' => 'contactpersoon.voornaam',
+                ],
+            ],
+        ];
+    }
+
     private function package()
     {
         return (object) [
@@ -71,12 +88,12 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
             return [];
         }
         if (preg_match('~^([a-z]+)_contactform_([\d]+)_v2$~', $name)) {
-            //TODO
-            return (object) [];
+            return $this->contactForm();
         }
         if (preg_match('~^([a-z]+)_contactforms$~', $name)) {
-            //TODO
-            return (object) [];
+            return [
+                $this->contactForm(),
+            ];
         }
         if (preg_match('~^([a-z]+)_products_v2$~', $name)) {
             //TODO
