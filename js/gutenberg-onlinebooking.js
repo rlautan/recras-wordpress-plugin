@@ -30,7 +30,11 @@ registerBlockType('recras/onlinebooking', {
             packages,
             pagesPosts,
         } = props;
-        const packagesMapped = Object.values(packages).map(mapPackage);
+
+        let packagesMapped = Object.values(packages);
+        packagesMapped = packagesMapped.filter(p => p.mag_online);
+        packagesMapped = packagesMapped.map(mapPackage);
+
         let product_amounts;
         try {
             product_amounts = JSON.parse(props.attributes.product_amounts);

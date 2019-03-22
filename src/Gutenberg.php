@@ -44,7 +44,7 @@ class Gutenberg
             ],
             'onlinebooking' => [
                 'callback' => ['Recras\OnlineBooking', 'addBookingShortcode'],
-                'version' => '2.3.0',
+                'version' => '2.3.2',
             ],
             'package' => [
                 'callback' => ['Recras\Arrangement', 'addArrangementShortcode'],
@@ -121,7 +121,7 @@ class Gutenberg
     public static function getPackages()
     {
         $model = new Arrangement;
-        return $model->getArrangements(get_option('recras_subdomain'), true);
+        return $model->getArrangements(get_option('recras_subdomain'));
     }
 
     public static function getProducts()
