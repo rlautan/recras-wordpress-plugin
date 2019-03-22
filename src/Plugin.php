@@ -42,6 +42,7 @@ class Plugin
         add_action('admin_post_clear_arrangement_cache', ['Recras\Arrangement', 'clearCache']);
         add_action('admin_post_clear_contactform_cache', ['Recras\ContactForm', 'clearCache']);
         add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
+        add_action('admin_post_clear_voucher_template_cache', ['Recras\Vouchers', 'clearCache']);
 
         $this->addShortcodes();
     }

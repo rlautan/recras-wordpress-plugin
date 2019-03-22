@@ -52,9 +52,31 @@ class Vouchers
     }
 
 
+    /**
+     * Clear voucher template cache (transients)
+     */
+    public static function clearCache()
+    {
+        $subdomain = get_option('recras_subdomain');
+        $error = Transient::delete($subdomain . '_voucher_templates');
+
+        header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
+        exit;
+    }
+
+
     public function getTemplates($subdomain)
     {
-        $json = Http::get($subdomain, 'voucher_templates');
+        $json = Transient::get($subdomain . '_voucher_templates');
+        if ($json === false) {
+            try {
+                $json = Http::get($subdomain, 'voucher_templates');
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+            Transient::set($subdomain . '_voucher_templates', $json);
+        }
+
         $templates = [];
         foreach ($json as $template) {
             if ($template->contactform_id) {
