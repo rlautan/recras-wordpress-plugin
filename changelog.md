@@ -1,6 +1,6 @@
 # Changelog
 
-## master (unreleased)
+## 2.3.2 (2019-03-25)
 * Package block only showed packages that were bookable online - fixed
 * Voucher templates are now cached along with everything else
 

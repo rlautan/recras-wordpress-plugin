@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.7
 Requires PHP: 5.4.0
 Tested up to: 5.1
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,7 +159,7 @@ We do not support page builders at this time and have no plans to do so.
 
 == Changelog ==
 
-= master =
+= 2.3.2 =
 * Package block only showed packages that were bookable online - fixed
 * Voucher templates are now cached along with everything else
 * Fixed headings of programmes that span multiple days
