@@ -171,7 +171,7 @@ class Plugin
 
         global $post;
         if ($post && $this->shouldIncludeLibrary($post->post_content)) {
-            wp_enqueue_script('polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise', [], null, false);
+            wp_enqueue_script('polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=default,fetch,Promise,Array.prototype.includes', [], null, false);
             wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.min.js', [], $this::LIBRARY_VERSION, false);
 
             $theme = get_option('recras_theme');
