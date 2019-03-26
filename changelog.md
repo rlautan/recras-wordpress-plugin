@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.3 (2019-03-26)
+* Fix new online booking in IE
+
 ## 2.3.2 (2019-03-25)
 * Package block only showed packages that were bookable online - fixed
 * Voucher templates are now cached along with everything else
