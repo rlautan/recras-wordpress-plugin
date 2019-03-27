@@ -1,8 +1,8 @@
 # Changelog
 
-## master
+## 2.3.4 (2019-03-27)
 * Fix default contact form setting for Gutenberg contact form block
-* Store booleans as-is - fixes certain Gutenberg toggles on re-edit
+* Fix certain Gutenberg toggles on re-edit
 
 ## 2.3.3 (2019-03-26)
 * Fix new online booking in IE

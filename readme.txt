@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.7
 Requires PHP: 5.4.0
 Tested up to: 5.1
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -158,6 +158,10 @@ We do not support page builders at this time and have no plans to do so.
 2. Example of package information, generated from Recras data
 
 == Changelog ==
+
+= 2.3.4 =
+* Fix default contact form setting for Gutenberg contact form block
+* Fix certain Gutenberg toggles on re-edit
 
 = 2.3.3 =
 * Fix new online booking in IE
