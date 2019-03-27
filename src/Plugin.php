@@ -91,12 +91,12 @@ class Plugin
      */
     public function addShortcodes()
     {
-        add_shortcode('recras-availability', ['Recras\Availability', 'addAvailabilityShortcode']);
-        add_shortcode($this::SHORTCODE_ONLINE_BOOKING, ['Recras\OnlineBooking', 'addBookingShortcode']);
-        add_shortcode('recras-contact', ['Recras\ContactForm', 'addContactShortcode']);
-        add_shortcode('recras-package', ['Recras\Arrangement', 'addArrangementShortcode']);
-        add_shortcode('recras-product', ['Recras\Products', 'addProductShortcode']);
-        add_shortcode($this::SHORTCODE_VOUCHERS, ['Recras\Vouchers', 'addVoucherShortcode']);
+        add_shortcode('recras-availability', ['Recras\Availability', 'renderAvailability']);
+        add_shortcode($this::SHORTCODE_ONLINE_BOOKING, ['Recras\OnlineBooking', 'renderOnlineBooking']);
+        add_shortcode('recras-contact', ['Recras\ContactForm', 'renderContactForm']);
+        add_shortcode('recras-package', ['Recras\Arrangement', 'renderPackage']);
+        add_shortcode('recras-product', ['Recras\Products', 'renderProduct']);
+        add_shortcode($this::SHORTCODE_VOUCHERS, ['Recras\Vouchers', 'renderVouchers']);
     }
 
 

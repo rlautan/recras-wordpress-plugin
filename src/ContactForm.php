@@ -10,7 +10,7 @@ class ContactForm
      *
      * @return string
      */
-    public static function addContactShortcode($attributes)
+    public static function renderContactForm($attributes)
     {
         if (!isset($attributes['id'])) {
             return __('Error: no ID set', Plugin::TEXT_DOMAIN);

@@ -12,7 +12,7 @@ class Products
      *
      * @return string
      */
-    public static function addProductShortcode($attributes)
+    public static function renderProduct($attributes)
     {
         if (!isset($attributes['id'])) {
             return __('Error: no ID set', Plugin::TEXT_DOMAIN);

@@ -13,7 +13,7 @@ class Arrangement
      *
      * @return string
      */
-    public static function addArrangementShortcode($attributes)
+    public static function renderPackage($attributes)
     {
         if (!isset($attributes['id'])) {
             return __('Error: no ID set', Plugin::TEXT_DOMAIN);

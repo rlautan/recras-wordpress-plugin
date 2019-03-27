@@ -11,7 +11,7 @@ class Availability
      *
      * @return string
      */
-    public static function addAvailabilityShortcode($attributes)
+    public static function renderAvailability($attributes)
     {
         if (!isset($attributes['id'])) {
             return __('Error: no ID set', Plugin::TEXT_DOMAIN);
