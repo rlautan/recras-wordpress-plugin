@@ -114,7 +114,7 @@ registerBlockType('recras/package', {
                 checked: showheader,
                 onChange: function(newVal) {
                     props.setAttributes({
-                        showheader: recrasHelper.parseBoolean(newVal),
+                        showheader: newVal,
                     });
                 },
                 label: __('Show header?', TEXT_DOMAIN),

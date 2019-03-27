@@ -38,7 +38,7 @@ registerBlockType('recras/availability', {
             checked: autoresize,
             onChange: function(newVal) {
                 props.setAttributes({
-                    autoresize: recrasHelper.parseBoolean(newVal),
+                    autoresize: newVal,
                 });
             },
             label: __('Auto resize iframe', TEXT_DOMAIN),

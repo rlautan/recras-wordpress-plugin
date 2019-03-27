@@ -8,7 +8,7 @@ registerBlockType('recras/onlinebooking', {
         id: recrasHelper.typeString(),
         redirect: recrasHelper.typeString(),
         show_times: recrasHelper.typeBoolean(false),
-        use_new_library: recrasHelper.typeBoolean(true),
+        use_new_library: recrasHelper.typeBoolean(false),
         prefill_enabled: recrasHelper.typeBoolean(false),
         product_amounts: recrasHelper.typeString(), // stored as JSON string
     },
@@ -26,6 +26,7 @@ registerBlockType('recras/onlinebooking', {
             show_times,
             autoresize,
         } = props.attributes;
+        console.log('attr', props.attributes);
         const {
             packages,
             pagesPosts,
@@ -59,7 +60,7 @@ registerBlockType('recras/onlinebooking', {
             checked: use_new_library,
             onChange: function(newVal) {
                 props.setAttributes({
-                    use_new_library: recrasHelper.parseBoolean(newVal),
+                    use_new_library: newVal,
                 });
             },
             label: __('Use new method?', TEXT_DOMAIN),
@@ -74,7 +75,7 @@ registerBlockType('recras/onlinebooking', {
                 checked: show_times,
                 onChange: function(newVal) {
                     props.setAttributes({
-                        show_times: recrasHelper.parseBoolean(newVal),
+                        show_times: newVal,
                     });
                 },
                 label: __('Preview times in programme', TEXT_DOMAIN),
@@ -83,7 +84,7 @@ registerBlockType('recras/onlinebooking', {
                 checked: prefill_enabled,
                 onChange: function(newVal) {
                     props.setAttributes({
-                        prefill_enabled: recrasHelper.parseBoolean(newVal),
+                        prefill_enabled: newVal,
                     });
                 },
                 label: __('Pre-fill amounts (requires pre-filled package)', TEXT_DOMAIN),
@@ -144,7 +145,7 @@ registerBlockType('recras/onlinebooking', {
                 checked: autoresize,
                 onChange: function(newVal) {
                     props.setAttributes({
-                        autoresize: recrasHelper.parseBoolean(newVal),
+                        autoresize: newVal,
                     });
                 },
                 label: __('Auto resize iframe', TEXT_DOMAIN),

@@ -55,7 +55,7 @@ registerBlockType('recras/contactform', {
             checked: showtitle,
             onChange: function(newVal) {
                 props.setAttributes({
-                    showtitle: recrasHelper.parseBoolean(newVal),
+                    showtitle: newVal,
                 });
             },
             label: __('Show title?', TEXT_DOMAIN),
@@ -64,7 +64,7 @@ registerBlockType('recras/contactform', {
             checked: showlabels,
             onChange: function(newVal) {
                 props.setAttributes({
-                    showlabels: recrasHelper.parseBoolean(newVal),
+                    showlabels: newVal,
                 });
             },
             label: __('Show labels?', TEXT_DOMAIN),
@@ -73,7 +73,7 @@ registerBlockType('recras/contactform', {
             checked: showplaceholders,
             onChange: function(newVal) {
                 props.setAttributes({
-                    showplaceholders: recrasHelper.parseBoolean(newVal),
+                    showplaceholders: newVal,
                 });
             },
             label: __('Show placeholders?', TEXT_DOMAIN),

@@ -36,19 +36,19 @@ class Gutenberg
         $gutenbergBlocks = [
             'availability' => [
                 'callback' => ['Recras\Availability', 'addAvailabilityShortcode'],
-                'version' => '2.3.0',
+                'version' => '2.3.4',
             ],
             'contactform' => [
                 'callback' => ['Recras\ContactForm', 'addContactShortcode'],
-                'version' => '2.3.0',
+                'version' => '2.3.4',
             ],
             'onlinebooking' => [
                 'callback' => ['Recras\OnlineBooking', 'addBookingShortcode'],
-                'version' => '2.3.2',
+                'version' => '2.3.4',
             ],
             'package' => [
                 'callback' => ['Recras\Arrangement', 'addArrangementShortcode'],
-                'version' => '2.3.1',
+                'version' => '2.3.4',
             ],
             'product' => [
                 'callback' => ['Recras\Products', 'addProductShortcode'],

@@ -40,9 +40,6 @@ const recrasHelper = {
             wp.data.dispatch('core/editor').unlockPostSaving(lockName);
         }
     },
-    parseBoolean: (value) => {
-        return value ? 1 : 0;
-    },
 
     typeBoolean: (defVal) => ({
         default: (defVal !== undefined) ? defVal : true,
