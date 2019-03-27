@@ -193,7 +193,10 @@ const recrasStore = registerStore('recras/store', {
         // * makes it a generator function
         * fetchContactForms(state) {
             let forms = yield recrasActions.fetchAPI('recras/contactforms');
-            forms = Object.entries(forms).map(mapContactForm);
+            forms = Object.entries(forms);
+            // Add empty value as first option, otherwise the first "real" value will be selected and Gutenberg will not store it
+            forms.unshift([0, '']);
+            forms = forms.map(mapContactForm);
 
             return recrasActions.setContactForms(forms);
         },

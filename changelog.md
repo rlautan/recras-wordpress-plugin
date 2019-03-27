@@ -1,5 +1,8 @@
 # Changelog
 
+## master
+* Fix default contact form setting for Gutenberg contact form block
+
 ## 2.3.3 (2019-03-26)
 * Fix new online booking in IE
 
