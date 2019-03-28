@@ -57,7 +57,7 @@ class Statistics
             'wpVersion' => $wp_version,
         ]);
 
-        $ch = curl_init(''); //TODO: url
+        $ch = curl_init('https://www.recras.com/pluginstats/statistics.php');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLINFO_HEADER_OUT, true);
         curl_setopt($ch, CURLOPT_POST, true);
