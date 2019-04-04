@@ -11,7 +11,7 @@ const {
     withSelect,
 } = wp.data;
 
-const TEXT_DOMAIN = 'recras-wp';
+const TEXT_DOMAIN = 'recras';
 const { __ } = wp.i18n;
 
 const recrasHelper = {

@@ -4,7 +4,7 @@ namespace Recras;
 class Plugin
 {
     const LIBRARY_VERSION = '0.17.6';
-    const TEXT_DOMAIN = 'recras-wp';
+    const TEXT_DOMAIN = 'recras';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
     const SHORTCODE_VOUCHER_SALES = 'recras-vouchers';
@@ -219,9 +219,10 @@ class Plugin
             }
         }
 
-        wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '2.4.0', true);
-        wp_localize_script('recras', 'recras_l10n', $localisation);
-        wp_enqueue_script('recras');
+        $scriptName = 'recras-frontend';
+        wp_register_script($scriptName, $this->baseUrl . '/js/recras.js', ['jquery'], '2.0.0', true);
+        wp_localize_script($scriptName, 'recras_l10n', $localisation);
+        wp_enqueue_script($scriptName);
     }
 
 
