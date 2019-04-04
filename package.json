@@ -1,0 +1,27 @@
+{
+  "name": "recras-wordpress-plugin",
+  "version": "2.3.4",
+  "description": "Recras WordPress plugin",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "po2json": "^1.0.0-alpha"},
+  "scripts": {
+    "i18n_en": "po2json lang/recras-wp-en_US.po lang/recras-wp-en_US.json",
+    "i18n_nl": "po2json lang/recras-wp-nl_NL.po lang/recras-wp-nl_NL.json",
+    "i18n": "npm run i18n_en && npm run i18n_nl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Recras/recras-wordpress-plugin.git"
+  },
+  "author": "Recras BV",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Recras/recras-wordpress-plugin/issues"
+  },
+  "homepage": "https://github.com/Recras/recras-wordpress-plugin#readme"
+}
