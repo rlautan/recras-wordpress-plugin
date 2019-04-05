@@ -17,6 +17,10 @@ if (WP_DEBUG) {
     ini_set('display_errors', 'On');
 }
 
+if (!function_exists('add_action')) {
+    die('You cannot run this file directly.');
+}
+
 try {
     require_once('vendor/autoload.php');
     $recrasPlugin = new \Recras\Plugin;
