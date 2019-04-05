@@ -156,6 +156,7 @@ We do not support page builders at this time and have no plans to do so.
 
 1. Example of a programme with the Twenty Fifteen theme
 2. Example of package information, generated from Recras data
+3. The Recras blocks in Gutenberg
 
 == Changelog ==
 
