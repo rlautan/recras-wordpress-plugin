@@ -152,6 +152,9 @@ Yes, since version 2.2.0! Please make sure you use the latest version of the plu
 = Do you support Visual Composer, Brizy, etc. ? =
 We do not support page builders at this time and have no plans to do so.
 
+= Does the plugin support network installations? =
+Yes it does. You can set different Recras names (all settings, for that matter) for each site.
+
 == Screenshots ==
 
 1. Example of a programme with the Twenty Fifteen theme
