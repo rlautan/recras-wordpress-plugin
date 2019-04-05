@@ -9,8 +9,8 @@ class Gutenberg
 
     public static function addBlocks()
     {
-        $globalScriptName = 'gutenberg-recras-global';
-        $globalStyleName = 'gutenberg-recras';
+        $globalScriptName = 'recras-gutenberg-global';
+        $globalStyleName = 'recras-gutenberg';
         wp_register_script(
             $globalScriptName,
             plugins_url('js/gutenberg-global.js', __DIR__), [
@@ -23,7 +23,7 @@ class Gutenberg
             true
         );
         if (function_exists('wp_set_script_translations')) {
-            wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN);
+            wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN, plugin_dir_path(dirname(__DIR__)) . 'lang');
         }
 
         wp_register_style(
@@ -73,7 +73,7 @@ class Gutenberg
                 true
             );
             if (function_exists('wp_set_script_translations')) {
-                wp_set_script_translations($handle, Plugin::TEXT_DOMAIN); //TODO: this generates an empty JS object
+                wp_set_script_translations($handle, Plugin::TEXT_DOMAIN, plugin_dir_path(dirname(__DIR__))); //TODO: this generates an empty JS object
             }
 
             \register_block_type('recras/' . $key, [
