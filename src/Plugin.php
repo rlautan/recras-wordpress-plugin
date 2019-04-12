@@ -200,6 +200,10 @@ class Plugin
 
     private function shouldIncludeLibrary($content)
     {
+        // The methods below don't work when online booking is integrated from an ACF field
+        // so to fix this quickly for now, always include the script
+        return true;
+
         if (strpos($content, $this::SHORTCODE_ONLINE_BOOKING) !== false) {
             // Online booking shortcode
             return true;
