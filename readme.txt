@@ -35,6 +35,7 @@ Setting your Recras name is the most important step here. Other settings are:
   - "No theme" leaves it up to you to properly style it.
   - "Basic theme" sets some default styling to make it look a bit nicer. You can still override everything with your own CSS.
   - "Recras Blue" is a theme with blue accents
+* Enable Google Analytics integration - enabling this will send online booking and voucher sales events to Google Analytics
 
 = Packages =
 Packages can be added using the Recras/Package block (Gutenberg) or using the ![packages](editor/package.svg) icon in the Classic Editor. You can also manually add the `[recras-package]` shortcode.
