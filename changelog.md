@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.5 (2019-04-12)
+* Fix online booking/voucher sales when using them from Advanced Custom Fields or similar solutions
+* Update online booking library version:
+  - Add message when entering an quantity more than the maximum of a line
+  - If there is only one available timeslot for the selected date, select it automatically
+
 ## 2.3.4 (2019-03-27)
 * Fix default contact form setting for Gutenberg contact form block
 * Fix certain Gutenberg toggles on re-edit

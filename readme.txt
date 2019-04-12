@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.9
 Requires PHP: 5.4.0
 Tested up to: 5.2
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,6 +163,12 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 3. The Recras blocks in Gutenberg
 
 == Changelog ==
+
+= 2.3.5 =
+* Fix online booking/voucher sales when using them from Advanced Custom Fields or similar solutions
+* Update online booking library version:
+  - Add message when entering an quantity more than the maximum of a line
+  - If there is only one available timeslot for the selected date, select it automatically
 
 = 2.3.4 =
 * Fix default contact form setting for Gutenberg contact form block
