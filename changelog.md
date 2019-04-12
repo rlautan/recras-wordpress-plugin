@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.6 (2019-04-12)
+* Update online booking library version. This fixes the sending of Google Analytics events.
+
 ## 2.3.5 (2019-04-12)
 * Fix online booking/voucher sales when using them from Advanced Custom Fields or similar solutions
 * Update online booking library version:
