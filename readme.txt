@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.9
 Requires PHP: 5.4.0
 Tested up to: 5.2
-Stable tag: 2.3.6
+Stable tag: 2.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,6 +163,9 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 3. The Recras blocks in Gutenberg
 
 == Changelog ==
+
+= 2.3.7 =
+* Update online booking library version. This fixes new online booking in IE.
 
 = 2.3.6 =
 * Update online booking library version. This fixes the sending of Google Analytics events.

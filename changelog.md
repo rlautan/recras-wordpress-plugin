@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.7 (2019-04-15)
+* Update online booking library version. This fixes new online booking in IE.
+
 ## 2.3.6 (2019-04-12)
 * Update online booking library version. This fixes the sending of Google Analytics events.
 
