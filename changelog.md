@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.8 (2019-04-19)
+* Update online booking library version:
+  - Styling fix for Internet Explorer
+  - Add missing maximum value for the booking size field
+
 ## 2.3.7 (2019-04-15)
 * Update online booking library version. This fixes new online booking in IE.
 
