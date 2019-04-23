@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.9 (2019-04-23)
+* Update online booking library version. This fixed "customer type" fields in contact forms used during online bookings.
+
 ## 2.3.8 (2019-04-19)
 * Update online booking library version:
   - Styling fix for Internet Explorer
