@@ -184,7 +184,7 @@ class Plugin
             }
         }
 
-        wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '1.13.0', true);
+        wp_register_script('recras', $this->baseUrl . '/js/recras.js', ['jquery'], '2.4.0', true);
         wp_localize_script('recras', 'recras_l10n', $localisation);
         wp_enqueue_script('recras');
     }

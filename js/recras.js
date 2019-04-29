@@ -79,13 +79,5 @@ document.addEventListener('DOMContentLoaded', function(){
             time: false,
             weekStart: 1, // Monday
         });
-        jQuery('.recras-input-time').attr('type', 'text').bootstrapMaterialDatePicker({
-            cancelText: recras_l10n.button_cancel,
-            date: false,
-            format: 'HH:mm',
-            okText: recras_l10n.button_ok,
-            shortTime: false,
-            switchOnClick: true,
-        });
     }
 });
