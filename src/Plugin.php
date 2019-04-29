@@ -158,15 +158,45 @@ class Plugin
         ];
 
         if ($value = get_option('recras_datetimepicker')) {
-            wp_enqueue_script('momentjs', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js', [], false, true); // ver=false because it's already in the URL
-            wp_enqueue_script('momentjs-nl', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/locale/nl.js', ['momentjs'], false, true);
-            wp_enqueue_script('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.js', ['momentjs'], '20170208', true);
-            wp_enqueue_style('datetimepicker', $this->baseUrl . '/datetimepicker/bootstrap-material-datetimepicker.css', [], '20170208');
-            wp_enqueue_style('material-font', 'https://fonts.googleapis.com/icon?family=Material+Icons');
+            wp_enqueue_script('pikaday', 'https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js', [], false, true); // ver=false because it's already in the URL
+            wp_enqueue_style('pikaday', 'https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css', [], false); // ver=false because it's already in the URL
 
-            $localisation['language'] = get_locale();
-            $localisation['button_cancel'] = __('Cancel', $this::TEXT_DOMAIN);
-            $localisation['button_ok'] = __('OK', $this::TEXT_DOMAIN);
+            $localisation['pikaday'] = [
+                'previousMonth' => __('Previous month', $this::TEXT_DOMAIN),
+                'nextMonth' => __('Next month', $this::TEXT_DOMAIN),
+                'months' => [
+                    __('January', $this::TEXT_DOMAIN),
+                    __('February', $this::TEXT_DOMAIN),
+                    __('March', $this::TEXT_DOMAIN),
+                    __('April', $this::TEXT_DOMAIN),
+                    __('May', $this::TEXT_DOMAIN),
+                    __('June', $this::TEXT_DOMAIN),
+                    __('July', $this::TEXT_DOMAIN),
+                    __('August', $this::TEXT_DOMAIN),
+                    __('September', $this::TEXT_DOMAIN),
+                    __('October', $this::TEXT_DOMAIN),
+                    __('November', $this::TEXT_DOMAIN),
+                    __('December', $this::TEXT_DOMAIN),
+                ],
+                'weekdays' => [
+                    __('Sunday', $this::TEXT_DOMAIN),
+                    __('Monday', $this::TEXT_DOMAIN),
+                    __('Tuesday', $this::TEXT_DOMAIN),
+                    __('Wednesday', $this::TEXT_DOMAIN),
+                    __('Thursday', $this::TEXT_DOMAIN),
+                    __('Friday', $this::TEXT_DOMAIN),
+                    __('Saturday', $this::TEXT_DOMAIN),
+                ],
+                'weekdaysShort' => [
+                    __('Sun', $this::TEXT_DOMAIN),
+                    __('Mon', $this::TEXT_DOMAIN),
+                    __('Tue', $this::TEXT_DOMAIN),
+                    __('Wed', $this::TEXT_DOMAIN),
+                    __('Thu', $this::TEXT_DOMAIN),
+                    __('Fri', $this::TEXT_DOMAIN),
+                    __('Sat', $this::TEXT_DOMAIN),
+                ],
+            ];
         }
 
         global $post;

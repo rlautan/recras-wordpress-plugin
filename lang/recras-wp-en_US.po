@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-04-29 11:54+0200\n"
-"PO-Revision-Date: 2019-04-29 11:54+0200\n"
+"POT-Creation-Date: 2019-04-29 14:13+0200\n"
+"PO-Revision-Date: 2019-04-29 14:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -92,7 +92,7 @@ msgid "Start time"
 msgstr ""
 
 #: editor/form-arrangement.php:42 js/gutenberg-package.js:110
-#: src/ContactForm.php:252
+#: src/ContactForm.php:255
 msgid "hh:mm"
 msgstr ""
 
@@ -380,19 +380,19 @@ msgstr ""
 msgid "Error: package is set, but contact form does not support packages"
 msgstr ""
 
-#: src/ContactForm.php:235
+#: src/ContactForm.php:238
 msgid "yyyy-mm-dd"
 msgstr ""
 
-#: src/ContactForm.php:265
+#: src/ContactForm.php:268
 msgid "Unknown"
 msgstr ""
 
-#: src/ContactForm.php:266
+#: src/ContactForm.php:269
 msgid "Male"
 msgstr ""
 
-#: src/ContactForm.php:267
+#: src/ContactForm.php:270
 msgid "Female"
 msgstr ""
 
@@ -479,12 +479,116 @@ msgstr ""
 msgid "There was an error sending your message"
 msgstr ""
 
+#: src/Plugin.php:165
+msgid "Previous month"
+msgstr ""
+
+#: src/Plugin.php:166
+msgid "Next month"
+msgstr ""
+
 #: src/Plugin.php:168
-msgid "Cancel"
+msgid "January"
 msgstr ""
 
 #: src/Plugin.php:169
-msgid "OK"
+msgid "February"
+msgstr ""
+
+#: src/Plugin.php:170
+msgid "March"
+msgstr ""
+
+#: src/Plugin.php:171
+msgid "April"
+msgstr ""
+
+#: src/Plugin.php:172
+msgid "May"
+msgstr ""
+
+#: src/Plugin.php:173
+msgid "June"
+msgstr ""
+
+#: src/Plugin.php:174
+msgid "July"
+msgstr ""
+
+#: src/Plugin.php:175
+msgid "August"
+msgstr ""
+
+#: src/Plugin.php:176
+msgid "September"
+msgstr ""
+
+#: src/Plugin.php:177
+msgid "October"
+msgstr ""
+
+#: src/Plugin.php:178
+msgid "November"
+msgstr ""
+
+#: src/Plugin.php:179
+msgid "December"
+msgstr ""
+
+#: src/Plugin.php:182
+msgid "Sunday"
+msgstr ""
+
+#: src/Plugin.php:183
+msgid "Monday"
+msgstr ""
+
+#: src/Plugin.php:184
+msgid "Tuesday"
+msgstr ""
+
+#: src/Plugin.php:185
+msgid "Wednesday"
+msgstr ""
+
+#: src/Plugin.php:186
+msgid "Thursday"
+msgstr ""
+
+#: src/Plugin.php:187
+msgid "Friday"
+msgstr ""
+
+#: src/Plugin.php:188
+msgid "Saturday"
+msgstr ""
+
+#: src/Plugin.php:191
+msgid "Sun"
+msgstr ""
+
+#: src/Plugin.php:192
+msgid "Mon"
+msgstr ""
+
+#: src/Plugin.php:193
+msgid "Tue"
+msgstr ""
+
+#: src/Plugin.php:194
+msgid "Wed"
+msgstr ""
+
+#: src/Plugin.php:195
+msgid "Thu"
+msgstr ""
+
+#: src/Plugin.php:196
+msgid "Fri"
+msgstr ""
+
+#: src/Plugin.php:197
+msgid "Sat"
 msgstr ""
 
 #: src/Products.php:35
@@ -524,7 +628,7 @@ msgid "Decimal separator"
 msgstr ""
 
 #: src/Settings.php:210
-msgid "Use date/time picker script"
+msgid "Use calendar widget"
 msgstr ""
 
 #: src/Settings.php:211

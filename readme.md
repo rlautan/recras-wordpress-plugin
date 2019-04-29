@@ -25,7 +25,7 @@ Setting your Recras name is the most important step here. Other settings are:
 
 * Currency symbol - set to € (Euro) by default.
 * Decimal separator - set to , (comma) by default. Used in prices such as 100,00.
-* Use date/time picker script - please see the Date/Time picker section for details.
+* Use calendar widget - please see the Date/Time section below for details.
 * Theme for online booking - which theme the new online booking method will use.
   - "No theme" leaves it up to you to properly style it.
   - "Basic theme" sets some default styling to make it look a bit nicer. You can still override everything with your own CSS.
@@ -107,10 +107,10 @@ The following options are available:
 * Voucher template - when selected, this will skip the template selection step
 * Redirect after submission - a page/post that the user is redirected to, after submitting the form successfully.
 
-### Date/Time picker
-By default, date and time pickers in contact forms use whatever the browser has available. Currently (March 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date/time picker that you can enable on the Recras → Settings page.
+### Date/Time
+By default, date and time pickers in contact forms use whatever the browser has available. Currently (April 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date picker that you can enable on the Recras → Settings page. For time inputs, a proper fallback is included.
 
-**Note**: this setting only applies to contact forms, not to "new style" online booking.
+**Note**: this setting only applies to standalone contact forms, not to contact forms used during "new style" online booking.
 
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `css/style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
@@ -147,4 +147,3 @@ We only support the plugin on the latest version of WordPress (which you should 
 
 ## Credits
 * Icons from [Dashicons](https://github.com/WordPress/dashicons) by WordPress, released under the GPLv2 licence.
-* Date/Time picker by [T00rk](https://github.com/T00rk/bootstrap-material-datetimepicker), released under the MIT licence.

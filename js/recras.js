@@ -69,15 +69,34 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
     return false;
 }
 
+var dateToString = function(date) {
+    var x = new Date(date.getTime() - (date.getTimezoneOffset() * 60 * 1000)); // Fix off-by-1 errors
+    return x.toISOString().substr(0, 10); // Format as 2018-03-13
+};
+
+var initPikaday = function(dateInput) {
+    dateInput.setAttribute('type', 'text');
+
+    var pikadayOptions = {
+        firstDay: 1, // Monday
+        minDate: new Date(),
+        numberOfMonths: 2,
+        reposition: false,
+        toString: function(date) {
+            return dateToString(date);
+        },
+        field: dateInput,
+        i18n: recras_l10n.pikaday,
+    };
+
+    new Pikaday(pikadayOptions);
+};
+
 document.addEventListener('DOMContentLoaded', function(){
-    if (typeof jQuery.fn.bootstrapMaterialDatePicker === 'function') {
-        jQuery('.recras-input-date').attr('type', 'text').bootstrapMaterialDatePicker({
-            cancelText: recras_l10n.button_cancel,
-            format: 'YYYY-MM-DD',
-            lang: recras_l10n.language,
-            okText: recras_l10n.button_ok,
-            time: false,
-            weekStart: 1, // Monday
-        });
+    if (typeof Pikaday === 'function') {
+        var dateEls = document.querySelectorAll('.recras-input-date');
+        for (var i = 0; i < dateEls.length; i++) {
+            initPikaday(dateEls[i]);
+        }
     }
 });

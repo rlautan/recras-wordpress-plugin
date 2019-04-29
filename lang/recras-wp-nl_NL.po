@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-04-29 11:55+0200\n"
-"PO-Revision-Date: 2019-04-29 11:55+0200\n"
+"POT-Creation-Date: 2019-04-29 14:00+0200\n"
+"PO-Revision-Date: 2019-04-29 14:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -95,7 +95,7 @@ msgid "Start time"
 msgstr "Starttijd"
 
 #: editor/form-arrangement.php:42 js/gutenberg-package.js:110
-#: src/ContactForm.php:252
+#: src/ContactForm.php:255
 msgid "hh:mm"
 msgstr "uu:mm"
 
@@ -393,19 +393,19 @@ msgstr ""
 "Fout: arrangement is ingesteld, maar contactformulier ondersteunt geen "
 "arrangementen"
 
-#: src/ContactForm.php:235
+#: src/ContactForm.php:238
 msgid "yyyy-mm-dd"
 msgstr "jjjj-mm-dd"
 
-#: src/ContactForm.php:265
+#: src/ContactForm.php:268
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/ContactForm.php:266
+#: src/ContactForm.php:269
 msgid "Male"
 msgstr "Man"
 
-#: src/ContactForm.php:267
+#: src/ContactForm.php:270
 msgid "Female"
 msgstr "Vrouw"
 
@@ -495,13 +495,117 @@ msgstr "Uw bericht is succesvol verzonden"
 msgid "There was an error sending your message"
 msgstr "Er was een probleem met het verzenden van uw bericht"
 
+#: src/Plugin.php:165
+msgid "Previous month"
+msgstr "Vorige maand"
+
+#: src/Plugin.php:166
+msgid "Next month"
+msgstr "Volgende maand"
+
 #: src/Plugin.php:168
-msgid "Cancel"
-msgstr "Annuleren"
+msgid "January"
+msgstr "Januari"
 
 #: src/Plugin.php:169
-msgid "OK"
-msgstr "OK"
+msgid "February"
+msgstr "Februari"
+
+#: src/Plugin.php:170
+msgid "March"
+msgstr "Maart"
+
+#: src/Plugin.php:171
+msgid "April"
+msgstr "April"
+
+#: src/Plugin.php:172
+msgid "May"
+msgstr "Mei"
+
+#: src/Plugin.php:173
+msgid "June"
+msgstr "Juni"
+
+#: src/Plugin.php:174
+msgid "July"
+msgstr "Juli"
+
+#: src/Plugin.php:175
+msgid "August"
+msgstr "Augustus"
+
+#: src/Plugin.php:176
+msgid "September"
+msgstr "September"
+
+#: src/Plugin.php:177
+msgid "October"
+msgstr "Oktober"
+
+#: src/Plugin.php:178
+msgid "November"
+msgstr "November"
+
+#: src/Plugin.php:179
+msgid "December"
+msgstr "December"
+
+#: src/Plugin.php:182
+msgid "Sunday"
+msgstr "Zondag"
+
+#: src/Plugin.php:183
+msgid "Monday"
+msgstr "Maandag"
+
+#: src/Plugin.php:184
+msgid "Tuesday"
+msgstr "Dinsdag"
+
+#: src/Plugin.php:185
+msgid "Wednesday"
+msgstr "Woensdag"
+
+#: src/Plugin.php:186
+msgid "Thursday"
+msgstr "Donderdag"
+
+#: src/Plugin.php:187
+msgid "Friday"
+msgstr "Vrijdag"
+
+#: src/Plugin.php:188
+msgid "Saturday"
+msgstr "Zaterdag"
+
+#: src/Plugin.php:191
+msgid "Sun"
+msgstr "Zo"
+
+#: src/Plugin.php:192
+msgid "Mon"
+msgstr "Ma"
+
+#: src/Plugin.php:193
+msgid "Tue"
+msgstr "Di"
+
+#: src/Plugin.php:194
+msgid "Wed"
+msgstr "Wo"
+
+#: src/Plugin.php:195
+msgid "Thu"
+msgstr "Do"
+
+#: src/Plugin.php:196
+msgid "Fri"
+msgstr "Vr"
+
+#: src/Plugin.php:197
+msgid "Sat"
+msgstr "Za"
 
 #: src/Products.php:35
 msgid "Error: product does not exist"
@@ -540,8 +644,8 @@ msgid "Decimal separator"
 msgstr "Decimaalscheiding"
 
 #: src/Settings.php:210
-msgid "Use date/time picker script"
-msgstr "Gebruik datum-/tijdselectiescript"
+msgid "Use calendar widget"
+msgstr "Kalender-widget gebruiken"
 
 #: src/Settings.php:211
 msgid "Theme for online booking"
@@ -633,6 +737,15 @@ msgstr "Wis tegoedbontemplatescache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuleren"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Use date/time picker script"
+#~ msgstr "Gebruik datum-/tijdselectiescript"
 
 #~ msgid ""
 #~ "Data coming from your Recras (contact forms, packages, products) is "
