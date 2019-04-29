@@ -112,6 +112,20 @@ By default, date and time pickers in contact forms use whatever the browser has 
 
 **Note**: this setting only applies to standalone contact forms, not to contact forms used during "new style" online booking.
 
+### Comparison of date/time inputs with and without setting
+
+![Native date picker](images/datepicker_native.png)
+_Native date picker (excl. Internet Explorer and desktop Safari)_
+
+![Fallback date picker](images/datepicker_pikaday.png)
+_Date picker with "Use calendar widget" enabled_
+
+![Native time picker](images/timepicker_native.png)
+_Native time picker (excl. Internet Explorer and desktop Safari)_
+
+![Fallback time picker](images/timepicker_fallback.png)
+_Fallback time picker (Internet Explorer and desktop Safari)_
+
 ### Styling
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `css/style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
 Styling for the date/time picker can be based off of `datetimepicker/bootstrap-material-datetimepicker.css`. Be sure to make any changes in your own theme, as this file may be overwritten when a new version of the plugin is released.
