@@ -232,7 +232,7 @@ class ContactForm
                     $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
                             'class' => 'recras-input-date',
                             'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])',
-                            'placeholder' => 'yyyy-mm-dd',
+                            'placeholder' => __('yyyy-mm-dd', Plugin::TEXT_DOMAIN),
                             'type' => 'date',
                         ]);
                     break;
@@ -249,7 +249,7 @@ class ContactForm
                     $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
                             'class' => 'recras-input-time',
                             'pattern' => '(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])',
-                            'placeholder' => 'hh:mm',
+                            'placeholder' => __('hh:mm', Plugin::TEXT_DOMAIN),
                             'type' => 'time',
                         ]);
                     break;

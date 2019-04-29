@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-03-22 15:02+0100\n"
-"PO-Revision-Date: 2019-03-22 15:02+0100\n"
+"POT-Creation-Date: 2019-04-29 11:54+0200\n"
+"PO-Revision-Date: 2019-04-29 11:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -92,6 +92,7 @@ msgid "Start time"
 msgstr ""
 
 #: editor/form-arrangement.php:42 js/gutenberg-package.js:110
+#: src/ContactForm.php:252
 msgid "hh:mm"
 msgstr ""
 
@@ -117,15 +118,15 @@ msgstr ""
 msgid "No pre-filled package"
 msgstr ""
 
-#: editor/form-booking.php:25 js/gutenberg-onlinebooking.js:65
+#: editor/form-booking.php:25 js/gutenberg-onlinebooking.js:66
 msgid "Use new method?"
 msgstr ""
 
-#: editor/form-booking.php:27 js/gutenberg-onlinebooking.js:80
+#: editor/form-booking.php:27 js/gutenberg-onlinebooking.js:81
 msgid "Preview times in programme"
 msgstr ""
 
-#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:89
+#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:90
 msgid "Pre-fill amounts (requires pre-filled package)"
 msgstr ""
 
@@ -268,7 +269,7 @@ msgstr ""
 msgid "Availability calendar"
 msgstr ""
 
-#: js/gutenberg-availability.js:44 js/gutenberg-onlinebooking.js:150
+#: js/gutenberg-availability.js:44 js/gutenberg-onlinebooking.js:151
 msgid "Auto resize iframe"
 msgstr ""
 
@@ -276,12 +277,12 @@ msgstr ""
 msgid "Package (optional)"
 msgstr ""
 
-#: js/gutenberg-contactform.js:151 js/gutenberg-onlinebooking.js:99
+#: js/gutenberg-contactform.js:151 js/gutenberg-onlinebooking.js:100
 #: js/gutenberg-voucher.js:53
 msgid "i.e. https://www.recras.com/thanks/"
 msgstr ""
 
-#: js/gutenberg-contactform.js:152 js/gutenberg-onlinebooking.js:100
+#: js/gutenberg-contactform.js:152 js/gutenberg-onlinebooking.js:101
 #: js/gutenberg-voucher.js:54
 msgid "Redirect after submission (optional, leave empty to not redirect)"
 msgstr ""
@@ -294,16 +295,16 @@ msgstr ""
 msgid "Post: "
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:154
+#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:155
 #: src/Plugin.php:83 src/Plugin.php:137
 msgid "Online booking"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:55
+#: js/gutenberg-onlinebooking.js:56
 msgid "Pre-filled package"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:56
+#: js/gutenberg-onlinebooking.js:57
 msgid "Pre-filled package (optional)"
 msgstr ""
 
@@ -357,16 +358,16 @@ msgstr ""
 msgid "Activity"
 msgstr ""
 
-#: src/Arrangement.php:148
+#: src/Arrangement.php:149
 #, php-format
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:271
+#: src/Arrangement.php:272
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:293
+#: src/Arrangement.php:294
 msgid "No location specified"
 msgstr ""
 
@@ -377,6 +378,10 @@ msgstr ""
 
 #: src/ContactForm.php:75
 msgid "Error: package is set, but contact form does not support packages"
+msgstr ""
+
+#: src/ContactForm.php:235
+msgid "yyyy-mm-dd"
 msgstr ""
 
 #: src/ContactForm.php:265
