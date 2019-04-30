@@ -82,7 +82,7 @@ class Plugin
         add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
         add_submenu_page(null, __('Online booking', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-booking', ['Recras\OnlineBooking', 'showForm']);
         add_submenu_page(null, __('Product', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-product', ['Recras\Products', 'showForm']);
-        add_submenu_page(null, __('Vouchers', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-vouchers', ['Recras\Vouchers', 'showForm']);
+        add_submenu_page(null, __('Vouchers', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-sales', ['Recras\Vouchers', 'showForm']);
     }
 
 

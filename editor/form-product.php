@@ -1,7 +1,3 @@
-<style>
-    #TB_window #adminmenumain, #TB_window #wpfooter { display: none; }
-    #TB_window #wpcontent { margin-left: 0; }
-</style>
 <?php
     $model = new \Recras\Products;
     $products = $model->getProducts(get_option('recras_subdomain'));

@@ -3,3 +3,9 @@
     border-left: 3px solid hsl(209, 80%, 60%);
     padding-left: 1em !important;
 }
+#TB_window #adminmenumain, #TB_window #wpfooter {
+    display: none;
+}
+#TB_window #wpcontent {
+    margin-left: 0;
+}

@@ -43,7 +43,7 @@ var recrasPlugin = function(editor, url) {
         title: recras_l10n.vouchers,
         image: url + '/vouchers.svg',
         onclick: function() {
-            tb_show(recras_l10n.product, 'admin.php?page=form-vouchers');
+            tb_show(recras_l10n.product, 'admin.php?page=form-voucher-sales');
         }
     });
 };

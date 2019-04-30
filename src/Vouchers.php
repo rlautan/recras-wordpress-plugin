@@ -96,6 +96,6 @@ class Vouchers
      */
     public static function showForm()
     {
-        require_once(dirname(__FILE__) . '/../editor/form-vouchers.php');
+        require_once(dirname(__FILE__) . '/../editor/form-voucher-sales.php');
     }
 }
