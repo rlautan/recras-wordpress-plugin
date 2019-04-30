@@ -3,6 +3,9 @@ namespace Recras;
 
 class Settings
 {
+    const OPTION_PAGE = 'recras';
+    const OPTION_SECTION = 'recras';
+
     /**
      * Add a currency input field
      *
@@ -184,6 +187,22 @@ class Settings
         return $bool;
     }
 
+    private static function registerSetting($name, $default, $type = 'string', $sanitizeCallback = null)
+    {
+        $options = [
+            'default' => $default,
+            'type' => $type,
+        ];
+        if ($sanitizeCallback) {
+            $options['sanitize_callback'] = $sanitizeCallback;
+        }
+        register_setting('recras', $name, $options);
+    }
+
+    private static function addField($name, $title, $inputFn)
+    {
+        add_settings_field($name, $title, $inputFn, self::OPTION_PAGE, self::OPTION_SECTION, ['field' => $name]);
+    }
 
     /**
      * Register plugin settings
@@ -191,25 +210,25 @@ class Settings
     public static function registerSettings()
     {
         add_settings_section(
-            'recras',
+            self::OPTION_SECTION,
             __('Recras settings', Plugin::TEXT_DOMAIN),
             ['Recras\Settings', 'settingsHelp'],
-            'recras'
+            self::OPTION_PAGE
         );
 
-        register_setting('recras', 'recras_subdomain', ['Recras\Settings', 'sanitizeSubdomain']);
-        register_setting('recras', 'recras_currency', '');
-        register_setting('recras', 'recras_decimal', '');
-        register_setting('recras', 'recras_datetimepicker', '');
-        register_setting('recras', 'recras_theme', '');
-        register_setting('recras', 'recras_enable_analytics', '');
+        self::registerSetting('recras_subdomain', 'demo', 'string', ['Recras\Settings', 'sanitizeSubdomain']);
+        self::registerSetting('recras_currency', '€');
+        self::registerSetting('recras_decimal', ',');
+        self::registerSetting('recras_datetimepicker', false, 'boolean');
+        self::registerSetting('recras_theme', 'none');
+        self::registerSetting('recras_enable_analytics', false, 'boolean');
 
-        add_settings_field('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain'], 'recras', 'recras', ['field' => 'recras_subdomain']);
-        add_settings_field('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency'], 'recras', 'recras', ['field' => 'recras_currency']);
-        add_settings_field('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal'], 'recras', 'recras', ['field' => 'recras_decimal']);
-        add_settings_field('recras_datetimepicker', __('Use date/time picker script', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox'], 'recras', 'recras', ['field' => 'recras_datetimepicker']);
-        add_settings_field('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputTheme'], 'recras', 'recras', ['field' => 'recras_theme']);
-        add_settings_field('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox'], 'recras', 'recras', ['field' => 'recras_enable_analytics']);
+        self::addField('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain']);
+        self::addField('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency']);
+        self::addField('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal']);
+        self::addField('recras_datetimepicker', __('Use date/time picker script', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox']);
+        self::addField('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputTheme']);
+        self::addField('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox']);
     }
 
 
