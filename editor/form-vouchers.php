@@ -1,7 +1,3 @@
-<style>
-    #TB_window #adminmenumain, #TB_window #wpfooter { display: none; }
-    #TB_window #wpcontent { margin-left: 0; }
-</style>
 <?php
     $subdomain = get_option('recras_subdomain');
 
@@ -28,12 +24,12 @@
             <optgroup label="<?php _e('Pages', \Recras\Plugin::TEXT_DOMAIN); ?>">
                 <?php foreach (get_pages() as $page) { ?>
                 <option value="<?= get_permalink($page->ID); ?>"><?= htmlspecialchars($page->post_title); ?>
-                    <?php } ?>
+                <?php } ?>
             </optgroup>
             <optgroup label="<?php _e('Posts', \Recras\Plugin::TEXT_DOMAIN); ?>">
                 <?php foreach (get_posts() as $post) { ?>
                 <option value="<?= get_permalink($post->ID); ?>"><?= htmlspecialchars($post->post_title); ?>
-                    <?php } ?>
+                <?php } ?>
             </optgroup>
         </select>
 </dl>
