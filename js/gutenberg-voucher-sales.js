@@ -1,5 +1,5 @@
-registerBlockType('recras/voucher', {
-    title: __('Voucher', TEXT_DOMAIN),
+registerBlockType('recras/voucher-sales', {
+    title: __('Voucher sales', TEXT_DOMAIN),
     icon: 'money',
     category: 'recras',
 

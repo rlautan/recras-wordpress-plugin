@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-04-30 16:51+0200\n"
-"PO-Revision-Date: 2019-04-30 16:51+0200\n"
+"POT-Creation-Date: 2019-04-30 17:00+0200\n"
+"PO-Revision-Date: 2019-04-30 17:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -21,8 +21,8 @@ msgstr ""
 #: editor/form-arrangement.php:10 editor/form-booking.php:8
 #: editor/form-contact.php:28 editor/form-package-availability.php:7
 #: js/gutenberg-availability.js:35 js/gutenberg-package.js:2
-#: js/gutenberg-package.js:38 js/gutenberg-package.js:124 src/Plugin.php:81
-#: src/Plugin.php:139
+#: js/gutenberg-package.js:38 js/gutenberg-package.js:124 src/Plugin.php:82
+#: src/Plugin.php:142
 msgid "Package"
 msgstr ""
 
@@ -33,6 +33,7 @@ msgid ""
 msgstr ""
 
 #: editor/form-arrangement.php:22 editor/form-product.php:18
+#: editor/form-voucher-info.php:20
 msgid "Show what?"
 msgstr ""
 
@@ -110,7 +111,8 @@ msgstr ""
 
 #: editor/form-arrangement.php:44 editor/form-booking.php:45
 #: editor/form-contact.php:74 editor/form-package-availability.php:28
-#: editor/form-product.php:30 editor/form-vouchers.php:36
+#: editor/form-product.php:30 editor/form-voucher-info.php:27
+#: editor/form-voucher-sales.php:36
 msgid "Insert shortcode"
 msgstr ""
 
@@ -135,22 +137,22 @@ msgid "Sorry, this is only available using the Gutenberg editor."
 msgstr ""
 
 #: editor/form-booking.php:27 editor/form-contact.php:59
-#: editor/form-vouchers.php:21
+#: editor/form-voucher-sales.php:21
 msgid "Redirect after submission"
 msgstr ""
 
 #: editor/form-booking.php:29 editor/form-contact.php:61
-#: editor/form-vouchers.php:23
+#: editor/form-voucher-sales.php:23
 msgid "Don't redirect"
 msgstr ""
 
 #: editor/form-booking.php:30 editor/form-contact.php:62
-#: editor/form-vouchers.php:24
+#: editor/form-voucher-sales.php:24
 msgid "Pages"
 msgstr ""
 
 #: editor/form-booking.php:35 editor/form-contact.php:67
-#: editor/form-vouchers.php:29
+#: editor/form-voucher-sales.php:29
 msgid "Posts"
 msgstr ""
 
@@ -160,7 +162,7 @@ msgstr ""
 
 #: editor/form-contact.php:11 js/gutenberg-contactform.js:2
 #: js/gutenberg-contactform.js:52 js/gutenberg-contactform.js:156
-#: src/Plugin.php:83 src/Plugin.php:136
+#: src/Plugin.php:84 src/Plugin.php:139
 msgid "Contact form"
 msgstr ""
 
@@ -232,8 +234,8 @@ msgid "Send"
 msgstr ""
 
 #: editor/form-product.php:7 js/gutenberg-product.js:2
-#: js/gutenberg-product.js:34 js/gutenberg-product.js:80 src/Plugin.php:85
-#: src/Plugin.php:141
+#: js/gutenberg-product.js:34 js/gutenberg-product.js:80 src/Plugin.php:86
+#: src/Plugin.php:144
 msgid "Product"
 msgstr ""
 
@@ -257,11 +259,23 @@ msgstr ""
 msgid "Price (incl. VAT)"
 msgstr ""
 
-#: editor/form-vouchers.php:9
+#: editor/form-voucher-info.php:9 editor/form-voucher-sales.php:9
 msgid "Template"
 msgstr ""
 
-#: editor/form-vouchers.php:15
+#: editor/form-voucher-info.php:22 js/gutenberg-voucher-info.js:47
+msgid "Name"
+msgstr ""
+
+#: editor/form-voucher-info.php:23 js/gutenberg-voucher-info.js:51
+msgid "Price"
+msgstr ""
+
+#: editor/form-voucher-info.php:24 js/gutenberg-voucher-info.js:55
+msgid "Number of days valid"
+msgstr ""
+
+#: editor/form-voucher-sales.php:15
 msgid "No pre-filled template"
 msgstr ""
 
@@ -278,12 +292,12 @@ msgid "Package (optional)"
 msgstr ""
 
 #: js/gutenberg-contactform.js:151 js/gutenberg-onlinebooking.js:100
-#: js/gutenberg-voucher.js:53
+#: js/gutenberg-voucher-sales.js:53
 msgid "i.e. https://www.recras.com/thanks/"
 msgstr ""
 
 #: js/gutenberg-contactform.js:152 js/gutenberg-onlinebooking.js:101
-#: js/gutenberg-voucher.js:54
+#: js/gutenberg-voucher-sales.js:54
 msgid "Redirect after submission (optional, leave empty to not redirect)"
 msgstr ""
 
@@ -296,7 +310,7 @@ msgid "Post: "
 msgstr ""
 
 #: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:155
-#: src/Plugin.php:84 src/Plugin.php:138
+#: src/Plugin.php:85 src/Plugin.php:141
 msgid "Online booking"
 msgstr ""
 
@@ -309,32 +323,36 @@ msgid "Pre-filled package (optional)"
 msgstr ""
 
 #: js/gutenberg-package.js:97 js/gutenberg-product.js:77
+#: js/gutenberg-voucher-info.js:58
 msgid "Property to show"
 msgstr ""
 
-#: js/gutenberg-voucher.js:2
-msgid "Voucher"
+#: js/gutenberg-voucher-info.js:2 js/gutenberg-voucher-info.js:61
+#: src/Plugin.php:88 src/Plugin.php:145
+msgid "Voucher info"
 msgstr ""
 
-#: js/gutenberg-voucher.js:28
-msgid "Loading data..."
-msgstr ""
-
-#: js/gutenberg-voucher.js:42
+#: js/gutenberg-voucher-info.js:34 js/gutenberg-voucher-sales.js:42
 msgid "Voucher template"
 msgstr ""
 
-#: js/gutenberg-voucher.js:57
+#: js/gutenberg-voucher-sales.js:2 js/gutenberg-voucher-sales.js:57
+#: src/Plugin.php:87 src/Plugin.php:146
 msgid "Voucher sales"
 msgstr ""
 
+#: js/gutenberg-voucher-sales.js:28
+msgid "Loading data..."
+msgstr ""
+
 #: src/Arrangement.php:19 src/Availability.php:17 src/ContactForm.php:16
-#: src/Products.php:18
+#: src/Products.php:18 src/Vouchers.php:11
 msgid "Error: no ID set"
 msgstr ""
 
 #: src/Arrangement.php:22 src/Availability.php:20 src/ContactForm.php:19
-#: src/OnlineBooking.php:16 src/Products.php:21 src/Vouchers.php:16
+#: src/OnlineBooking.php:16 src/Products.php:21 src/Vouchers.php:14
+#: src/Vouchers.php:57
 msgid "Error: ID is not a number"
 msgstr ""
 
@@ -342,7 +360,7 @@ msgstr ""
 msgid "Error: programme is empty"
 msgstr ""
 
-#: src/Arrangement.php:72 src/Products.php:66
+#: src/Arrangement.php:72 src/Products.php:66 src/Vouchers.php:43
 msgid "Error: unknown option"
 msgstr ""
 
@@ -436,158 +454,154 @@ msgstr ""
 msgid "Error: \"product_amounts\" is invalid"
 msgstr ""
 
-#: src/Plugin.php:64 src/Plugin.php:65
+#: src/Plugin.php:65 src/Plugin.php:66
 msgid "Settings"
 msgstr ""
 
-#: src/Plugin.php:74 src/Plugin.php:75
+#: src/Plugin.php:75 src/Plugin.php:76
 msgid "Cache"
 msgstr ""
 
-#: src/Plugin.php:82 src/Plugin.php:140
+#: src/Plugin.php:83 src/Plugin.php:143
 msgid "Package availability"
 msgstr ""
 
-#: src/Plugin.php:86 src/Plugin.php:142
-msgid "Vouchers"
-msgstr ""
-
-#: src/Plugin.php:111
+#: src/Plugin.php:114
 msgid "Error: you have not set your Recras name yet"
 msgstr ""
 
-#: src/Plugin.php:113
+#: src/Plugin.php:116
 msgid ""
 "Error: your Recras name has not been set yet, but you do not have the "
 "permission to set this. Please ask your site administrator to do this for "
 "you."
 msgstr ""
 
-#: src/Plugin.php:137
+#: src/Plugin.php:140
 msgid "Could not connect to your Recras"
 msgstr ""
 
-#: src/Plugin.php:156
+#: src/Plugin.php:160
 msgid "Loading..."
 msgstr ""
 
-#: src/Plugin.php:157
+#: src/Plugin.php:161
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:158
+#: src/Plugin.php:162
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:166
+#: src/Plugin.php:170
 msgid "Previous month"
 msgstr ""
 
-#: src/Plugin.php:167
+#: src/Plugin.php:171
 msgid "Next month"
 msgstr ""
 
-#: src/Plugin.php:169
+#: src/Plugin.php:173
 msgid "January"
 msgstr ""
 
-#: src/Plugin.php:170
+#: src/Plugin.php:174
 msgid "February"
 msgstr ""
 
-#: src/Plugin.php:171
+#: src/Plugin.php:175
 msgid "March"
 msgstr ""
 
-#: src/Plugin.php:172
+#: src/Plugin.php:176
 msgid "April"
 msgstr ""
 
-#: src/Plugin.php:173
+#: src/Plugin.php:177
 msgid "May"
 msgstr ""
 
-#: src/Plugin.php:174
+#: src/Plugin.php:178
 msgid "June"
 msgstr ""
 
-#: src/Plugin.php:175
+#: src/Plugin.php:179
 msgid "July"
 msgstr ""
 
-#: src/Plugin.php:176
+#: src/Plugin.php:180
 msgid "August"
 msgstr ""
 
-#: src/Plugin.php:177
+#: src/Plugin.php:181
 msgid "September"
 msgstr ""
 
-#: src/Plugin.php:178
+#: src/Plugin.php:182
 msgid "October"
 msgstr ""
 
-#: src/Plugin.php:179
+#: src/Plugin.php:183
 msgid "November"
 msgstr ""
 
-#: src/Plugin.php:180
+#: src/Plugin.php:184
 msgid "December"
 msgstr ""
 
-#: src/Plugin.php:183
+#: src/Plugin.php:187
 msgid "Sunday"
 msgstr ""
 
-#: src/Plugin.php:184
+#: src/Plugin.php:188
 msgid "Monday"
 msgstr ""
 
-#: src/Plugin.php:185
+#: src/Plugin.php:189
 msgid "Tuesday"
 msgstr ""
 
-#: src/Plugin.php:186
+#: src/Plugin.php:190
 msgid "Wednesday"
 msgstr ""
 
-#: src/Plugin.php:187
+#: src/Plugin.php:191
 msgid "Thursday"
 msgstr ""
 
-#: src/Plugin.php:188
+#: src/Plugin.php:192
 msgid "Friday"
 msgstr ""
 
-#: src/Plugin.php:189
+#: src/Plugin.php:193
 msgid "Saturday"
 msgstr ""
 
-#: src/Plugin.php:192
+#: src/Plugin.php:196
 msgid "Sun"
 msgstr ""
 
-#: src/Plugin.php:193
+#: src/Plugin.php:197
 msgid "Mon"
 msgstr ""
 
-#: src/Plugin.php:194
+#: src/Plugin.php:198
 msgid "Tue"
 msgstr ""
 
-#: src/Plugin.php:195
+#: src/Plugin.php:199
 msgid "Wed"
 msgstr ""
 
-#: src/Plugin.php:196
+#: src/Plugin.php:200
 msgid "Thu"
 msgstr ""
 
-#: src/Plugin.php:197
+#: src/Plugin.php:201
 msgid "Fri"
 msgstr ""
 
-#: src/Plugin.php:198
+#: src/Plugin.php:202
 msgid "Sat"
 msgstr ""
 
@@ -641,6 +655,10 @@ msgstr ""
 
 #: src/Settings.php:260
 msgid "Enter your Recras details here"
+msgstr ""
+
+#: src/Vouchers.php:26
+msgid "Error: template does not exist"
 msgstr ""
 
 #: src/admin/cache.php:6

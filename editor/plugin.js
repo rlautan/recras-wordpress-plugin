@@ -39,11 +39,19 @@ var recrasPlugin = function(editor, url) {
         }
     });
 
-    editor.addButton('recras-vouchers', {
-        title: recras_l10n.vouchers,
+    editor.addButton('recras-voucher-sales', {
+        title: recras_l10n.voucherSales,
         image: url + '/vouchers.svg',
         onclick: function() {
-            tb_show(recras_l10n.product, 'admin.php?page=form-vouchers');
+            tb_show(recras_l10n.product, 'admin.php?page=form-voucher-sales');
+        }
+    });
+
+    editor.addButton('recras-voucher-info', {
+        title: recras_l10n.voucherInfo,
+        image: url + '/vouchers.svg',
+        onclick: function() {
+            tb_show(recras_l10n.product, 'admin.php?page=form-voucher-info');
         }
     });
 };
