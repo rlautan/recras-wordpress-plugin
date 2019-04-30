@@ -1,5 +1,8 @@
 # Changelog
 
+## branch voucher-info
+* Add ability to show voucher information
+
 ## 2.3.9 (2019-04-23)
 * Update online booking library version. This fixed "customer type" fields in contact forms used during online bookings.
 

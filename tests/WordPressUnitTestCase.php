@@ -155,8 +155,15 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
             return $this->products();
         }
         if (preg_match('~^([a-z]+)_voucher_templates$~', $name)) {
-            //TODO
-            return (object) [];
+            return [
+                (object) [
+                    'id' => 1,
+                    'name' => 'Kadobon voor 2 keer klimmen',
+                    'price' => 30,
+                    'expire_days' => 365,
+                    'contactform_id' => 1,
+                ],
+            ];
         }
 
         throw new Exception('Transient not supported');

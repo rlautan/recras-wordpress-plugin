@@ -54,7 +54,11 @@ class Gutenberg
                 'callback' => ['Recras\Products', 'renderProduct'],
                 'version' => '2.2.1',
             ],
-            'voucher' => [
+            'voucher-info' => [
+                'callback' => ['Recras\Vouchers', 'renderVoucherInfo'],
+                'version' => '2.4.0',
+            ],
+            'voucher-sales' => [
                 'callback' => ['Recras\Vouchers', 'renderVoucherSales'],
                 'version' => '2.2.1',
             ],

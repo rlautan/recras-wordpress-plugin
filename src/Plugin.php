@@ -220,7 +220,7 @@ class Plugin
             // Online booking Gutenberg
             return true;
         }
-        if (strpos($content, 'wp:recras/voucher') !== false) {
+        if (strpos($content, 'wp:recras/voucher-sales') !== false) {
             // Voucher Gutenberg
             return true;
         }

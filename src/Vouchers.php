@@ -7,6 +7,9 @@ class Vouchers
 
     public static function renderVoucherInfo($attributes)
     {
+        if (!isset($attributes['id'])) {
+            return __('Error: no ID set', Plugin::TEXT_DOMAIN);
+        }
         if (isset($attributes['id']) && !ctype_digit($attributes['id']) && !is_int($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
         }
@@ -31,7 +34,7 @@ class Vouchers
         $template = $templates[$attributes['id']];
         switch ($showProperty) {
             case 'name':
-                return $template->name;
+                return '<span class="recras-title">' . $template->name . '</span>';
             case 'price':
                 return Price::format($template->price);
             case 'validity':
