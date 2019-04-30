@@ -226,7 +226,7 @@ class Settings
         self::addField('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain']);
         self::addField('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency']);
         self::addField('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal']);
-        self::addField('recras_datetimepicker', __('Use date/time picker script', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox']);
+        self::addField('recras_datetimepicker', __('Use calendar widget', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox']);
         self::addField('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputTheme']);
         self::addField('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox']);
     }

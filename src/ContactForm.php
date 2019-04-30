@@ -230,6 +230,9 @@ class ContactForm
                     break;
                 case 'boeking.datum':
                     $html .= self::generateSubTag($options['element']) . self::generateInput($field, [
+                            'raw' => [
+                                'autocomplete' => 'off',
+                            ],
                             'class' => 'recras-input-date',
                             'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])',
                             'placeholder' => __('yyyy-mm-dd', Plugin::TEXT_DOMAIN),
