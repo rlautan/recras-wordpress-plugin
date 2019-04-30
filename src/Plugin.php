@@ -46,8 +46,9 @@ class Plugin
         add_action('admin_post_clear_voucher_template_cache', ['Recras\Vouchers', 'clearCache']);
 
         $this->addShortcodes();
-    }
 
+        register_uninstall_hook(__FILE__, [__CLASS__, 'uninstall']);
+    }
 
     /**
      * Add the menu items for our plugin
@@ -253,4 +254,13 @@ class Plugin
         return false;
     }
 
+    public static function uninstall()
+    {
+        delete_option('recras_currency');
+        delete_option('recras_datetimepicker');
+        delete_option('recras_decimal');
+        delete_option('recras_enable_analytics');
+        delete_option('recras_subdomain');
+        delete_option('recras_theme');
+    }
 }
