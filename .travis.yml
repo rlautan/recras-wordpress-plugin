@@ -25,7 +25,7 @@ env:
 - WP_VERSION=latest WP_MULTISITE=0
 
 install:
-- composer install --dev
+- composer install --dev --ignore-platform-reqs
 
 before_script:
 - |
