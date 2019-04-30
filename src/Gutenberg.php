@@ -55,7 +55,7 @@ class Gutenberg
                 'version' => '2.2.1',
             ],
             'voucher' => [
-                'callback' => ['Recras\Vouchers', 'renderVouchers'],
+                'callback' => ['Recras\Vouchers', 'renderVoucherSales'],
                 'version' => '2.2.1',
             ],
         ];

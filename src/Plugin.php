@@ -7,7 +7,8 @@ class Plugin
     const TEXT_DOMAIN = 'recras-wp';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';
-    const SHORTCODE_VOUCHERS = 'recras-vouchers';
+    const SHORTCODE_VOUCHER_SALES = 'recras-vouchers';
+    const SHORTCODE_VOUCHER_INFO = 'recras-voucher-info';
 
     public $baseUrl;
 
@@ -82,7 +83,8 @@ class Plugin
         add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
         add_submenu_page(null, __('Online booking', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-booking', ['Recras\OnlineBooking', 'showForm']);
         add_submenu_page(null, __('Product', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-product', ['Recras\Products', 'showForm']);
-        add_submenu_page(null, __('Vouchers', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-sales', ['Recras\Vouchers', 'showForm']);
+        add_submenu_page(null, __('Voucher sales', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-sales', ['Recras\Vouchers', 'showSalesForm']);
+        add_submenu_page(null, __('Voucher info', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-info', ['Recras\Vouchers', 'showInfoForm']);
     }
 
 
@@ -96,7 +98,8 @@ class Plugin
         add_shortcode('recras-contact', ['Recras\ContactForm', 'renderContactForm']);
         add_shortcode('recras-package', ['Recras\Arrangement', 'renderPackage']);
         add_shortcode('recras-product', ['Recras\Products', 'renderProduct']);
-        add_shortcode($this::SHORTCODE_VOUCHERS, ['Recras\Vouchers', 'renderVouchers']);
+        add_shortcode($this::SHORTCODE_VOUCHER_SALES, ['Recras\Vouchers', 'renderVoucherSales']);
+        add_shortcode($this::SHORTCODE_VOUCHER_INFO, ['Recras\Vouchers', 'renderVoucherInfo']);
     }
 
 
@@ -138,7 +141,8 @@ class Plugin
             'package' => __('Package', $this::TEXT_DOMAIN),
             'package_availability' => __('Package availability', $this::TEXT_DOMAIN),
             'product' => __('Product', $this::TEXT_DOMAIN),
-            'vouchers' => __('Vouchers', $this::TEXT_DOMAIN),
+            'voucherInfo' => __('Voucher info', $this::TEXT_DOMAIN),
+            'voucherSales' => __('Voucher sales', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
         wp_enqueue_style('recras-admin-style', $this->baseUrl . '/css/admin-style.css', [], '1.10.1');
@@ -208,7 +212,7 @@ class Plugin
             // Online booking shortcode
             return true;
         }
-        if (strpos($content, $this::SHORTCODE_VOUCHERS) !== false) {
+        if (strpos($content, $this::SHORTCODE_VOUCHER_SALES) !== false) {
             // Voucher shortcode
             return true;
         }

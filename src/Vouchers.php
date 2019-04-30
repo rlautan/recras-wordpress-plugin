@@ -3,6 +3,44 @@ namespace Recras;
 
 class Vouchers
 {
+    const SHOW_DEFAULT = 'name';
+
+    public static function renderVoucherInfo($attributes)
+    {
+        if (isset($attributes['id']) && !ctype_digit($attributes['id']) && !is_int($attributes['id'])) {
+            return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
+        }
+
+        $subdomain = Settings::getSubdomain($attributes);
+        if (!$subdomain) {
+            return Plugin::getNoSubdomainError();
+        }
+
+        $model = new self;
+        $templates = $model->getTemplates($subdomain);
+
+        if (!isset($templates[$attributes['id']])) {
+            return __('Error: template does not exist', Plugin::TEXT_DOMAIN);
+        }
+
+        $showProperty = self::SHOW_DEFAULT;
+        if (isset($attributes['show']) && in_array($attributes['show'], self::getValidOptions())) {
+            $showProperty = $attributes['show'];
+        }
+
+        $template = $templates[$attributes['id']];
+        switch ($showProperty) {
+            case 'name':
+                return $template->name;
+            case 'price':
+                return Price::format($template->price);
+            case 'validity':
+                return $template->expire_days;
+            default:
+                return __('Error: unknown option', Plugin::TEXT_DOMAIN);
+        }
+    }
+
     /**
      * Add the [recras-vouchers] shortcode
      *
@@ -10,7 +48,7 @@ class Vouchers
      *
      * @return string
      */
-    public static function renderVouchers($attributes)
+    public static function renderVoucherSales($attributes)
     {
         if (isset($attributes['id']) && !ctype_digit($attributes['id']) && !is_int($attributes['id'])) {
             return __('Error: ID is not a number', Plugin::TEXT_DOMAIN);
@@ -92,9 +130,24 @@ class Vouchers
 
 
     /**
-     * Show the TinyMCE shortcode generator product form
+     * Get all valid options for the "show" argument
+     *
+     * @return array
      */
-    public static function showForm()
+    public static function getValidOptions()
+    {
+        return ['name', 'price', 'validity']; //TODO: decide on product_amount, products
+    }
+
+
+    /**
+     * Show the TinyMCE shortcode generator forms
+     */
+    public static function showInfoForm()
+    {
+        require_once(dirname(__FILE__) . '/../editor/form-voucher-info.php');
+    }
+    public static function showSalesForm()
     {
         require_once(dirname(__FILE__) . '/../editor/form-voucher-sales.php');
     }
