@@ -1,6 +1,6 @@
 # Changelog
 
-## master (unreleased)
+## 2.4.0 (2019-04-30)
 * Date/Time input update:
   - Localise date/time placeholders
   - Remove time picker
