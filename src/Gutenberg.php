@@ -23,7 +23,7 @@ class Gutenberg
             true
         );
         if (function_exists('wp_set_script_translations')) {
-            wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN, plugin_dir_path(dirname(__DIR__)) . 'lang');
+            wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN, plugin_dir_path(__DIR__) . 'lang');
         }
 
         wp_register_style(
@@ -72,9 +72,7 @@ class Gutenberg
                 $block['version'],
                 true
             );
-            if (function_exists('wp_set_script_translations')) {
-                wp_set_script_translations($handle, Plugin::TEXT_DOMAIN, plugin_dir_path(dirname(__DIR__))); //TODO: this generates an empty JS object
-            }
+            // Translations for these scripts are already handled by the global script
 
             \register_block_type('recras/' . $key, [
                 'editor_script' => 'recras-gutenberg-' . $key,

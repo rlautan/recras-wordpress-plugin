@@ -23,7 +23,7 @@ class Plugin
 
         // Init Localisation
         load_default_textdomain();
-        load_plugin_textdomain($this::TEXT_DOMAIN, false, dirname(plugin_basename(dirname(__FILE__))) . '/lang');
+        load_plugin_textdomain($this::TEXT_DOMAIN, false, dirname(plugin_basename(__DIR__)) . '/lang');
 
         // Add admin menu pages
         add_action('admin_menu', [&$this, 'addMenuItems']);
