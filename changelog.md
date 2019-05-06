@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.1 (2019-05-06)
+* Styling fix for "Recras Blue" theme
+* Fix Gutenberg translations
+
 ## 2.4.0 (2019-04-30)
 * Date/Time input update:
   - Localise date/time placeholders
