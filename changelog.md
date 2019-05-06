@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.2 (2019-05-06)
+* Not selecting a pre-filled package with new online booking was broken - fixed
+* Add info messages for packages not showing up
+
 ## 2.4.1 (2019-05-06)
 * Styling fix for "Recras Blue" theme
 * Fix Gutenberg translations

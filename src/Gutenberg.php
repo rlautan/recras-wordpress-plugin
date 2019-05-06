@@ -30,7 +30,7 @@ class Gutenberg
             $globalStyleName,
             plugins_url('css/gutenberg.css', __DIR__),
             ['wp-edit-blocks'],
-            filemtime(plugin_dir_path(__FILE__) . '../css/gutenberg.css')
+            '2.4.2'
         );
 
         $gutenbergBlocks = [
@@ -44,11 +44,11 @@ class Gutenberg
             ],
             'onlinebooking' => [
                 'callback' => ['Recras\OnlineBooking', 'renderOnlineBooking'],
-                'version' => '2.3.4',
+                'version' => '2.4.2',
             ],
             'package' => [
                 'callback' => ['Recras\Arrangement', 'renderPackage'],
-                'version' => '2.3.4',
+                'version' => '2.4.2',
             ],
             'product' => [
                 'callback' => ['Recras\Products', 'renderProduct'],

@@ -26,7 +26,6 @@ registerBlockType('recras/onlinebooking', {
             show_times,
             autoresize,
         } = props.attributes;
-        console.log('attr', props.attributes);
         const {
             packages,
             pagesPosts,
@@ -34,6 +33,11 @@ registerBlockType('recras/onlinebooking', {
 
         let packagesMapped = Object.values(packages);
         packagesMapped = packagesMapped.filter(p => p.mag_online);
+        // Add empty value as first option, since package is not required
+        packagesMapped.unshift({
+            id: 0,
+            arrangement: '',
+        });
         packagesMapped = packagesMapped.map(mapPackage);
 
         let product_amounts;
@@ -154,6 +158,7 @@ registerBlockType('recras/onlinebooking', {
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Online booking', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsPackageControl));
+        retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
         retval.push(el(ToggleControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(el(ToggleControl, optionsShowTimesControl));

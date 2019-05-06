@@ -124,6 +124,7 @@ registerBlockType('recras/package', {
         retval.push(recrasHelper.elementText('Recras - ' + __('Package', TEXT_DOMAIN)));
 
         retval.push(el(SelectControl, optionsIDControl));
+        retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsShowWhatControl));
         if (show === 'programme') {
             retval.push(el(TextControl, optionsStartTimeControl));
