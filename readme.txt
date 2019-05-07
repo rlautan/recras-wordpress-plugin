@@ -219,25 +219,6 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 * Add Google Analytics integration
 * Add ability to pre-fill amounts form
 
-= 2.2.2 =
-* Fix plugin on WordPress 4
-
-= 2.2.1 =
-* Fix values not being set properly after opening a saved page (Gutenberg only)
-
-= 2.2.0 =
-* Make plugin compatible with Gutenberg/WordPress 5+
-* Update "classic editor" icons to reflect the icons used for Gutenberg blocks
-
-= 2.1.2 =
-Update online booking library version. This fixes the minimum amount of "fixed programme" input fields.
-
-= 2.1.1 =
-Update online booking library version. This fixes a few things with the new online booking method when you are logged in to your own Recras.
-
-= 2.1.0 =
-Choose between drop-down or radio buttons for single-choice fields (customer type, package selection, gender, and single choice) in contact forms
-
 = Older versions =
 See `changelog.md` for the full changelog.
 
