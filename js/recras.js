@@ -32,6 +32,9 @@ function submitRecrasForm(formID, subdomain, basePath, redirect)
             }
         }
     }
+    if (elements['boeking.arrangement'] === '0') {
+        delete elements['boeking.arrangement'];
+    }
 
     var submitEl = formEl.querySelector('[type="submit"]');
     submitEl.parentNode.insertAdjacentHTML('beforeend', '<img src="' + basePath + 'editor/loading.gif" alt="' + recras_l10n.loading + '" class="recras-loading">');

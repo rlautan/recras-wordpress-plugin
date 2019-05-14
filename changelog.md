@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.4.3 (2019-05-14)
+* Fix for empty non-required "booking - package" field in contact forms
+
 ## 2.4.2 (2019-05-06)
 * Not selecting a pre-filled package with new online booking was broken - fixed
 * Add info messages for packages not showing up

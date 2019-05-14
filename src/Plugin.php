@@ -220,7 +220,7 @@ class Plugin
         }
 
         $scriptName = 'recras-frontend';
-        wp_register_script($scriptName, $this->baseUrl . '/js/recras.js', ['jquery'], '2.0.0', true);
+        wp_register_script($scriptName, $this->baseUrl . '/js/recras.js', ['jquery'], '2.4.3', true);
         wp_localize_script($scriptName, 'recras_l10n', $localisation);
         wp_enqueue_script($scriptName);
     }
