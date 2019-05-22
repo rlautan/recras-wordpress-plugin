@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.4.4 (2019-05-22)
+* Update online booking library version. This fixes the availability check for packages with "booking size" in some edge cases
+
 ## 2.4.3 (2019-05-14)
 * Fix for empty non-required "booking - package" field in contact forms
 
