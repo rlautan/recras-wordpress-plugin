@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.4.5 (2019-05-28)
+* Fix for package duration/programme not showing in some edge cases
+
 ## 2.4.4 (2019-05-22)
 * Update online booking library version. This fixes the availability check for packages with "booking size" in some edge cases
 
