@@ -253,6 +253,9 @@ class ContactForm
                             'class' => 'recras-input-time',
                             'pattern' => '(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])',
                             'placeholder' => __('hh:mm', Plugin::TEXT_DOMAIN),
+                            'raw' => [
+                                'step' => 300, // 300 seconds = 5 minutes
+                            ],
                             'type' => 'time',
                         ]);
                     break;

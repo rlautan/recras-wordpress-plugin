@@ -164,6 +164,9 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 
 == Changelog ==
 
+= master =
+* Make time input increase/decrease time in steps of 5 minutes
+
 = 2.4.6 =
 * Update online booking library version. This fixes new online booking in IE when invalid tags are used in online booking texts.
   - This shouldn't affect most people, most notably it caused problems when using the Google Analytics domain linker.
