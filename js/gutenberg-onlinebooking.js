@@ -61,13 +61,23 @@ registerBlockType('recras/onlinebooking', {
             label: __('Pre-filled package (optional)', TEXT_DOMAIN),
         };
         const optionsNewLibraryControl = {
-            checked: use_new_library,
+            selected: use_new_library ? 'jslibrary' : 'iframe',
+            options: [
+                {
+                    label: __('Seamless (recommended)', TEXT_DOMAIN),
+                    value: 'jslibrary',
+                },
+                {
+                    label: __('iframe (uses setting in your Recras)', TEXT_DOMAIN),
+                    value: 'iframe',
+                },
+            ],
             onChange: function(newVal) {
                 props.setAttributes({
-                    use_new_library: newVal,
+                    use_new_library: (newVal === 'jslibrary'),
                 });
             },
-            label: __('Use new method?', TEXT_DOMAIN),
+            label: __('Integration method', TEXT_DOMAIN),
         };
         let optionsShowTimesControl;
         let optionsPreFillControl;
@@ -159,7 +169,7 @@ registerBlockType('recras/onlinebooking', {
         retval.push(recrasHelper.elementText('Recras - ' + __('Online booking', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsPackageControl));
         retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
-        retval.push(el(ToggleControl, optionsNewLibraryControl));
+        retval.push(el(RadioControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(el(ToggleControl, optionsShowTimesControl));
             retval.push(el(ToggleControl, optionsPreFillControl));

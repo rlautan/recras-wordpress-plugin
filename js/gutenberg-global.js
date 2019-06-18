@@ -1,6 +1,7 @@
 const el = wp.element.createElement;
 const { registerBlockType } = wp.blocks;
 const {
+    RadioControl,
     SelectControl,
     TextControl,
     ToggleControl,

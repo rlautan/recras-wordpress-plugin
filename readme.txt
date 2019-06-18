@@ -166,6 +166,7 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 
 = master =
 * Make time input increase/decrease time in steps of 5 minutes
+* Clarify online booking methods
 
 = 2.4.6 =
 * Update online booking library version. This fixes new online booking in IE when invalid tags are used in online booking texts.

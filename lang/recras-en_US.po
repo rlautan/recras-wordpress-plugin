@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-04-30 17:00+0200\n"
-"PO-Revision-Date: 2019-04-30 17:00+0200\n"
+"POT-Creation-Date: 2019-06-18 11:07+0200\n"
+"PO-Revision-Date: 2019-06-18 11:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -26,7 +26,8 @@ msgstr ""
 msgid "Package"
 msgstr ""
 
-#: editor/form-arrangement.php:20
+#: editor/form-arrangement.php:20 js/gutenberg-onlinebooking.js:171
+#: js/gutenberg-package.js:127
 msgid ""
 "If you are not seeing certain packages, make sure \"May be presented on a "
 "website (via API)\" is enabled on the tab \"Extra settings\" of the package."
@@ -120,15 +121,15 @@ msgstr ""
 msgid "No pre-filled package"
 msgstr ""
 
-#: editor/form-booking.php:21 js/gutenberg-onlinebooking.js:66
+#: editor/form-booking.php:21
 msgid "Use new method?"
 msgstr ""
 
-#: editor/form-booking.php:23 js/gutenberg-onlinebooking.js:81
+#: editor/form-booking.php:23 js/gutenberg-onlinebooking.js:95
 msgid "Preview times in programme"
 msgstr ""
 
-#: editor/form-booking.php:25 js/gutenberg-onlinebooking.js:90
+#: editor/form-booking.php:25 js/gutenberg-onlinebooking.js:104
 msgid "Pre-fill amounts (requires pre-filled package)"
 msgstr ""
 
@@ -283,7 +284,7 @@ msgstr ""
 msgid "Availability calendar"
 msgstr ""
 
-#: js/gutenberg-availability.js:44 js/gutenberg-onlinebooking.js:151
+#: js/gutenberg-availability.js:44 js/gutenberg-onlinebooking.js:165
 msgid "Auto resize iframe"
 msgstr ""
 
@@ -291,35 +292,47 @@ msgstr ""
 msgid "Package (optional)"
 msgstr ""
 
-#: js/gutenberg-contactform.js:151 js/gutenberg-onlinebooking.js:100
+#: js/gutenberg-contactform.js:151 js/gutenberg-onlinebooking.js:114
 #: js/gutenberg-voucher-sales.js:53
 msgid "i.e. https://www.recras.com/thanks/"
 msgstr ""
 
-#: js/gutenberg-contactform.js:152 js/gutenberg-onlinebooking.js:101
+#: js/gutenberg-contactform.js:152 js/gutenberg-onlinebooking.js:115
 #: js/gutenberg-voucher-sales.js:54
 msgid "Redirect after submission (optional, leave empty to not redirect)"
 msgstr ""
 
-#: js/gutenberg-global.js:216
+#: js/gutenberg-global.js:217
 msgid "Page: "
 msgstr ""
 
-#: js/gutenberg-global.js:222
+#: js/gutenberg-global.js:223
 msgid "Post: "
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:155
+#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:169
 #: src/Plugin.php:85 src/Plugin.php:141
 msgid "Online booking"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:56
+#: js/gutenberg-onlinebooking.js:60
 msgid "Pre-filled package"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:57
+#: js/gutenberg-onlinebooking.js:61
 msgid "Pre-filled package (optional)"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:67
+msgid "Seamless (recommended)"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:71
+msgid "iframe (uses setting in your Recras)"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:80
+msgid "Integration method"
 msgstr ""
 
 #: js/gutenberg-package.js:97 js/gutenberg-product.js:77
@@ -356,36 +369,36 @@ msgstr ""
 msgid "Error: ID is not a number"
 msgstr ""
 
-#: src/Arrangement.php:64
+#: src/Arrangement.php:64 src/Arrangement.php:70
 msgid "Error: programme is empty"
 msgstr ""
 
-#: src/Arrangement.php:72 src/Products.php:66 src/Vouchers.php:43
+#: src/Arrangement.php:79 src/Products.php:66 src/Vouchers.php:43
 msgid "Error: unknown option"
 msgstr ""
 
-#: src/Arrangement.php:122
+#: src/Arrangement.php:129
 msgid "From"
 msgstr ""
 
-#: src/Arrangement.php:122
+#: src/Arrangement.php:129
 msgid "Until"
 msgstr ""
 
-#: src/Arrangement.php:122
+#: src/Arrangement.php:129
 msgid "Activity"
 msgstr ""
 
-#: src/Arrangement.php:149
+#: src/Arrangement.php:156
 #, php-format
 msgid "Day %d"
 msgstr ""
 
-#: src/Arrangement.php:272
+#: src/Arrangement.php:283
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:294
+#: src/Arrangement.php:305
 msgid "No location specified"
 msgstr ""
 
@@ -402,15 +415,15 @@ msgstr ""
 msgid "yyyy-mm-dd"
 msgstr ""
 
-#: src/ContactForm.php:268
+#: src/ContactForm.php:271
 msgid "Unknown"
 msgstr ""
 
-#: src/ContactForm.php:269
+#: src/ContactForm.php:272
 msgid "Male"
 msgstr ""
 
-#: src/ContactForm.php:270
+#: src/ContactForm.php:273
 msgid "Female"
 msgstr ""
 
