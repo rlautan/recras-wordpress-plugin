@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-06-18 11:07+0200\n"
-"PO-Revision-Date: 2019-06-18 11:07+0200\n"
+"POT-Creation-Date: 2019-06-24 09:31+0200\n"
+"PO-Revision-Date: 2019-06-24 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -333,6 +333,19 @@ msgstr ""
 
 #: js/gutenberg-onlinebooking.js:80
 msgid "Integration method"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:174
+msgid ""
+"Seamless integration takes the styling of your website. You can apply a bit "
+"of extra styling via the Recras → Settings menu."
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:184
+msgid ""
+"iframe integration uses the setting in your Recras. You can change this via "
+"the Settings → Online booking page in your Recras and apply extra styling "
+"via the Settings → Other settings page in your Recras.."
 msgstr ""
 
 #: js/gutenberg-package.js:97 js/gutenberg-product.js:77

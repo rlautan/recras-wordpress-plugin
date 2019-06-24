@@ -171,6 +171,7 @@ registerBlockType('recras/onlinebooking', {
         retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
         retval.push(el(RadioControl, optionsNewLibraryControl));
         if (use_new_library) {
+            retval.push(recrasHelper.elementInfo(__('Seamless integration takes the styling of your website. You can apply a bit of extra styling via the Recras → Settings menu.', TEXT_DOMAIN)));
             retval.push(el(ToggleControl, optionsShowTimesControl));
             retval.push(el(ToggleControl, optionsPreFillControl));
             if (preFillControls.length) {
@@ -180,6 +181,7 @@ registerBlockType('recras/onlinebooking', {
             }
             retval.push(el(SelectControl, optionsRedirectControl));
         } else {
+            retval.push(recrasHelper.elementInfo(__('iframe integration uses the setting in your Recras. You can change this via the Settings → Online booking page in your Recras and apply extra styling via the Settings → Other settings page in your Recras..', TEXT_DOMAIN)));
             retval.push(el(ToggleControl, optionsAutoresizeControl));
         }
         return retval;
