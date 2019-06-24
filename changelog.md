@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.7 (2019-06-24)
+* Make time input increase/decrease time in steps of 5 minutes
+* Clarify online booking methods
+
 ## 2.4.6 (2019-05-29)
 * Update online booking library version. This fixes new online booking in IE when invalid tags are used in online booking texts.
   - This shouldn't affect most people, most notably it caused problems when using the Google Analytics domain linker.
