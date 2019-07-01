@@ -201,7 +201,10 @@ class Settings
 
     private static function addField($name, $title, $inputFn)
     {
-        add_settings_field($name, $title, $inputFn, self::OPTION_PAGE, self::OPTION_SECTION, ['field' => $name]);
+        add_settings_field($name, $title, $inputFn, self::OPTION_PAGE, self::OPTION_SECTION, [
+            'field' => $name,
+            'label_for' => $name,
+        ]);
     }
 
     /**
