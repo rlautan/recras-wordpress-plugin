@@ -108,7 +108,7 @@ The following options are available:
 * Redirect after submission - a page/post that the user is redirected to, after submitting the form successfully.
 
 ### Date/Time
-By default, date and time pickers in contact forms use whatever the browser has available. Currently (April 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date picker that you can enable on the Recras → Settings page. For time inputs, a proper fallback is included.
+By default, date and time pickers in contact forms use whatever the browser has available. Currently (July 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date picker that you can enable on the Recras → Settings page. For time inputs, a proper fallback is included.
 
 **Note**: this setting only applies to standalone contact forms, not to contact forms used during "new style" online booking.
 
