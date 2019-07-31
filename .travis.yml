@@ -29,6 +29,9 @@ install:
 
 before_script:
 - |
+  # Install the specified version of PHPUnit depending on the PHP version:
+  echo "$WP_TRAVISCI"
+  echo "$TRAVIS_PHP_VERSION"
   if [[ "$WP_TRAVISCI" == "travis:phpunit" ]]; then
     case "$TRAVIS_PHP_VERSION" in
       7.4snapshot|7.3|7.2|7.1|nightly)
