@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.8 (2019-07-31)
+* Make plugin more robust when no Recras name has been set yet
+* Small accessibility improvement
+
 ## 2.4.7 (2019-06-24)
 * Make time input increase/decrease time in steps of 5 minutes
 * Clarify online booking methods
