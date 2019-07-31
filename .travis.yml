@@ -19,7 +19,7 @@ php:
 
 matrix:
   allow_failures:
-    - php: 7.4snapshot nightly
+    - php: 7.4snapshot
 
 env:
 - WP_VERSION=latest WP_MULTISITE=0
