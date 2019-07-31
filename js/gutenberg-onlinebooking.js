@@ -19,6 +19,10 @@ registerBlockType('recras/onlinebooking', {
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {
+        if (!recrasOptions.subdomain) {
+            return recrasHelper.elementNoRecrasName();
+        }
+
         const {
             id,
             use_new_library,

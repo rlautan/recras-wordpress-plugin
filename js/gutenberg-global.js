@@ -13,7 +13,10 @@ const {
 } = wp.data;
 
 const TEXT_DOMAIN = 'recras';
-const { __ } = wp.i18n;
+const {
+    __,
+    sprintf,
+} = wp.i18n;
 
 const recrasHelper = {
     serverSideRender: () => null,
@@ -26,6 +29,14 @@ const recrasHelper = {
             },
             text
         );
+    },
+    elementNoRecrasName: () => {
+        // HTML doesn't work right now: https://github.com/WordPress/gutenberg/issues/9846
+        //const settingsLink = `<a href="${ recrasOptions.settingsPage }" target="_blank">${ __('Recras → Settings menu', TEXT_DOMAIN) }</a>`;
+        const settingsLink = __('Recras → Settings menu', TEXT_DOMAIN);
+        return [
+            recrasHelper.elementInfo(sprintf(__('Please enter your Recras name in the %s before adding widgets.', TEXT_DOMAIN), settingsLink)),
+        ];
     },
     elementText: (text) => {
         return el(

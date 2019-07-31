@@ -13,6 +13,10 @@ registerBlockType('recras/voucher-info', {
             voucherTemplates: select('recras/store').fetchVoucherTemplates(),
         }
     })(props => {
+        if (!recrasOptions.subdomain) {
+            return recrasHelper.elementNoRecrasName();
+        }
+
         const {
             id,
             show,

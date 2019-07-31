@@ -1,6 +1,12 @@
 <?php
-    $model = new \Recras\Products;
-    $products = $model->getProducts(get_option('recras_subdomain'));
+$subdomain = get_option('recras_subdomain');
+if (!$subdomain) {
+    \Recras\Settings::errorNoRecrasName();
+    return;
+}
+
+$model = new \Recras\Products;
+$products = $model->getProducts($subdomain);
 ?>
 
 <dl>

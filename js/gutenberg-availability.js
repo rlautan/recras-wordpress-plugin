@@ -14,6 +14,10 @@ registerBlockType('recras/availability', {
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {
+        if (!recrasOptions.subdomain) {
+            return recrasHelper.elementNoRecrasName();
+        }
+
         const {
             id,
             autoresize,

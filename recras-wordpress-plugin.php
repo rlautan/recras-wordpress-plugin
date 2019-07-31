@@ -30,7 +30,7 @@ try {
             echo '<div class="error"><p>';
             echo 'The Recras WordPress plugin requires PHP 5.4 or higher but your server is running PHP version ' . phpversion() . '. The plugin will not be activated.';
             echo 'All PHP versions before 7.1.0 have reached "End of Life" and no longer receive bugfixes or security updates.';
-            echo 'The official information on how to update and why can be found on <a href="https://secure.php.net/supported-versions.php" target="_blank"><strong>the PHP website</strong></a>.';
+            echo 'The official information on how to update and why can be found on <a href="https://www.php.net/supported-versions.php" target="_blank"><strong>the PHP website</strong></a>.';
             echo '</p></div>';
         }
         add_action('admin_notices', 'phpVersionTooOld');

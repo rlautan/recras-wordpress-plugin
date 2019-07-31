@@ -1,6 +1,12 @@
 <?php
-    $model = new \Recras\Arrangement;
-    $arrangements = $model->getArrangements(get_option('recras_subdomain'));
+$subdomain = get_option('recras_subdomain');
+if (!$subdomain) {
+    \Recras\Settings::errorNoRecrasName();
+    return;
+}
+
+$model = new \Recras\Arrangement;
+$arrangements = $model->getArrangements($subdomain);
 ?>
 <style id="arrangement_style">
     .programme-only { display: none; }

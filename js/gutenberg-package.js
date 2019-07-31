@@ -15,6 +15,10 @@ registerBlockType('recras/package', {
             packages: select('recras/store').fetchPackages(true),
         }
     })(props => {
+        if (!recrasOptions.subdomain) {
+            return recrasHelper.elementNoRecrasName();
+        }
+
         const {
             id,
             show,

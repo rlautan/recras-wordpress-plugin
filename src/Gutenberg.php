@@ -4,7 +4,7 @@ namespace Recras;
 class Gutenberg
 {
     const ENDPOINT_NAMESPACE = 'recras';
-    const GUTENBERG_SCRIPT_VERSION = '2.4.7';
+    const GUTENBERG_SCRIPT_VERSION = '2.4.8';
 
 
     public static function addBlocks()
@@ -25,6 +25,10 @@ class Gutenberg
         if (function_exists('wp_set_script_translations')) {
             wp_set_script_translations($globalScriptName, Plugin::TEXT_DOMAIN, plugin_dir_path(__DIR__) . 'lang');
         }
+        wp_localize_script($globalScriptName, 'recrasOptions', [
+            'settingsPage' => admin_url('admin.php?page=' . Settings::OPTION_PAGE),
+            'subdomain' => get_option('recras_subdomain'),
+        ]);
 
         wp_register_style(
             $globalStyleName,
@@ -36,31 +40,31 @@ class Gutenberg
         $gutenbergBlocks = [
             'availability' => [
                 'callback' => ['Recras\Availability', 'renderAvailability'],
-                'version' => '2.3.4',
+                'version' => '2.4.8',
             ],
             'contactform' => [
                 'callback' => ['Recras\ContactForm', 'renderContactForm'],
-                'version' => '2.3.4',
+                'version' => '2.4.8',
             ],
             'onlinebooking' => [
                 'callback' => ['Recras\OnlineBooking', 'renderOnlineBooking'],
-                'version' => '2.4.7',
+                'version' => '2.4.8',
             ],
             'package' => [
                 'callback' => ['Recras\Arrangement', 'renderPackage'],
-                'version' => '2.4.2',
+                'version' => '2.4.8',
             ],
             'product' => [
                 'callback' => ['Recras\Products', 'renderProduct'],
-                'version' => '2.2.1',
+                'version' => '2.4.8',
             ],
             'voucher-info' => [
                 'callback' => ['Recras\Vouchers', 'renderVoucherInfo'],
-                'version' => '2.4.0',
+                'version' => '2.4.8',
             ],
             'voucher-sales' => [
                 'callback' => ['Recras\Vouchers', 'renderVoucherSales'],
-                'version' => '2.2.1',
+                'version' => '2.4.8',
             ],
         ];
         foreach ($gutenbergBlocks as $key => $block) {

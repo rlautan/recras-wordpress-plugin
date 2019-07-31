@@ -13,6 +13,10 @@ registerBlockType('recras/product', {
             products: select('recras/store').fetchProducts(),
         }
     })(props => {
+        if (!recrasOptions.subdomain) {
+            return recrasHelper.elementNoRecrasName();
+        }
+
         const {
             id,
             show,

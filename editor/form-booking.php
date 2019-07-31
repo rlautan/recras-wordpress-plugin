@@ -1,8 +1,12 @@
 <?php
-    $subdomain = get_option('recras_subdomain');
+$subdomain = get_option('recras_subdomain');
+if (!$subdomain) {
+    \Recras\Settings::errorNoRecrasName();
+    return;
+}
 
-    $model = new \Recras\Arrangement;
-    $arrangements = $model->getArrangements($subdomain, true);
+$model = new \Recras\Arrangement;
+$arrangements = $model->getArrangements($subdomain, true);
 ?>
 <dl>
     <dt><label for="arrangement_id"><?php _e('Package', \Recras\Plugin::TEXT_DOMAIN); ?></label>
