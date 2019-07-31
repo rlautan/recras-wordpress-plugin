@@ -115,7 +115,7 @@ class ContactForm
         }
         $errors += $recrasPlugin->transients->delete($subdomain . '_contactforms');
 
-        header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
+        header('Location: ' . admin_url('admin.php?page=' . Settings::PAGE_CACHE . '&msg=' . Plugin::getStatusMessage($errors)));
         exit;
     }
 

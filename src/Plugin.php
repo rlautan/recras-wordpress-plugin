@@ -56,7 +56,7 @@ class Plugin
      */
     public function addMenuItems()
     {
-        $mainPage = current_user_can('manage_options') ? 'recras' : 'recras-clear-cache';
+        $mainPage = current_user_can('manage_options') ? 'recras' : Settings::PAGE_CACHE;
         add_menu_page('Recras', 'Recras', 'edit_pages', $mainPage, '', plugin_dir_url(dirname(__FILE__)) . 'logo.svg', 58);
 
         if (current_user_can('manage_options')) {
@@ -75,8 +75,16 @@ class Plugin
             __('Cache', $this::TEXT_DOMAIN),
             __('Cache', $this::TEXT_DOMAIN),
             'edit_pages',
-            'recras-clear-cache',
+            Settings::PAGE_CACHE,
             ['\Recras\Settings', 'clearCache']
+        );
+        add_submenu_page(
+            'recras',
+            __('Documentation', $this::TEXT_DOMAIN),
+            __('Documentation', $this::TEXT_DOMAIN),
+            'edit_pages',
+            Settings::PAGE_DOCS,
+            ['\Recras\Settings', 'documentation']
         );
 
         add_submenu_page(null, __('Package', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-arrangement', ['Recras\Arrangement', 'showForm']);
@@ -146,7 +154,7 @@ class Plugin
             'voucherSales' => __('Voucher sales', $this::TEXT_DOMAIN),
         ]);
         wp_enqueue_script('recras-admin');
-        wp_enqueue_style('recras-admin-style', $this->baseUrl . '/css/admin-style.css', [], '1.10.1');
+        wp_enqueue_style('recras-admin-style', $this->baseUrl . '/css/admin-style.css', [], '2.5.0');
         wp_enqueue_script('wp-api');
     }
 

@@ -97,7 +97,7 @@ class Arrangement
         }
         $errors += $recrasPlugin->transients->delete($subdomain . '_arrangements');
 
-        header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($errors)));
+        header('Location: ' . admin_url('admin.php?page=' . Settings::PAGE_CACHE . '&msg=' . Plugin::getStatusMessage($errors)));
         exit;
     }
 

@@ -78,7 +78,7 @@ class Products
         $subdomain = get_option('recras_subdomain');
         $error = $recrasPlugin->transients->delete($subdomain . '_products_v2');
 
-        header('Location: ' . admin_url('admin.php?page=recras-clear-cache&msg=' . Plugin::getStatusMessage($error)));
+        header('Location: ' . admin_url('admin.php?page=' . Settings::PAGE_CACHE . '&msg=' . Plugin::getStatusMessage($error)));
         exit;
     }
 

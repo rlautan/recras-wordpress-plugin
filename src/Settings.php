@@ -5,6 +5,16 @@ class Settings
 {
     const OPTION_PAGE = 'recras';
     const OPTION_SECTION = 'recras';
+    const PAGE_CACHE = 'recras-clear-cache';
+    const PAGE_DOCS = 'recras-documentation';
+
+
+    public static function addInputAnalytics($args)
+    {
+        self::addInputCheckbox($args);
+        self::infoText(__('Enabling this will send online booking and voucher sales events to Google Analytics. ', Plugin::TEXT_DOMAIN));
+    }
+
 
     /**
      * Add a currency input field
@@ -36,6 +46,12 @@ class Settings
         printf('<input type="checkbox" name="%s" id="%s" value="1"%s>', $field, $field, ($value ? ' checked' : ''));
     }
 
+    public static function addInputDatepicker($args)
+    {
+        self::addInputCheckbox($args);
+        self::infoText(__('Not all browsers have a built-in date picker. Enable this to use a custom widget. ', Plugin::TEXT_DOMAIN));
+    }
+
 
     /**
      * Add a decimal separator input field
@@ -51,6 +67,7 @@ class Settings
         }
 
         printf('<input type="text" name="%s" id="%s" value="%s" size="2" maxlength="1">', $field, $field, $value);
+        self::infoText(__('Used in prices, such as 100,00.', Plugin::TEXT_DOMAIN));
     }
 
 
@@ -100,6 +117,15 @@ class Settings
             wp_die(__('You do not have sufficient permissions to access this page.'));
         }
         require_once('admin/cache.php');
+    }
+
+
+    public static function documentation()
+    {
+        if (!current_user_can('edit_pages')) {
+            wp_die(__('You do not have sufficient permissions to access this page.'));
+        }
+        require_once('admin/documentation.php');
     }
 
 
@@ -182,6 +208,12 @@ class Settings
     }
 
 
+    private static function infoText($text)
+    {
+        echo '<p class="description">' . $text . '</p>';
+    }
+
+
     /**
      * Parse a boolean value
      *
@@ -240,9 +272,9 @@ class Settings
         self::addField('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain']);
         self::addField('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency']);
         self::addField('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal']);
-        self::addField('recras_datetimepicker', __('Use calendar widget', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox']);
+        self::addField('recras_datetimepicker', __('Use calendar widget', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDatepicker']);
         self::addField('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputTheme']);
-        self::addField('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCheckbox']);
+        self::addField('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputAnalytics']);
     }
 
 
@@ -271,6 +303,9 @@ class Settings
      */
     public static function settingsHelp()
     {
-        _e('Enter your Recras details here', Plugin::TEXT_DOMAIN);
+        printf(
+            __('For more information on these options, please see the %s page.', Plugin::TEXT_DOMAIN),
+            '<a href="' . admin_url('admin.php?page=' . self::PAGE_DOCS) . '">' . __('Documentation', Plugin::TEXT_DOMAIN) . '</a>'
+        );
     }
 }
