@@ -15,11 +15,11 @@
     </dd>
     <dt><?= __('Theme for online booking', \Recras\Plugin::TEXT_DOMAIN);?></dt>
     <dd>Which theme the new online booking method will use.
-        <ul>
-            <li>"No theme" leaves it up to you to properly style it.
-            <li>"Basic theme" sets some default styling to make it look a bit nicer. You can still override everything with your own CSS.
-            <li>"Recras Blue" is a theme with blue accents
-        </ul>
+        <ol class="recrasOptionsList">
+            <li>No theme - leaves it up to you to properly style it.
+            <li>Basic theme - sets some default styling to make it look a bit nicer. You can still override everything with your own CSS.
+            <li>Recras Blue - is a theme with blue accents
+        </ol>
     </dd>
     <dt><?= __('Enable Google Analytics integration?', \Recras\Plugin::TEXT_DOMAIN);?></dt>
     <dd>You can enable Google Analytics integration. This will only work if there is a global <code>ga</code> JavaScript object. This should almost always be the case, but if you find out it doesn't work, please contact us!</dd>
@@ -27,8 +27,9 @@
 
 
 <hr>
-<h2><?php _e('Package options', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-The following options are available:
+<h2><?php _e('Packages', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
+<p>Packages can be added using the Recras/Package block (Gutenberg) or using the <span class="rDocsIcon dashicons dashicons-clipboard"></span> icon in the Classic Editor. You can also manually add the <kbd>[recras-package]</kbd> shortcode.</p>
+<p>The following options are available:</p>
 <ol class="recrasOptionsList">
     <li>Package - <strong>required</strong> what package to use
     <li>Property to show - <strong>required</strong> what property to show. This can be any of the following:<ol>
@@ -51,8 +52,9 @@ The following options are available:
 
 
 <hr>
-<h2><?php _e('Contact form options', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-The following options are available:
+<h2><?php _e('Contact forms', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
+<p>Contact forms can be added using the Recras/Contact form block (Gutenberg) or using the <span class="rDocsIcon dashicons dashicons-email"></span> icon in the Classic Editor. You can also manually add the <kbd>[recras-contact]</kbd> shortcode.</p>
+<p>The following options are available:</p>
 <ol class="recrasOptionsList">
 	<li>Contact form - <strong>required</strong> what form to use
 	<li>Show title? - show the title of the contact form or not. Enabled by default
@@ -66,8 +68,9 @@ The following options are available:
 </ol>
 
 <hr>
-<h2><?php _e('Online booking options', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-The following options are available:
+<h2><?php _e('Online booking', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
+<p>Online booking can be integrated using the Recras/Online booking block (Gutenberg) or using the <span class="rDocsIcon dashicons dashicons-admin-site"></span> icon in the Classic Editor. You can also manually add the <kbd>recras-booking</kbd> shortcode.</p>
+<p>The following options are available:</p>
 <ol class="recrasOptionsList">
 	<li>Pre-filled package - entering a package here will skip the package selection step
 	<li>Use new method? - whether or not you want to use the new online booking method.
@@ -78,24 +81,27 @@ The following options are available:
 </ol>
 
 <hr>
-<h2><?php _e('Availability calendar options', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-The following options are available:
+<h2><?php _e('Availability calendar', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
+<p>Availability calendars can be added using the Recras/Availability calendar block (Gutenberg) or using the <span class="rDocsIcon dashicons dashicons-calendar-alt"></span> icon in the Classic Editor. You can also manually add the <kbd>recras-availability</kbd> shortcode.</p>
+<p>The following options are available:</p>
 <ol class="recrasOptionsList">
 	<li>Package - what package to use for the availability calendar
 	<li>Auto resize iframe - enabled by default. Disable this if you have more than one Recras iframe on your page
 </ol>
 
 <hr>
-<h2><?php _e('Voucher sales options', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-The following options are available:
+<h2><?php _e('Voucher sales', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
+<p>Voucher sales can be integrated using the Recras/Voucher sales block (Gutenberg) or using the <span class="rDocsIcon dashicons dashicons-money"></span> icon in the Classic Editor. You can also manually add the <kbd>recras-vouchers</kbd> shortcode.</p>
+<p>The following options are available:</p>
 <ol class="recrasOptionsList">
 	<li>Voucher template - when selected, this will skip the template selection step
 	<li>Redirect after submission - a page/post that the user is redirected to, after submitting the form successfully.
 </ol>
 
 <hr>
-<h2><?php _e('Voucher info options', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
-This widget has one option:
+<h2><?php _e('Voucher info', \Recras\Plugin::TEXT_DOMAIN); ?></h2>
+<p>Voucher info can be integrated using the Recras/Voucher info block (Gutenberg) or using the <span class="rDocsIcon dashicons dashicons-money"></span> icon in the Classic Editor. You can also manually add the <kbd>recras-voucher-info</kbd> shortcode.</p>
+<p>This widget has one option:</p>
 <ol class="recrasOptionsList">
 	<li>Property to show - <strong>required</strong> what property to show. This can be any of the following:<ol>
         <li>Name

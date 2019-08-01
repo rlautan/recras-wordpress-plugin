@@ -13,3 +13,11 @@
 .recrasOptionsList, .recrasOptionsList ol {
     list-style-type: disc;
 }
+
+.rDocsIcon.dashicons {
+    font-size: 1em;
+    height: 1em;
+    margin: 0 0.1em;
+    vertical-align: middle;
+    width: 1em;
+}

@@ -26,27 +26,6 @@ This plugin consists of six "widgets". To use them, you first need to set your R
 
 Widgets can be added to your site in three ways. Using Gutenberg blocks (recommended, since WordPress 5.0 or using the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/)), using the buttons in the "classic editor", or by entering the shortcode manually (discouraged).
 
-= Packages =
-Packages can be added using the Recras/Package block (Gutenberg) or using the ![packages](editor/package.svg) icon in the Classic Editor. You can also manually add the `[recras-package]` shortcode.
-
-= Contact forms =
-Contact forms can be added using the Recras/Contact form block (Gutenberg) or using the ![contact form](editor/contact.svg) icon in the Classic Editor. You can also manually add the `[recras-contact]` shortcode.
-
-= Online booking =
-Online booking can be integrated using the Recras/Online booking block (Gutenberg) or using the ![online booking](editor/online-booking.svg) icon in the Classic Editor. You can also manually add the `[recras-booking]` shortcode.
-
-= Availability =
-Availability calendars can be added using the Recras/Availability calendar block (Gutenberg) or using the ![availability calendar](editor/availability.svg) icon in the Classic Editor. You can also manually add the `[recras-availability]` shortcode.
-
-= Products =
-Products can be added using the Recras/Product block (Gutenberg) or using the ![product](editor/product.svg) icon in the Classic Editor. You can also manually add the `[recras-product]` shortcode.
-
-= Voucher sales =
-Voucher sales can be integrated using the Recras/Voucher sales block (Gutenberg) or using the ![voucher sales](editor/vouchers.svg) icon in the Classic Editor. You can also manually add the `[recras-vouchers]` shortcode.
-
-= Voucher info =
-Voucher info can be integrated using the Recras/Voucher info block (Gutenberg) or using the ![voucher info](editor/vouchers.svg) icon in the Classic Editor. You can also manually add the `[recras-voucher-info]` shortcode.
-
 = Date/Time picker =
 By default, date and time pickers in contact forms use whatever the browser has available. Currently (July 2019) Internet Explorer (all versions) and Safari (desktop) do not have native date/time pickers and only see a text field. We have included a modern looking date picker that you can enable on the Recras → Settings page. For time inputs, a proper fallback is included.
 
@@ -54,13 +33,13 @@ By default, date and time pickers in contact forms use whatever the browser has 
 
 = Styling =
 No custom styling is applied by default, so it will integrate with your site easily. If you want to apply custom styling, see `css/style.css` for all available classes. Be sure to include these styles in your own theme, this stylesheet is not loaded by the plugin!
-Styling for the date/time picker can be based off of `datetimepicker/bootstrap-material-datetimepicker.css`. Be sure to make any changes in your own theme, as this file may be overwritten when a new version of the plugin is released.
+For styling the date picker, we refer you to the [Pikaday repository](https://github.com/Pikaday/Pikaday). Be sure to make any changes in your own theme or using WordPress' own Customizer.
 
 = Cache =
 All data from your Recras is cached for up to 24 hours. If you make important changes, such as increasing the price of a product, you can clear the cache to reflect those changes on your site immediately.
 
 = Google Analytics integration =
-You can enable Google Analytics integration by checking "Enable Google Analytics integration?" on the Recras Settings page. This will only work if there is a global `ga` JavaScript object. This should almost always be the case, but if you find out it doesn't work, please contact us!
+You can enable basic Google Analytics integration by checking "Enable Google Analytics integration?" on the Recras Settings page. This will only work if there is a global `ga` JavaScript object. This should almost always be the case, but if you find out it doesn't work, please contact us!
 
 == Installation ==
 
@@ -86,7 +65,7 @@ You can enable Google Analytics integration by checking "Enable Google Analytics
 Yes, since version 2.2.0! Please make sure you use the latest version of the plugin and please report any bugs you encounter.
 
 = Do you support Visual Composer, Brizy, etc. ? =
-We do not support page builders at this time and have no plans to do so.
+We do not support page builders and have no plans to do so.
 
 = Does the plugin support network installations? =
 Yes it does. You can set different Recras names (all settings, for that matter) for each site.
@@ -188,4 +167,4 @@ We only support the plugin on the latest version of WordPress (which you should 
 
 == Credits ==
 * Icons from [Dashicons](https://github.com/WordPress/dashicons) by WordPress, released under the GPLv2 licence.
-* Date/Time picker by [T00rk](https://github.com/T00rk/bootstrap-material-datetimepicker), released under the MIT licence.
+* Date picker is [Pikaday](https://github.com/Pikaday/Pikaday), released under the BSD/MIT licence.
