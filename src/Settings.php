@@ -12,7 +12,7 @@ class Settings
     public static function addInputAnalytics($args)
     {
         self::addInputCheckbox($args);
-        self::infoText(__('Enabling this will send online booking and voucher sales events to Google Analytics. ', Plugin::TEXT_DOMAIN));
+        self::infoText(__('Enabling this will send online booking and voucher sales events to Google Analytics.', Plugin::TEXT_DOMAIN));
     }
 
 
@@ -49,7 +49,7 @@ class Settings
     public static function addInputDatepicker($args)
     {
         self::addInputCheckbox($args);
-        self::infoText(__('Not all browsers have a built-in date picker. Enable this to use a custom widget. ', Plugin::TEXT_DOMAIN));
+        self::infoText(__('Not all browsers have a built-in date picker. Enable this to use a custom widget.', Plugin::TEXT_DOMAIN));
     }
 
 
