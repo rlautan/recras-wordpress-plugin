@@ -1,5 +1,8 @@
 # Changelog
 
+## master (unreleased)
+* Make readme shorter and move documentation to page within WordPress
+
 ## 2.4.8 (2019-07-31)
 * Make plugin more robust when no Recras name has been set yet
 * Small accessibility improvement
