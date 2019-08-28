@@ -47,6 +47,10 @@
 
 .recras-product-dependency, .maximum-amount, .minimum-amount {
     color: #a00;
+    display: block;
+}
+.recras-input-invalid {
+    border-color: #a00;
 }
 
 .recras-onlinebooking > *:not(:first-child) + * {

@@ -140,6 +140,10 @@ p:empty {
 }
 .recras-product-dependency, .maximum-amount, .minimum-amount {
     color: #a00;
+    display: block;
+}
+input[type].recras-input-invalid {
+    border-color: #a00;
 }
 
 @media (max-width: 640px) {
