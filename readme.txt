@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.9
 Requires PHP: 5.4.0
 Tested up to: 5.2
-Stable tag: 2.4.8
+Stable tag: 2.4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,11 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 3. The Recras blocks in Gutenberg
 
 == Changelog ==
+
+= 2.4.9 =
+* Make readme shorter and move documentation to page within WordPress
+* Update online booking library version. This adds a small header to the quantity form and placeholders for its inputs
+* Small styling improvements for online booking themes
 
 = 2.4.8 =
 * Make plugin more robust when no Recras name has been set yet

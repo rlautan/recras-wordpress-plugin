@@ -1,7 +1,9 @@
 # Changelog
 
-## master (unreleased)
+## 2.4.9 (2019-08-28)
 * Make readme shorter and move documentation to page within WordPress
+* Update online booking library version. This adds a small header to the quantity form and placeholders for its inputs
+* Small styling improvements for online booking themes
 
 ## 2.4.8 (2019-07-31)
 * Make plugin more robust when no Recras name has been set yet
