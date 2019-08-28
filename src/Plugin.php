@@ -223,7 +223,7 @@ class Plugin
             }
             $allowedThemes = Settings::getThemes();
             if ($theme !== 'none' && array_key_exists($theme, $allowedThemes)) {
-                wp_enqueue_style('theme_' . $theme, $this->baseUrl . '/css/themes/' . $theme . '.css', $allowedThemes[$theme]['version']);
+                wp_enqueue_style('theme_' . $theme, $this->baseUrl . '/css/themes/' . $theme . '.css', [], $allowedThemes[$theme]['version']);
             }
         }
 
