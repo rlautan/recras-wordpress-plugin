@@ -13,7 +13,7 @@
 .recras-onlinebooking input, .recras-onlinebooking select, .recras-onlinebooking textarea {
     background: #fff;
     border: 1px solid hsl(205, 63%, 56%);
-    max-width: 100%;
+    width: 100%;
 }
 .recras-onlinebooking button {
     background: hsl(205, 63%, 56%);
@@ -80,21 +80,12 @@ p:empty {
 .recras-contactform > div {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 30% 70%;
-    grid-template-columns: 30% 70%;
+    -ms-grid-columns: 1fr 12em;
+    grid-template-columns: 1fr 12em;
 }
-.recras-discounts, .recras-vouchers > div {
-    align-items: baseline;
-    display: flex;
-}
-.recras-discounts label, .recras-vouchers label {
-    flex: 0 0 30%;
-}
-.recras-discounts input, .recras-vouchers input {
-    flex: 0 0 35%;
-}
+
 @media all and (min-width: 641px) {
-    .recras-discounts button, .recras-vouchers button {
+    .recras-discounts button, .recras-discounts button {
         margin-left: 0.5em;
     }
 }
@@ -110,7 +101,7 @@ p:empty {
 .recras-discounts {
     padding-bottom: 0 !important;
 }
-.recras-vouchers {
+.recras-discounts {
     margin-top: 0;
     padding-top: 0 !important;
 }
@@ -148,25 +139,14 @@ input[type].recras-input-invalid {
 
 @media (max-width: 640px) {
     .recras-amountsform > div {
-        flex-wrap: wrap;
+        grid-template-columns: 1fr 7em;
     }
     .recras-amountsform > div > div:first-child {
-        flex-basis: 100%;
+        grid-column: 1 / 3;
     }
-    .recras-amountsform .priceWithoutDiscount > * {
-        flex-basis: 50% !important;
-    }
-    .recras-discounts, .recras-vouchers > div {
-        flex-wrap: wrap;
-    }
-    .recras-amountsform input {
-        flex-basis: 50%;
-    }
-    .recras-contactform > div {
-        flex-direction: column;
-    }
-    .recras-price, .priceSubtotal {
-        flex-basis: 1em;
+    .recras-contactform > div,
+    .recras-discounts > div {
+        grid-template-columns: 1fr;
     }
 }
 
