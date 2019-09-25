@@ -2,6 +2,12 @@ registerBlockType('recras/availability', {
     title: __('Availability calendar', TEXT_DOMAIN),
     icon: 'calendar-alt',
     category: 'recras',
+    example: {
+        attributes: {
+            id: null,
+            autoresize: true,
+        },
+    },
 
     attributes: {
         id: recrasHelper.typeString(),

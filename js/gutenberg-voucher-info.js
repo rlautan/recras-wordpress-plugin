@@ -2,10 +2,16 @@ registerBlockType('recras/voucher-info', {
     title: __('Voucher info', TEXT_DOMAIN),
     icon: 'money',
     category: 'recras',
+    example: {
+        attributes: {
+            id: null,
+            show: 'name',
+        },
+    },
 
     attributes: {
         id: recrasHelper.typeString(),
-        show: recrasHelper.typeString(name),
+        show: recrasHelper.typeString('name'),
     },
 
     edit: withSelect((select) => {

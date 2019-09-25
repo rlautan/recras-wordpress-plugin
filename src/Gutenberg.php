@@ -40,31 +40,31 @@ class Gutenberg
         $gutenbergBlocks = [
             'availability' => [
                 'callback' => ['Recras\Availability', 'renderAvailability'],
-                'version' => '2.4.8',
+                'version' => '2.4.9.1',
             ],
             'contactform' => [
                 'callback' => ['Recras\ContactForm', 'renderContactForm'],
-                'version' => '2.4.8',
+                'version' => '2.4.9.1',
             ],
             'onlinebooking' => [
                 'callback' => ['Recras\OnlineBooking', 'renderOnlineBooking'],
-                'version' => '2.4.8',
+                'version' => '2.4.9.1',
             ],
             'package' => [
                 'callback' => ['Recras\Arrangement', 'renderPackage'],
-                'version' => '2.4.8',
+                'version' => '2.4.9.1',
             ],
             'product' => [
                 'callback' => ['Recras\Products', 'renderProduct'],
-                'version' => '2.4.8',
+                'version' => '2.4.9.1',
             ],
             'voucher-info' => [
                 'callback' => ['Recras\Vouchers', 'renderVoucherInfo'],
-                'version' => '2.4.8',
+                'version' => '2.4.9.1',
             ],
             'voucher-sales' => [
                 'callback' => ['Recras\Vouchers', 'renderVoucherSales'],
-                'version' => '2.4.8',
+                'version' => '2.4.9.1',
             ],
         ];
         foreach ($gutenbergBlocks as $key => $block) {

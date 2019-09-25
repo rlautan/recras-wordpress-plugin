@@ -2,6 +2,14 @@ registerBlockType('recras/package', {
     title: __('Package', TEXT_DOMAIN),
     icon: 'clipboard',
     category: 'recras',
+    example: {
+        attributes: {
+            id: null,
+            show: 'title',
+            starttime: '12:00',
+            showheader: true,
+        },
+    },
 
     attributes: {
         id: recrasHelper.typeString(),

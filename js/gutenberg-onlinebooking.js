@@ -2,6 +2,17 @@ registerBlockType('recras/onlinebooking', {
     title: __('Online booking', TEXT_DOMAIN),
     icon: 'admin-site',
     category: 'recras',
+    example: {
+        attributes: {
+            autoresize: false,
+            id: null,
+            redirect: '',
+            show_times: true,
+            use_new_library: true,
+            prefill_enabled: false,
+            product_amounts: {},
+        },
+    },
 
     attributes: {
         autoresize: recrasHelper.typeBoolean(true),

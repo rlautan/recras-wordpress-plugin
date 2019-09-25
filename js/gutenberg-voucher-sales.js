@@ -2,6 +2,12 @@ registerBlockType('recras/voucher-sales', {
     title: __('Voucher sales', TEXT_DOMAIN),
     icon: 'money',
     category: 'recras',
+    example: {
+        attributes: {
+            id: null,
+            redirect: '',
+        },
+    },
 
     attributes: {
         id: recrasHelper.typeString(),

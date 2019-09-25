@@ -2,6 +2,12 @@ registerBlockType('recras/product', {
     title: __('Product', TEXT_DOMAIN),
     icon: 'cart',
     category: 'recras',
+    example: {
+        attributes: {
+            id: null,
+            show: 'title',
+        },
+    },
 
     attributes: {
         id: recrasHelper.typeString(),

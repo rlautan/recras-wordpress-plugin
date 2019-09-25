@@ -2,6 +2,19 @@ registerBlockType('recras/contactform', {
     title: __('Contact form', TEXT_DOMAIN),
     icon: 'email',
     category: 'recras',
+    example: {
+        attributes: {
+            id: null,
+            showtitle: false,
+            showlabels: true,
+            showplaceholders: true,
+            arrangement: null,
+            element: 'dl',
+            single_choice_element: 'select',
+            submittext: __('Send', TEXT_DOMAIN),
+            redirect: '',
+        },
+    },
 
     attributes: {
         id: recrasHelper.typeString(),
