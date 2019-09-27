@@ -116,11 +116,7 @@ p:empty {
 .recras-onlinebooking button:disabled {
     cursor: not-allowed;
 }
-.recras-amountsform > div > div:first-child {
-    flex-basis: calc(100% - 15em);
-}
 .recras-price, .priceSubtotal {
-    flex-basis: 8em;
     text-align: right;
 }
 .recras-contactform-required::after {

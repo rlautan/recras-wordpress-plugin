@@ -78,15 +78,13 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 
 == Changelog ==
 
-= master =
-* Include widget previews for WordPress 5.3
-
 = branch 'onlinebooking-1.0' =
+* Include widget previews for WordPress 5.3
 * Update online booking library version:
   - Show discount fields straight from the start, not after entering date
   - Styling adjustment
 
-**Note:** because of styling adjustments, this release contains breaking changes if you use the new online booking method and have custom CSS changes for this. If you don't use the new online booking method, or use one of the theme integrated into the plugin ("Basic theme" or "Recras Blue"), this is a safe upgrade. For more (technical) info, please refer to [the upgrade documentation of the library](https://github.com/Recras/online-booking-js/blob/master/upgrading.md).
+**Note:** because of technical changes for the styling, this release contains breaking changes if you use the new online booking method and have custom CSS changes for this. If you don't use the new online booking method, or use one of the theme integrated into the plugin ("Basic theme" or "Recras Blue"), this is a safe upgrade. For more (technical) info, please refer to [the upgrade documentation of the library](https://github.com/Recras/online-booking-js/blob/master/upgrading.md).
 
 = 2.4.9 =
 * Make readme shorter and move documentation to page within WordPress
