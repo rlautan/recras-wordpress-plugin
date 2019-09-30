@@ -80,6 +80,7 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 
 = master =
 * Include widget previews for WordPress 5.3
+* Online booking theme didn't set the version properly - fixed
 
 = 2.4.9 =
 * Make readme shorter and move documentation to page within WordPress
