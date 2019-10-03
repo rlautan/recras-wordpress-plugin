@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Recras WordPress plugin ===
 Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.9
@@ -84,6 +84,8 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
   - Styling adjustment
   - Fix position of styling in the `head`, making overriding styles easier
   - Fix checking discount codes/vouchers
+* Improve online booking styling in Edge
+* Small online booking styling fixes/changes in both integrated themes
 
 **Note:** because of technical changes for the styling, this release contains breaking changes if you use the new online booking method and have custom CSS changes for this. If you don't use the new online booking method, or use one of the theme integrated into the plugin ("Basic theme" or "Recras Blue"), this is a safe upgrade. For more (technical) info, please refer to [the upgrade documentation of the library](https://github.com/Recras/online-booking-js/blob/master/upgrading.md).
 
