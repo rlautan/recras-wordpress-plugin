@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Recras WordPress plugin ===
 Contributors: zanderz
 Tags: recras, recreation, reservation
 Requires at least: 4.9
@@ -77,6 +77,17 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 3. The Recras blocks in Gutenberg
 
 == Changelog ==
+
+= branch 'onlinebooking-1.0' =
+* Update online booking library version:
+  - Show discount fields straight from the start, not after entering date
+  - Styling adjustment
+  - Fix position of styling in the `head`, making overriding styles easier
+  - Fix checking discount codes/vouchers
+* Improve online booking styling in Edge
+* Small online booking styling fixes/changes in both integrated themes
+
+**Note:** because of technical changes for the styling, this release contains breaking changes if you use the new online booking method and have custom CSS changes for this. If you don't use the new online booking method, or use one of the theme integrated into the plugin ("Basic theme" or "Recras Blue"), this is a safe upgrade. For more (technical) info, please refer to [the upgrade documentation of the library](https://github.com/Recras/online-booking-js/blob/master/upgrading.md).
 
 = master =
 * Include widget previews for WordPress 5.3
@@ -172,7 +183,7 @@ See changelog. We use semantic versioning for the plugin.
 == Support ==
 We would appreciate it if you use [our GitHub page](https://github.com/Recras/recras-wordpress-plugin/issues) for bug reports, pull requests and general questions. If you do not have a GitHub account, you can use the Support forum on wordpress.org.
 
-We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](https://www.php.net/php.net/supported-versions.php).
+We only support the plugin on the latest version of WordPress (which you should always use anyway!) and only on [actively supported PHP branches](https://www.php.net/supported-versions.php).
 
 == Credits ==
 * Icons from [Dashicons](https://github.com/WordPress/dashicons) by WordPress, released under the GPLv2 licence.
