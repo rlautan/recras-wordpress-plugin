@@ -2,6 +2,14 @@
 
 ## master
 * Include widget previews for WordPress 5.3
+* Online booking theme didn't set the version properly - fixed
+* Update online booking library version:
+  - Show discount fields straight from the start, not after entering date
+  - Styling adjustment
+  - Fix position of styling in the `head`, making overriding styles easier
+  - Fix checking discount codes/vouchers
+* Improve online booking styling in Edge
+* Small online booking styling fixes/changes in both integrated themes
 
 ## 2.4.9 (2019-08-28)
 * Make readme shorter and move documentation to page within WordPress
