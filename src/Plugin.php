@@ -28,23 +28,23 @@ class Plugin
         // Add admin menu pages
         add_action('admin_menu', [&$this, 'addMenuItems']);
 
-        add_action('admin_init', ['Recras\Settings', 'registerSettings']);
-        add_action('admin_init', ['Recras\Editor', 'addButtons']);
+        add_action('admin_init', [Settings::class, 'registerSettings']);
+        add_action('admin_init', [Editor::class, 'addButtons']);
 
         if (function_exists('register_block_type')) {
-            add_action('init', ['Recras\Gutenberg', 'addBlocks']);
-            add_action('rest_api_init', ['Recras\Gutenberg', 'addEndpoints']);
-            add_filter('block_categories', ['Recras\Gutenberg', 'addCategory']);
+            add_action('init', [Gutenberg::class, 'addBlocks']);
+            add_action('rest_api_init', [Gutenberg::class, 'addEndpoints']);
+            add_filter('block_categories', [Gutenberg::class, 'addCategory']);
         }
 
         add_action('admin_enqueue_scripts', [$this, 'loadAdminScripts']);
         add_action('wp_enqueue_scripts', [$this, 'loadScripts']);
 
         // Clear caches
-        add_action('admin_post_clear_arrangement_cache', ['Recras\Arrangement', 'clearCache']);
-        add_action('admin_post_clear_contactform_cache', ['Recras\ContactForm', 'clearCache']);
-        add_action('admin_post_clear_product_cache', ['Recras\Products', 'clearCache']);
-        add_action('admin_post_clear_voucher_template_cache', ['Recras\Vouchers', 'clearCache']);
+        add_action('admin_post_clear_arrangement_cache', [Arrangement::class, 'clearCache']);
+        add_action('admin_post_clear_contactform_cache', [ContactForm::class, 'clearCache']);
+        add_action('admin_post_clear_product_cache', [Products::class, 'clearCache']);
+        add_action('admin_post_clear_voucher_template_cache', [Vouchers::class, 'clearCache']);
 
         $this->addShortcodes();
 
@@ -87,13 +87,13 @@ class Plugin
             ['\Recras\Settings', 'documentation']
         );
 
-        add_submenu_page(null, __('Package', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-arrangement', ['Recras\Arrangement', 'showForm']);
-        add_submenu_page(null, __('Package availability', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-package-availability', ['Recras\Availability', 'showForm']);
-        add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', ['Recras\ContactForm', 'showForm']);
-        add_submenu_page(null, __('Online booking', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-booking', ['Recras\OnlineBooking', 'showForm']);
-        add_submenu_page(null, __('Product', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-product', ['Recras\Products', 'showForm']);
-        add_submenu_page(null, __('Voucher sales', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-sales', ['Recras\Vouchers', 'showSalesForm']);
-        add_submenu_page(null, __('Voucher info', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-info', ['Recras\Vouchers', 'showInfoForm']);
+        add_submenu_page(null, __('Package', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-arrangement', [Arrangement::class, 'showForm']);
+        add_submenu_page(null, __('Package availability', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-package-availability', [Availability::class, 'showForm']);
+        add_submenu_page(null, __('Contact form', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-contact', [ContactForm::class, 'showForm']);
+        add_submenu_page(null, __('Online booking', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-booking', [OnlineBooking::class, 'showForm']);
+        add_submenu_page(null, __('Product', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-product', [Products::class, 'showForm']);
+        add_submenu_page(null, __('Voucher sales', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-sales', [Vouchers::class, 'showSalesForm']);
+        add_submenu_page(null, __('Voucher info', $this::TEXT_DOMAIN), null, 'publish_posts', 'form-voucher-info', [Vouchers::class, 'showInfoForm']);
     }
 
 
@@ -102,13 +102,13 @@ class Plugin
      */
     public function addShortcodes()
     {
-        add_shortcode('recras-availability', ['Recras\Availability', 'renderAvailability']);
-        add_shortcode($this::SHORTCODE_ONLINE_BOOKING, ['Recras\OnlineBooking', 'renderOnlineBooking']);
-        add_shortcode('recras-contact', ['Recras\ContactForm', 'renderContactForm']);
-        add_shortcode('recras-package', ['Recras\Arrangement', 'renderPackage']);
-        add_shortcode('recras-product', ['Recras\Products', 'renderProduct']);
-        add_shortcode($this::SHORTCODE_VOUCHER_SALES, ['Recras\Vouchers', 'renderVoucherSales']);
-        add_shortcode($this::SHORTCODE_VOUCHER_INFO, ['Recras\Vouchers', 'renderVoucherInfo']);
+        add_shortcode('recras-availability', [Availability::class, 'renderAvailability']);
+        add_shortcode($this::SHORTCODE_ONLINE_BOOKING, [OnlineBooking::class, 'renderOnlineBooking']);
+        add_shortcode('recras-contact', [ContactForm::class, 'renderContactForm']);
+        add_shortcode('recras-package', [Arrangement::class, 'renderPackage']);
+        add_shortcode('recras-product', [Products::class, 'renderProduct']);
+        add_shortcode($this::SHORTCODE_VOUCHER_SALES, [Vouchers::class, 'renderVoucherSales']);
+        add_shortcode($this::SHORTCODE_VOUCHER_INFO, [Vouchers::class, 'renderVoucherInfo']);
     }
 
 

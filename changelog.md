@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 3.0.0 (2019-10-08)
 * Include widget previews for WordPress 5.3
 * Online booking theme didn't set the version properly - fixed
 * Update online booking library version:

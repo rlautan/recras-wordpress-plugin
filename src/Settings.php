@@ -258,23 +258,23 @@ class Settings
         add_settings_section(
             self::OPTION_SECTION,
             __('Recras settings', Plugin::TEXT_DOMAIN),
-            ['Recras\Settings', 'settingsHelp'],
+            [__CLASS__, 'settingsHelp'],
             self::OPTION_PAGE
         );
 
-        self::registerSetting('recras_subdomain', 'demo', 'string', ['Recras\Settings', 'sanitizeSubdomain']);
+        self::registerSetting('recras_subdomain', 'demo', 'string', [__CLASS__, 'sanitizeSubdomain']);
         self::registerSetting('recras_currency', '€');
         self::registerSetting('recras_decimal', ',');
         self::registerSetting('recras_datetimepicker', false, 'boolean');
         self::registerSetting('recras_theme', 'none');
         self::registerSetting('recras_enable_analytics', false, 'boolean');
 
-        self::addField('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputSubdomain']);
-        self::addField('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputCurrency']);
-        self::addField('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDecimal']);
-        self::addField('recras_datetimepicker', __('Use calendar widget', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputDatepicker']);
-        self::addField('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputTheme']);
-        self::addField('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), ['Recras\Settings', 'addInputAnalytics']);
+        self::addField('recras_subdomain', __('Recras name', Plugin::TEXT_DOMAIN), [__CLASS__, 'addInputSubdomain']);
+        self::addField('recras_currency', __('Currency symbol', Plugin::TEXT_DOMAIN), [__CLASS__, 'addInputCurrency']);
+        self::addField('recras_decimal', __('Decimal separator', Plugin::TEXT_DOMAIN), [__CLASS__, 'addInputDecimal']);
+        self::addField('recras_datetimepicker', __('Use calendar widget', Plugin::TEXT_DOMAIN), [__CLASS__, 'addInputDatepicker']);
+        self::addField('recras_theme', __('Theme for online booking', Plugin::TEXT_DOMAIN), [__CLASS__, 'addInputTheme']);
+        self::addField('recras_enable_analytics', __('Enable Google Analytics integration?', Plugin::TEXT_DOMAIN), [__CLASS__, 'addInputAnalytics']);
     }
 
 

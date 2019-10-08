@@ -8,8 +8,8 @@ class Editor
      */
     public static function addButtons()
     {
-        add_filter('mce_buttons', ['Recras\Editor', 'registerButtons'], 999, 2);
-        add_filter('mce_external_plugins', ['Recras\Editor', 'addScripts'], 999);
+        add_filter('mce_buttons', [__CLASS__, 'registerButtons'], 999, 2);
+        add_filter('mce_external_plugins', [__CLASS__, 'addScripts'], 999);
         add_thickbox();
     }
 

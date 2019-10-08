@@ -6,7 +6,7 @@ Description: Easily integrate your Recras data into your own site
 Author: Recras
 Text Domain: recras
 Domain Path: /lang
-Version: 2.4.9
+Version: 3.0.0
 
 Author URI: https://www.recras.nl/
 */
@@ -25,10 +25,10 @@ try {
     require_once('vendor/autoload.php');
     $recrasPlugin = new \Recras\Plugin;
 } catch (Exception $e) {
-    if (version_compare(phpversion(), '5.4', '<')) {
+    if (version_compare(phpversion(), '5.6', '<')) {
         function phpVersionTooOld() {
             echo '<div class="error"><p>';
-            echo 'The Recras WordPress plugin requires PHP 5.4 or higher but your server is running PHP version ' . phpversion() . '. The plugin will not be activated.';
+            echo 'The Recras WordPress plugin requires PHP 5.6 or higher but your server is running PHP version ' . phpversion() . '. The plugin will not be activated.';
             echo 'All PHP versions before 7.1.0 have reached "End of Life" and no longer receive bugfixes or security updates.';
             echo 'The official information on how to update and why can be found on <a href="https://www.php.net/supported-versions.php" target="_blank"><strong>the PHP website</strong></a>.';
             echo '</p></div>';

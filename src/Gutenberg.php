@@ -39,32 +39,32 @@ class Gutenberg
 
         $gutenbergBlocks = [
             'availability' => [
-                'callback' => ['Recras\Availability', 'renderAvailability'],
-                'version' => '2.4.9.1',
+                'callback' => [Availability::class, 'renderAvailability'],
+                'version' => '3.0.0',
             ],
             'contactform' => [
-                'callback' => ['Recras\ContactForm', 'renderContactForm'],
-                'version' => '2.4.9.1',
+                'callback' => [ContactForm::class, 'renderContactForm'],
+                'version' => '3.0.0',
             ],
             'onlinebooking' => [
-                'callback' => ['Recras\OnlineBooking', 'renderOnlineBooking'],
-                'version' => '2.4.9.1',
+                'callback' => [OnlineBooking::class, 'renderOnlineBooking'],
+                'version' => '3.0.0',
             ],
             'package' => [
-                'callback' => ['Recras\Arrangement', 'renderPackage'],
-                'version' => '2.4.9.1',
+                'callback' => [Arrangement::class, 'renderPackage'],
+                'version' => '3.0.0',
             ],
             'product' => [
-                'callback' => ['Recras\Products', 'renderProduct'],
-                'version' => '2.4.9.1',
+                'callback' => [Products::class, 'renderProduct'],
+                'version' => '3.0.0',
             ],
             'voucher-info' => [
-                'callback' => ['Recras\Vouchers', 'renderVoucherInfo'],
-                'version' => '2.4.9.1',
+                'callback' => [Vouchers::class, 'renderVoucherInfo'],
+                'version' => '3.0.0',
             ],
             'voucher-sales' => [
-                'callback' => ['Recras\Vouchers', 'renderVoucherSales'],
-                'version' => '2.4.9.1',
+                'callback' => [Vouchers::class, 'renderVoucherSales'],
+                'version' => '3.0.0',
             ],
         ];
         foreach ($gutenbergBlocks as $key => $block) {
@@ -109,7 +109,7 @@ class Gutenberg
                 '/' . $uri,
                 [
                     'methods' => 'GET',
-                    'callback' => ['Recras\Gutenberg', $callback],
+                    'callback' => [__CLASS__, $callback],
                     'permission_callback' => function () {
                         return current_user_can('edit_posts');
                     },
