@@ -238,7 +238,11 @@ class Arrangement
             if (!$arrangement->Arrangement) {
                 continue;
             }
-            $arrangements[$arrangement->arrangement_id] = $arrangement->Arrangement->arrangement;
+            $displayname = $arrangement->Arrangement->weergavenaam;
+            if (!$displayname) {
+                $displayname = $arrangement->Arrangement->arrangement;
+            }
+            $arrangements[$arrangement->arrangement_id] = $displayname;
         }
         natcasesort($arrangements);
         return $arrangements;

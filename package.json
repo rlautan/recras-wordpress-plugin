@@ -8,7 +8,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "po2json": "^1.0.0-alpha"},
+    "po2json": "^1.0.0-alpha"
+  },
   "scripts": {
     "i18n_nl": "po2json lang/recras-nl_NL.po lang/recras-nl_NL-recras-gutenberg-global.json -f jed",
     "i18n": "npm run i18n_nl"
