@@ -216,29 +216,18 @@ class Arrangement
      */
     public function getArrangementsForContactForm($subdomain, $contactformID)
     {
-        global $recrasPlugin;
-
-        $json = $recrasPlugin->transients->get($subdomain . '_contactform_' . $contactformID . '_arrangements');
-        if ($json === false) {
-            try {
-                $json = Http::get($subdomain, 'contactformulieren/' . $contactformID . '/arrangementen');
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
-            $recrasPlugin->transients->set($subdomain . '_contactform_' . $contactformID . '_arrangements', $json);
-        }
-        if ($json === []) {
-            return [];
+        $form = ContactForm::getForm($subdomain, $contactformID);
+        if (is_string($form)) {
+            // Not a form, but an error
+            return sprintf(__('Error: %s', Plugin::TEXT_DOMAIN), $form);
         }
 
         $arrangements = [
             0 => '',
         ];
-        foreach ($json as $arrangement) {
-            if (!$arrangement->Arrangement) {
-                continue;
-            }
-            $arrangements[$arrangement->arrangement_id] = $arrangement->Arrangement->arrangement;
+
+        foreach ($form->Arrangementen as $arrangement) {
+            $arrangements[$arrangement->id] = $arrangement->arrangement;
         }
         natcasesort($arrangements);
         return $arrangements;

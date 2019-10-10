@@ -4,6 +4,33 @@ namespace Recras;
 class ContactForm
 {
     /**
+     * Get a single contact form
+     *
+     * @param string $subdomain
+     * @param int $id
+     *
+     * @return object|string
+     */
+    public static function getForm($subdomain, $id)
+    {
+        global $recrasPlugin;
+
+        $form = $recrasPlugin->transients->get($subdomain . '_contactform_' . $id . '_v2');
+        if ($form === false) {
+            try {
+                $form = Http::get($subdomain, 'contactformulieren/' . $id . '?embed=Velden');
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+            if (isset($form->error, $form->message)) {
+                return $form->message;
+            }
+            $recrasPlugin->transients->set($subdomain . '_contactform_' . $id . '_v2', $form);
+        }
+        return $form;
+    }
+
+    /**
      * Add the [recras-contact] shortcode
      *
      * @param array $attributes
@@ -24,20 +51,11 @@ class ContactForm
             return Plugin::getNoSubdomainError();
         }
 
-        global $recrasPlugin;
-
         // Get basic info for the form
-        $form = $recrasPlugin->transients->get($subdomain . '_contactform_' . $attributes['id'] . '_v2');
-        if ($form === false) {
-            try {
-                $form = Http::get($subdomain, 'contactformulieren/' . $attributes['id'] . '?embed=Velden');
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
-            if (isset($form->error, $form->message)) {
-                return sprintf(__('Error: %s', Plugin::TEXT_DOMAIN), $form->message);
-            }
-            $recrasPlugin->transients->set($subdomain . '_contactform_' . $attributes['id'] . '_v2', $form);
+        $form = self::getForm($subdomain, $attributes['id']);
+        if (is_string($form)) {
+            // Not a form, but an error
+            return sprintf(__('Error: %s', Plugin::TEXT_DOMAIN), $form);
         }
 
         $formTitle = $form->naam;
@@ -136,7 +154,6 @@ class ContactForm
 
         $errors += $recrasPlugin->transients->delete($subdomain . '_contactform_' . $formID . '_v2');
         $errors += $recrasPlugin->transients->delete($subdomain . '_contactform_' . $formID . '_fields');
-        $errors += $recrasPlugin->transients->delete($subdomain . '_contactform_' . $formID . '_arrangements');
 
         return $errors;
     }

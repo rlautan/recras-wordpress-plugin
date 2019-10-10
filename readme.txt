@@ -78,6 +78,9 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 
 == Changelog ==
 
+= staged changes (unreleased) =
+* Packages in contact forms use internal name instead of display name - fixed
+
 = 3.0.0 =
 * Include widget previews for WordPress 5.3
 * Online booking theme didn't set the version properly - fixed
