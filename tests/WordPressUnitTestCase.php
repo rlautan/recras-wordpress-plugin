@@ -37,6 +37,12 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
                     'soort_invoer' => 'contactpersoon.voornaam',
                 ],
             ],
+            'Arrangementen' => [
+                (object) [
+                    'id' => 7,
+                    'arrangement' => 'Familiedag',
+                ]
+            ],
         ];
     }
 
@@ -130,18 +136,8 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
         if (preg_match('~^([a-z]+)_arrangement_([\d]+)$~', $name)) {
             return $this->package();
         }
-        if (preg_match('~^([a-z]+)_contactform_1_arrangements$~', $name)) {
-            return [
-                (object) [
-                    'arrangement_id' => 7,
-                    'Arrangement' => (object) [
-                        'arrangement' => 'Familiedag',
-                    ],
-                ],
-            ];
-        }
-        if (preg_match('~^([a-z]+)_contactform_1337_arrangements$~', $name)) {
-            return [];
+        if (preg_match('~^([a-z]+)_contactform_1337_v2$~', $name)) {
+            return 'Does not exist';
         }
         if (preg_match('~^([a-z]+)_contactform_([\d]+)_v2$~', $name)) {
             return $this->contactForm();
