@@ -139,7 +139,7 @@ class ArrangementTest extends WordPressUnitTestCase
     {
         $plugin = new Arrangement;
         $arrangements = $plugin->getArrangementsForContactForm('demo', 1337);
-        $this->assertEquals(0, count($arrangements), 'Non-existing contact form should return an empty array');
+        $this->assertTrue(is_string($arrangements), 'Non-existing contact form should return an error message');
     }
 
     function testGetFormArrangements()
