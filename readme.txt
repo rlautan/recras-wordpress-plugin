@@ -78,6 +78,9 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 
 == Changelog ==
 
+= 3.0.2 =
+* Fix duration and programme of some packages
+
 = 3.0.1 =
 * Packages in contact forms use internal name instead of display name - fixed
 

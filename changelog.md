@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.2 (2019-10-16)
+* Fix duration and programme of some packages
+
 ## 3.0.1 (2019-10-10)
 * Packages in contact forms use internal name instead of display name - fixed
 

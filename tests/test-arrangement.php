@@ -101,7 +101,8 @@ class ArrangementTest extends WordPressUnitTestCase
     function testProgrammeWithTimeOffset()
     {
         $content = $this->createPostAndGetContent('[recras-package id=7 starttime="14:00" show=programme]');
-        $this->assertNotFalse(strpos($content, '<td>14:00<td>18:15'), 'Should move start and end times');
+        $this->assertNotFalse(strpos($content, '<td>14:00<td>16:00'), 'Should move start and end times');
+        $this->assertNotFalse(strpos($content, '<td>16:00<td>18:15'), 'Should move start and end times for all lines');
     }
 
     function testMultiDayProgramme()

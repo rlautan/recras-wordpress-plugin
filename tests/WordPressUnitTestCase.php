@@ -53,12 +53,17 @@ class WordPressUnitTestCase extends \WP_UnitTestCase
             'weergavenaam' => 'Actieve Familiedag',
             'arrangement' => 'Familiedag',
             'uitgebreide_omschrijving' => 'Uitgebreide omschrijving van dit arrangement',
-            'programma' => [
-                (object) [
+            'programma' => (object) [
+                0 => (object) [
                     'begin' => 'PT0H0M0S',
-                    'eind' => 'PT4H15M0S',
+                    'eind' => 'PT2H0M0S',
                     'omschrijving' => 'Eerste activiteit',
-                ]
+                ],
+                2 => (object) [
+                    'begin' => 'PT2H0M0S',
+                    'eind' => 'PT4H15M0S',
+                    'omschrijving' => 'Laatste activiteit',
+                ],
             ],
             'image_filename' => '/api2/arrangementen/7/afbeelding',
             'aantal_personen' => 10,

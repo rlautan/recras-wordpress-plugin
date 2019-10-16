@@ -130,11 +130,14 @@ class Arrangement
             $html .= '</thead>';
         }
 
+        $first = reset($programme);
+        $last = end($programme);
+
         // Calculate how many days this programme spans - begin and eind are ISO8601 periods/intervals
         $startDatetime = new \DateTime($startTime);
-        $startDatetime->add(new \DateInterval($programme[0]->begin));
+        $startDatetime->add(new \DateInterval($first->begin));
         $endDatetime = new \DateTime($startTime);
-        $endDatetime->add(new \DateInterval($programme[count($programme) - 1]->eind));
+        $endDatetime->add(new \DateInterval($last->eind));
         $isMultiDay = ($endDatetime->format('Ymd') > $startDatetime->format('Ymd'));
 
         $html .= '<tbody>';
@@ -247,12 +250,15 @@ class Arrangement
             $json->programma = (array) $json->programma;
         }
 
+        $first = reset($json->programma);
+        $last = end($json->programma);
+
         $startTime = new \DateTime('00:00');
-        $startTime->add(new \DateInterval($json->programma[0]->begin));
+        $startTime->add(new \DateInterval($first->begin));
 
         $endTime = new \DateTime('00:00');
-        $endTime->add(new \DateInterval($json->programma[0]->begin));
-        $endTime->add(new \DateInterval($json->programma[count($json->programma) - 1]->eind));
+        $endTime->add(new \DateInterval($first->begin));
+        $endTime->add(new \DateInterval($last->eind));
         $duration = $startTime->diff($endTime);
 
         $html  = '<span class="recras-duration">';
