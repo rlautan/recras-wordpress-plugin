@@ -1,5 +1,8 @@
 # Changelog
 
+## master (unreleased)
+* Defer loading of JS polyfill & JS library
+
 ## 3.0.2 (2019-10-16)
 * Fix duration and programme of some packages
 

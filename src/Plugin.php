@@ -158,6 +158,14 @@ class Plugin
         wp_enqueue_script('wp-api');
     }
 
+    public static function deferJSLibrary($tag, $handle)
+    {
+        $deferHandles = ['recrasjspolyfill', 'recrasjslibrary'];
+        if (!in_array($handle, $deferHandles)) {
+            return $tag;
+        }
+        return str_replace(' src=', ' defer src=', $tag);
+    }
 
     /**
      * Load the general script and localisation
@@ -170,6 +178,7 @@ class Plugin
             'sent_error' => __('There was an error sending your message', $this::TEXT_DOMAIN),
         ];
 
+        // Add Pikaday scripts and Pikaday localisation if the site has "Use calendar widget" enabled
         if ($value = get_option('recras_datetimepicker')) {
             wp_enqueue_script('pikaday', 'https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js', [], false, true); // ver=false because it's already in the URL
             wp_enqueue_style('pikaday', 'https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css', [], false); // ver=false because it's already in the URL
@@ -212,21 +221,23 @@ class Plugin
             ];
         }
 
-        global $post;
-        if ($post && $this->shouldIncludeLibrary($post->post_content)) {
-            wp_enqueue_script('polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=default,fetch,Promise,Array.prototype.includes, https://cdn.polyfill.io/v2/polyfill.min.js?features=RegExp.prototype.flags', [], null, false);
-            wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.min.js', [], $this::LIBRARY_VERSION, false);
+        // Defer certain scripts
+        add_filter('script_loader_tag', [$this, 'deferJSLibrary'], 10, 2);
 
-            $theme = get_option('recras_theme');
-            if (!$theme) {
-                $theme = 'none';
-            }
+        // Polyfill for old browsers
+        wp_enqueue_script('recrasjspolyfill', 'https://polyfill.io/v3/polyfill.min.js?features=default,fetch,Promise,Array.prototype.includes,RegExp.prototype.flags', [], null, false);
+        wp_enqueue_script('recrasjslibrary', $this->baseUrl . '/js/onlinebooking.min.js', [], $this::LIBRARY_VERSION, false);
+
+        // Online booking theme
+        $theme = get_option('recras_theme');
+        if ($theme) {
             $allowedThemes = Settings::getThemes();
             if ($theme !== 'none' && array_key_exists($theme, $allowedThemes)) {
                 wp_enqueue_style('theme_' . $theme, $this->baseUrl . '/css/themes/' . $theme . '.css', [], $allowedThemes[$theme]['version']);
             }
         }
 
+        // Generic functionality & localisation script
         $scriptName = 'recras-frontend';
         wp_register_script($scriptName, $this->baseUrl . '/js/recras.js', ['jquery'], '2.4.3', true);
         wp_localize_script($scriptName, 'recras_l10n', $localisation);
@@ -240,31 +251,6 @@ class Plugin
     public function setBaseUrl()
     {
         $this->baseUrl = rtrim(plugins_url('', dirname(__FILE__)), '/');
-    }
-
-    private function shouldIncludeLibrary($content)
-    {
-        // The methods below don't work when online booking is integrated from an ACF field
-        // so to fix this quickly for now, always include the script
-        return true;
-
-        if (strpos($content, $this::SHORTCODE_ONLINE_BOOKING) !== false) {
-            // Online booking shortcode
-            return true;
-        }
-        if (strpos($content, $this::SHORTCODE_VOUCHER_SALES) !== false) {
-            // Voucher shortcode
-            return true;
-        }
-        if (strpos($content, 'wp:recras/onlinebooking') !== false) {
-            // Online booking Gutenberg
-            return true;
-        }
-        if (strpos($content, 'wp:recras/voucher-sales') !== false) {
-            // Voucher Gutenberg
-            return true;
-        }
-        return false;
     }
 
     public static function uninstall()
