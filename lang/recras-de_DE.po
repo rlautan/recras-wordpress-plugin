@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-10-28 09:52+0100\n"
-"PO-Revision-Date: 2019-10-28 09:52+0100\n"
+"POT-Creation-Date: 2019-10-28 11:33+0100\n"
+"PO-Revision-Date: 2019-10-28 11:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: de_DE\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Package"
 msgstr "Arrangement"
 
-#: editor/form-arrangement.php:26 js/gutenberg-onlinebooking.js:186
+#: editor/form-arrangement.php:26 js/gutenberg-onlinebooking.js:199
 #: js/gutenberg-package.js:139
 msgid ""
 "If you are not seeing certain packages, make sure \"May be presented on a "
@@ -41,7 +41,7 @@ msgstr ""
 #: editor/form-arrangement.php:30 editor/form-product.php:26
 #: js/gutenberg-package.js:94 js/gutenberg-product.js:91
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: editor/form-arrangement.php:31 js/gutenberg-package.js:62
 msgid "Description"
@@ -96,7 +96,7 @@ msgstr ""
 #: editor/form-arrangement.php:44 js/gutenberg-package.js:122
 #: src/ContactForm.php:272
 msgid "hh:mm"
-msgstr ""
+msgstr "UU:MM"
 
 #: editor/form-arrangement.php:45 js/gutenberg-package.js:132
 msgid "Show header?"
@@ -125,11 +125,11 @@ msgstr ""
 msgid "Use new method?"
 msgstr ""
 
-#: editor/form-booking.php:27 js/gutenberg-onlinebooking.js:110
+#: editor/form-booking.php:27 js/gutenberg-onlinebooking.js:123
 msgid "Preview times in programme"
 msgstr ""
 
-#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:119
+#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:132
 msgid "Pre-fill amounts (requires pre-filled package)"
 msgstr ""
 
@@ -205,7 +205,7 @@ msgstr ""
 
 #: editor/form-contact.php:51 js/gutenberg-contactform.js:126
 msgid "Table"
-msgstr ""
+msgstr "Tabelle"
 
 #: editor/form-contact.php:53 js/gutenberg-contactform.js:148
 msgid "Element for single choices"
@@ -271,7 +271,7 @@ msgstr ""
 
 #: editor/form-voucher-info.php:27 js/gutenberg-voucher-info.js:61
 msgid "Price"
-msgstr ""
+msgstr "Preis"
 
 #: editor/form-voucher-info.php:28 js/gutenberg-voucher-info.js:65
 msgid "Number of days valid"
@@ -286,7 +286,7 @@ msgstr ""
 msgid "Availability calendar"
 msgstr ""
 
-#: js/gutenberg-availability.js:54 js/gutenberg-onlinebooking.js:180
+#: js/gutenberg-availability.js:54 js/gutenberg-onlinebooking.js:193
 msgid "Auto resize iframe"
 msgstr ""
 
@@ -294,12 +294,12 @@ msgstr ""
 msgid "Package (optional)"
 msgstr ""
 
-#: js/gutenberg-contactform.js:168 js/gutenberg-onlinebooking.js:129
+#: js/gutenberg-contactform.js:168 js/gutenberg-onlinebooking.js:142
 #: js/gutenberg-voucher-sales.js:63
 msgid "i.e. https://www.recras.com/thanks/"
 msgstr ""
 
-#: js/gutenberg-contactform.js:169 js/gutenberg-onlinebooking.js:130
+#: js/gutenberg-contactform.js:169 js/gutenberg-onlinebooking.js:143
 #: js/gutenberg-voucher-sales.js:64
 msgid "Redirect after submission (optional, leave empty to not redirect)"
 msgstr ""
@@ -321,38 +321,52 @@ msgstr ""
 msgid "Post: "
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:184
+#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:197
 #: src/Plugin.php:93 src/Plugin.php:149 src/admin/documentation.php:71
 msgid "Online booking"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:75
+#: js/gutenberg-onlinebooking.js:78
 msgid "Pre-filled package"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:76
+#: js/gutenberg-onlinebooking.js:79
 msgid "Pre-filled package (optional)"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:82
-msgid "Seamless (recommended)"
+#: js/gutenberg-onlinebooking.js:88
+msgid "i.e. \"package\" (without quotes)"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:86
-msgid "iframe (uses setting in your Recras)"
+#: js/gutenberg-onlinebooking.js:89
+msgid "URL parameter for pre-filled package (optional)"
 msgstr ""
 
 #: js/gutenberg-onlinebooking.js:95
+msgid "Seamless (recommended)"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:99
+msgid "iframe (uses setting in your Recras)"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:108
 msgid "Integration method"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:189
+#: js/gutenberg-onlinebooking.js:201
+msgid ""
+"Use, for example, \"package\" (without quotes) to be able to use /page?"
+"package=42 to pre-fill package 42."
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:204
 msgid ""
 "Seamless integration takes the styling of your website. You can apply a bit "
 "of extra styling via the Recras → Settings menu."
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:199
+#: js/gutenberg-onlinebooking.js:214
 msgid ""
 "iframe integration uses the setting in your Recras. You can change this via "
 "the Settings → Online booking page in your Recras and apply extra styling "
@@ -499,7 +513,7 @@ msgstr ""
 msgid "Error: could not parse data from Recras. The error message was: %s"
 msgstr ""
 
-#: src/OnlineBooking.php:34
+#: src/OnlineBooking.php:41
 msgid "Error: \"product_amounts\" is invalid"
 msgstr ""
 

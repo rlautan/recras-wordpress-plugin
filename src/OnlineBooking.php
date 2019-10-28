@@ -22,6 +22,13 @@ class OnlineBooking
         }
 
         $arrangementID = isset($attributes['id']) ? $attributes['id'] : null;
+        if (!$arrangementID && isset($attributes['get_param'])) {
+            $getParam = $attributes['get_param'];
+            if (isset($_GET[$getParam])) {
+                $arrangementID = $_GET[$getParam];
+            }
+        }
+
         $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
         $useNewLibrary = isset($attributes['use_new_library']) ? (!!$attributes['use_new_library']) : false;
         $previewTimes = isset($attributes['show_times']) ? (!!$attributes['show_times']) : false;

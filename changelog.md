@@ -3,6 +3,7 @@
 ## master (unreleased)
 * Defer loading of JS polyfill & JS library
 * Add info text when no/not all products are found
+* Support "get_param" to pre-fill package from GET parameter in online booking
 
 ## 3.0.2 (2019-10-16)
 * Fix duration and programme of some packages
