@@ -27,22 +27,29 @@ registerBlockType('recras/product', {
             id,
             show,
         } = props.attributes;
-        const {
+        let {
             products,
         } = props;
+        if (!Array.isArray(products)) {
+            products = [];
+        }
+
+        let optionsIDControl;
+        if (products.length > 0) {
+            optionsIDControl = {
+                value: id,
+                onChange: function(newVal) {
+                    recrasHelper.lockSave('productID', !newVal);
+                    props.setAttributes({
+                        id: newVal,
+                    });
+                },
+                options: products,
+                label: __('Product', TEXT_DOMAIN),
+            };
+        }
 
         let retval = [];
-        const optionsIDControl = {
-            value: id,
-            onChange: function(newVal) {
-                recrasHelper.lockSave('productID', !newVal);
-                props.setAttributes({
-                    id: newVal,
-                });
-            },
-            options: products,
-            label: __('Product', TEXT_DOMAIN),
-        };
         const optionsShowWhatControl = {
             value: show,
             onChange: function(newVal) {
@@ -89,8 +96,13 @@ registerBlockType('recras/product', {
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Product', TEXT_DOMAIN)));
 
-        retval.push(el(SelectControl, optionsIDControl));
-        retval.push(el(SelectControl, optionsShowWhatControl));
+        if (optionsIDControl) {
+            retval.push(el(SelectControl, optionsIDControl));
+            retval.push(recrasHelper.elementInfo(__('If you are not seeing certain products, make sure "May be presented on a website (via API)" is enabled on the tab "Presentation" of the product.', TEXT_DOMAIN)));
+            retval.push(el(SelectControl, optionsShowWhatControl));
+        } else {
+            retval.push(recrasHelper.elementInfo(__('Could not find any products. Make sure "May be presented on a website (via API)" is enabled on the tab "Presentation" of the product.', TEXT_DOMAIN)));
+        }
         return retval;
     }),
 

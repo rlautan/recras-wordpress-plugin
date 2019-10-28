@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-10-14 16:29+0200\n"
-"PO-Revision-Date: 2019-10-14 16:29+0200\n"
+"POT-Creation-Date: 2019-10-28 09:52+0100\n"
+"PO-Revision-Date: 2019-10-28 09:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: de_DE\n"
@@ -39,7 +39,7 @@ msgid "Show what?"
 msgstr ""
 
 #: editor/form-arrangement.php:30 editor/form-product.php:26
-#: js/gutenberg-package.js:94 js/gutenberg-product.js:84
+#: js/gutenberg-package.js:94 js/gutenberg-product.js:91
 msgid "Title"
 msgstr ""
 
@@ -48,7 +48,7 @@ msgid "Description"
 msgstr ""
 
 #: editor/form-arrangement.php:32 editor/form-product.php:29
-#: js/gutenberg-package.js:66 js/gutenberg-product.js:64
+#: js/gutenberg-package.js:66 js/gutenberg-product.js:71
 msgid "Duration"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgid "Programme"
 msgstr "Programm"
 
 #: editor/form-arrangement.php:40 editor/form-product.php:30
-#: js/gutenberg-package.js:70 js/gutenberg-product.js:68
+#: js/gutenberg-package.js:70 js/gutenberg-product.js:75
 msgid "Image tag"
 msgstr ""
 
@@ -236,28 +236,28 @@ msgid "Send"
 msgstr ""
 
 #: editor/form-product.php:13 js/gutenberg-product.js:2
-#: js/gutenberg-product.js:44 js/gutenberg-product.js:90 src/Plugin.php:94
+#: js/gutenberg-product.js:48 js/gutenberg-product.js:97 src/Plugin.php:94
 #: src/Plugin.php:152
 msgid "Product"
 msgstr "Produkt"
 
-#: editor/form-product.php:27 js/gutenberg-product.js:60
+#: editor/form-product.php:27 js/gutenberg-product.js:67
 msgid "Description (short)"
 msgstr ""
 
-#: editor/form-product.php:28 js/gutenberg-product.js:56
+#: editor/form-product.php:28 js/gutenberg-product.js:63
 msgid "Description (long)"
 msgstr ""
 
-#: editor/form-product.php:31 js/gutenberg-product.js:72
+#: editor/form-product.php:31 js/gutenberg-product.js:79
 msgid "Image URL"
 msgstr ""
 
-#: editor/form-product.php:32 js/gutenberg-product.js:76
+#: editor/form-product.php:32 js/gutenberg-product.js:83
 msgid "Minimum amount"
 msgstr ""
 
-#: editor/form-product.php:33 js/gutenberg-product.js:80
+#: editor/form-product.php:33 js/gutenberg-product.js:87
 msgid "Price (incl. VAT)"
 msgstr ""
 
@@ -359,9 +359,21 @@ msgid ""
 "via the Settings → Other settings page in your Recras.."
 msgstr ""
 
-#: js/gutenberg-package.js:109 js/gutenberg-product.js:87
+#: js/gutenberg-package.js:109 js/gutenberg-product.js:94
 #: js/gutenberg-voucher-info.js:68
 msgid "Property to show"
+msgstr ""
+
+#: js/gutenberg-product.js:101
+msgid ""
+"If you are not seeing certain products, make sure \"May be presented on a "
+"website (via API)\" is enabled on the tab \"Presentation\" of the product."
+msgstr ""
+
+#: js/gutenberg-product.js:104
+msgid ""
+"Could not find any products. Make sure \"May be presented on a website (via "
+"API)\" is enabled on the tab \"Presentation\" of the product."
 msgstr ""
 
 #: js/gutenberg-voucher-info.js:2 js/gutenberg-voucher-info.js:71
@@ -413,21 +425,21 @@ msgstr ""
 msgid "Activity"
 msgstr ""
 
-#: src/Arrangement.php:156
+#: src/Arrangement.php:159
 #, php-format
 msgid "Day %d"
 msgstr "Tag %d"
 
-#: src/Arrangement.php:222 src/ContactForm.php:58
+#: src/Arrangement.php:225 src/ContactForm.php:58
 #, php-format
 msgid "Error: %s"
 msgstr "Fehlermeldung: %s"
 
-#: src/Arrangement.php:272
+#: src/Arrangement.php:278
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:294
+#: src/Arrangement.php:300
 msgid "No location specified"
 msgstr ""
 
@@ -523,127 +535,127 @@ msgstr ""
 msgid "Could not connect to your Recras"
 msgstr ""
 
-#: src/Plugin.php:168
+#: src/Plugin.php:176
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/Plugin.php:169
+#: src/Plugin.php:177
 msgid "Your message was sent successfully"
 msgstr ""
 
-#: src/Plugin.php:170
+#: src/Plugin.php:178
 msgid "There was an error sending your message"
 msgstr ""
 
-#: src/Plugin.php:178
+#: src/Plugin.php:187
 msgid "Previous month"
 msgstr ""
 
-#: src/Plugin.php:179
+#: src/Plugin.php:188
 msgid "Next month"
 msgstr ""
 
-#: src/Plugin.php:181
+#: src/Plugin.php:190
 msgid "January"
 msgstr "Januar"
 
-#: src/Plugin.php:182
+#: src/Plugin.php:191
 msgid "February"
 msgstr "Februar"
 
-#: src/Plugin.php:183
+#: src/Plugin.php:192
 msgid "March"
 msgstr "März"
 
-#: src/Plugin.php:184
+#: src/Plugin.php:193
 msgid "April"
 msgstr "April"
 
-#: src/Plugin.php:185
+#: src/Plugin.php:194
 msgid "May"
 msgstr "Mai"
 
-#: src/Plugin.php:186
+#: src/Plugin.php:195
 msgid "June"
 msgstr "Juni"
 
-#: src/Plugin.php:187
+#: src/Plugin.php:196
 msgid "July"
 msgstr "Juli"
 
-#: src/Plugin.php:188
+#: src/Plugin.php:197
 msgid "August"
 msgstr "August"
 
-#: src/Plugin.php:189
+#: src/Plugin.php:198
 msgid "September"
 msgstr "September"
 
-#: src/Plugin.php:190
+#: src/Plugin.php:199
 msgid "October"
 msgstr "Oktober"
 
-#: src/Plugin.php:191
+#: src/Plugin.php:200
 msgid "November"
 msgstr "November"
 
-#: src/Plugin.php:192
+#: src/Plugin.php:201
 msgid "December"
 msgstr "Dezember"
 
-#: src/Plugin.php:195
+#: src/Plugin.php:204
 msgid "Sunday"
 msgstr "Sonntag"
 
-#: src/Plugin.php:196
+#: src/Plugin.php:205
 msgid "Monday"
 msgstr "Montag"
 
-#: src/Plugin.php:197
+#: src/Plugin.php:206
 msgid "Tuesday"
 msgstr "Dienstag"
 
-#: src/Plugin.php:198
+#: src/Plugin.php:207
 msgid "Wednesday"
 msgstr "Mittwoch"
 
-#: src/Plugin.php:199
+#: src/Plugin.php:208
 msgid "Thursday"
 msgstr "Donnerstag"
 
-#: src/Plugin.php:200
+#: src/Plugin.php:209
 msgid "Friday"
 msgstr "Freitag"
 
-#: src/Plugin.php:201
+#: src/Plugin.php:210
 msgid "Saturday"
 msgstr "Samstag"
 
-#: src/Plugin.php:204
+#: src/Plugin.php:213
 msgid "Sun"
 msgstr "So"
 
-#: src/Plugin.php:205
+#: src/Plugin.php:214
 msgid "Mon"
 msgstr "Mo"
 
-#: src/Plugin.php:206
+#: src/Plugin.php:215
 msgid "Tue"
 msgstr "Di"
 
-#: src/Plugin.php:207
+#: src/Plugin.php:216
 msgid "Wed"
 msgstr "Mi"
 
-#: src/Plugin.php:208
+#: src/Plugin.php:217
 msgid "Thu"
 msgstr "Do"
 
-#: src/Plugin.php:209
+#: src/Plugin.php:218
 msgid "Fri"
 msgstr "Fr"
 
-#: src/Plugin.php:210
+#: src/Plugin.php:219
 msgid "Sat"
 msgstr "Sa"
 

@@ -56,7 +56,7 @@ class Gutenberg
             ],
             'product' => [
                 'callback' => [Products::class, 'renderProduct'],
-                'version' => '3.0.0',
+                'version' => '3.0.3',
             ],
             'voucher-info' => [
                 'callback' => [Vouchers::class, 'renderVoucherInfo'],
