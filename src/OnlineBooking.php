@@ -22,11 +22,8 @@ class OnlineBooking
         }
 
         $arrangementID = isset($attributes['id']) ? $attributes['id'] : null;
-        if (!$arrangementID && isset($attributes['get_param'])) {
-            $getParam = $attributes['get_param'];
-            if (isset($_GET[$getParam])) {
-                $arrangementID = $_GET[$getParam];
-            }
+        if (!$arrangementID && isset($_GET['package'])) {
+            $arrangementID = $_GET['package'];
         }
 
         $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);

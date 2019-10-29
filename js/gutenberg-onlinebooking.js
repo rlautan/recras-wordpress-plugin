@@ -6,7 +6,6 @@ registerBlockType('recras/onlinebooking', {
         attributes: {
             autoresize: false,
             id: null,
-            get_param: '',
             redirect: '',
             show_times: true,
             use_new_library: true,
@@ -18,7 +17,6 @@ registerBlockType('recras/onlinebooking', {
     attributes: {
         autoresize: recrasHelper.typeBoolean(true),
         id: recrasHelper.typeString(),
-        get_param: recrasHelper.typeString(),
         redirect: recrasHelper.typeString(),
         show_times: recrasHelper.typeBoolean(false),
         use_new_library: recrasHelper.typeBoolean(false),
@@ -38,7 +36,6 @@ registerBlockType('recras/onlinebooking', {
 
         const {
             id,
-            get_param,
             use_new_library,
             redirect,
             show_times,
@@ -77,16 +74,6 @@ registerBlockType('recras/onlinebooking', {
             options: packagesMapped,
             placeholder: __('Pre-filled package', TEXT_DOMAIN),
             label: __('Pre-filled package (optional)', TEXT_DOMAIN),
-        };
-        const optionsGetParamControl = {
-            value: get_param,
-            onChange: function(newVal) {
-                props.setAttributes({
-                    get_param: newVal,
-                });
-            },
-            placeholder: __('i.e. "package" (without quotes)', TEXT_DOMAIN),
-            label: __('URL parameter for pre-filled package (optional)', TEXT_DOMAIN),
         };
         const optionsNewLibraryControl = {
             selected: use_new_library ? 'jslibrary' : 'iframe',
@@ -197,8 +184,6 @@ registerBlockType('recras/onlinebooking', {
         retval.push(recrasHelper.elementText('Recras - ' + __('Online booking', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsPackageControl));
         retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
-        retval.push(el(TextControl, optionsGetParamControl));
-        retval.push(recrasHelper.elementInfo(__('Use, for example, "package" (without quotes) to be able to use /page?package=42 to pre-fill package 42.', TEXT_DOMAIN)));
         retval.push(el(RadioControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(recrasHelper.elementInfo(__('Seamless integration takes the styling of your website. You can apply a bit of extra styling via the Recras → Settings menu.', TEXT_DOMAIN)));
