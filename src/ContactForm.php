@@ -233,10 +233,15 @@ class ContactForm
                     }
                     // The  isset()  is in case a package is set, but it is not valid
                     if (is_null($options['arrangement']) || !isset($arrangementen[$options['arrangement']])) {
-                        $html .= self::generateSubTag($options['element']) . self::generateSingleChoice($field, $arrangementen, [
+                        $selectOptions = [
                             'element' => $options['singleChoiceElement'],
                             'placeholder' => $options['placeholders'],
-                        ]);
+                        ];
+                        if (count($arrangementen) === 2 && $field->verplicht) { // 1 real package + 1 empty option
+                            unset($arrangementen[0]);
+                            $selectOptions['selected'] = current(array_keys($arrangementen));
+                        }
+                        $html .= self::generateSubTag($options['element']) . self::generateSingleChoice($field, $arrangementen, $selectOptions);
                     } else {
                         $html .= self::generateInput($field, [
                             'placeholder' => $options['placeholders'],
@@ -420,15 +425,21 @@ class ContactForm
      *
      * @param object $field
      * @param array $selectItems
+     * @param array $options
      *
      * @return string
      */
-    public static function generateRadio($field, $selectItems)
+    public static function generateRadio($field, $selectItems, $options = [])
     {
         $html = '';
         $required = ($field->verplicht ? ' required' : '');
         foreach ($selectItems as $value => $name) {
-            $html .= '<label><input type="radio" name="' . $field->field_identifier . '" value="' . $value . '"' . $required . '>' . $name . '</label>';
+            if (isset($options['selected']) && $options['selected'] == $value) {
+                $selText = ' checked';
+            } else {
+                $selText = '';
+            }
+            $html .= '<label><input type="radio" name="' . $field->field_identifier . '" value="' . $value . '"' . $required . $selText . '>' . $name . '</label>';
         }
         return $html;
     }
@@ -449,7 +460,12 @@ class ContactForm
         $html .= self::getSelectPlaceholder($field, $options);
 
         foreach ($selectItems as $value => $name) {
-            $html .= '<option value="' . $value . '">' . $name;
+            if (isset($options['selected']) && $options['selected'] == $value) {
+                $selText = ' selected';
+            } else {
+                $selText = '';
+            }
+            $html .= '<option value="' . $value . '"' . $selText . '>' . $name;
         }
         $html .= '</select>';
         return $html;
@@ -468,7 +484,7 @@ class ContactForm
     {
         if (isset($options['element']) && $options['element'] === 'radio') {
             unset($selectItems[0]);
-            return self::generateRadio($field, $selectItems);
+            return self::generateRadio($field, $selectItems, $options);
         } else {
             return self::generateSelect($field, $selectItems, $options);
         }
