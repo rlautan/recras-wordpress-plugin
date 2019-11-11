@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-11-11 10:28+0100\n"
-"PO-Revision-Date: 2019-11-11 10:28+0100\n"
+"POT-Creation-Date: 2019-11-11 10:51+0100\n"
+"PO-Revision-Date: 2019-11-11 10:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: de_DE\n"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: editor/form-booking.php:31 editor/form-contact.php:63
 #: editor/form-voucher-sales.php:25
-msgid "Redirect after submission"
+msgid "Thank-you page"
 msgstr ""
 
 #: editor/form-booking.php:33 editor/form-contact.php:65
@@ -303,7 +303,7 @@ msgstr ""
 
 #: js/gutenberg-contactform.js:169 js/gutenberg-onlinebooking.js:130
 #: js/gutenberg-voucher-sales.js:64
-msgid "Redirect after submission (optional, leave empty to not redirect)"
+msgid "Thank-you page (optional, leave empty to not redirect)"
 msgstr ""
 
 #: js/gutenberg-global.js:36 src/Settings.php:150

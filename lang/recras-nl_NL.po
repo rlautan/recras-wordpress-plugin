@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-11-11 10:27+0100\n"
-"PO-Revision-Date: 2019-11-11 10:27+0100\n"
+"POT-Creation-Date: 2019-11-11 10:51+0100\n"
+"PO-Revision-Date: 2019-11-11 10:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -143,8 +143,8 @@ msgstr "Sorry, dit is alleen beschikbaar in de Gutenberg-editor."
 
 #: editor/form-booking.php:31 editor/form-contact.php:63
 #: editor/form-voucher-sales.php:25
-msgid "Redirect after submission"
-msgstr "Doorsturen na versturen"
+msgid "Thank-you page"
+msgstr "Bedanktpagina"
 
 #: editor/form-booking.php:33 editor/form-contact.php:65
 #: editor/form-voucher-sales.php:27
@@ -314,8 +314,8 @@ msgstr "bijv. https://www.recras.nl/bedankt/"
 
 #: js/gutenberg-contactform.js:169 js/gutenberg-onlinebooking.js:130
 #: js/gutenberg-voucher-sales.js:64
-msgid "Redirect after submission (optional, leave empty to not redirect)"
-msgstr "Doorsturen na versturen (optioneel, laat leeg om niet door te sturen)"
+msgid "Thank-you page (optional, leave empty to not redirect)"
+msgstr "Bedanktpagina (optioneel, laat leeg om niet door te sturen)"
 
 #: js/gutenberg-global.js:36 src/Settings.php:150
 msgid "Recras → Settings menu"
@@ -845,6 +845,13 @@ msgstr "Wis tegoedbontemplatescache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
+
+#~ msgid "Redirect after submission"
+#~ msgstr "Doorsturen na versturen"
+
+#~ msgid "Redirect after submission (optional, leave empty to not redirect)"
+#~ msgstr ""
+#~ "Doorsturen na versturen (optioneel, laat leeg om niet door te sturen)"
 
 #~ msgid ""
 #~ "If you are not seeing certain packages, make sure \"May be presented on a "

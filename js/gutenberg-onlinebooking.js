@@ -127,7 +127,7 @@ registerBlockType('recras/onlinebooking', {
                 },
                 options: pagesPosts,
                 placeholder: __('i.e. https://www.recras.com/thanks/', TEXT_DOMAIN),
-                label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
+                label: __('Thank-you page (optional, leave empty to not redirect)', TEXT_DOMAIN),
             };
 
             if (prefill_enabled && id && packages[id]) {
