@@ -1,8 +1,8 @@
 # Changelog
 
-## master (unreleased)
+## 3.0.3 (2019-11-11)
 * Defer loading of JS polyfill & JS library
-* Add info text when no/not all products are found
+* Improve product loading & add info text when no/not all products are found
 
 ## 3.0.2 (2019-10-16)
 * Fix duration and programme of some packages
