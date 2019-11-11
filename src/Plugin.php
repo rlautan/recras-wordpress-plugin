@@ -3,7 +3,7 @@ namespace Recras;
 
 class Plugin
 {
-    const LIBRARY_VERSION = '1.1.1';
+    const LIBRARY_VERSION = '1.1.2.20191111'; // Build from master on 2019-11-11
     const TEXT_DOMAIN = 'recras';
 
     const SHORTCODE_ONLINE_BOOKING = 'recras-booking';

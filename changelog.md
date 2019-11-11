@@ -1,5 +1,8 @@
 # Changelog
 
+## master (unreleased)
+* Improve online booking styling in Internet Explorer
+
 ## 3.0.3 (2019-11-11)
 * Defer loading of JS polyfill & JS library
 * Improve product loading & add info text when no/not all products are found
