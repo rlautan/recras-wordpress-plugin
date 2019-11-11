@@ -22,7 +22,7 @@ $templates = $model->getTemplates($subdomain);
                 <?php } ?>
             </select>
         <?php } ?>
-    <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="redirect_page"><?php _e('Thank-you page', \Recras\Plugin::TEXT_DOMAIN); ?></label>
     <dd><select id="redirect_page">
             <option value=""><?php _e("Don't redirect", \Recras\Plugin::TEXT_DOMAIN); ?>
             <optgroup label="<?php _e('Pages', \Recras\Plugin::TEXT_DOMAIN); ?>">

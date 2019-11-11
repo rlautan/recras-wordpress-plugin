@@ -127,7 +127,7 @@ registerBlockType('recras/onlinebooking', {
                 },
                 options: pagesPosts,
                 placeholder: __('i.e. https://www.recras.com/thanks/', TEXT_DOMAIN),
-                label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
+                label: __('Thank-you page (optional, leave empty to not redirect)', TEXT_DOMAIN),
             };
 
             if (prefill_enabled && id && packages[id]) {
@@ -183,7 +183,7 @@ registerBlockType('recras/onlinebooking', {
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Online booking', TEXT_DOMAIN)));
         retval.push(el(SelectControl, optionsPackageControl));
-        retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
+        retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure in Recras "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
         retval.push(el(RadioControl, optionsNewLibraryControl));
         if (use_new_library) {
             retval.push(recrasHelper.elementInfo(__('Seamless integration takes the styling of your website. You can apply a bit of extra styling via the Recras → Settings menu.', TEXT_DOMAIN)));

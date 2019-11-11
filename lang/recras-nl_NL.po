@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-10-28 11:32+0100\n"
-"PO-Revision-Date: 2019-10-28 11:33+0100\n"
+"POT-Creation-Date: 2019-11-11 10:51+0100\n"
+"PO-Revision-Date: 2019-11-11 10:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -29,12 +29,13 @@ msgstr "Arrangement"
 #: editor/form-arrangement.php:26 js/gutenberg-onlinebooking.js:199
 #: js/gutenberg-package.js:139
 msgid ""
-"If you are not seeing certain packages, make sure \"May be presented on a "
-"website (via API)\" is enabled on the tab \"Extra settings\" of the package."
+"If you are not seeing certain packages, make sure in Recras \"May be "
+"presented on a website (via API)\" is enabled on the tab \"Extra settings\" "
+"of the package."
 msgstr ""
-"Als je bepaalde arrangementen niet ziet, zorg dan dat \"Mag op een website "
-"gepresenteerd worden (via API)\" is aangevinkt op het tabblad \"Extra "
-"instellingen\" van het arrangement."
+"Als je bepaalde arrangementen niet ziet, zorg dan dat in Recras \"Mag op een "
+"website gepresenteerd worden (via API)\" is aangevinkt op het tabblad "
+"\"Extra instellingen\" van het arrangement."
 
 #: editor/form-arrangement.php:28 editor/form-product.php:24
 #: editor/form-voucher-info.php:24
@@ -142,8 +143,8 @@ msgstr "Sorry, dit is alleen beschikbaar in de Gutenberg-editor."
 
 #: editor/form-booking.php:31 editor/form-contact.php:63
 #: editor/form-voucher-sales.php:25
-msgid "Redirect after submission"
-msgstr "Doorsturen na versturen"
+msgid "Thank-you page"
+msgstr "Bedanktpagina"
 
 #: editor/form-booking.php:33 editor/form-contact.php:65
 #: editor/form-voucher-sales.php:27
@@ -193,12 +194,13 @@ msgstr ""
 
 #: editor/form-contact.php:45 js/gutenberg-contactform.js:182
 msgid ""
-"If you are still missing packages, make sure \"May be presented on a website "
-"(via API)\" is enabled on the tab \"Extra settings\" of the package."
+"If you are still missing packages, make sure in Recras \"May be presented on "
+"a website (via API)\" is enabled on the tab \"Extra settings\" of the "
+"package."
 msgstr ""
-"Als je nog steeds arrangementen mist, zorg dan dat \"Mag op een website "
-"gepresenteerd worden (via API)\" is aangevinkt op het tabblad \"Extra "
-"instellingen\" van het arrangement."
+"Als je nog steeds arrangementen mist, zorg dan dat in Recras \"Mag op een "
+"website gepresenteerd worden (via API)\" is aangevinkt op het tabblad "
+"\"Extra instellingen\" van het arrangement."
 
 #: editor/form-contact.php:47 js/gutenberg-contactform.js:129
 msgid "HTML element"
@@ -312,8 +314,8 @@ msgstr "bijv. https://www.recras.nl/bedankt/"
 
 #: js/gutenberg-contactform.js:169 js/gutenberg-onlinebooking.js:143
 #: js/gutenberg-voucher-sales.js:64
-msgid "Redirect after submission (optional, leave empty to not redirect)"
-msgstr "Doorsturen na versturen (optioneel, laat leeg om niet door te sturen)"
+msgid "Thank-you page (optional, leave empty to not redirect)"
+msgstr "Bedanktpagina (optioneel, laat leeg om niet door te sturen)"
 
 #: js/gutenberg-global.js:36 src/Settings.php:150
 msgid "Recras → Settings menu"
@@ -399,21 +401,22 @@ msgstr "Eigenschap om te tonen"
 
 #: js/gutenberg-product.js:101
 msgid ""
-"If you are not seeing certain products, make sure \"May be presented on a "
-"website (via API)\" is enabled on the tab \"Presentation\" of the product."
+"If you are not seeing certain products, make sure in Recras \"May be "
+"presented on a website (via API)\" is enabled on the tab \"Presentation\" of "
+"the product."
 msgstr ""
-"Als je bepaalde producten niet ziet, zorg dan dat \"Mag op een website "
-"gepresenteerd worden (via API)\" is aangevinkt op het tabblad \"Presentatie"
-"\" van het product."
+"Als je bepaalde producten niet ziet, zorg dan dat in Recras \"Mag op een "
+"website gepresenteerd worden (via API)\" is aangevinkt op het tabblad "
+"\"Presentatie\" van het product."
 
 #: js/gutenberg-product.js:104
 msgid ""
-"Could not find any products. Make sure \"May be presented on a website (via "
-"API)\" is enabled on the tab \"Presentation\" of the product."
+"Could not find any products. Make sure in Recras \"May be presented on a "
+"website (via API)\" is enabled on the tab \"Presentation\" of the product."
 msgstr ""
-"Kon geen producten vinden. Zorg dat \"Mag op een website gepresenteerd "
-"worden (via API)\" is aangevinkt op het tabblad \"Presentatie\" van het "
-"product."
+"Kon geen producten vinden. Zorg dat in Recras \"Mag op een website "
+"gepresenteerd worden (via API)\" is aangevinkt op het tabblad \"Presentatie"
+"\" van het product."
 
 #: js/gutenberg-voucher-info.js:2 js/gutenberg-voucher-info.js:71
 #: src/Plugin.php:96 src/Plugin.php:153 src/admin/documentation.php:102
@@ -858,11 +861,6 @@ msgstr "Wis tegoedbontemplatescache"
 #: src/admin/settings.php:7
 msgid "Save"
 msgstr "Opslaan"
-
-#~ msgid "i.e. \"package\" (without quotes) to be able to use /page?package=42"
-#~ msgstr ""
-#~ "Bijv. \"arra\" (zonder aanhalingstekens) om /pagina?arra=42 te kunnen "
-#~ "gebruiken"
 
 #, fuzzy
 #~ msgid ""

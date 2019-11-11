@@ -166,7 +166,7 @@ registerBlockType('recras/contactform', {
             },
             options: pagesPosts,
             placeholder: __('i.e. https://www.recras.com/thanks/', TEXT_DOMAIN),
-            label: __('Redirect after submission (optional, leave empty to not redirect)', TEXT_DOMAIN),
+            label: __('Thank-you page (optional, leave empty to not redirect)', TEXT_DOMAIN),
             type: 'url',
         };
 
@@ -179,7 +179,7 @@ registerBlockType('recras/contactform', {
         retval.push(el(SelectControl, optionsPackageControl));
 
         retval.push(recrasHelper.elementInfo(__('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.', TEXT_DOMAIN)));
-        retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
+        retval.push(recrasHelper.elementInfo(__('If you are still missing packages, make sure in Recras "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
 
         retval.push(el(SelectControl, optionsElementControl));
         retval.push(el(SelectControl, optionsSingleChoiceControl));

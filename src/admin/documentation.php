@@ -64,7 +64,7 @@
 	<li>HTML element - show the contact form as definition list (default), ordered list, or table (not recommended for accessibility reasons).
 	<li>Element for single choices - show fields where a single choice is made (i.e. Customer type) as drop-down list (default) or radio buttons.
 	<li>Submit button text - the text for the form submission button. Defaults to "Send"
-	<li>Redirect after submission - a page/post that the user is redirected to, after submitting the form successfully.
+	<li>Thank-you page - a page/post that the user is redirected to, after submitting the form successfully.
 </ol>
 
 <hr>
@@ -77,7 +77,7 @@
 	<li>Use new method? - whether or not you want to use the new online booking method.
 	<li>Preview times in programme - whether or not you want to preview times in the programme. Note: this is only available for the new online booking method.
 	<li>Pre-fill amounts - <strong>Note:</strong> this is only available for the new online booking method, and required a pre-filled package. When enabled, this gives you the ability to pre-fill the amounts form. This can be useful, for example, for packages where you always have a fixed amount.
-	<li>Redirect after submission - a page/post that the user is redirected to, after booking successfully. Note: this is only available for the new online booking method.
+	<li>Thank-you page - a page/post that the user is redirected to, after booking successfully. Note: this is only available for the new online booking method.
 	<li>Auto resize iframe - enabled by default. Disable this if you have more than one Recras iframe on your page. Note: this is only available for the old online booking method.
 </ol>
 
@@ -96,7 +96,7 @@
 <p>The following options are available:</p>
 <ol class="recrasOptionsList">
 	<li>Voucher template - when selected, this will skip the template selection step
-	<li>Redirect after submission - a page/post that the user is redirected to, after submitting the form successfully.
+	<li>Thank-you page - a page/post that the user is redirected to, after submitting the form successfully.
 </ol>
 
 <hr>

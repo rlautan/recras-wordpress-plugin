@@ -42,7 +42,7 @@ $forms = $model->getForms($subdomain);
         <?php } ?>
         <p class="recras-notice">
             <?php _e('Some packages may not be available for all contact forms. You can change this by editing your contact forms in Recras.', \Recras\Plugin::TEXT_DOMAIN); ?><br>
-            <?php _e('If you are still missing packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', \Recras\Plugin::TEXT_DOMAIN); ?>
+            <?php _e('If you are still missing packages, make sure in Recras "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', \Recras\Plugin::TEXT_DOMAIN); ?>
         </p>
     <dt><label for="container_element"><?php _e('HTML element', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="container_element">
@@ -60,7 +60,7 @@ $forms = $model->getForms($subdomain);
         </p>
     <dt><label for="submit_text"><?php _e('Submit button text', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="text" id="submit_text" value="<?php _e('Send', \Recras\Plugin::TEXT_DOMAIN); ?>">
-    <dt><label for="redirect_page"><?php _e('Redirect after submission', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+    <dt><label for="redirect_page"><?php _e('Thank-you page', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="redirect_page">
                 <option value=""><?php _e("Don't redirect", \Recras\Plugin::TEXT_DOMAIN); ?>
                 <optgroup label="<?php _e('Pages', \Recras\Plugin::TEXT_DOMAIN); ?>">
