@@ -23,7 +23,7 @@ $arrangements = $model->getArrangements($subdomain);
                 <option value="<?= $ID; ?>"><?= $arrangement->arrangement; ?>
             <?php } ?>
             </select>
-            <p><?php _e('If you are not seeing certain packages, make sure "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', \Recras\Plugin::TEXT_DOMAIN); ?></p>
+            <p><?php _e('If you are not seeing certain packages, make sure in Recras "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', \Recras\Plugin::TEXT_DOMAIN); ?></p>
         <?php } ?>
     <dt><label for="show_what"><?php _e('Show what?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><select id="show_what" required>
