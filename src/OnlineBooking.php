@@ -49,23 +49,23 @@ class OnlineBooking
     private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl, $previewTimes, $preFillAmounts)
     {
         $generatedDivID = uniqid('V');
-        $extraOptions = '';
+        $extraOptions = [];
 
         if ($arrangementID) {
-            $extraOptions .= "package_id: " . $arrangementID . ",\n";
-            $extraOptions .= "autoScroll: false,\n";
+            $extraOptions[] = 'package_id: ' . $arrangementID;
+            $extraOptions[] = 'autoScroll: false';
         }
 
         if ($redirectUrl) {
-            $extraOptions .= "redirect_url: '" . $redirectUrl . "',\n";
+            $extraOptions[] = "redirect_url: '" . $redirectUrl . "'";
         }
 
         if (count($preFillAmounts)) {
-            $extraOptions .= "productAmounts: " . json_encode($preFillAmounts) . ",\n";
+            $extraOptions[] = 'productAmounts: ' . json_encode($preFillAmounts);
         }
 
         if (Analytics::useAnalytics()) {
-            $extraOptions .= "analytics: true,\n";
+            $extraOptions[] .= 'analytics: true';
         }
 
         return "
@@ -77,8 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         element: document.getElementById('" . $generatedDivID . "'),
         locale: '" . Settings::externalLocale() . "',
         previewTimes: " . ($previewTimes ? 'true' : 'false') . ",
-        " . $extraOptions . "
-    });
+    " . join(",\n", $extraOptions) . "});
     new RecrasBooking(bookingOptions);
 });
 </script>";
