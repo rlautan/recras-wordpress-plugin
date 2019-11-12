@@ -1,6 +1,6 @@
 # Changelog
 
-## master (unreleased)
+## 3.1.0 (2019-11-12)
 * Improve online booking styling in Internet Explorer
 * When a contact form has a required package field, and there is only one package, pre-fill it
 * Support pre-filling package in online booking using GET parameter "package"

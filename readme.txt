@@ -4,7 +4,7 @@ Tags: recras, recreation, reservation
 Requires at least: 4.9
 Requires PHP: 5.6.0
 Tested up to: 5.3
-Stable tag: 3.0.3
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,11 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 3. The Recras blocks in Gutenberg
 
 == Changelog ==
+
+= 3.1.0 =
+* Support pre-filling package in online booking using GET parameter "package"
+* Improve online booking styling in Internet Explorer
+* When a contact form has a required package field, and there is only one package, pre-fill it
 
 = 3.0.3 =
 * Defer loading of JS polyfill & JS library
