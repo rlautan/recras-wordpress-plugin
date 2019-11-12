@@ -77,7 +77,7 @@
         $requestScheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
         echo $requestScheme . '://' . $_SERVER['HTTP_HOST'];
         ?>/your-online-booking-page/?package=42</code> to pre-fill the package with ID 42.
-	<li>Use new method? - whether or not you want to use the new online booking method.
+	<li>Integration method - choose seamless for a more modern experience. Choosing iframe uses the setting in your Recras.
 	<li>Preview times in programme - whether or not you want to preview times in the programme. Note: this is only available for the new online booking method.
 	<li>Pre-fill amounts - <strong>Note:</strong> this is only available for the new online booking method, and required a pre-filled package. When enabled, this gives you the ability to pre-fill the amounts form. This can be useful, for example, for packages where you always have a fixed amount.
 	<li>Thank-you page - a page/post that the user is redirected to, after booking successfully. Note: this is only available for the new online booking method.

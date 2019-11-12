@@ -22,8 +22,17 @@ $arrangements = $model->getArrangements($subdomain, true);
                 <?php } ?>
             </select>
         <?php } ?>
-    <dt><label for="use_new_library"><?php _e('Use new method?', \Recras\Plugin::TEXT_DOMAIN); ?></label>
-        <dd><input type="checkbox" id="use_new_library" checked>
+    <dt><label><?php _e('Integration method', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd>
+            <label>
+                <input type="radio" id="use_new_library_yes" name="integration_method" value="jslibrary" checked>
+                <?php _e('Seamless (recommended)', \Recras\Plugin::TEXT_DOMAIN); ?>
+            </label>
+            <br>
+            <label>
+                <input type="radio" id="use_new_library_no" name="integration_method" value="iframe">
+                <?php _e('iframe (uses setting in your Recras)', \Recras\Plugin::TEXT_DOMAIN); ?>
+            </label>
     <dt><label for="show_times"><?php _e('Preview times in programme', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="show_times">
     <dt><label><?php _e('Pre-fill amounts (requires pre-filled package)', \Recras\Plugin::TEXT_DOMAIN); ?></label>
@@ -49,11 +58,13 @@ $arrangements = $model->getArrangements($subdomain, true);
 <button class="button button-primary" id="booking_submit"><?php _e('Insert shortcode', \Recras\Plugin::TEXT_DOMAIN); ?></button>
 
 <script>
-    document.getElementById('use_new_library').addEventListener('change', function(){
-        var useLibrary = document.getElementById('use_new_library').checked;
-        document.getElementById('auto_resize').disabled = useLibrary;
-        document.getElementById('redirect_page').disabled = !useLibrary;
-        document.getElementById('show_times').disabled = !useLibrary;
+    [...document.querySelectorAll('[name="integration_method"]')].forEach(function(el) {
+        el.addEventListener('change', function(){
+            var useLibrary = document.getElementById('use_new_library_yes').checked;
+            document.getElementById('auto_resize').disabled = useLibrary;
+            document.getElementById('redirect_page').disabled = !useLibrary;
+            document.getElementById('show_times').disabled = !useLibrary;
+        });
     });
 
     document.getElementById('booking_submit').addEventListener('click', function(){
@@ -63,7 +74,7 @@ $arrangements = $model->getArrangements($subdomain, true);
             shortcode += ' id="' + arrangementID + '"';
         }
 
-        if (document.getElementById('use_new_library').checked) {
+        if (document.getElementById('use_new_library_yes').checked) {
             shortcode += ' use_new_library=1';
             if (document.getElementById('redirect_page').value !== '') {
                 shortcode += ' redirect="' + document.getElementById('redirect_page').value + '"';
