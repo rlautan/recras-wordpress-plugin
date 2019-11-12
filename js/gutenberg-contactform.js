@@ -31,7 +31,7 @@ registerBlockType('recras/contactform', {
     edit: withSelect((select) => {
         return {
             contactForms: select('recras/store').fetchContactForms(),
-            packages: select('recras/store').fetchPackages(true),
+            packages: select('recras/store').fetchPackages(true, true),
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {
@@ -68,6 +68,11 @@ registerBlockType('recras/contactform', {
             options: contactForms,
             label: __('Contact form', TEXT_DOMAIN),
         };
+        if (contactForms.length === 1) {
+            props.setAttributes({
+                id: contactForms[0].value,
+            });
+        }
         const optionsShowTitleControl = {
             checked: showtitle,
             onChange: function(newVal) {

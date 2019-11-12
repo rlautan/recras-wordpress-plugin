@@ -4,7 +4,7 @@ namespace Recras;
 class Gutenberg
 {
     const ENDPOINT_NAMESPACE = 'recras';
-    const GUTENBERG_SCRIPT_VERSION = '2.4.8';
+    const GUTENBERG_SCRIPT_VERSION = '3.1.1';
 
 
     public static function addBlocks()
@@ -40,31 +40,31 @@ class Gutenberg
         $gutenbergBlocks = [
             'availability' => [
                 'callback' => [Availability::class, 'renderAvailability'],
-                'version' => '3.0.0',
+                'version' => '3.1.1',
             ],
             'contactform' => [
                 'callback' => [ContactForm::class, 'renderContactForm'],
-                'version' => '3.0.0',
+                'version' => '3.1.1',
             ],
             'onlinebooking' => [
                 'callback' => [OnlineBooking::class, 'renderOnlineBooking'],
-                'version' => '3.0.3',
+                'version' => '3.1.1',
             ],
             'package' => [
                 'callback' => [Arrangement::class, 'renderPackage'],
-                'version' => '3.0.0',
+                'version' => '3.1.1',
             ],
             'product' => [
                 'callback' => [Products::class, 'renderProduct'],
-                'version' => '3.0.3',
+                'version' => '3.1.1',
             ],
             'voucher-info' => [
                 'callback' => [Vouchers::class, 'renderVoucherInfo'],
-                'version' => '3.0.0',
+                'version' => '3.1.1',
             ],
             'voucher-sales' => [
                 'callback' => [Vouchers::class, 'renderVoucherSales'],
-                'version' => '3.0.0',
+                'version' => '3.1.1',
             ],
         ];
         foreach ($gutenbergBlocks as $key => $block) {
@@ -127,7 +127,7 @@ class Gutenberg
     public static function getPackages()
     {
         $model = new Arrangement;
-        return $model->getArrangements(get_option('recras_subdomain'));
+        return $model->getArrangements(get_option('recras_subdomain'), false, false);
     }
 
     public static function getProducts()

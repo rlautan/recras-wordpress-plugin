@@ -26,7 +26,7 @@ registerBlockType('recras/onlinebooking', {
 
     edit: withSelect((select) => {
         return {
-            packages: select('recras/store').fetchPackages(false),
+            packages: select('recras/store').fetchPackages(false, true),
             pagesPosts: select('recras/store').fetchPagesPosts(),
         }
     })(props => {

@@ -43,6 +43,11 @@ registerBlockType('recras/voucher-info', {
             options: voucherTemplates,
             label: __('Voucher template', TEXT_DOMAIN),
         };
+        if (voucherTemplates.length === 1) {
+            props.setAttributes({
+                id: voucherTemplates[0].value,
+            });
+        }
 
         const optionsShowWhatControl = {
             value: show,

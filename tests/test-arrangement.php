@@ -128,10 +128,10 @@ class ArrangementTest extends WordPressUnitTestCase
     function testGetOnlineArrangements()
     {
         $plugin = new Arrangement;
-        $packages = $plugin->getArrangements('demo', true);
+        $packages = $plugin->getArrangements('demo', true, false);
         $this->assertTrue(is_array($packages));
         $packagesOnline = array_filter($packages, function($p) {
-            return $p->mag_online || $p->id === null; // An empty package is always added to the list
+            return $p->mag_online;
         });
         $this->assertEquals($packages, $packagesOnline, 'All packages should be bookable online');
     }

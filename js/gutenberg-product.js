@@ -47,6 +47,11 @@ registerBlockType('recras/product', {
                 options: products,
                 label: __('Product', TEXT_DOMAIN),
             };
+            if (products.length === 1) {
+                props.setAttributes({
+                    id: products[0].value,
+                });
+            }
         }
 
         let retval = [];

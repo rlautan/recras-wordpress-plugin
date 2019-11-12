@@ -179,7 +179,7 @@ class Arrangement
      *
      * @return array|string
      */
-    public static function getArrangements($subdomain, $onlyOnline = false)
+    public static function getArrangements($subdomain, $onlyOnline = false, $includeEmpty = true)
     {
         global $recrasPlugin;
 
@@ -193,13 +193,14 @@ class Arrangement
             $recrasPlugin->transients->set($subdomain . '_arrangements', $json);
         }
 
-        $arrangements = [
-            0 => (object) [
+        $arrangements = [];
+        if ($includeEmpty) {
+            $arrangements[0] = (object) [
                 'arrangement' => '',
                 'id' => null,
                 'mag_online' => false,
-            ],
-        ];
+            ];
+        }
         foreach ($json as $arrangement) {
             if (!$onlyOnline || $arrangement->mag_online) {
                 $arrangements[$arrangement->id] = $arrangement;

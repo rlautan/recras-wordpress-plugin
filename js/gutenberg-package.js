@@ -20,7 +20,7 @@ registerBlockType('recras/package', {
 
     edit: withSelect((select) => {
         return {
-            packages: select('recras/store').fetchPackages(true),
+            packages: select('recras/store').fetchPackages(true, false),
         }
     })(props => {
         if (!recrasOptions.subdomain) {
@@ -49,6 +49,11 @@ registerBlockType('recras/package', {
             options: packages,
             label: __('Package', TEXT_DOMAIN),
         };
+        if (packages.length === 1) {
+            props.setAttributes({
+                id: packages[0].value,
+            });
+        }
         const optionsShowWhatControl = {
             value: show,
             onChange: function(newVal) {
