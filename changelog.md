@@ -2,6 +2,7 @@
 
 ## unreleased
 * Fix whitespace in online booking/voucher sales causing problems in edge cases
+* Update online booking library version: this fixes 'require X per Y' requirements (instead of just 1 per Y)
 
 ## 3.1.0 (2019-11-12)
 * Improve online booking styling in Internet Explorer
