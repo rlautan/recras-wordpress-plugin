@@ -72,7 +72,8 @@
 <p>Online booking can be integrated using the Recras/Online booking block (Gutenberg) or using the <span class="rDocsIcon dashicons dashicons-admin-site"></span> icon in the Classic Editor. You can also manually add the <kbd>recras-booking</kbd> shortcode.</p>
 <p>The following options are available:</p>
 <ol class="recrasOptionsList">
-	<li>Pre-filled package - entering a package here will skip the package selection step
+    <li>Pre-filled package - entering a package here will skip the package selection step. Packages can also be pre-filled using the URL parameter <code>package</code>, i.e. <code>
+        <?= $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST']; ?>/your-online-booking-page/?package=42</code> to pre-fill the package with ID 42.
 	<li>Use new method? - whether or not you want to use the new online booking method.
 	<li>Preview times in programme - whether or not you want to preview times in the programme. Note: this is only available for the new online booking method.
 	<li>Pre-fill amounts - <strong>Note:</strong> this is only available for the new online booking method, and required a pre-filled package. When enabled, this gives you the ability to pre-fill the amounts form. This can be useful, for example, for packages where you always have a fixed amount.

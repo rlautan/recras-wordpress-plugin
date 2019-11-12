@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-11-11 10:51+0100\n"
-"PO-Revision-Date: 2019-11-11 10:51+0100\n"
+"POT-Creation-Date: 2019-11-11 12:11+0100\n"
+"PO-Revision-Date: 2019-11-11 12:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: nl_NL\n"
@@ -295,7 +295,7 @@ msgid "No pre-filled template"
 msgstr "Geen vooraf ingevuld template"
 
 #: js/gutenberg-availability.js:2 js/gutenberg-availability.js:57
-#: src/admin/documentation.php:84
+#: src/admin/documentation.php:85
 msgid "Availability calendar"
 msgstr "Beschikbaarheidskalender"
 
@@ -403,7 +403,7 @@ msgstr ""
 "\" van het product."
 
 #: js/gutenberg-voucher-info.js:2 js/gutenberg-voucher-info.js:71
-#: src/Plugin.php:96 src/Plugin.php:153 src/admin/documentation.php:102
+#: src/Plugin.php:96 src/Plugin.php:153 src/admin/documentation.php:103
 msgid "Voucher info"
 msgstr "Tegoedboninfo"
 
@@ -412,7 +412,7 @@ msgid "Voucher template"
 msgstr "Tegoedbon-template"
 
 #: js/gutenberg-voucher-sales.js:2 js/gutenberg-voucher-sales.js:67
-#: src/Plugin.php:95 src/Plugin.php:154 src/admin/documentation.php:93
+#: src/Plugin.php:95 src/Plugin.php:154 src/admin/documentation.php:94
 msgid "Voucher sales"
 msgstr "Tegoedbonverkoop"
 
@@ -528,7 +528,7 @@ msgstr ""
 msgid "Error: could not parse data from Recras. The error message was: %s"
 msgstr "Fout: kon data uit Recras niet verwerken. De foutmelding was: %s"
 
-#: src/OnlineBooking.php:34
+#: src/OnlineBooking.php:38
 msgid "Error: \"product_amounts\" is invalid"
 msgstr "Fout: \"product_amounts\" is ongeldig"
 
@@ -846,46 +846,18 @@ msgstr "Wis tegoedbontemplatescache"
 msgid "Save"
 msgstr "Opslaan"
 
-#~ msgid "Redirect after submission"
-#~ msgstr "Doorsturen na versturen"
+#~ msgid "i.e. \"package\" (without quotes)"
+#~ msgstr "Bijv. \"arrangement\" (zonder aanhalingstekens)"
 
-#~ msgid "Redirect after submission (optional, leave empty to not redirect)"
-#~ msgstr ""
-#~ "Doorsturen na versturen (optioneel, laat leeg om niet door te sturen)"
-
-#~ msgid ""
-#~ "If you are not seeing certain packages, make sure \"May be presented on a "
-#~ "website (via API)\" is enabled on the tab \"Extra settings\" of the "
-#~ "package."
-#~ msgstr ""
-#~ "Als je bepaalde arrangementen niet ziet, zorg dan dat \"Mag op een "
-#~ "website gepresenteerd worden (via API)\" is aangevinkt op het tabblad "
-#~ "\"Extra instellingen\" van het arrangement."
+#~ msgid "URL parameter for pre-filled package (optional)"
+#~ msgstr "URL-parameter voor vooraf ingevuld arrangement (optioneel)"
 
 #~ msgid ""
-#~ "If you are still missing packages, make sure \"May be presented on a "
-#~ "website (via API)\" is enabled on the tab \"Extra settings\" of the "
-#~ "package."
+#~ "Use, for example, \"package\" (without quotes) to be able to use /page?"
+#~ "package=42 to pre-fill package 42."
 #~ msgstr ""
-#~ "Als je nog steeds arrangementen mist, zorg dan dat \"Mag op een website "
-#~ "gepresenteerd worden (via API)\" is aangevinkt op het tabblad \"Extra "
-#~ "instellingen\" van het arrangement."
-
-#~ msgid ""
-#~ "If you are not seeing certain products, make sure \"May be presented on a "
-#~ "website (via API)\" is enabled on the tab \"Presentation\" of the product."
-#~ msgstr ""
-#~ "Als je bepaalde producten niet ziet, zorg dan dat \"Mag op een website "
-#~ "gepresenteerd worden (via API)\" is aangevinkt op het tabblad "
-#~ "\"Presentatie\" van het product."
-
-#~ msgid ""
-#~ "Could not find any products. Make sure \"May be presented on a website "
-#~ "(via API)\" is enabled on the tab \"Presentation\" of the product."
-#~ msgstr ""
-#~ "Kon geen producten vinden. Zorg dat \"Mag op een website gepresenteerd "
-#~ "worden (via API)\" is aangevinkt op het tabblad \"Presentatie\" van het "
-#~ "product."
+#~ "Gebruik bijvoorbeeld \"arrangement\" (zonder aanhalingstekens) om /pagina?"
+#~ "arrangement=42 te kunnen gebruiken om arrangement 42 vooraf in te vullen."
 
 #, fuzzy
 #~ msgid ""

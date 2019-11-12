@@ -3,6 +3,7 @@
 ## master (unreleased)
 * Improve online booking styling in Internet Explorer
 * When a contact form has a required package field, and there is only one package, pre-fill it
+* Support pre-filling package in online booking using GET parameter "package"
 
 ## 3.0.3 (2019-11-11)
 * Defer loading of JS polyfill & JS library

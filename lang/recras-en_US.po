@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-11-11 10:51+0100\n"
-"PO-Revision-Date: 2019-11-11 10:52+0100\n"
+"POT-Creation-Date: 2019-11-11 12:12+0100\n"
+"PO-Revision-Date: 2019-11-11 12:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: en_US\n"
@@ -284,7 +284,7 @@ msgid "No pre-filled template"
 msgstr ""
 
 #: js/gutenberg-availability.js:2 js/gutenberg-availability.js:57
-#: src/admin/documentation.php:84
+#: src/admin/documentation.php:85
 msgid "Availability calendar"
 msgstr ""
 
@@ -380,7 +380,7 @@ msgid ""
 msgstr ""
 
 #: js/gutenberg-voucher-info.js:2 js/gutenberg-voucher-info.js:71
-#: src/Plugin.php:96 src/Plugin.php:153 src/admin/documentation.php:102
+#: src/Plugin.php:96 src/Plugin.php:153 src/admin/documentation.php:103
 msgid "Voucher info"
 msgstr ""
 
@@ -389,7 +389,7 @@ msgid "Voucher template"
 msgstr ""
 
 #: js/gutenberg-voucher-sales.js:2 js/gutenberg-voucher-sales.js:67
-#: src/Plugin.php:95 src/Plugin.php:154 src/admin/documentation.php:93
+#: src/Plugin.php:95 src/Plugin.php:154 src/admin/documentation.php:94
 msgid "Voucher sales"
 msgstr ""
 
@@ -502,7 +502,7 @@ msgstr ""
 msgid "Error: could not parse data from Recras. The error message was: %s"
 msgstr ""
 
-#: src/OnlineBooking.php:34
+#: src/OnlineBooking.php:38
 msgid "Error: \"product_amounts\" is invalid"
 msgstr ""
 

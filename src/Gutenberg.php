@@ -48,7 +48,7 @@ class Gutenberg
             ],
             'onlinebooking' => [
                 'callback' => [OnlineBooking::class, 'renderOnlineBooking'],
-                'version' => '3.0.0',
+                'version' => '3.0.3',
             ],
             'package' => [
                 'callback' => [Arrangement::class, 'renderPackage'],
