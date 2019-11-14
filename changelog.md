@@ -1,6 +1,6 @@
 # Changelog
 
-## unreleased
+## 3.1.1 (2019-11-14)
 * Fix whitespace in online booking/voucher sales causing problems in edge cases
 * Update online booking library version: this fixes 'require X per Y' requirements (instead of just 1 per Y)
 * Fix "Error: no ID set" when only having a single contact form/package/product/voucher template in Gutenberg blocks
