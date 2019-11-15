@@ -33,6 +33,9 @@
 /* Applied to the minimum number of people for an arrangement */
 .recras-persons {}
 
+/* Used in contact forms for a pre-filled package */
+.recras-prefilled-package {}
+
 /* Applied to the various prices of an arrangement */
 .recras-price {}
 

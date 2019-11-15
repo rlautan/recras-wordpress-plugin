@@ -78,9 +78,13 @@ class ContactForm
             $singleChoiceElement = $attributes['single_choice_element'];
         }
 
-        $arrangementID = null;
-        if (isset($attributes['arrangement'])) {
-            $arrangementID = (int) $attributes['arrangement'];
+        $arrangementID = isset($attributes['arrangement']) ? $attributes['arrangement'] : null;
+        if (!$arrangementID && isset($_GET['package'])) {
+            $arrangementID = $_GET['package'];
+        }
+
+        if (isset($arrangementID)) {
+            $arrangementID = (int) $arrangementID;
 
             // Check if the contact form supports setting a package
             $fieldFound = false;
@@ -215,24 +219,32 @@ class ContactForm
         $html .= '<form class="recras-contact" id="recras-form' . $generatedFormID . '" data-formid="' . $formID . '">';
         $html .= self::generateStartTag($options['element']);
         foreach ($formFields as $field) {
-            if ($field->soort_invoer !== 'header' && ($field->soort_invoer !== 'boeking.arrangement' || is_null($options['arrangement']))) { //TODO: this fails when arrangement is set but invalid
-                if ($options['showLabels']) {
-                    $html .= self::generateLabel($options['element'], $field);
-                    if ($field->verplicht) {
-                        $html .= '<span class="recras-required">*</span>';
-                    }
+            if ($options['showLabels'] && $field->soort_invoer !== 'header') {
+                $html .= self::generateLabel($options['element'], $field);
+                if ($field->verplicht) {
+                    $html .= '<span class="recras-required">*</span>';
                 }
             }
             switch ($field->soort_invoer) {
                 case 'boeking.arrangement':
+                    $html .= self::generateSubTag($options['element']);
+
                     // It is possible that a package was valid for this contact form in the past, but not in the present.
                     // So we show only arrangements that are valid for this form.
                     if (empty($arrangementen)) {
                         $classArrangement = new Arrangement;
                         $arrangementen = $classArrangement->getArrangementsForContactForm($options['subdomain'], $formID);
                     }
-                    // The  isset()  is in case a package is set, but it is not valid
-                    if (is_null($options['arrangement']) || !isset($arrangementen[$options['arrangement']])) {
+
+                    if (isset($options['arrangement']) && isset($arrangementen[$options['arrangement']]) && $options['arrangement'] !== 0) {
+                        // Package is set and valid
+                        $html .= self::generateInput($field, [
+                            'placeholder' => $options['placeholders'],
+                            'type' => 'hidden',
+                            'value' => $options['arrangement'],
+                        ]);
+                        $html .= '<span class="recras-prefilled-package">' . $arrangementen[$options['arrangement']] . '</span>';
+                    } else {
                         $selectOptions = [
                             'element' => $options['singleChoiceElement'],
                             'placeholder' => $options['placeholders'],
@@ -241,13 +253,7 @@ class ContactForm
                             unset($arrangementen[0]);
                             $selectOptions['selected'] = current(array_keys($arrangementen));
                         }
-                        $html .= self::generateSubTag($options['element']) . self::generateSingleChoice($field, $arrangementen, $selectOptions);
-                    } else {
-                        $html .= self::generateInput($field, [
-                            'placeholder' => $options['placeholders'],
-                            'type' => 'hidden',
-                            'value' => $options['arrangement'],
-                        ]);
+                        $html .= self::generateSingleChoice($field, $arrangementen, $selectOptions);
                     }
                     break;
                 case 'boeking.datum':
