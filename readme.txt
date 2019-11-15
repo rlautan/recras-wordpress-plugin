@@ -80,6 +80,7 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 
 = unreleased =
 * Support pre-filling package in contact forms using GET parameter "package"
+* Fix layout of contact form when presented as table without labels
 
 = 3.1.1 =
 * Fix whitespace in online booking/voucher sales causing problems in edge cases

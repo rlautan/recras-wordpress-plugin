@@ -224,6 +224,8 @@ class ContactForm
                 if ($field->verplicht) {
                     $html .= '<span class="recras-required">*</span>';
                 }
+            } else if ($options['element'] === 'table' && !$options['showLabels']) {
+                $html .= '<tr>';
             }
             switch ($field->soort_invoer) {
                 case 'boeking.arrangement':
