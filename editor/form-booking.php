@@ -35,6 +35,8 @@ $arrangements = $model->getArrangements($subdomain, true);
             </label>
     <dt><label for="show_times"><?php _e('Preview times in programme', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><input type="checkbox" id="show_times">
+    <dt><label><?php _e('Packages to show initially (optional)', \Recras\Plugin::TEXT_DOMAIN); ?></label>
+        <dd><strong><?php _e('Sorry, this is only available using the Gutenberg editor.', \Recras\Plugin::TEXT_DOMAIN); ?></strong>
     <dt><label><?php _e('Pre-fill amounts (requires pre-filled package)', \Recras\Plugin::TEXT_DOMAIN); ?></label>
         <dd><strong><?php _e('Sorry, this is only available using the Gutenberg editor.', \Recras\Plugin::TEXT_DOMAIN); ?></strong>
     <dt><label for="redirect_page"><?php _e('Thank-you page', \Recras\Plugin::TEXT_DOMAIN); ?></label>

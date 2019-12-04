@@ -7,6 +7,7 @@ registerBlockType('recras/onlinebooking', {
             autoresize: false,
             id: null,
             redirect: '',
+            package_list: [],
             show_times: true,
             use_new_library: true,
             prefill_enabled: false,
@@ -18,6 +19,7 @@ registerBlockType('recras/onlinebooking', {
         autoresize: recrasHelper.typeBoolean(true),
         id: recrasHelper.typeString(),
         redirect: recrasHelper.typeString(),
+        package_list: recrasHelper.typeString(), // stored as JSON string
         show_times: recrasHelper.typeBoolean(false),
         use_new_library: recrasHelper.typeBoolean(false),
         prefill_enabled: recrasHelper.typeBoolean(false),
@@ -55,6 +57,13 @@ registerBlockType('recras/onlinebooking', {
         });
         packagesMapped = packagesMapped.map(mapPackage);
 
+        let package_list;
+        try {
+            package_list = JSON.parse(props.attributes.package_list);
+        } catch (e) {
+            package_list = [];
+        }
+
         let product_amounts;
         try {
             product_amounts = JSON.parse(props.attributes.product_amounts);
@@ -64,17 +73,6 @@ registerBlockType('recras/onlinebooking', {
         let prefill_enabled = props.attributes.prefill_enabled || Object.keys(product_amounts).length > 0;
 
         let retval = [];
-        const optionsPackageControl = {
-            value: id,
-            onChange: function(newVal) {
-                props.setAttributes({
-                    id: newVal,
-                });
-            },
-            options: packagesMapped,
-            placeholder: __('Pre-filled package', TEXT_DOMAIN),
-            label: __('Pre-filled package (optional)', TEXT_DOMAIN),
-        };
         const optionsNewLibraryControl = {
             selected: use_new_library ? 'jslibrary' : 'iframe',
             options: [
@@ -88,9 +86,19 @@ registerBlockType('recras/onlinebooking', {
                 },
             ],
             onChange: function(newVal) {
+                const useJSLibrary = (newVal === 'jslibrary');
                 props.setAttributes({
-                    use_new_library: (newVal === 'jslibrary'),
+                    use_new_library: useJSLibrary,
                 });
+                if (useJSLibrary) {
+                    props.setAttributes({
+                        id: undefined,
+                    });
+                } else {
+                    props.setAttributes({
+                        package_list: undefined,
+                    });
+                }
             },
             label: __('Integration method', TEXT_DOMAIN),
         };
@@ -99,7 +107,20 @@ registerBlockType('recras/onlinebooking', {
         let preFillControls = [];
         let optionsRedirectControl;
         let optionsAutoresizeControl;
+        let optionsPackageControl;
+
         if (use_new_library) {
+            optionsPackageControl = {
+                value: package_list,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        package_list: JSON.stringify(newVal),
+                    });
+                },
+                multiple: use_new_library,
+                options: packagesMapped,
+                label: __('Package(s) to show initially (optional)', TEXT_DOMAIN),
+            };
             optionsShowTimesControl = {
                 checked: show_times,
                 onChange: function(newVal) {
@@ -170,6 +191,17 @@ registerBlockType('recras/onlinebooking', {
                 });
             }
         } else {
+            optionsPackageControl = {
+                value: id,
+                onChange: function(newVal) {
+                    props.setAttributes({
+                        id: newVal,
+                    });
+                },
+                options: packagesMapped,
+                placeholder: __('Pre-filled package', TEXT_DOMAIN),
+                label: __('Pre-filled package (optional)', TEXT_DOMAIN),
+            };
             optionsAutoresizeControl = {
                 checked: autoresize,
                 onChange: function(newVal) {
@@ -182,11 +214,24 @@ registerBlockType('recras/onlinebooking', {
         }
 
         retval.push(recrasHelper.elementText('Recras - ' + __('Online booking', TEXT_DOMAIN)));
-        retval.push(el(SelectControl, optionsPackageControl));
-        retval.push(recrasHelper.elementInfo(__('If you are not seeing certain packages, make sure in Recras "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)));
         retval.push(el(RadioControl, optionsNewLibraryControl));
+        retval.push(recrasHelper.elementInfo(
+            __('Seamless integration takes the styling of your website. You can apply a bit of extra styling via the Recras → Settings menu.', TEXT_DOMAIN) +
+            ' ' +
+            __('iframe integration uses the setting in your Recras. You can change this via the Settings → Online booking page in your Recras and apply extra styling via the Settings → Other settings page in your Recras..', TEXT_DOMAIN)
+        ));
+        retval.push(el(SelectControl, optionsPackageControl));
         if (use_new_library) {
-            retval.push(recrasHelper.elementInfo(__('Seamless integration takes the styling of your website. You can apply a bit of extra styling via the Recras → Settings menu.', TEXT_DOMAIN)));
+            retval.push(recrasHelper.elementInfo(
+                __('If you are not seeing certain packages, make sure in Recras "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN) +
+                ' ' +
+                __('You can leave this empty to show a dropdown of all packages, or select a single package to pre-fill it and skip the package selection step.', TEXT_DOMAIN)
+            ));
+            if (window.navigator.platform.includes('Mac')) {
+                retval.push(recrasHelper.elementInfo(__('Select multiple packages by holding Cmd while clicking', TEXT_DOMAIN)));
+            } else {
+                retval.push(recrasHelper.elementInfo(__('Select multiple packages by holding Ctrl while clicking', TEXT_DOMAIN)));
+            }
             retval.push(el(ToggleControl, optionsShowTimesControl));
             retval.push(el(ToggleControl, optionsPreFillControl));
             if (preFillControls.length) {
@@ -196,7 +241,9 @@ registerBlockType('recras/onlinebooking', {
             }
             retval.push(el(SelectControl, optionsRedirectControl));
         } else {
-            retval.push(recrasHelper.elementInfo(__('iframe integration uses the setting in your Recras. You can change this via the Settings → Online booking page in your Recras and apply extra styling via the Settings → Other settings page in your Recras..', TEXT_DOMAIN)));
+            retval.push(recrasHelper.elementInfo(
+                __('If you are not seeing certain packages, make sure in Recras "May be presented on a website (via API)" is enabled on the tab "Extra settings" of the package.', TEXT_DOMAIN)
+            ));
             retval.push(el(ToggleControl, optionsAutoresizeControl));
         }
         return retval;

@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.2.0
+* Update online booking library version:
+  - Show error when input is higher than allowed
+* Selecting only a few packages for online booking dropdown is now possible
+
 ## 3.1.2 (2019-11-19)
 * Support pre-filling package in contact forms using GET parameter "package"
 * Fix layout of contact form when presented as table without labels

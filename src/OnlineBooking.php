@@ -28,8 +28,6 @@ class OnlineBooking
 
         $enableResize = !isset($attributes['autoresize']) || (!!$attributes['autoresize'] === true);
         $useNewLibrary = isset($attributes['use_new_library']) ? (!!$attributes['use_new_library']) : false;
-        $previewTimes = isset($attributes['show_times']) ? (!!$attributes['show_times']) : false;
-        $redirect = isset($attributes['redirect']) ? $attributes['redirect'] : null;
 
         $preFillAmounts = [];
         if ($arrangementID && isset($attributes['product_amounts'])) {
@@ -39,14 +37,38 @@ class OnlineBooking
             }
         }
 
+        $libraryOptions = [
+            'preFillAmounts' => $preFillAmounts,
+            'previewTimes' => isset($attributes['show_times']) ? (!!$attributes['show_times']) : false,
+            'redirect' => isset($attributes['redirect']) ? $attributes['redirect'] : null,
+        ];
+
+        if ($useNewLibrary && (int) $arrangementID === 0 && isset($attributes['package_list'])) {
+            if (is_string($attributes['package_list'])) {
+                $packages = json_decode($attributes['package_list']);
+                if (!$packages) {
+                    $packages = explode(',', $attributes['package_list']);
+                }
+                if (count($packages) === 0) {
+                    return __('Error: "package_list" is empty', Plugin::TEXT_DOMAIN);
+                }
+                $libraryOptions['packageList'] = $packages;
+            } else if (is_array($attributes['package_list'])) {
+                if (count($attributes['package_list']) === 0) {
+                    return __('Error: "package_list" is empty', Plugin::TEXT_DOMAIN);
+                }
+                $libraryOptions['packageList'] = $attributes['package_list'];
+            }
+        }
+
         if ($useNewLibrary) {
-            return self::generateBookingForm($subdomain, $arrangementID, $redirect, $previewTimes, $preFillAmounts);
+            return self::generateBookingForm($subdomain, $arrangementID, $libraryOptions);
         }
         return self::generateIframe($subdomain, $arrangementID, $enableResize);
     }
 
 
-    private static function generateBookingForm($subdomain, $arrangementID, $redirectUrl, $previewTimes, $preFillAmounts)
+    private static function generateBookingForm($subdomain, $arrangementID, $libraryOptions)
     {
         $generatedDivID = uniqid('V');
         $extraOptions = [];
@@ -54,14 +76,16 @@ class OnlineBooking
         if ($arrangementID) {
             $extraOptions[] = 'package_id: ' . $arrangementID;
             $extraOptions[] = 'autoScroll: false';
+        } else if (isset($libraryOptions['packageList'])) {
+            $extraOptions[] = 'package_id: [' . join(',', $libraryOptions['packageList']) . ']';
         }
 
-        if ($redirectUrl) {
-            $extraOptions[] = "redirect_url: '" . $redirectUrl . "'";
+        if ($libraryOptions['redirect']) {
+            $extraOptions[] = "redirect_url: '" . $libraryOptions['redirect'] . "'";
         }
 
-        if (count($preFillAmounts)) {
-            $extraOptions[] = 'productAmounts: ' . json_encode($preFillAmounts);
+        if (count($libraryOptions['preFillAmounts'])) {
+            $extraOptions[] = 'productAmounts: ' . json_encode($libraryOptions['preFillAmounts']);
         }
 
         if (Analytics::useAnalytics()) {
@@ -76,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recras_hostname: '" . $subdomain . ".recras.nl',
         element: document.getElementById('" . $generatedDivID . "'),
         locale: '" . Settings::externalLocale() . "',
-        previewTimes: " . ($previewTimes ? 'true' : 'false') . ",
+        previewTimes: " . ($libraryOptions['previewTimes'] ? 'true' : 'false') . ",
     " . join(",\n", $extraOptions) . "});
     new RecrasBooking(bookingOptions);
 });
