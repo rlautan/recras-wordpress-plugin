@@ -113,6 +113,11 @@ registerBlockType('recras/onlinebooking', {
             optionsPackageControl = {
                 value: package_list,
                 onChange: function(newVal) {
+                    if (newVal.length !== 1) {
+                        props.setAttributes({
+                            prefill_enabled: false,
+                        });
+                    }
                     props.setAttributes({
                         package_list: JSON.stringify(newVal),
                     });
@@ -137,6 +142,7 @@ registerBlockType('recras/onlinebooking', {
                         prefill_enabled: newVal,
                     });
                 },
+                disabled: package_list.length !== 1, //TODO: how can we disable controls?
                 label: __('Pre-fill amounts (requires pre-filled package)', TEXT_DOMAIN),
             };
             optionsRedirectControl = {
@@ -151,11 +157,12 @@ registerBlockType('recras/onlinebooking', {
                 label: __('Thank-you page (optional, leave empty to not redirect)', TEXT_DOMAIN),
             };
 
-            if (prefill_enabled && id && packages[id]) {
-                let linesNoBookingSize = packages[id].regels.filter(function(line) {
+            if (prefill_enabled && package_list.length === 1 && packages[package_list[0]]) {
+                const selectedPackage = packages[package_list[0]];
+                let linesNoBookingSize = selectedPackage.regels.filter(function(line) {
                     return line.onlineboeking_aantalbepalingsmethode !== 'boekingsgrootte';
                 });
-                let linesBookingSize = packages[id].regels.filter(function(line) {
+                let linesBookingSize = selectedPackage.regels.filter(function(line) {
                     return line.onlineboeking_aantalbepalingsmethode === 'boekingsgrootte';
                 });
                 if (linesBookingSize.length > 0) {
@@ -168,7 +175,7 @@ registerBlockType('recras/onlinebooking', {
                                 product_amounts: JSON.stringify(product_amounts)
                             });
                         },
-                        label: packages[id].weergavenaam || packages[id].arrangement,
+                        label: selectedPackage.weergavenaam || selectedPackage.arrangement,
                         type: 'number',
                         min: 0,
                     });
