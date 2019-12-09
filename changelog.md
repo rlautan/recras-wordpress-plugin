@@ -1,9 +1,8 @@
 # Changelog
 
-## 3.2.0
-* Update online booking library version:
-  - Show error when input is higher than allowed
-* Selecting only a few packages for online booking dropdown is now possible
+## 3.2.0 (2019-12-xx)
+* Update online booking library version: show error when input is higher than allowed
+* It is now possible to show a selection of packages during online booking
 
 ## 3.1.2 (2019-11-19)
 * Support pre-filling package in contact forms using GET parameter "package"
