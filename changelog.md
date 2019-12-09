@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.2.0 (2019-12-xx)
+## 3.2.0 (2019-12-09)
 * Update online booking library version: show error when input is higher than allowed
 * It is now possible to show a selection of packages during online booking
 
