@@ -23,9 +23,16 @@ const recrasHelper = {
 
     elementInfo: (text) => {
         return el(
-            'p',
+            wp.element.RawHTML,
+            null,
+            '<p class="recrasInfoText">' + text + '</p>'
+        );
+    },
+    elementLabel: (text) => {
+        return el(
+            'label',
             {
-                class: 'recrasInfoText',
+                class: 'components-base-control',
             },
             text
         );
