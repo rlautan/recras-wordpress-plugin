@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recras WordPress plugin\n"
-"POT-Creation-Date: 2019-11-11 12:11+0100\n"
-"PO-Revision-Date: 2019-11-11 12:11+0100\n"
+"POT-Creation-Date: 2019-12-09 14:38+0100\n"
+"PO-Revision-Date: 2019-12-09 14:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: Recras\n"
 "Language: de_DE\n"
@@ -21,13 +21,13 @@ msgstr ""
 #: editor/form-arrangement.php:16 editor/form-booking.php:12
 #: editor/form-contact.php:32 editor/form-package-availability.php:13
 #: js/gutenberg-availability.js:45 js/gutenberg-package.js:2
-#: js/gutenberg-package.js:50 js/gutenberg-package.js:136 src/Plugin.php:90
+#: js/gutenberg-package.js:50 js/gutenberg-package.js:141 src/Plugin.php:90
 #: src/Plugin.php:150
 msgid "Package"
 msgstr "Arrangement"
 
-#: editor/form-arrangement.php:26 js/gutenberg-onlinebooking.js:186
-#: js/gutenberg-package.js:139
+#: editor/form-arrangement.php:26 js/gutenberg-onlinebooking.js:250
+#: js/gutenberg-onlinebooking.js:264 js/gutenberg-package.js:144
 msgid ""
 "If you are not seeing certain packages, make sure in Recras \"May be "
 "presented on a website (via API)\" is enabled on the tab \"Extra settings\" "
@@ -40,66 +40,66 @@ msgid "Show what?"
 msgstr ""
 
 #: editor/form-arrangement.php:30 editor/form-product.php:26
-#: js/gutenberg-package.js:94 js/gutenberg-product.js:91
+#: js/gutenberg-package.js:99 js/gutenberg-product.js:96
 msgid "Title"
 msgstr "Titel"
 
-#: editor/form-arrangement.php:31 js/gutenberg-package.js:62
+#: editor/form-arrangement.php:31 js/gutenberg-package.js:67
 msgid "Description"
 msgstr ""
 
 #: editor/form-arrangement.php:32 editor/form-product.php:29
-#: js/gutenberg-package.js:66 js/gutenberg-product.js:71
+#: js/gutenberg-package.js:71 js/gutenberg-product.js:76
 msgid "Duration"
 msgstr ""
 
-#: editor/form-arrangement.php:33 js/gutenberg-package.js:90
+#: editor/form-arrangement.php:33 js/gutenberg-package.js:95
 msgid "Starting location"
 msgstr ""
 
-#: editor/form-arrangement.php:34 js/gutenberg-package.js:74
+#: editor/form-arrangement.php:34 js/gutenberg-package.js:79
 msgid "Minimum number of persons"
 msgstr ""
 
-#: editor/form-arrangement.php:35 js/gutenberg-package.js:78
+#: editor/form-arrangement.php:35 js/gutenberg-package.js:83
 msgid "Price p.p. excl. VAT"
 msgstr ""
 
-#: editor/form-arrangement.php:36 js/gutenberg-package.js:82
+#: editor/form-arrangement.php:36 js/gutenberg-package.js:87
 msgid "Price p.p. incl. VAT"
 msgstr ""
 
-#: editor/form-arrangement.php:37 js/gutenberg-package.js:98
+#: editor/form-arrangement.php:37 js/gutenberg-package.js:103
 msgid "Total price excl. VAT"
 msgstr ""
 
-#: editor/form-arrangement.php:38 js/gutenberg-package.js:102
+#: editor/form-arrangement.php:38 js/gutenberg-package.js:107
 msgid "Total price incl. VAT"
 msgstr ""
 
-#: editor/form-arrangement.php:39 js/gutenberg-package.js:86
+#: editor/form-arrangement.php:39 js/gutenberg-package.js:91
 msgid "Programme"
 msgstr "Programm"
 
 #: editor/form-arrangement.php:40 editor/form-product.php:30
-#: js/gutenberg-package.js:70 js/gutenberg-product.js:75
+#: js/gutenberg-package.js:75 js/gutenberg-product.js:80
 msgid "Image tag"
 msgstr ""
 
-#: editor/form-arrangement.php:41 js/gutenberg-package.js:106
+#: editor/form-arrangement.php:41 js/gutenberg-package.js:111
 msgid "Relative image URL"
 msgstr ""
 
-#: editor/form-arrangement.php:43 js/gutenberg-package.js:123
+#: editor/form-arrangement.php:43 js/gutenberg-package.js:128
 msgid "Start time"
 msgstr ""
 
-#: editor/form-arrangement.php:44 js/gutenberg-package.js:122
-#: src/ContactForm.php:272
+#: editor/form-arrangement.php:44 js/gutenberg-package.js:127
+#: src/ContactForm.php:285
 msgid "hh:mm"
 msgstr "UU:MM"
 
-#: editor/form-arrangement.php:45 js/gutenberg-package.js:132
+#: editor/form-arrangement.php:45 js/gutenberg-package.js:137
 msgid "Show header?"
 msgstr ""
 
@@ -111,7 +111,7 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: editor/form-arrangement.php:50 editor/form-booking.php:49
+#: editor/form-arrangement.php:50 editor/form-booking.php:60
 #: editor/form-contact.php:78 editor/form-package-availability.php:34
 #: editor/form-product.php:36 editor/form-voucher-info.php:31
 #: editor/form-voucher-sales.php:40
@@ -122,102 +122,114 @@ msgstr ""
 msgid "No pre-filled package"
 msgstr ""
 
-#: editor/form-booking.php:25
-msgid "Use new method?"
+#: editor/form-booking.php:25 js/gutenberg-onlinebooking.js:105
+msgid "Integration method"
 msgstr ""
 
-#: editor/form-booking.php:27 js/gutenberg-onlinebooking.js:110
+#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:82
+msgid "Seamless (recommended)"
+msgstr ""
+
+#: editor/form-booking.php:34 js/gutenberg-onlinebooking.js:86
+msgid "iframe (uses setting in your Recras)"
+msgstr ""
+
+#: editor/form-booking.php:36 js/gutenberg-onlinebooking.js:148
 msgid "Preview times in programme"
 msgstr ""
 
-#: editor/form-booking.php:29 js/gutenberg-onlinebooking.js:119
-msgid "Pre-fill amounts (requires pre-filled package)"
+#: editor/form-booking.php:38
+msgid "Packages to show initially (optional)"
 msgstr ""
 
-#: editor/form-booking.php:30
+#: editor/form-booking.php:39 editor/form-booking.php:41
 msgid "Sorry, this is only available using the Gutenberg editor."
 msgstr ""
 
-#: editor/form-booking.php:31 editor/form-contact.php:63
+#: editor/form-booking.php:40
+msgid "Pre-fill amounts (requires pre-filled package)"
+msgstr ""
+
+#: editor/form-booking.php:42 editor/form-contact.php:63
 #: editor/form-voucher-sales.php:25
 msgid "Thank-you page"
 msgstr ""
 
-#: editor/form-booking.php:33 editor/form-contact.php:65
+#: editor/form-booking.php:44 editor/form-contact.php:65
 #: editor/form-voucher-sales.php:27
 msgid "Don't redirect"
 msgstr ""
 
-#: editor/form-booking.php:34 editor/form-contact.php:66
+#: editor/form-booking.php:45 editor/form-contact.php:66
 #: editor/form-voucher-sales.php:28
 msgid "Pages"
 msgstr "Seiten"
 
-#: editor/form-booking.php:39 editor/form-contact.php:71
+#: editor/form-booking.php:50 editor/form-contact.php:71
 #: editor/form-voucher-sales.php:33
 msgid "Posts"
 msgstr "Nachrichten"
 
-#: editor/form-booking.php:45 editor/form-package-availability.php:31
+#: editor/form-booking.php:56 editor/form-package-availability.php:31
 msgid "Automatic resize?"
 msgstr ""
 
 #: editor/form-contact.php:15 js/gutenberg-contactform.js:2
-#: js/gutenberg-contactform.js:69 js/gutenberg-contactform.js:173
+#: js/gutenberg-contactform.js:69 js/gutenberg-contactform.js:178
 #: src/Plugin.php:92 src/Plugin.php:147
 msgid "Contact form"
 msgstr "Kontaktformular"
 
-#: editor/form-contact.php:26 js/gutenberg-contactform.js:78
+#: editor/form-contact.php:26 js/gutenberg-contactform.js:83
 msgid "Show title?"
 msgstr ""
 
-#: editor/form-contact.php:28 js/gutenberg-contactform.js:87
+#: editor/form-contact.php:28 js/gutenberg-contactform.js:92
 msgid "Show labels?"
 msgstr ""
 
-#: editor/form-contact.php:30 js/gutenberg-contactform.js:96
+#: editor/form-contact.php:30 js/gutenberg-contactform.js:101
 msgid "Show placeholders?"
 msgstr ""
 
-#: editor/form-contact.php:44 js/gutenberg-contactform.js:181
+#: editor/form-contact.php:44 js/gutenberg-contactform.js:186
 msgid ""
 "Some packages may not be available for all contact forms. You can change "
 "this by editing your contact forms in Recras."
 msgstr ""
 
-#: editor/form-contact.php:45 js/gutenberg-contactform.js:182
+#: editor/form-contact.php:45 js/gutenberg-contactform.js:187
 msgid ""
 "If you are still missing packages, make sure in Recras \"May be presented on "
 "a website (via API)\" is enabled on the tab \"Extra settings\" of the "
 "package."
 msgstr ""
 
-#: editor/form-contact.php:47 js/gutenberg-contactform.js:129
+#: editor/form-contact.php:47 js/gutenberg-contactform.js:134
 msgid "HTML element"
 msgstr ""
 
-#: editor/form-contact.php:49 js/gutenberg-contactform.js:118
+#: editor/form-contact.php:49 js/gutenberg-contactform.js:123
 msgid "Definition list"
 msgstr ""
 
-#: editor/form-contact.php:50 js/gutenberg-contactform.js:122
+#: editor/form-contact.php:50 js/gutenberg-contactform.js:127
 msgid "Ordered list"
 msgstr ""
 
-#: editor/form-contact.php:51 js/gutenberg-contactform.js:126
+#: editor/form-contact.php:51 js/gutenberg-contactform.js:131
 msgid "Table"
 msgstr "Tabelle"
 
-#: editor/form-contact.php:53 js/gutenberg-contactform.js:148
+#: editor/form-contact.php:53 js/gutenberg-contactform.js:153
 msgid "Element for single choices"
 msgstr ""
 
-#: editor/form-contact.php:55 js/gutenberg-contactform.js:141
+#: editor/form-contact.php:55 js/gutenberg-contactform.js:146
 msgid "Drop-down list (Select)"
 msgstr ""
 
-#: editor/form-contact.php:56 js/gutenberg-contactform.js:145
+#: editor/form-contact.php:56 js/gutenberg-contactform.js:150
 msgid "Radio buttons"
 msgstr ""
 
@@ -226,40 +238,40 @@ msgid ""
 "This relates to: customer type, package selection, gender, and single choice"
 msgstr ""
 
-#: editor/form-contact.php:61 js/gutenberg-contactform.js:157
-#: js/gutenberg-contactform.js:158
+#: editor/form-contact.php:61 js/gutenberg-contactform.js:162
+#: js/gutenberg-contactform.js:163
 msgid "Submit button text"
 msgstr ""
 
 #: editor/form-contact.php:62 editor/form-contact.php:109
 #: js/gutenberg-contactform.js:14 js/gutenberg-contactform.js:27
-#: src/ContactForm.php:97
+#: src/ContactForm.php:101
 msgid "Send"
 msgstr ""
 
 #: editor/form-product.php:13 js/gutenberg-product.js:2
-#: js/gutenberg-product.js:48 js/gutenberg-product.js:97 src/Plugin.php:94
+#: js/gutenberg-product.js:48 js/gutenberg-product.js:102 src/Plugin.php:94
 #: src/Plugin.php:152
 msgid "Product"
 msgstr "Produkt"
 
-#: editor/form-product.php:27 js/gutenberg-product.js:67
+#: editor/form-product.php:27 js/gutenberg-product.js:72
 msgid "Description (short)"
 msgstr ""
 
-#: editor/form-product.php:28 js/gutenberg-product.js:63
+#: editor/form-product.php:28 js/gutenberg-product.js:68
 msgid "Description (long)"
 msgstr ""
 
-#: editor/form-product.php:31 js/gutenberg-product.js:79
+#: editor/form-product.php:31 js/gutenberg-product.js:84
 msgid "Image URL"
 msgstr ""
 
-#: editor/form-product.php:32 js/gutenberg-product.js:83
+#: editor/form-product.php:32 js/gutenberg-product.js:88
 msgid "Minimum amount"
 msgstr ""
 
-#: editor/form-product.php:33 js/gutenberg-product.js:87
+#: editor/form-product.php:33 js/gutenberg-product.js:92
 msgid "Price (incl. VAT)"
 msgstr ""
 
@@ -267,15 +279,15 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: editor/form-voucher-info.php:26 js/gutenberg-voucher-info.js:57
+#: editor/form-voucher-info.php:26 js/gutenberg-voucher-info.js:62
 msgid "Name"
 msgstr ""
 
-#: editor/form-voucher-info.php:27 js/gutenberg-voucher-info.js:61
+#: editor/form-voucher-info.php:27 js/gutenberg-voucher-info.js:66
 msgid "Price"
 msgstr "Preis"
 
-#: editor/form-voucher-info.php:28 js/gutenberg-voucher-info.js:65
+#: editor/form-voucher-info.php:28 js/gutenberg-voucher-info.js:70
 msgid "Number of days valid"
 msgstr ""
 
@@ -284,103 +296,104 @@ msgid "No pre-filled template"
 msgstr ""
 
 #: js/gutenberg-availability.js:2 js/gutenberg-availability.js:57
-#: src/admin/documentation.php:85
+#: src/admin/documentation.php:88
 msgid "Availability calendar"
 msgstr ""
 
-#: js/gutenberg-availability.js:54 js/gutenberg-onlinebooking.js:180
+#: js/gutenberg-availability.js:54 js/gutenberg-onlinebooking.js:234
 msgid "Auto resize iframe"
 msgstr ""
 
-#: js/gutenberg-contactform.js:106
+#: js/gutenberg-contactform.js:111
 msgid "Package (optional)"
 msgstr ""
 
-#: js/gutenberg-contactform.js:168 js/gutenberg-onlinebooking.js:129
-#: js/gutenberg-voucher-sales.js:63
+#: js/gutenberg-contactform.js:173 js/gutenberg-onlinebooking.js:171
+#: js/gutenberg-voucher-sales.js:68
 msgid "i.e. https://www.recras.com/thanks/"
 msgstr ""
 
-#: js/gutenberg-contactform.js:169 js/gutenberg-onlinebooking.js:130
-#: js/gutenberg-voucher-sales.js:64
+#: js/gutenberg-contactform.js:174 js/gutenberg-onlinebooking.js:172
+#: js/gutenberg-voucher-sales.js:69
 msgid "Thank-you page (optional, leave empty to not redirect)"
 msgstr ""
 
-#: js/gutenberg-global.js:36 src/Settings.php:150
+#: js/gutenberg-global.js:43 src/Settings.php:150
 msgid "Recras → Settings menu"
 msgstr ""
 
-#: js/gutenberg-global.js:38 src/Settings.php:149
+#: js/gutenberg-global.js:45 src/Settings.php:149
 #, php-format, javascript-format
 msgid "Please enter your Recras name in the %s before adding widgets."
 msgstr ""
 
-#: js/gutenberg-global.js:228
+#: js/gutenberg-global.js:238
 msgid "Page: "
 msgstr ""
 
-#: js/gutenberg-global.js:234
+#: js/gutenberg-global.js:244
 msgid "Post: "
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:184
+#: js/gutenberg-onlinebooking.js:2 js/gutenberg-onlinebooking.js:238
 #: src/Plugin.php:93 src/Plugin.php:149 src/admin/documentation.php:71
 msgid "Online booking"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:75
+#: js/gutenberg-onlinebooking.js:161
+msgid "Pre-fill amounts (requires exactly 1 package selected)"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:224
 msgid "Pre-filled package"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:76
+#: js/gutenberg-onlinebooking.js:225
 msgid "Pre-filled package (optional)"
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:82
-msgid "Seamless (recommended)"
-msgstr ""
-
-#: js/gutenberg-onlinebooking.js:86
-msgid "iframe (uses setting in your Recras)"
-msgstr ""
-
-#: js/gutenberg-onlinebooking.js:95
-msgid "Integration method"
-msgstr ""
-
-#: js/gutenberg-onlinebooking.js:189
+#: js/gutenberg-onlinebooking.js:241
 msgid ""
-"Seamless integration takes the styling of your website. You can apply a bit "
-"of extra styling via the Recras → Settings menu."
+"Seamless integration uses the styling of your website. At Recras → Settings "
+"in the menu on the left, you can set an optional theme."
 msgstr ""
 
-#: js/gutenberg-onlinebooking.js:199
+#: js/gutenberg-onlinebooking.js:242
 msgid ""
-"iframe integration uses the setting in your Recras. You can change this via "
-"the Settings → Online booking page in your Recras and apply extra styling "
-"via the Settings → Other settings page in your Recras.."
+"iframe integration uses the styling set in your Recras. You can change the "
+"styling in Recras via Settings → Other settings → Custom CSS."
 msgstr ""
 
-#: js/gutenberg-package.js:109 js/gutenberg-product.js:94
-#: js/gutenberg-voucher-info.js:68
+#: js/gutenberg-onlinebooking.js:245
+msgid "Package selection"
+msgstr ""
+
+#: js/gutenberg-onlinebooking.js:251
+msgid ""
+"If you select a single package, it will be pre-filled and will skip the "
+"package selection step."
+msgstr ""
+
+#: js/gutenberg-package.js:114 js/gutenberg-product.js:99
+#: js/gutenberg-voucher-info.js:73
 msgid "Property to show"
 msgstr ""
 
-#: js/gutenberg-product.js:101
+#: js/gutenberg-product.js:106
 msgid ""
 "If you are not seeing certain products, make sure in Recras \"May be "
 "presented on a website (via API)\" is enabled on the tab \"Presentation\" of "
 "the product."
 msgstr ""
 
-#: js/gutenberg-product.js:104
+#: js/gutenberg-product.js:109
 msgid ""
 "Could not find any products. Make sure in Recras \"May be presented on a "
 "website (via API)\" is enabled on the tab \"Presentation\" of the product."
 msgstr ""
 
-#: js/gutenberg-voucher-info.js:2 js/gutenberg-voucher-info.js:71
-#: src/Plugin.php:96 src/Plugin.php:153 src/admin/documentation.php:103
+#: js/gutenberg-voucher-info.js:2 js/gutenberg-voucher-info.js:76
+#: src/Plugin.php:96 src/Plugin.php:153 src/admin/documentation.php:106
 msgid "Voucher info"
 msgstr ""
 
@@ -388,8 +401,8 @@ msgstr ""
 msgid "Voucher template"
 msgstr ""
 
-#: js/gutenberg-voucher-sales.js:2 js/gutenberg-voucher-sales.js:67
-#: src/Plugin.php:95 src/Plugin.php:154 src/admin/documentation.php:94
+#: js/gutenberg-voucher-sales.js:2 js/gutenberg-voucher-sales.js:72
+#: src/Plugin.php:95 src/Plugin.php:154 src/admin/documentation.php:97
 msgid "Voucher sales"
 msgstr ""
 
@@ -433,36 +446,36 @@ msgstr ""
 msgid "Day %d"
 msgstr "Tag %d"
 
-#: src/Arrangement.php:225 src/ContactForm.php:58
+#: src/Arrangement.php:226 src/ContactForm.php:58
 #, php-format
 msgid "Error: %s"
 msgstr "Fehlermeldung: %s"
 
-#: src/Arrangement.php:278
+#: src/Arrangement.php:279
 msgid "No duration specified"
 msgstr ""
 
-#: src/Arrangement.php:300
+#: src/Arrangement.php:301
 msgid "No location specified"
 msgstr ""
 
-#: src/ContactForm.php:93
+#: src/ContactForm.php:97
 msgid "Error: package is set, but contact form does not support packages"
 msgstr ""
 
-#: src/ContactForm.php:255
+#: src/ContactForm.php:268
 msgid "yyyy-mm-dd"
 msgstr ""
 
-#: src/ContactForm.php:288
+#: src/ContactForm.php:301
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/ContactForm.php:289
+#: src/ContactForm.php:302
 msgid "Male"
 msgstr "Mann"
 
-#: src/ContactForm.php:290
+#: src/ContactForm.php:303
 msgid "Female"
 msgstr "Frau"
 
@@ -502,8 +515,12 @@ msgstr ""
 msgid "Error: could not parse data from Recras. The error message was: %s"
 msgstr ""
 
-#: src/OnlineBooking.php:38
+#: src/OnlineBooking.php:36
 msgid "Error: \"product_amounts\" is invalid"
+msgstr ""
+
+#: src/OnlineBooking.php:53 src/OnlineBooking.php:58
+msgid "Error: \"package_list\" is empty"
 msgstr ""
 
 #: src/Plugin.php:65 src/Plugin.php:66
