@@ -150,12 +150,15 @@ registerBlockType('recras/onlinebooking', {
             optionsPreFillControl = {
                 checked: prefill_enabled,
                 onChange: function(newVal) {
+                    if (package_list.length !== 1) {
+                        newVal = false;
+                    }
                     props.setAttributes({
                         prefill_enabled: newVal,
                     });
                 },
-                disabled: package_list.length !== 1, //TODO: how can we disable controls?
-                label: __('Pre-fill amounts (requires pre-filled package)', TEXT_DOMAIN),
+                disabled: package_list.length !== 1, // This doesn't work. We mimic it using `newVal = false` above
+                label: __('Pre-fill amounts (requires exactly 1 package selected)', TEXT_DOMAIN),
             };
             optionsRedirectControl = {
                 value: redirect,
