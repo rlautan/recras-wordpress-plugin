@@ -1,0 +1,9 @@
+{
+  "url": "http://wordpress.local/",
+  "users": {
+    "admin": {
+      "username": "admin",
+      "password": "admin"
+    }
+  }
+}

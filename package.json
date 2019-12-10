@@ -8,11 +8,19 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "po2json": "^1.0.0-alpha"
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chromedriver": "^78.0.1",
+    "mocha": "^6.2.2",
+    "po2json": "^1.0.0-alpha",
+    "wp-e2e-page-objects": "^0.8.1",
+    "wp-e2e-webdriver": "^0.15.0"
   },
   "scripts": {
     "i18n_nl": "po2json lang/recras-nl_NL.po lang/recras-nl_NL-recras-gutenberg-global.json -f jed",
-    "i18n": "npm run i18n_nl"
+    "i18n": "npm run i18n_nl",
+    "test_e2e": "./node_modules/mocha/bin/mocha tests/e2e/",
+    "test_phpunit": "phpunit"
   },
   "repository": {
     "type": "git",
