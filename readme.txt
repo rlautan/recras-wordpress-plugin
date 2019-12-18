@@ -163,47 +163,8 @@ Yes it does. You can set different Recras names (all settings, for that matter) 
 * Add some German translations
 * Add ability to show voucher information
 
-= 2.3.9 =
-* Update online booking library version. This fixed "customer type" fields in contact forms used during online bookings.
-
-= 2.3.8 =
-* Update online booking library version:
-  - Styling fix for Internet Explorer
-  - Add missing maximum value for the booking size field
-
-= 2.3.7 =
-* Update online booking library version. This fixes new online booking in IE.
-
-= 2.3.6 =
-* Update online booking library version. This fixes the sending of Google Analytics events.
-
-= 2.3.5 =
-* Fix online booking/voucher sales when using them from Advanced Custom Fields or similar solutions
-* Update online booking library version:
-  - Add message when entering an quantity more than the maximum of a line
-  - If there is only one available timeslot for the selected date, select it automatically
-
-= 2.3.4 =
-* Fix default contact form setting for Gutenberg contact form block
-* Fix certain Gutenberg toggles on re-edit
-
-= 2.3.3 =
-* Fix new online booking in IE
-
-= 2.3.2 =
-* Package block only showed packages that were bookable online - fixed
-* Voucher templates are now cached along with everything else
-* Fixed headings of programmes that span multiple days
-
-= 2.3.1 =
-* Fix missing "Start time" and "Show header" options in Package block
-
-= 2.3.0 =
-* Add Google Analytics integration
-* Add ability to pre-fill amounts form
-
 = Older versions =
-See `changelog.md` for the full changelog.
+See [the full changelog](https://github.com/Recras/recras-wordpress-plugin/blob/master/changelog.md) for older versions.
 
 == Upgrade Notice ==
 See changelog. We use semantic versioning for the plugin.
