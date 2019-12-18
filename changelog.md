@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.2.1 (2019-12-18)
+* Update online booking library version: fix error when trying to book a product that has no material
+
 ## 3.2.0 (2019-12-09)
 * Update online booking library version: show error when input is higher than allowed
 * It is now possible to show a selection of packages during online booking
