@@ -23,7 +23,7 @@ class Editor
      */
     public static function addScripts($plugins)
     {
-        global $recrasPlugin;
+        $recrasPlugin = new \Recras\Plugin;
 
         $plugins['recras'] = $recrasPlugin->baseUrl . '/editor/plugin.js';
         return $plugins;
